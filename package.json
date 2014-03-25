@@ -1,0 +1,33 @@
+{
+  "name": "jast",
+  "version": "0.1.0",
+  "description": "Japanese string and charactor converter.",
+  "main": "lib/jast.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:YusukeHirao/jast.git"
+  },
+  "keywords": [
+    "japanese",
+    "javascript",
+    "string",
+    "charactor",
+    "katakana",
+    "hiragana"
+  ],
+  "author": "YusukeHirao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YusukeHirao/jast/issues"
+  },
+  "homepage": "https://github.com/YusukeHirao/jast",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-typescript": "^0.2.10"
+  }
+}
