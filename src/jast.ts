@@ -1,5 +1,10 @@
 /// <reference path="DefinitelyTyped/node/node.d.ts" />
 
+/**
+ * Japanese String & Charactor Converter
+ *
+ * @module jast
+ */
 module jast {
 
 	export var SIGN_CHARS = '\\u0020-\\u002F\\u003A-\\u0041\\u005B-\\u0061\\u007B-\\u007E'; // [ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
@@ -18,8 +23,80 @@ module jast {
 	export var NARROW_JAPANESE_SIGN_CHARS = '\\uFF61-\\uFF65'; // [｡｢｣､･]
 	export var SPACE_LIKE_CHARS = '\\s\\n\\t\\u0009\\u0020\\u00A0\\u2002-\\u200B\\u3000\\uFEFF';
 
-	export class Japanese {
+	/**
+	 * カタカナに変換する
+	 *
+	 * @method katakana
+	 * @since 0.1.0
+	 * @static
+	 * @param {string} str 対象の文字列
+	 * @return {string} 変換後の文字列
+	 */
+	export function katakana (str:string):string {
+		return new Jast(str).toKatakana().toString();
+	}
 
+	/**
+	* カタカナに変換する
+	*
+	* @method katakana
+	* @since 0.1.0
+	* @static
+	* @param {string} str 対象の文字列
+	* @return {string} 変換後の文字列
+	*/
+	class Jast {
+
+		private _str:string;
+
+		constructor (str:string = '') {
+			this._str = str;
+		}
+
+		public toString ():string {
+			return this._str;
+		}
+
+		public toKatakana ():Jast {
+			this._replace({
+				'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
+				'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
+				'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
+				'ﾊﾞ': 'バ', 'ﾋﾞ': 'ビ', 'ﾌﾞ': 'ブ', 'ﾍﾞ': 'ベ', 'ﾎﾞ': 'ボ',
+				'ﾊﾟ': 'パ', 'ﾋﾟ': 'ピ', 'ﾌﾟ': 'プ', 'ﾍﾟ': 'ペ', 'ﾎﾟ': 'ポ',
+				'ﾜﾞ': 'ヷ', 'ｲﾞ': 'ヸ', 'ｳﾞ': 'ヴ', 'ｴﾞ': 'ヹ', 'ｦﾞ': 'ヺ',
+				'ﾞ': '゛', 'ﾟ': '゜',
+				'ｧ': 'ァ', 'ｨ': 'ィ','ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
+				'ｬ': 'ャ', 'ｭ': 'ュ', 'ｮ': 'ョ',
+				'ｯ': 'ッ', 'ｰ': 'ー',
+				'ｱ': 'ア', 'ｲ': 'イ', 'ｳ': 'ウ', 'ｴ': 'エ', 'ｵ': 'オ',
+				'ｶ': 'カ', 'ｷ': 'キ', 'ｸ': 'ク', 'ｹ': 'ケ', 'ｺ': 'コ',
+				'ｻ': 'サ', 'ｼ': 'シ', 'ｽ': 'ス', 'ｾ': 'セ', 'ｿ': 'ソ',
+				'ﾀ': 'タ', 'ﾁ': 'チ', 'ﾂ': 'ツ', 'ﾃ': 'テ', 'ﾄ': 'ト',
+				'ﾅ': 'ナ', 'ﾆ': 'ニ', 'ﾇ': 'ヌ', 'ﾈ': 'ネ', 'ﾉ': 'ノ',
+				'ﾊ': 'ハ', 'ﾋ': 'ヒ', 'ﾌ': 'フ', 'ﾍ': 'ヘ', 'ﾎ': 'ホ',
+				'ﾏ': 'マ', 'ﾐ': 'ミ', 'ﾑ': 'ム', 'ﾒ': 'メ', 'ﾓ': 'モ',
+				'ﾔ': 'ヤ', 'ﾕ': 'ユ', 'ﾖ': 'ヨ',
+				'ﾗ': 'ラ', 'ﾘ': 'リ', 'ﾙ': 'ル', 'ﾚ': 'レ', 'ﾛ': 'ロ',
+				'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン'
+			});
+			return this;
+		}
+
+		private _replace (convMap:any):Jast {
+			var needle:string;
+			var replace:string;
+			for (needle in convMap) {
+				replace = convMap[needle];
+				this._str = this._str.replace(_r(needle), replace);
+			}
+			return this;
+		}
+
+	}
+
+	function _r (str:string, option:string = 'igm'):RegExp {
+		return new RegExp(str, option);
 	}
 
 }
