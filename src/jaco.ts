@@ -33,19 +33,19 @@ module jaco {
 	 * @return {string} 変換後の文字列
 	 */
 	export function katakana (str:string):string {
-		return new jaco(str).toKatakana().toString();
+		return new Jaco(str).toKatakana().toString();
 	}
 
 	/**
 	* カタカナに変換する
 	*
-	* @method katakana
+	* @class Jaco
 	* @since 0.1.0
 	* @static
 	* @param {string} str 対象の文字列
 	* @return {string} 変換後の文字列
 	*/
-	class jaco {
+	class Jaco {
 
 		private _str:string;
 
@@ -57,7 +57,7 @@ module jaco {
 			return this._str;
 		}
 
-		public toKatakana ():jaco {
+		public toKatakana ():Jaco {
 			this._replace({
 				'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
 				'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
@@ -83,7 +83,7 @@ module jaco {
 			return this;
 		}
 
-		private _replace (convMap:any):jaco {
+		private _replace (convMap:any):Jaco {
 			var needle:string;
 			var replace:string;
 			for (needle in convMap) {
