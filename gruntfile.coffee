@@ -9,16 +9,16 @@ module.exports = (grunt) ->
 		typescript:
 			options:
 				comments: on
-			jast:
+			jaco:
 				src: [
-					'src/jast.ts'
+					'src/jaco.ts'
 				]
-				dest: 'lib/jast.js'
+				dest: 'lib/jaco.js'
 
 		watch:
 			scripts:
 				files: [
-					"<%= typescript.jast.src %>"
+					"<%= typescript.jaco.src %>"
 				]
 				tasks: [
 					'typescript'

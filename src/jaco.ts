@@ -3,9 +3,9 @@
 /**
  * Japanese String & Charactor Converter
  *
- * @module jast
+ * @module jaco
  */
-module jast {
+module jaco {
 
 	export var SIGN_CHARS = '\\u0020-\\u002F\\u003A-\\u0041\\u005B-\\u0061\\u007B-\\u007E'; // [ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
 	export var DIGIT_CAHRS = '0-9';
@@ -33,7 +33,7 @@ module jast {
 	 * @return {string} 変換後の文字列
 	 */
 	export function katakana (str:string):string {
-		return new Jast(str).toKatakana().toString();
+		return new jaco(str).toKatakana().toString();
 	}
 
 	/**
@@ -45,7 +45,7 @@ module jast {
 	* @param {string} str 対象の文字列
 	* @return {string} 変換後の文字列
 	*/
-	class Jast {
+	class jaco {
 
 		private _str:string;
 
@@ -57,7 +57,7 @@ module jast {
 			return this._str;
 		}
 
-		public toKatakana ():Jast {
+		public toKatakana ():jaco {
 			this._replace({
 				'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
 				'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
@@ -83,7 +83,7 @@ module jast {
 			return this;
 		}
 
-		private _replace (convMap:any):Jast {
+		private _replace (convMap:any):jaco {
 			var needle:string;
 			var replace:string;
 			for (needle in convMap) {
@@ -101,4 +101,4 @@ module jast {
 
 }
 
-(module).exports = jast;
+(module).exports = jaco;

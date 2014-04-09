@@ -1,14 +1,14 @@
 {
-  "name": "jast",
+  "name": "jaco",
   "version": "0.1.0",
   "description": "Japanese string and charactor converter.",
-  "main": "lib/jast.js",
+  "main": "lib/jaco.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:YusukeHirao/jast.git"
+    "url": "git@github.com:YusukeHirao/jaco.git"
   },
   "keywords": [
     "japanese",
@@ -21,13 +21,13 @@
   "author": "YusukeHirao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/YusukeHirao/jast/issues"
+    "url": "https://github.com/YusukeHirao/jaco/issues"
   },
-  "homepage": "https://github.com/YusukeHirao/jast",
+  "homepage": "https://github.com/YusukeHirao/jaco",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-typescript": "^0.2.10"
+    "grunt-typescript": "^0.3.0"
   }
 }

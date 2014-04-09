@@ -1,4 +1,4 @@
-jast
+jaco
 ====
 
 Japanese string and charactor converter.
@@ -6,13 +6,13 @@ Japanese string and charactor converter.
 ## install
 
 ```sh
-$ npm install jast
+$ npm install jaco
 ```
 
 ## Usage
 
 ```javascript
-var jast = require('jast');
+var jaco = require('jaco');
 
-jast.katakana('かたかな'); // => カタカナ
+jaco.katakana('かたかな'); // => カタカナ
 ```
