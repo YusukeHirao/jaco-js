@@ -4,7 +4,7 @@
   "description": "Japanese string and charactor converter.",
   "main": "lib/jaco.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-typescript": "^0.3.0"
+    "grunt-typescript": "^0.3.0",
+    "should": "^3.3.0"
   }
 }
