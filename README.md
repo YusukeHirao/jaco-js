@@ -3,6 +3,8 @@ jaco
 
 Japanese string and charactor converter.
 
+[![Code Climate](https://codeclimate.com/github/YusukeHirao/jaco.png)](https://codeclimate.com/github/YusukeHirao/jaco)
+
 ## install
 
 ```sh
