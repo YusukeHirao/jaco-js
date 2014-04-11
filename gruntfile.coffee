@@ -6,6 +6,8 @@ module.exports = (grunt) ->
 	# Project configuration.
 	grunt.initConfig
 
+		pkg: pkg
+
 		typescript:
 			options:
 				comments: on
@@ -14,6 +16,19 @@ module.exports = (grunt) ->
 					'src/jaco.ts'
 				]
 				dest: 'lib/jaco.js'
+
+		yuidoc:
+			app:
+				name: '<%= pkg.name %>'
+				description: '<%= pkg.description %>'
+				version: '<%= pkg.version %>'
+				# url: '<%= pkg.website %>'
+				options:
+					paths: 'src/'
+					outdir: 'docs/'
+					extension: '.ts'
+					exclude: 'DefinitelyTyped'
+					# themedir: 'docs_theme'
 
 		watch:
 			scripts:
@@ -30,6 +45,7 @@ module.exports = (grunt) ->
 
 	grunt.registerTask 'default', [
 		'typescript'
+		'yuidoc'
 	]
 
 	# Tasks
@@ -38,6 +54,7 @@ module.exports = (grunt) ->
 	exec = proc.exec
 
 	grunt.loadNpmTasks 'grunt-typescript'
+	grunt.loadNpmTasks 'grunt-contrib-yuidoc'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
 	grunt.registerTask 'update', 'Update Revision', ->

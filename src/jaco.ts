@@ -4,6 +4,7 @@
  * Japanese String & Charactor Converter
  *
  * @module jaco
+ * @main jaco
  */
 module jaco {
 
@@ -38,57 +39,71 @@ module jaco {
 	// [(スペース相等の文字)]
 	export var SPACE_LIKE_CHARS = '\\s\\n\\t\\u0009\\u0020\\u00A0\\u2002-\\u200B\\u3000\\uFEFF';
 
-	/**
-	 * カタカナに変換する
-	 *
-	 * @method katakana
-	 * @since 0.1.0
-	 * @static
-	 * @param {string} str 対象の文字列
-	 * @return {string} 変換後の文字列
-	 */
-	export function katakana (str:string):string {
-		return new Jaco(str).toKatakana().toString();
+	export function katakanize (str:string, toWide:boolean = true):string {
+		return new Jaco(str).toKatakana(toWide).toString();
+	}
+
+	export function hiraganize (str:string, isCombinate:boolean = false):string {
+		return new Jaco(str).toHiragana(isCombinate).toString();
 	}
 
 	/**
-	* ひらがなに変換する
-	*
-	* @method hiragana
-	* @since 0.1.0
-	* @static
-	* @param {string} str 対象の文字列
-	* @return {string} 変換後の文字列
-	*/
-	export function hiragana (str:string):string {
-		return new Jaco(str).toHiragana().toString();
-	}
-
-	/**
-	* カタカナに変換する
+	* Jacoクラス
 	*
 	* @class Jaco
 	* @since 0.1.0
+	* @uses jaco
 	* @conctructor
-	* @param {string} str 対象の文字列
-	* @return {string} 変換後の文字列
+	* @param {string} [str=''] 対象の文字列
 	*/
-	class Jaco {
-
-		private _str:string;
+	export class Jaco {
 
 		constructor (str:string = '') {
 			this._str = str;
 		}
 
+		/**
+		* 保持する文字列
+		*
+		* @property _str
+		* @since 0.1.0
+		* @type String
+		* @private
+		*/
+		private _str:string;
+
+		/**
+		* 明示もしくは暗黙の文字列変換メソッド
+		*
+		* @method toString
+		* @since 0.1.0
+		* @override
+		* @return {String} 自身が保持する文字列
+		*/
 		public toString ():string {
 			return this._str;
 		}
 
-		public valueOf ():any {
+		/**
+		* 暗黙の値変換に呼び出されるメソッド
+		*
+		* @method valueOf
+		* @since 0.1.0
+		* @override
+		* @return {String} 自身が保持する文字列
+		*/
+		public valueOf ():string {
 			return this.toString();
 		}
 
+		/**
+		* 濁点・半濁点を結合文字に変換
+		*
+		* @method combinate
+		* @since 0.1.0
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		public combinate () {
 			// 濁点・半濁点を結合文字に変換
 			return this._replaceMap({
@@ -99,8 +114,17 @@ module jaco {
 			});
 		}
 
-		// カタカナからひらがなへ
-		public toHiragana (combinate:boolean = false) {
+		/**
+		* ひらがなに変換する
+		*
+		* @method toHiragana
+		* @since 0.1.0
+		* @param {String} str 対象の文字列
+		* @param {Boolean} [isCombinate=false] 濁点・半濁点を結合文字にするかどうか
+		* @chainable
+		* @return {Jaco} 自身
+		*/
+		public toHiragana (isCombinate:boolean = false):Jaco {
 			// 半角カタカナを全角カタカナへ
 			this.toWideKatakana();
 			// ヷヸヹヺの変換
@@ -113,34 +137,53 @@ module jaco {
 			// カタカナをひらがなへ(Unicodeの番号をずらす)
 			this._shift(toPattern(KATAKANA_CHARS), -96);
 			// 濁点・半濁点を結合文字に変換
-			if (combinate) {
+			if (isCombinate) {
 				this.combinate();
 			}
 			return this;
 		}
 
+		/**
+		* カタカナに変換する
+		*
+		* @method toKatakana
+		* @since 0.1.0
+		* @param {String} str 対象の文字列
+		* @param {Boolean} [toWide=true] 半角カタカナを全角カタカナへ変換するかどうか
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		public toKatakana (toWide:boolean = true):Jaco {
 			// 半角カタカナを全角カタカナへ
 			if (toWide) {
 				this.toWideKatakana();
 			}
-			// わ゛=> ヷ
+			// わ゛=> ヷ (濁点3種類対応)
 			this._replace(/\u308F(?:\u309B|\u3099|\uFF9E)/g, '\u30F7');
-			// ゐ゛=> ヸ
+			// ゐ゛=> ヸ (濁点3種類対応)
 			this._replace(/\u3090(?:\u309B|\u3099|\uFF9E)/g, '\u30F8');
-			// ゑ゛=> ヹ
+			// ゑ゛=> ヹ (濁点3種類対応)
 			this._replace(/\u3091(?:\u309B|\u3099|\uFF9E)/g, '\u30F9');
-			// を゛=> ヺ
+			// を゛=> ヺ (濁点3種類対応)
 			this._replace(/\u3092(?:\u309B|\u3099|\uFF9E)/g, '\u30FA');
 			// ひらがなをカタカナへ(Unicodeの番号をずらす)
 			this._shift(toPattern(HIRAGANA_CHARS), 96);
 			return this;
 		}
 
+		/**
+		* 半角カタカナに変換する
+		*
+		* @method toNarrowKatakana
+		* @since 0.1.0
+		* @param {String} str 対象の文字列
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		public toNarrowKatakana ():Jaco {
-			// 濁点の変換
+			// 濁点の変換 (全角濁点2種類対応)
 			this._replace(/\u309B|\u3099/g, '\uFF9E');
-			// 半濁点の変換
+			// 半濁点の変換 (全角半濁点2種類対応)
 			this._replace(/\u309C|\u309A/g, '\uFF9F');
 			// カタカナの変換
 			this._replaceMap({
@@ -167,6 +210,15 @@ module jaco {
 			return this;
 		}
 
+		/**
+		* 全角カタカナに変換する
+		*
+		* @method toWideKatakana
+		* @since 0.1.0
+		* @param {String} str 対象の文字列
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		public toWideKatakana ():Jaco {
 			// カタカナ・濁点・半濁点の変換
 			this._replaceMap({
@@ -194,18 +246,50 @@ module jaco {
 			return this;
 		}
 
+		/**
+		* 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+		*
+		* @method _shift
+		* @since 0.1.0
+		* @private
+		* @param {RegExp} needle 対象のパターン
+		* @param {Number} shiftNum ずらす数値
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		private _shift (needle:RegExp, shiftNum:number):Jaco {
-			this._str = this._str.replace(needle, (char) => {
+			this._str = this._str.replace(needle, (char:string):string => {
 				return String.fromCharCode(char.charCodeAt(0) + shiftNum);
 			});
 			return this;
 		}
 
+		/**
+		* 文字列をパターンで置換する
+		*
+		* @method _replace
+		* @since 0.1.0
+		* @private
+		* @param {RegExp} needle 対象のパターン
+		* @param {String} replace 置換する文字列
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		private _replace (needle:RegExp, replace:string):Jaco {
 			this._str = this._str.replace(needle, replace);
 			return this;
 		}
 
+		/**
+		* キーがパターン・値が置換文字列のハッシュマップによって置換する
+		*
+		* @method _replaceMap
+		* @since 0.1.0
+		* @private
+		* @param {Object} convMap キーがパターン・値が置換文字列のハッシュマップ
+		* @chainable
+		* @return {Jaco} 自身
+		*/
 		private _replaceMap (convMap:any):Jaco {
 			var needle:string;
 			var replace:string;

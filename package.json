@@ -28,6 +28,7 @@
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-yuidoc": "^0.5.2",
     "grunt-typescript": "^0.3.0",
     "should": "^3.3.0"
   }

@@ -1,0 +1,324 @@
+{
+    "project": {
+        "name": "jaco",
+        "description": "Japanese string and charactor converter.",
+        "version": "0.1.0"
+    },
+    "files": {
+        "src/jaco.ts": {
+            "name": "src/jaco.ts",
+            "modules": {
+                "jaco": 1
+            },
+            "classes": {
+                "Jaco": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "jaco": {
+            "name": "jaco",
+            "submodules": {},
+            "classes": {
+                "Jaco": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/jaco.ts",
+            "line": 50,
+            "description": "Japanese String & Charactor Converter",
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "Jaco": {
+            "name": "Jaco",
+            "shortname": "Jaco",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "jaco",
+            "namespace": "",
+            "file": "src/jaco.ts",
+            "line": 50,
+            "description": "Jacoクラス",
+            "since": "0.1.0",
+            "uses": [
+                "jaco"
+            ],
+            "conctructor": "",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "対象の文字列",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "''"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/jaco.ts",
+            "line": 65,
+            "description": "保持する文字列",
+            "itemtype": "property",
+            "name": "_str",
+            "since": "0.1.0",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 75,
+            "description": "明示もしくは暗黙の文字列変換メソッド",
+            "itemtype": "method",
+            "name": "toString",
+            "since": "0.1.0",
+            "override": "",
+            "return": {
+                "description": "自身が保持する文字列",
+                "type": "String"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 87,
+            "description": "暗黙の値変換に呼び出されるメソッド",
+            "itemtype": "method",
+            "name": "valueOf",
+            "since": "0.1.0",
+            "override": "",
+            "return": {
+                "description": "自身が保持する文字列",
+                "type": "String"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 99,
+            "description": "濁点・半濁点を結合文字に変換",
+            "itemtype": "method",
+            "name": "combinate",
+            "since": "0.1.0",
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 117,
+            "description": "ひらがなに変換する",
+            "itemtype": "method",
+            "name": "toHiragana",
+            "since": "0.1.0",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "対象の文字列",
+                    "type": "String"
+                },
+                {
+                    "name": "isCombinate",
+                    "description": "濁点・半濁点を結合文字にするかどうか",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 146,
+            "description": "カタカナに変換する",
+            "itemtype": "method",
+            "name": "toKatakana",
+            "since": "0.1.0",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "対象の文字列",
+                    "type": "String"
+                },
+                {
+                    "name": "toWide",
+                    "description": "半角カタカナを全角カタカナへ変換するかどうか",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 174,
+            "description": "半角カタカナに変換する",
+            "itemtype": "method",
+            "name": "toNarrowKatakana",
+            "since": "0.1.0",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "対象の文字列",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 213,
+            "description": "全角カタカナに変換する",
+            "itemtype": "method",
+            "name": "toWideKatakana",
+            "since": "0.1.0",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "対象の文字列",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 249,
+            "description": "文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす",
+            "itemtype": "method",
+            "name": "_shift",
+            "since": "0.1.0",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "needle",
+                    "description": "対象のパターン",
+                    "type": "RegExp"
+                },
+                {
+                    "name": "shiftNum",
+                    "description": "ずらす数値",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 267,
+            "description": "文字列をパターンで置換する",
+            "itemtype": "method",
+            "name": "_replace",
+            "since": "0.1.0",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "needle",
+                    "description": "対象のパターン",
+                    "type": "RegExp"
+                },
+                {
+                    "name": "replace",
+                    "description": "置換する文字列",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 283,
+            "description": "キーがパターン・値が置換文字列のハッシュマップによって置換する",
+            "itemtype": "method",
+            "name": "_replaceMap",
+            "since": "0.1.0",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "convMap",
+                    "description": "キーがパターン・値が置換文字列のハッシュマップ",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: conctructor",
+            "line": " src/jaco.ts:50"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " src/jaco.ts:75"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " src/jaco.ts:87"
+        }
+    ]
+}
