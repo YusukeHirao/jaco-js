@@ -1,5 +1,9 @@
 module.exports = (grunt) ->
 
+	grunt.loadNpmTasks 'grunt-typescript'
+	grunt.loadNpmTasks 'grunt-contrib-yuidoc'
+	grunt.loadNpmTasks 'grunt-contrib-watch'
+
 	# Package Data
 	pkg = grunt.file.readJSON 'package.json'
 
@@ -47,19 +51,3 @@ module.exports = (grunt) ->
 		'typescript'
 		'yuidoc'
 	]
-
-	# Tasks
-	log = grunt.log
-	proc = require 'child_process'
-	exec = proc.exec
-
-	grunt.loadNpmTasks 'grunt-typescript'
-	grunt.loadNpmTasks 'grunt-contrib-yuidoc'
-	grunt.loadNpmTasks 'grunt-contrib-watch'
-
-	grunt.registerTask 'update', 'Update Revision', ->
-		pkg.revision += 1
-		grunt.file.write 'package.json', JSON.stringify(pkg, null, 2)
-
-	grunt.registerTask 'gitcommit', 'Git Commit', ->
-		exec "/usr/local/git/bin/git commit -a -m 'dev (grunt commit r#{pkg.revision})'"
