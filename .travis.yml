@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-	- 1.10
+  - 1.10
 before_script:
-	- npm install -g mocha
+  - npm install -g mocha
 script:
-	- "npm test"
+  - "npm test"
