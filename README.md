@@ -3,6 +3,7 @@ jaco
 
 Japanese string and charactor converter.
 
+[![Build Status](https://travis-ci.org/YusukeHirao/jaco.svg?branch=master)](https://travis-ci.org/YusukeHirao/jaco)
 [![Code Climate](https://codeclimate.com/github/YusukeHirao/jaco.png)](https://codeclimate.com/github/YusukeHirao/jaco)
 
 ## install
@@ -16,5 +17,6 @@ $ npm install jaco
 ```javascript
 var jaco = require('jaco');
 
-jaco.katakana('かたかな'); // => カタカナ
+jaco.hiraganize('カタカナ'); // => かたかな
+jaco.katakanize('かたかな'); // => カタカナ
 ```
