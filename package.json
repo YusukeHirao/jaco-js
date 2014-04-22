@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "0.1.1",
+  "version": "0.2.0dev",
   "description": "Japanese string and charactor converter.",
   "main": "lib/jaco.js",
   "scripts": {

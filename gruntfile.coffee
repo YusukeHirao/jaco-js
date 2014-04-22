@@ -31,7 +31,7 @@ module.exports = (grunt) ->
 					paths: 'src/'
 					outdir: 'docs/'
 					extension: '.ts'
-					exclude: 'DefinitelyTyped'
+					exclude: 'DefinitelyTyped,*.d.ts'
 					# themedir: 'docs_theme'
 
 		watch:
@@ -41,8 +41,6 @@ module.exports = (grunt) ->
 				]
 				tasks: [
 					'typescript'
-					'update'
-					'gitcommit'
 				]
 				options:
 					interrupt: on

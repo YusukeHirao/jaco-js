@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1.0</em>
+            <em>API Docs for: 0.2.0dev</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -129,12 +129,12 @@ module jaco {
 	// [(スペース相等の文字)]
 	export var SPACE_LIKE_CHARS = &#x27;\\s\\n\\t\\u0009\\u0020\\u00A0\\u2002-\\u200B\\u3000\\uFEFF&#x27;;
 
-	export function katakanize (str:string, toWide:boolean = true):string {
-		return new Jaco(str).toKatakana(toWide).toString();
-	}
-
 	export function hiraganize (str:string, isCombinate:boolean = false):string {
 		return new Jaco(str).toHiragana(isCombinate).toString();
+	}
+
+	export function katakanize (str:string, toWide:boolean = true):string {
+		return new Jaco(str).toKatakana(toWide).toString();
 	}
 
 	/**
@@ -187,6 +187,286 @@ module jaco {
 		}
 
 		/**
+		*
+		*
+		* @method concat
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public concat (...likeStrings:any[]):Jaco {
+			return this;
+		}
+
+		/**
+		* 文字列をパターンで置換する
+		*
+		* @method replace
+		* @since 0.2.0
+		* @private
+		* @param {RegExp} pattern  対象のパターン
+		* @param {String} replacement 置換する文字列
+		* @chainable
+		* @return {Jaco} 自身
+		*/
+		public replace (pattern:RegExp, replacement:string):Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method slice
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public slice (from:number, to:number):Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method substr
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public substr ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method substring
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public substring ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method toLowerCase
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public toLowerCase ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method toUpperCase
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public toUpperCase ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method trim
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public trim ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method size
+		* @since 0.2.0
+		* @return {number} 文字列数
+		*/
+		public size ():number {
+			return this._str.length;
+		}
+
+		/**
+		*
+		*
+		* @method byteSize
+		* @since 0.2.0
+		* @return {number} バイト数
+		*/
+		public byteSize ():number {
+			return this._str.length;
+		}
+
+		/**
+		*
+		*
+		* @method isEmpty
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public isEmpty ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method clone
+		* @since 0.2.0
+		* @return {Jaco} コピー
+		*/
+		public clone ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method remove
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public remove ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method test
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public test ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method prepend
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public prepend ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method append
+		* @since 0.2.0
+		* @return {Jaco} 自身
+		*/
+		public append ():Jaco {
+			return this;
+		}
+
+		/**
+		*
+		*
+		* @method is
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public is ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method isOnly
+		* @since 0.2.0
+		* @param {string} charactors 文字セット
+		* @return {boolean} 自身
+		*/
+		public isOnly (charactors:string):boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method toNumber
+		* @since 0.2.0
+		* @return {number} 自身
+		*/
+		public toNumber ():number {
+			return 0;
+		}
+
+		/**
+		*
+		*
+		* @method toBool
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public toBool ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method toArray
+		* @since 0.2.0
+		* @return {Array} 自身
+		*/
+		public toArray ():Array&lt;string&gt; {
+			return [];
+		}
+
+		/**
+		*
+		*
+		* @method isOnlyHiragana
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public isOnlyHiragana ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method isOnlyKatakana
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public isOnlyKatakana ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method isOnlyAlphabet
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public isOnlyAlphabet ():boolean {
+			return true;
+		}
+
+		/**
+		*
+		*
+		* @method isUInt
+		* @since 0.2.0
+		* @return {boolean} 自身
+		*/
+		public isUInt ():boolean {
+			return true;
+		}
+
+		/**
 		* 濁点・半濁点を結合文字に変換
 		*
 		* @method combinate
@@ -194,7 +474,7 @@ module jaco {
 		* @chainable
 		* @return {Jaco} 自身
 		*/
-		public combinate () {
+		public combinate ():Jaco {
 			// 濁点・半濁点を結合文字に変換
 			return this._replaceMap({
 				// 濁点
@@ -249,13 +529,13 @@ module jaco {
 				this.toWideKatakana();
 			}
 			// わ゛=&gt; ヷ (濁点3種類対応)
-			this._replace(/\u308F(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F7&#x27;);
+			this.replace(/\u308F(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F7&#x27;);
 			// ゐ゛=&gt; ヸ (濁点3種類対応)
-			this._replace(/\u3090(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F8&#x27;);
+			this.replace(/\u3090(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F8&#x27;);
 			// ゑ゛=&gt; ヹ (濁点3種類対応)
-			this._replace(/\u3091(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F9&#x27;);
+			this.replace(/\u3091(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30F9&#x27;);
 			// を゛=&gt; ヺ (濁点3種類対応)
-			this._replace(/\u3092(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30FA&#x27;);
+			this.replace(/\u3092(?:\u309B|\u3099|\uFF9E)/g, &#x27;\u30FA&#x27;);
 			// ひらがなをカタカナへ(Unicodeの番号をずらす)
 			this._shift(toPattern(HIRAGANA_CHARS), 96);
 			return this;
@@ -272,9 +552,9 @@ module jaco {
 		*/
 		public toNarrowKatakana ():Jaco {
 			// 濁点の変換 (全角濁点2種類対応)
-			this._replace(/\u309B|\u3099/g, &#x27;\uFF9E&#x27;);
+			this.replace(/\u309B|\u3099/g, &#x27;\uFF9E&#x27;);
 			// 半濁点の変換 (全角半濁点2種類対応)
-			this._replace(/\u309C|\u309A/g, &#x27;\uFF9F&#x27;);
+			this.replace(/\u309C|\u309A/g, &#x27;\uFF9F&#x27;);
 			// カタカナの変換
 			this._replaceMap({
 				&#x27;ァ&#x27;: &#x27;ｧ&#x27;, &#x27;ィ&#x27;: &#x27;ｨ&#x27;, &#x27;ゥ&#x27;: &#x27;ｩ&#x27;, &#x27;ェ&#x27;: &#x27;ｪ&#x27;, &#x27;ォ&#x27;: &#x27;ｫ&#x27;, &#x27;ャ&#x27;: &#x27;ｬ&#x27;,
@@ -355,9 +635,11 @@ module jaco {
 		}
 
 		/**
-		* 文字列をパターンで置換する
+		* 【非推奨】文字列をパターンで置換する
+		* 同機能の&#x60;replace&#x60;メソッドを使う
 		*
 		* @method _replace
+		* @deprecated
 		* @since 0.1.0
 		* @private
 		* @param {RegExp} needle 対象のパターン

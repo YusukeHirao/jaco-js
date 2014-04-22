@@ -1,7 +1,8 @@
 var should = require('should');
 var jaco = require('../lib/jaco.js');
+var Jaco = jaco.Jaco;
 
-describe('jaco', function () {
+describe('jaco Module', function () {
 	it('半角を全角カタカナに変換', function () {
 		jaco.katakanize('ｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞ').should.equal('ガガガガガガガガ');
 	});
@@ -60,4 +61,42 @@ describe('jaco', function () {
 	it('カタカナをひらがなに変換', function () {
 		jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
 	});
+});
+
+describe('Jaco Class', function () {
+
+	// toString()
+	// valueOf()
+	// concat()
+	// replac()
+	// slic()
+	// substr()
+	// substring()
+	// toLowerCase()
+	// toUpperCase()
+	// trim()
+	// size()
+	// byteSize()
+	// isEmpty()
+	// clone()
+	// remove()
+	// test()
+	// prepend()
+	// append()
+	// is()
+	// isOnl()
+	// toNumber()
+	// toBool()
+	// toArray()
+	// isOnlyHiragana()
+	// isOnlyKatakana()
+	// isOnlyAlphabet()
+	// isUInt()
+	// combinate()
+	// toHiragan()
+	// toKatakan()
+	// toNarrowKatakana()
+	// toWideKatakana()
+
+
 });
