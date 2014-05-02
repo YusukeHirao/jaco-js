@@ -19,7 +19,46 @@ $ npm install jaco
 
 ```javascript
 var jaco = require('jaco');
+var Jaco = jaco.Jaco;
 
 jaco.hiraganize('カタカナ'); // => かたかな
 jaco.katakanize('かたかな'); // => カタカナ
+
+var jStr01 = new Jaco('かたかな');
+jStr01.toKatakana(); // => カタカナ
 ```
+
+## Methods
+
+- toString
+- valueOf
+- concat
+- slice
+- substr
+- substring
+- append
+- prepend
+- replace
+- trim
+- remove
+- test
+- is
+- isEmpty
+- isOnly
+- isOnlyHiragana
+- isOnlyKatakana
+- toNumber
+- toLowerCase
+- toUpperCase
+- toHiragana
+- toKatakana
+- toNarrowKatakana
+- toWideKatakana
+- size
+- byteSize
+- clone
+- combinate
+
+## Documents
+
+comming soon
