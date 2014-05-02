@@ -2,7 +2,7 @@
     "project": {
         "name": "jaco",
         "description": "Japanese string and charactor converter.",
-        "version": "0.2.0dev"
+        "version": "0.2.0"
     },
     "files": {
         "src/jaco.ts": {
@@ -56,7 +56,7 @@
                 {
                     "name": "str",
                     "description": "対象の文字列",
-                    "type": "String",
+                    "type": "String|Jaco",
                     "optional": true,
                     "optdefault": "''"
                 }
@@ -66,7 +66,7 @@
     "classitems": [
         {
             "file": "src/jaco.ts",
-            "line": 65,
+            "line": 70,
             "description": "保持する文字列",
             "itemtype": "property",
             "name": "_str",
@@ -79,7 +79,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 75,
+            "line": 80,
             "description": "明示もしくは暗黙の文字列変換メソッド",
             "itemtype": "method",
             "name": "toString",
@@ -94,7 +94,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 87,
+            "line": 92,
             "description": "暗黙の値変換に呼び出されるメソッド",
             "itemtype": "method",
             "name": "valueOf",
@@ -109,10 +109,12 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 99,
+            "line": 104,
+            "description": "文字列連結をおこなう",
             "itemtype": "method",
             "name": "concat",
             "since": "0.2.0",
+            "chainable": 1,
             "return": {
                 "description": "自身",
                 "type": "Jaco"
@@ -122,18 +124,18 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 110,
+            "line": 117,
             "description": "文字列をパターンで置換する",
             "itemtype": "method",
             "name": "replace",
             "since": "0.2.0",
-            "access": "private",
+            "access": "public",
             "tagname": "",
             "params": [
                 {
                     "name": "pattern",
                     "description": "対象のパターン",
-                    "type": "RegExp"
+                    "type": "RegExp|string"
                 },
                 {
                     "name": "replacement",
@@ -151,12 +153,28 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 125,
+            "line": 135,
+            "description": "文字位置による抽出\n(非破壊的メソッド)",
             "itemtype": "method",
             "name": "slice",
             "since": "0.2.0",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "from",
+                    "description": "開始インデックス",
+                    "type": "Number"
+                },
+                {
+                    "name": "to",
+                    "description": "終了インデックス 省略すると最後まで",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
             "return": {
-                "description": "自身",
+                "description": "抽出した文字列からなるJacoインスタンス",
                 "type": "Jaco"
             },
             "class": "Jaco",
@@ -164,12 +182,26 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 136,
+            "line": 150,
+            "description": "指定した位置から指定した数だけ文字列を抽出\n(非破壊的メソッド)",
             "itemtype": "method",
             "name": "substr",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "start",
+                    "description": "開始インデックス",
+                    "type": "Number"
+                },
+                {
+                    "name": "length",
+                    "description": "指定数",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
             "return": {
-                "description": "自身",
+                "description": "抽出した文字列からなるJacoインスタンス",
                 "type": "Jaco"
             },
             "class": "Jaco",
@@ -177,12 +209,25 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 147,
+            "line": 164,
+            "description": "指定した位置の間の文字列を抽出\n(非破壊的メソッド)",
             "itemtype": "method",
             "name": "substring",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "indexA",
+                    "description": "インデックス",
+                    "type": "Number"
+                },
+                {
+                    "name": "indexB",
+                    "description": "インデックス",
+                    "type": "Number"
+                }
+            ],
             "return": {
-                "description": "自身",
+                "description": "抽出した文字列からなるJacoインスタンス",
                 "type": "Jaco"
             },
             "class": "Jaco",
@@ -190,36 +235,12 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 158,
+            "line": 178,
+            "description": "英字の大文字を小文字に変換する",
             "itemtype": "method",
             "name": "toLowerCase",
             "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Jaco"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 169,
-            "itemtype": "method",
-            "name": "toUpperCase",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Jaco"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 180,
-            "itemtype": "method",
-            "name": "trim",
-            "since": "0.2.0",
+            "chainable": 1,
             "return": {
                 "description": "自身",
                 "type": "Jaco"
@@ -230,6 +251,58 @@
         {
             "file": "src/jaco.ts",
             "line": 191,
+            "description": "英字の小文字を大文字に変換する",
+            "itemtype": "method",
+            "name": "toUpperCase",
+            "since": "0.2.0",
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 204,
+            "itemtype": "method",
+            "name": "remove",
+            "since": "0.2.0",
+            "params": [
+                {
+                    "name": "pattern",
+                    "description": "取り除く文字列",
+                    "type": "RegExp|string"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 219,
+            "description": "先頭と末尾の空白を取り除く\n[\\s]で判定するのでほとんどの空白文字はヒットする",
+            "itemtype": "method",
+            "name": "trim",
+            "since": "0.2.0",
+            "chainable": 1,
+            "return": {
+                "description": "自身",
+                "type": "Jaco"
+            },
+            "class": "Jaco",
+            "module": "jaco"
+        },
+        {
+            "file": "src/jaco.ts",
+            "line": 232,
+            "description": "文字列の長さを返す",
             "itemtype": "method",
             "name": "size",
             "since": "0.2.0",
@@ -242,7 +315,8 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 202,
+            "line": 243,
+            "description": "文字列のバイトサイズを返す",
             "itemtype": "method",
             "name": "byteSize",
             "since": "0.2.0",
@@ -255,12 +329,13 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 213,
+            "line": 254,
+            "description": "文字が空かどうか",
             "itemtype": "method",
             "name": "isEmpty",
             "since": "0.2.0",
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -268,7 +343,8 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 224,
+            "line": 265,
+            "description": "コピーを生成する",
             "itemtype": "method",
             "name": "clone",
             "since": "0.2.0",
@@ -281,25 +357,20 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 235,
-            "itemtype": "method",
-            "name": "remove",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Jaco"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 246,
+            "line": 276,
+            "description": "パターンとマッチするかどうか",
             "itemtype": "method",
             "name": "test",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "pattern",
+                    "description": "パターン",
+                    "type": "RegExp|string"
+                }
+            ],
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -307,10 +378,19 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 257,
+            "line": 296,
+            "description": "前方結合",
             "itemtype": "method",
             "name": "prepend",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "結合する文字列",
+                    "type": "Jaco|string"
+                }
+            ],
+            "chainable": 1,
             "return": {
                 "description": "自身",
                 "type": "Jaco"
@@ -320,10 +400,19 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 268,
+            "line": 312,
+            "description": "後方結合",
             "itemtype": "method",
             "name": "append",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "結合する文字列",
+                    "type": "Jaco|string"
+                }
+            ],
+            "chainable": 1,
             "return": {
                 "description": "自身",
                 "type": "Jaco"
@@ -333,12 +422,20 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 279,
+            "line": 327,
+            "description": "完全マッチ",
             "itemtype": "method",
             "name": "is",
             "since": "0.2.0",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "比較する文字列",
+                    "type": "Jaco|string"
+                }
+            ],
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -346,7 +443,8 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 290,
+            "line": 341,
+            "description": "該当の文字だけで構成されているかどうか",
             "itemtype": "method",
             "name": "isOnly",
             "since": "0.2.0",
@@ -358,7 +456,7 @@
                 }
             ],
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -366,12 +464,13 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 302,
+            "line": 353,
+            "description": "数値に変換する",
             "itemtype": "method",
             "name": "toNumber",
             "since": "0.2.0",
             "return": {
-                "description": "自身",
+                "description": "数値",
                 "type": "Number"
             },
             "class": "Jaco",
@@ -379,38 +478,13 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 313,
-            "itemtype": "method",
-            "name": "toBool",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Boolean"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 324,
-            "itemtype": "method",
-            "name": "toArray",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Array"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 335,
+            "line": 364,
+            "description": "ひらがなだけで構成されているかどうか",
             "itemtype": "method",
             "name": "isOnlyHiragana",
             "since": "0.2.0",
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -418,12 +492,13 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 346,
+            "line": 375,
+            "description": "カタカナだけで構成されているかどうか",
             "itemtype": "method",
             "name": "isOnlyKatakana",
             "since": "0.2.0",
             "return": {
-                "description": "自身",
+                "description": "結果の真偽",
                 "type": "Boolean"
             },
             "class": "Jaco",
@@ -431,33 +506,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 357,
-            "itemtype": "method",
-            "name": "isOnlyAlphabet",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Boolean"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 368,
-            "itemtype": "method",
-            "name": "isUInt",
-            "since": "0.2.0",
-            "return": {
-                "description": "自身",
-                "type": "Boolean"
-            },
-            "class": "Jaco",
-            "module": "jaco"
-        },
-        {
-            "file": "src/jaco.ts",
-            "line": 379,
+            "line": 386,
             "description": "濁点・半濁点を結合文字に変換",
             "itemtype": "method",
             "name": "combinate",
@@ -472,7 +521,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 397,
+            "line": 404,
             "description": "ひらがなに変換する",
             "itemtype": "method",
             "name": "toHiragana",
@@ -501,7 +550,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 426,
+            "line": 433,
             "description": "カタカナに変換する",
             "itemtype": "method",
             "name": "toKatakana",
@@ -530,7 +579,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 454,
+            "line": 461,
             "description": "半角カタカナに変換する",
             "itemtype": "method",
             "name": "toNarrowKatakana",
@@ -552,7 +601,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 493,
+            "line": 500,
             "description": "全角カタカナに変換する",
             "itemtype": "method",
             "name": "toWideKatakana",
@@ -574,7 +623,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 529,
+            "line": 536,
             "description": "文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす",
             "itemtype": "method",
             "name": "_shift",
@@ -603,7 +652,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 547,
+            "line": 554,
             "description": "【非推奨】文字列をパターンで置換する\n同機能の`replace`メソッドを使う",
             "itemtype": "method",
             "name": "_replace",
@@ -633,7 +682,7 @@
         },
         {
             "file": "src/jaco.ts",
-            "line": 565,
+            "line": 572,
             "description": "キーがパターン・値が置換文字列のハッシュマップによって置換する",
             "itemtype": "method",
             "name": "_replaceMap",
@@ -663,11 +712,11 @@
         },
         {
             "message": "unknown tag: override",
-            "line": " src/jaco.ts:75"
+            "line": " src/jaco.ts:80"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/jaco.ts:87"
+            "line": " src/jaco.ts:92"
         }
     ]
 }

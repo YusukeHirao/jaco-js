@@ -1,6 +1,8 @@
 module.exports = (grunt) ->
 
 	grunt.loadNpmTasks 'grunt-typescript'
+	grunt.loadNpmTasks 'grunt-contrib-concat'
+	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-yuidoc'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
@@ -12,6 +14,18 @@ module.exports = (grunt) ->
 
 		pkg: pkg
 
+		meta:
+			banner: '''
+				/*!
+				 * <%= pkg.name %> - v<%= pkg.version %>
+				 * <%= pkg.description %>
+				 * update: <%= grunt.template.today("yyyy-mm-dd") %>
+				 * Author: <%= pkg.author %> [<%= pkg.homepage %>]
+				 * Repository: <%= pkg.repository.url %>
+				 * License: <%= pkg.license %>
+				 */
+			'''
+
 		typescript:
 			options:
 				comments: on
@@ -21,18 +35,33 @@ module.exports = (grunt) ->
 				]
 				dest: 'lib/jaco.js'
 
+		concat:
+			options:
+				banner: '<%= meta.banner %>\n\n'
+			jaco:
+				src: [
+					'lib/jaco.js'
+				]
+				dest: 'lib/jaco.js'
+
+		uglify:
+			options:
+				banner: '<%= meta.banner %>\n\n'
+			jaco:
+				files:
+					'lib/jaco.min.js': ['lib/jaco.js']
+
 		yuidoc:
 			app:
 				name: '<%= pkg.name %>'
 				description: '<%= pkg.description %>'
 				version: '<%= pkg.version %>'
-				# url: '<%= pkg.website %>'
 				options:
 					paths: 'src/'
 					outdir: 'docs/'
 					extension: '.ts'
 					exclude: 'DefinitelyTyped,*.d.ts'
-					# themedir: 'docs_theme'
+					themedir: 'docs_theme'
 
 		watch:
 			scripts:
@@ -41,11 +70,14 @@ module.exports = (grunt) ->
 				]
 				tasks: [
 					'typescript'
+					'concat'
 				]
 				options:
 					interrupt: on
 
 	grunt.registerTask 'default', [
 		'typescript'
+		'concat'
+		'uglify'
 		'yuidoc'
 	]

@@ -54,12 +54,17 @@ module jaco {
 	* @since 0.1.0
 	* @uses jaco
 	* @conctructor
-	* @param {string} [str=''] 対象の文字列
+	* @param {string|Jaco} [str=''] 対象の文字列
 	*/
 	export class Jaco {
 
-		constructor (str:string = '') {
-			this._str = str;
+		constructor (str:string);
+		constructor (str:Jaco);
+		constructor (str:any = '') {
+			if (!(this instanceof Jaco)) { //newつけずに呼んだ際はtrue
+				return new Jaco(str);
+			}
+			this._str = str.toString();
 		}
 
 		/**
@@ -78,7 +83,7 @@ module jaco {
 		* @method toString
 		* @since 0.1.0
 		* @override
-		* @return {String} 自身が保持する文字列
+		* @return {string} 自身が保持する文字列
 		*/
 		public toString ():string {
 			return this._str;
@@ -90,20 +95,22 @@ module jaco {
 		* @method valueOf
 		* @since 0.1.0
 		* @override
-		* @return {String} 自身が保持する文字列
+		* @return {string} 自身が保持する文字列
 		*/
 		public valueOf ():string {
 			return this.toString();
 		}
 
 		/**
-		*
+		* 文字列連結をおこなう
 		*
 		* @method concat
 		* @since 0.2.0
+		* @chainable
 		* @return {Jaco} 自身
 		*/
 		public concat (...likeStrings:any[]):Jaco {
+			this._str += likeStrings.join('');
 			return this;
 		}
 
@@ -112,84 +119,118 @@ module jaco {
 		*
 		* @method replace
 		* @since 0.2.0
-		* @private
-		* @param {RegExp} pattern  対象のパターン
-		* @param {String} replacement 置換する文字列
+		* @public
+		* @param {RegExp|string} pattern  対象のパターン
+		* @param {string} replacement 置換する文字列
 		* @chainable
 		* @return {Jaco} 自身
 		*/
-		public replace (pattern:RegExp, replacement:string):Jaco {
+		public replace (pattern:RegExp, replacement:string):Jaco;
+		public replace (pattern:string, replacement:string):Jaco;
+		public replace (pattern:any, replacement:string):Jaco {
+			this._str = this._str.replace(pattern, replacement);
 			return this;
 		}
 
 		/**
-		*
+		* 文字位置による抽出
+		* (非破壊的メソッド)
 		*
 		* @method slice
 		* @since 0.2.0
-		* @return {Jaco} 自身
+		* @public
+		* @param {number} from 開始インデックス
+		* @param {number} [to] 終了インデックス 省略すると最後まで
+		* @return {Jaco} 抽出した文字列からなるJacoインスタンス
 		*/
-		public slice (from:number, to:number):Jaco {
-			return this;
+		public slice (from:number, to?:number):Jaco {
+			return new Jaco(this._str.slice(from, to));
 		}
 
 		/**
-		*
+		* 指定した位置から指定した数だけ文字列を抽出
+		* (非破壊的メソッド)
 		*
 		* @method substr
 		* @since 0.2.0
-		* @return {Jaco} 自身
+		* @param {number} start 開始インデックス
+		* @param {number} [length] 指定数
+		* @return {Jaco} 抽出した文字列からなるJacoインスタンス
 		*/
-		public substr ():Jaco {
-			return this;
+		public substr (start:number, length?:number):Jaco {
+			return new Jaco(this._str.slice(start, length));
 		}
 
 		/**
-		*
+		* 指定した位置の間の文字列を抽出
+		* (非破壊的メソッド)
 		*
 		* @method substring
 		* @since 0.2.0
-		* @return {Jaco} 自身
+		* @param {number} indexA インデックス
+		* @param {number} indexB インデックス
+		* @return {Jaco} 抽出した文字列からなるJacoインスタンス
 		*/
-		public substring ():Jaco {
-			return this;
+		public substring (indexA:number, indexB:number):Jaco {
+			return new Jaco(this._str.substring(indexA, indexB));
 		}
 
 		/**
-		*
+		* 英字の大文字を小文字に変換する
 		*
 		* @method toLowerCase
 		* @since 0.2.0
+		* @chainable
 		* @return {Jaco} 自身
 		*/
 		public toLowerCase ():Jaco {
+			this._str = this._str.toLowerCase();
 			return this;
 		}
 
 		/**
-		*
+		* 英字の小文字を大文字に変換する
 		*
 		* @method toUpperCase
 		* @since 0.2.0
+		* @chainable
 		* @return {Jaco} 自身
 		*/
 		public toUpperCase ():Jaco {
+			this._str = this._str.toUpperCase();
 			return this;
 		}
 
 		/**
 		*
+		*
+		* @method remove
+		* @since 0.2.0
+		* @param {RegExp|string} pattern 取り除く文字列
+		* @chainable
+		* @return {Jaco} 自身
+		*/
+		public remove (pattern:RegExp):Jaco;
+		public remove (pattern:string):Jaco;
+		public remove (pattern:any):Jaco {
+			return this.replace(pattern, '');
+		}
+
+		/**
+		* 先頭と末尾の空白を取り除く
+		* [\s]で判定するのでほとんどの空白文字はヒットする
 		*
 		* @method trim
 		* @since 0.2.0
+		* @chainable
 		* @return {Jaco} 自身
 		*/
 		public trim ():Jaco {
-			return this;
+			return this.remove(/^\s*|\s*$/g);
 		}
 
 		/**
-		*
+		* 文字列の長さを返す
 		*
 		* @method size
 		* @since 0.2.0
@@ -200,180 +241,146 @@ module jaco {
 		}
 
 		/**
-		*
+		* 文字列のバイトサイズを返す
 		*
 		* @method byteSize
 		* @since 0.2.0
 		* @return {number} バイト数
 		*/
 		public byteSize ():number {
-			return this._str.length;
+			return encodeURIComponent(this._str).replace(/%../g, 'x').length;
 		}
 
 		/**
-		*
+		* 文字が空かどうか
 		*
 		* @method isEmpty
 		* @since 0.2.0
-		* @return {boolean} 自身
+		* @return {boolean} 結果の真偽
 		*/
 		public isEmpty ():boolean {
-			return true;
+			return this._str === '';
 		}
 
 		/**
-		*
+		* コピーを生成する
 		*
 		* @method clone
 		* @since 0.2.0
 		* @return {Jaco} コピー
 		*/
 		public clone ():Jaco {
-			return this;
+			return new Jaco(this._str);
 		}
 
 		/**
-		*
-		*
-		* @method remove
-		* @since 0.2.0
-		* @return {Jaco} 自身
-		*/
-		public remove ():Jaco {
-			return this;
-		}
-
-		/**
-		*
+		* パターンとマッチするかどうか
 		*
 		* @method test
 		* @since 0.2.0
-		* @return {boolean} 自身
+		* @param {RegExp|string} pattern パターン
+		* @return {boolean} 結果の真偽
 		*/
-		public test ():boolean {
-			return true;
+		public test (pattern:RegExp):boolean;
+		public test (pattern:string):boolean;
+		public test (pattern:any):boolean {
+			var res:boolean;
+			if (pattern instanceof RegExp) {
+				res = pattern.test(this._str);
+			} else {
+				res = this._str === pattern;
+			}
+			return res;
 		}
 
 		/**
-		*
+		* 前方結合
 		*
 		* @method prepend
 		* @since 0.2.0
+		* @param {Jaco|string} element 結合する文字列
+		* @chainable
 		* @return {Jaco} 自身
 		*/
-		public prepend ():Jaco {
+		public prepend (element:Jaco):Jaco;
+		public prepend (element:string):Jaco;
+		public prepend (element:any):Jaco {
+			this._str = new Jaco(element).concat(this).toString();
 			return this;
 		}
 
 		/**
-		*
+		* 後方結合
 		*
 		* @method append
 		* @since 0.2.0
+		* @param {Jaco|string} element 結合する文字列
+		* @chainable
 		* @return {Jaco} 自身
 		*/
-		public append ():Jaco {
-			return this;
+		public append (element:Jaco):Jaco;
+		public append (element:string):Jaco;
+		public append (element:any):Jaco {
+			return this.concat(element);
 		}
 
 		/**
-		*
+		* 完全マッチ
 		*
 		* @method is
 		* @since 0.2.0
-		* @return {boolean} 自身
+		* @param {Jaco|string} target 比較する文字列
+		* @return {boolean} 結果の真偽
 		*/
-		public is ():boolean {
-			return true;
+		public is (target:Jaco):boolean;
+		public is (target:string):boolean;
+		public is (target:any):boolean {
+			return this._str === target.toString();
 		}
 
 		/**
-		*
+		* 該当の文字だけで構成されているかどうか
 		*
 		* @method isOnly
 		* @since 0.2.0
 		* @param {string} charactors 文字セット
-		* @return {boolean} 自身
+		* @return {boolean} 結果の真偽
 		*/
 		public isOnly (charactors:string):boolean {
-			return true;
+			return this.test(new RegExp('^[' + charactors + ']+$', 'gm'));
 		}
 
 		/**
-		*
+		* 数値に変換する
 		*
 		* @method toNumber
 		* @since 0.2.0
-		* @return {number} 自身
+		* @return {number} 数値
 		*/
 		public toNumber ():number {
-			return 0;
+			return parseFloat(this._str);
 		}
 
 		/**
-		*
-		*
-		* @method toBool
-		* @since 0.2.0
-		* @return {boolean} 自身
-		*/
-		public toBool ():boolean {
-			return true;
-		}
-
-		/**
-		*
-		*
-		* @method toArray
-		* @since 0.2.0
-		* @return {Array} 自身
-		*/
-		public toArray ():Array<string> {
-			return [];
-		}
-
-		/**
-		*
+		* ひらがなだけで構成されているかどうか
 		*
 		* @method isOnlyHiragana
 		* @since 0.2.0
-		* @return {boolean} 自身
+		* @return {boolean} 結果の真偽
 		*/
 		public isOnlyHiragana ():boolean {
-			return true;
+			return this.isOnly(jaco.HIRAGANA_CHARS + jaco.KANA_COMMON_CAHRS);
 		}
 
 		/**
-		*
+		* カタカナだけで構成されているかどうか
 		*
 		* @method isOnlyKatakana
 		* @since 0.2.0
-		* @return {boolean} 自身
+		* @return {boolean} 結果の真偽
 		*/
 		public isOnlyKatakana ():boolean {
-			return true;
-		}
-
-		/**
-		*
-		*
-		* @method isOnlyAlphabet
-		* @since 0.2.0
-		* @return {boolean} 自身
-		*/
-		public isOnlyAlphabet ():boolean {
-			return true;
-		}
-
-		/**
-		*
-		*
-		* @method isUInt
-		* @since 0.2.0
-		* @return {boolean} 自身
-		*/
-		public isUInt ():boolean {
-			return true;
+			return this.isOnly(jaco.KATAKANA_CHARS + jaco.KANA_COMMON_CAHRS);
 		}
 
 		/**
@@ -399,7 +406,7 @@ module jaco {
 		*
 		* @method toHiragana
 		* @since 0.1.0
-		* @param {String} str 対象の文字列
+		* @param {string} str 対象の文字列
 		* @param {Boolean} [isCombinate=false] 濁点・半濁点を結合文字にするかどうか
 		* @chainable
 		* @return {Jaco} 自身
@@ -428,7 +435,7 @@ module jaco {
 		*
 		* @method toKatakana
 		* @since 0.1.0
-		* @param {String} str 対象の文字列
+		* @param {string} str 対象の文字列
 		* @param {Boolean} [toWide=true] 半角カタカナを全角カタカナへ変換するかどうか
 		* @chainable
 		* @return {Jaco} 自身
@@ -456,7 +463,7 @@ module jaco {
 		*
 		* @method toNarrowKatakana
 		* @since 0.1.0
-		* @param {String} str 対象の文字列
+		* @param {string} str 対象の文字列
 		* @chainable
 		* @return {Jaco} 自身
 		*/
@@ -495,7 +502,7 @@ module jaco {
 		*
 		* @method toWideKatakana
 		* @since 0.1.0
-		* @param {String} str 対象の文字列
+		* @param {string} str 対象の文字列
 		* @chainable
 		* @return {Jaco} 自身
 		*/
@@ -553,7 +560,7 @@ module jaco {
 		* @since 0.1.0
 		* @private
 		* @param {RegExp} needle 対象のパターン
-		* @param {String} replace 置換する文字列
+		* @param {string} replace 置換する文字列
 		* @chainable
 		* @return {Jaco} 自身
 		*/
@@ -594,4 +601,6 @@ module jaco {
 
 }
 
-(module).exports = jaco;
+if (typeof exports !== 'undefined') {
+	(module).exports = jaco;
+}
