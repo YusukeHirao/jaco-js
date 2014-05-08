@@ -29,6 +29,7 @@ module.exports = (grunt) ->
 		typescript:
 			options:
 				comments: on
+				declaration: on
 			jaco:
 				src: [
 					'src/jaco.ts'

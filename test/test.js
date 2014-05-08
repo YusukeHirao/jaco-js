@@ -225,6 +225,32 @@ describe('Jaco Class', function () {
 		a.is(new Jaco('いろはに')).should.not.ok;
 	});
 
+	// has()
+	it('含むかどうか', function () {
+		var a = new Jaco('いろは');
+		a.has('い').should.ok;
+	});
+	it('含むかどうか2', function () {
+		var a = new Jaco('いろは');
+		a.has(new Jaco('い')).should.ok;
+	});
+	it('含むかどうか3', function () {
+		var a = new Jaco('いろは');
+		a.has(new Jaco('あ')).should.not.ok;
+	});
+	it('含むかどうか4', function () {
+		var a = new Jaco('いろは');
+		a.has('いろ').should.ok;
+	});
+	it('含むかどうか5', function () {
+		var a = new Jaco('いろは');
+		a.has('いは').should.not.ok;
+	});
+	it('含むかどうか6', function () {
+		var a = new Jaco('いろは');
+		a.has('ろは').should.ok;
+	});
+
 	// isOnly()
 	it('該当の文字のみ', function () {
 		var a = new Jaco('いろは');

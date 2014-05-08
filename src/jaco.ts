@@ -339,6 +339,20 @@ module jaco {
 		}
 
 		/**
+		* 該当の文字を含んでいるかどうか
+		*
+		* @method has
+		* @since 0.3.0
+		* @param {Jaco|string} target 比較する文字列
+		* @return {boolean} 結果の真偽
+		*/
+		public has (target:Jaco):boolean;
+		public has (target:string):boolean;
+		public has (target:any):boolean {
+			return this._str.indexOf(target.toString()) !== -1;
+		}
+
+		/**
 		* 該当の文字だけで構成されているかどうか
 		*
 		* @method isOnly
