@@ -308,7 +308,7 @@ describe('Jaco Class', function () {
 	});
 	it('数値変換7', function () {
 		var a = new Jaco('あ');
-		isNaN(a.toNumber()).should.ok;
+		a.toNumber().should.be.NaN;
 	});
 
 	// isOnlyHiragana()

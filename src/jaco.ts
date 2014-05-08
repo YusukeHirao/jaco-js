@@ -53,7 +53,7 @@ module jaco {
 	* @class Jaco
 	* @since 0.1.0
 	* @uses jaco
-	* @conctructor
+	* @constructor
 	* @param {string|Jaco} [str=''] 対象の文字列
 	*/
 	export class Jaco {
