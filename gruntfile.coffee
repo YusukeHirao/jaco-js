@@ -1,10 +1,10 @@
 module.exports = (grunt) ->
 
 	grunt.loadNpmTasks 'grunt-typescript'
+	grunt.loadNpmTasks 'grunt-contrib-watch'
 	grunt.loadNpmTasks 'grunt-contrib-concat'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
-	grunt.loadNpmTasks 'grunt-contrib-yuidoc'
-	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-typedoc'
 
 	# Package Data
 	pkg = grunt.file.readJSON 'package.json'
@@ -32,7 +32,7 @@ module.exports = (grunt) ->
 				declaration: on
 			jaco:
 				src: [
-					'src/jaco.ts'
+					'src/index.ts'
 				]
 				dest: 'lib/jaco.js'
 
@@ -52,22 +52,18 @@ module.exports = (grunt) ->
 				files:
 					'lib/jaco.min.js': ['lib/jaco.js']
 
-		yuidoc:
+		typedoc:
 			app:
-				name: '<%= pkg.name %>'
-				description: '<%= pkg.description %>'
-				version: '<%= pkg.version %>'
+				src: 'src/index.ts'
 				options:
-					paths: 'src/'
-					outdir: 'docs/'
-					extension: '.ts'
-					exclude: 'DefinitelyTyped,*.d.ts'
-					themedir: 'docs_theme'
+					name: '<%= pkg.name %>'
+					out: 'docs/'
 
 		watch:
 			scripts:
 				files: [
-					"<%= typescript.jaco.src %>"
+					'src/*.ts'
+					'src/**/*.ts'
 				]
 				tasks: [
 					'typescript'
@@ -80,5 +76,5 @@ module.exports = (grunt) ->
 		'typescript'
 		'concat'
 		'uglify'
-		'yuidoc'
+		'typedoc'
 	]
