@@ -1,5 +1,5 @@
 var should = require('should');
-var jaco = require('../lib/jaco.min.js');
+var jaco = require('../lib/jaco.js');
 var Jaco = jaco.Jaco;
 
 describe('Jaco Class', function () {
@@ -803,6 +803,100 @@ describe('Jaco Class', function () {
 		a.toWide().toString().should.equal(b);
 	});
 
+	// toNumeric() v0.5.0で追加
+	it('数字化', function () {
+		var a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
+		var b = '2303';
+		a.toNumeric().toString().should.equal(b);
+	});
+	it('数字化2', function () {
+		var a = new Jaco(' ー-.。２.３ｓ０。３.ｓｄｋふぁえ');
+		var b = '2303';
+		a.toNumeric().toString().should.equal(b);
+	});
+	it('数字化3', function () {
+		var a = new Jaco(' ２-３ｓ０３ｓｄｋふぁえ');
+		var b = '2303';
+		a.toNumeric(true).toString().should.equal(b);
+	});
+	it('数字化4', function () {
+		var a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ');
+		var b = '-2303';
+		a.toNumeric(true).toString().should.equal(b);
+	});
+	it('数字化5', function () {
+		var a = new Jaco(' -２-３-.ｓ０.３ｓｄｋふぁえ');
+		var b = '-23.03';
+		a.toNumeric(true, true).toString().should.equal(b);
+	});
+	it('数字化6', function () {
+		var a = new Jaco(' ２３.-.-ｓ０３.ｓｄｋふぁえ');
+		var b = '23.03';
+		a.toNumeric(true, true).toString().should.equal(b);
+	});
+	it('数字化7', function () {
+		var a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ...');
+		var b = '2303';
+		a.toNumeric(false, true).toString().should.equal(b);
+	});
+
+	// isNumeric() v0.5.0で追加
+	it('数字かどうか1', function () {
+		var a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
+		a.isNumeric().should.not.ok;
+	});
+	it('数字かどうか2', function () {
+		var a = new Jaco('２３０３');
+		a.isNumeric().should.not.ok;
+	});
+	it('数字かどうか3', function () {
+		var a = new Jaco('000012303234');
+		a.isNumeric().should.ok;
+	});
+	it('数字かどうか4', function () {
+		var a = new Jaco('-123.3234');
+		a.isNumeric().should.ok;
+	});
+	it('数字かどうか5', function () {
+		var a = new Jaco('-123.3234.');
+		a.isNumeric().should.not.ok;
+	});
+	it('数字かどうか6', function () {
+		var a = new Jaco('12-3.3234.');
+		a.isNumeric().should.not.ok;
+	});
+	it('数字かどうか7', function () {
+		var a = new Jaco('.3234');
+		a.isNumeric().should.ok;
+	});
+	it('数字かどうか8', function () {
+		var a = new Jaco('-.3234');
+		a.isNumeric().should.ok;
+	});
+	it('数字かどうか9', function () {
+		var a = new Jaco('.3234');
+		a.isNumeric(false).should.ok;
+	});
+	it('数字かどうか10', function () {
+		var a = new Jaco('-.3234');
+		a.isNumeric(true).should.ok;
+	});
+	it('数字かどうか11', function () {
+		var a = new Jaco('.3234');
+		a.isNumeric(true, true).should.ok;
+	});
+	it('数字かどうか12', function () {
+		var a = new Jaco('-.3234');
+		a.isNumeric(true, false).should.not.ok;
+	});
+	it('数字かどうか13', function () {
+		var a = new Jaco('.3234');
+		a.isNumeric(false, false).should.not.ok;
+	});
+	it('数字かどうか14', function () {
+		var a = new Jaco('-.3234');
+		a.isNumeric(false, true).should.not.ok;
+	});
 });
 
 describe('jaco Module', function () {

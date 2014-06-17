@@ -7,7 +7,7 @@ module jaco {
 	* 文字列クラスを継承してはいないがメソッドは同等のものが実装されている。
 	* ただし基本的にほとんどのメソッドが破壊的メソッドかつチェインナブルである。
 	*
-	* @version 0.3.0
+	* @version 0.5.0
 	* @since 0.1.0
 	*/
 	export class Jaco {
@@ -324,17 +324,6 @@ module jaco {
 		}
 
 		/**
-		* 数値に変換する
-		*
-		* @version 0.2.0
-		* @since 0.2.0
-		* @return 数値
-		*/
-		public toNumber (): number {
-			return parseFloat(this._str);
-		}
-
-		/**
 		* ひらがなだけで構成されているかどうか
 		*
 		* @version 0.2.0
@@ -354,6 +343,75 @@ module jaco {
 		*/
 		public isOnlyKatakana (): boolean {
 			return this.isOnly(KATAKANA_CHARS + KANA_COMMON_CAHRS);
+		}
+
+		/**
+		* 数字だけで構成されているかどうか
+		*
+		* @version 0.5.0
+		* @since 0.5.0
+		* @param negative 負の数値も含めてチェックするかどうか
+		* @param floatingPoint 小数としてチェックするかどうか
+		* @return 結果の真偽
+		*/
+		public isNumeric (negative: boolean = true, floatingPoint: boolean = true): boolean {
+			var pattern: string = '^';
+			if (negative) {
+				pattern += '-?';
+			}
+			if (floatingPoint) {
+				pattern += '(?:[0-9]*\\.)?';
+			}
+			pattern += '[0-9]+$';
+			return this.test(toRegExp(pattern));
+		}
+
+		/**
+		* 数値に変換する
+		*
+		* @version 0.2.0
+		* @since 0.2.0
+		* @return 数値
+		*/
+		public toNumber (): number {
+			return parseFloat(this._str);
+		}
+
+		/**
+		* 数字に変換する
+		*
+		* @version 0.5.0
+		* @since 0.5.0
+		* @param negative 負の値を許可してマイナスをつけるかどうか
+		* @param floatingPoint 小数を許可してドットをつけるかどうか
+		* @return 自身
+		*/
+		public toNumeric (negative: boolean = false, floatingPoint: boolean = false): Jaco {
+			// 半角化
+			this.toNarrow();
+			// 数字・ハイフン（マイナス）・ドット意外を削除
+			this.remove(/[^0-9\.\-]/gm);
+			if (negative) {
+				// 最初のにくるハイフンをnに一時的に変換
+				this.replace(/^-/, 'n');
+			}
+			// ハイフンを全て削除
+			this.remove(/-/g);
+			if (negative) {
+				// ハイフンを元に戻す
+				this.replace('n', '-');
+			}
+			if (floatingPoint) {
+				// 文字列中で一番最初にくるドットを_に一時的に変換
+				this.replace(/\.([0-9])/, '_$1');
+			}
+			// ドットを全て削除
+			this.remove(/\./g);
+			if (floatingPoint) {
+				// ドットを元に戻す
+				this.replace('_', '.');
+			}
+			return this;
 		}
 
 		/**

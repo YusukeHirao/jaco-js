@@ -47,7 +47,9 @@ jStr01.toKatakana(); // => カタカナ
 - isOnly
 - isOnlyHiragana
 - isOnlyKatakana
+- isNumeric
 - toNumber
+- toNumeric
 - toLowerCase
 - toUpperCase
 - toHiragana
