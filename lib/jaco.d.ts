@@ -453,7 +453,7 @@ declare module jaco {
         /**
         * 半角カタカナに変換する
         *
-        * @version 0.4.0
+        * @version 0.6.0
         * @since 0.1.0
         * @param fromHiragana ひらがなも変換する
         * @return 自身
