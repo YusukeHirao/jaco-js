@@ -526,6 +526,15 @@ declare module jaco {
         */
         private _shift(needle, shiftNum);
         /**
+        * キーがパターン・値が置換文字列のハッシュマップによって置換する
+        *
+        * @version 0.6.0
+        * @since 0.1.0
+        * @param convMap キーがパターン・値が置換文字列のハッシュマップ
+        * @return 自身
+        */
+        public replaceMap(...convMap: any[]): Jaco;
+        /**
         * 【非推奨】文字列をパターンで置換する
         * 同機能の`replace`メソッドを使う
         *
@@ -540,9 +549,9 @@ declare module jaco {
         /**
         * キーがパターン・値が置換文字列のハッシュマップによって置換する
         *
-        * @version 0.2.0
+        * @version 0.6.0
         * @since 0.1.0
-        * @param {Object} convMap キーがパターン・値が置換文字列のハッシュマップ
+        * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
         * @return 自身
         */
         private _replaceMap(convMap);

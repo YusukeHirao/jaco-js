@@ -506,6 +506,7 @@ module jaco {
 				'ァ': 'ｧ', 'ィ': 'ｨ', 'ゥ': 'ｩ', 'ェ': 'ｪ', 'ォ': 'ｫ', 'ャ': 'ｬ',
 				'ュ': 'ｭ', 'ョ': 'ｮ', 'ッ': 'ｯ',
 				'ヵ': 'ｶ', 'ヶ': 'ｹ',
+				'ヮ': 'ﾜ',
 				'ー': 'ｰ',
 				'ア': 'ｱ', 'イ': 'ｲ', 'ウ': 'ｳ', 'エ': 'ｴ', 'オ': 'ｵ',
 				'カ': 'ｶ', 'キ': 'ｷ', 'ク': 'ｸ', 'ケ': 'ｹ', 'コ': 'ｺ',
@@ -680,6 +681,18 @@ module jaco {
 		}
 
 		/**
+		* キーがパターン・値が置換文字列のハッシュマップによって置換する
+		*
+		* @version 0.6.0
+		* @since 0.1.0
+		* @param convMap キーがパターン・値が置換文字列のハッシュマップ
+		* @return 自身
+		*/
+		public replaceMap (...convMap: any[]): Jaco {
+			return this;
+		}
+
+		/**
 		* 【非推奨】文字列をパターンで置換する
 		* 同機能の`replace`メソッドを使う
 		*
@@ -698,17 +711,19 @@ module jaco {
 		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
-		* @version 0.2.0
+		* @version 0.6.0
 		* @since 0.1.0
-		* @param {Object} convMap キーがパターン・値が置換文字列のハッシュマップ
+		* @param  convMap キーがパターン・値が置換文字列のハッシュマップ
 		* @return 自身
 		*/
 		private _replaceMap (convMap: any): Jaco {
 			var needle: string;
 			var replace: string;
 			for (needle in convMap) {
-				replace = convMap[needle];
-				this._str = this._str.replace(toRegExp(needle), replace);
+				if (convMap.hasOwnProperty(needle)) {
+					replace = convMap[needle];
+					this._str = this._str.replace(toRegExp(needle), replace);
+				}
 			}
 			return this;
 		}
