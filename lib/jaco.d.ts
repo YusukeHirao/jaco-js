@@ -188,7 +188,7 @@ declare module jaco {
         * @since 0.1.0
         * @return 自身が保持する文字列
         */
-        public toString(): string;
+        toString(): string;
         /**
         * 暗黙の値変換に呼び出されるメソッド
         *
@@ -196,7 +196,7 @@ declare module jaco {
         * @since 0.1.0
         * @return 自身が保持する文字列
         */
-        public valueOf(): string;
+        valueOf(): string;
         /**
         * 文字列連結をおこなう
         *
@@ -204,7 +204,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 自身
         */
-        public concat(...likeStrings: any[]): Jaco;
+        concat(...likeStrings: any[]): Jaco;
         /**
         * 文字列をパターンで置換する
         *
@@ -214,8 +214,8 @@ declare module jaco {
         * @param replacement 置換する文字列
         * @return 自身
         */
-        public replace(pattern: RegExp, replacement: string): Jaco;
-        public replace(pattern: string, replacement: string): Jaco;
+        replace(pattern: RegExp, replacement: string): Jaco;
+        replace(pattern: string, replacement: string): Jaco;
         /**
         * 文字位置による抽出
         * (非破壊的メソッド)
@@ -226,7 +226,7 @@ declare module jaco {
         * @param to 終了インデックス 省略すると最後まで
         * @return 抽出した文字列からなるJacoインスタンス
         */
-        public slice(from: number, to?: number): Jaco;
+        slice(from: number, to?: number): Jaco;
         /**
         * 指定した位置から指定した数だけ文字列を抽出
         * (非破壊的メソッド)
@@ -237,7 +237,7 @@ declare module jaco {
         * @param length 指定数
         * @return 抽出した文字列からなるJacoインスタンス
         */
-        public substr(start: number, length?: number): Jaco;
+        substr(start: number, length?: number): Jaco;
         /**
         * 指定した位置の間の文字列を抽出
         * (非破壊的メソッド)
@@ -248,7 +248,7 @@ declare module jaco {
         * @param indexB インデックス
         * @return 抽出した文字列からなるJacoインスタンス
         */
-        public substring(indexA: number, indexB: number): Jaco;
+        substring(indexA: number, indexB: number): Jaco;
         /**
         * 英字の大文字を小文字に変換する
         *
@@ -256,7 +256,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 自身
         */
-        public toLowerCase(): Jaco;
+        toLowerCase(): Jaco;
         /**
         * 英字の小文字を大文字に変換する
         *
@@ -264,7 +264,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 自身
         */
-        public toUpperCase(): Jaco;
+        toUpperCase(): Jaco;
         /**
         * 文字列を取り除く
         *
@@ -273,8 +273,8 @@ declare module jaco {
         * @param pattern 取り除く文字列
         * @return 自身
         */
-        public remove(pattern: RegExp): Jaco;
-        public remove(pattern: string): Jaco;
+        remove(pattern: RegExp): Jaco;
+        remove(pattern: string): Jaco;
         /**
         * 先頭と末尾の空白を取り除く
         *
@@ -284,7 +284,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 自身
         */
-        public trim(): Jaco;
+        trim(): Jaco;
         /**
         * 文字列の長さを返す
         *
@@ -292,7 +292,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 文字列数
         */
-        public size(): number;
+        size(): number;
         /**
         * 文字列のバイトサイズを返す
         *
@@ -300,7 +300,7 @@ declare module jaco {
         * @since 0.2.0
         * @return バイト数
         */
-        public byteSize(): number;
+        byteSize(): number;
         /**
         * 文字が空かどうか
         *
@@ -308,7 +308,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 結果の真偽
         */
-        public isEmpty(): boolean;
+        isEmpty(): boolean;
         /**
         * コピーを生成する
         *
@@ -316,7 +316,7 @@ declare module jaco {
         * @since 0.2.0
         * @return コピー
         */
-        public clone(): Jaco;
+        clone(): Jaco;
         /**
         * パターンとマッチするかどうか
         *
@@ -325,8 +325,8 @@ declare module jaco {
         * @param pattern パターン
         * @return 結果の真偽
         */
-        public test(pattern: RegExp): boolean;
-        public test(pattern: string): boolean;
+        test(pattern: RegExp): boolean;
+        test(pattern: string): boolean;
         /**
         * 前方結合
         *
@@ -339,8 +339,8 @@ declare module jaco {
         * @param element 結合する文字列
         * @return 自身
         */
-        public prepend(element: Jaco): Jaco;
-        public prepend(element: string): Jaco;
+        prepend(element: Jaco): Jaco;
+        prepend(element: string): Jaco;
         /**
         * 後方結合
         *
@@ -349,8 +349,8 @@ declare module jaco {
         * @param element 結合する文字列
         * @return 自身
         */
-        public append(element: Jaco): Jaco;
-        public append(element: string): Jaco;
+        append(element: Jaco): Jaco;
+        append(element: string): Jaco;
         /**
         * 完全マッチ
         *
@@ -359,8 +359,8 @@ declare module jaco {
         * @param target 比較する文字列
         * @return 結果の真偽
         */
-        public is(target: Jaco): boolean;
-        public is(target: string): boolean;
+        is(target: Jaco): boolean;
+        is(target: string): boolean;
         /**
         * 該当の文字を含んでいるかどうか
         *
@@ -369,8 +369,8 @@ declare module jaco {
         * @param target 比較する文字列
         * @return 結果の真偽
         */
-        public has(target: Jaco): boolean;
-        public has(target: string): boolean;
+        has(target: Jaco): boolean;
+        has(target: string): boolean;
         /**
         * 該当の文字だけで構成されているかどうか
         *
@@ -379,7 +379,7 @@ declare module jaco {
         * @param charactors 文字セット
         * @return 結果の真偽
         */
-        public isOnly(charactors: string): boolean;
+        isOnly(charactors: string): boolean;
         /**
         * ひらがなだけで構成されているかどうか
         *
@@ -387,7 +387,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 結果の真偽
         */
-        public isOnlyHiragana(): boolean;
+        isOnlyHiragana(): boolean;
         /**
         * カタカナだけで構成されているかどうか
         *
@@ -395,7 +395,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 結果の真偽
         */
-        public isOnlyKatakana(): boolean;
+        isOnlyKatakana(): boolean;
         /**
         * 数字だけで構成されているかどうか
         *
@@ -405,7 +405,7 @@ declare module jaco {
         * @param floatingPoint 小数としてチェックするかどうか
         * @return 結果の真偽
         */
-        public isNumeric(negative?: boolean, floatingPoint?: boolean): boolean;
+        isNumeric(negative?: boolean, floatingPoint?: boolean): boolean;
         /**
         * 数値に変換する
         *
@@ -413,7 +413,7 @@ declare module jaco {
         * @since 0.2.0
         * @return 数値
         */
-        public toNumber(): number;
+        toNumber(): number;
         /**
         * 数字に変換する
         *
@@ -423,7 +423,7 @@ declare module jaco {
         * @param floatingPoint 小数を許可してドットをつけるかどうか
         * @return 自身
         */
-        public toNumeric(negative?: boolean, floatingPoint?: boolean): Jaco;
+        toNumeric(negative?: boolean, floatingPoint?: boolean): Jaco;
         /**
         * 濁点・半濁点を結合文字に変換
         *
@@ -431,7 +431,7 @@ declare module jaco {
         * @since 0.1.0
         * @return 自身
         */
-        public combinate(): Jaco;
+        combinate(): Jaco;
         /**
         * ひらがなに変換する
         *
@@ -440,7 +440,7 @@ declare module jaco {
         * @param isCombinate 濁点・半濁点を結合文字にするかどうか
         * @return 自身
         */
-        public toHiragana(isCombinate?: boolean): Jaco;
+        toHiragana(isCombinate?: boolean): Jaco;
         /**
         * カタカナに変換する
         *
@@ -449,7 +449,7 @@ declare module jaco {
         * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
         * @return 自身
         */
-        public toKatakana(toWide?: boolean): Jaco;
+        toKatakana(toWide?: boolean): Jaco;
         /**
         * 半角カタカナに変換する
         *
@@ -458,7 +458,7 @@ declare module jaco {
         * @param fromHiragana ひらがなも変換する
         * @return 自身
         */
-        public toNarrowKatakana(fromHiragana?: boolean): Jaco;
+        toNarrowKatakana(fromHiragana?: boolean): Jaco;
         /**
         * 全角カタカナに変換する
         *
@@ -466,7 +466,7 @@ declare module jaco {
         * @since 0.1.0
         * @return 自身
         */
-        public toWideKatakana(): Jaco;
+        toWideKatakana(): Jaco;
         /**
         * 日本語で使われる記号を半角に変換
         *
@@ -474,7 +474,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toNarrowJapneseSymbol(): Jaco;
+        toNarrowJapneseSymbol(): Jaco;
         /**
         * 日本語で使われる記号を全角に変換
         *
@@ -482,7 +482,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toWideJapneseSymbol(): Jaco;
+        toWideJapneseSymbol(): Jaco;
         /**
         * カタカナと日本語で使われる記号を半角に変換
         *
@@ -490,7 +490,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toNarrowJapnese(): Jaco;
+        toNarrowJapnese(): Jaco;
         /**
         * カタカナと日本語で使われる記号を全角に変換
         *
@@ -498,7 +498,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toWideJapnese(): Jaco;
+        toWideJapnese(): Jaco;
         /**
         * 半角に変換
         *
@@ -506,7 +506,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toNarrow(convertJapaneseChars?: boolean): Jaco;
+        toNarrow(convertJapaneseChars?: boolean): Jaco;
         /**
         * 全角に変換
         *
@@ -514,7 +514,7 @@ declare module jaco {
         * @since 0.4.0
         * @return 自身
         */
-        public toWide(): Jaco;
+        toWide(): Jaco;
         /**
         * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
         *
@@ -533,7 +533,7 @@ declare module jaco {
         * @param convMap キーがパターン・値が置換文字列のハッシュマップ
         * @return 自身
         */
-        public replaceMap(...convMap: any[]): Jaco;
+        replaceMap(...convMap: any[]): Jaco;
         /**
         * 【非推奨】文字列をパターンで置換する
         * 同機能の`replace`メソッドを使う
