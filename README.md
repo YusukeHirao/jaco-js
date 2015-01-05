@@ -1,7 +1,7 @@
 jaco
 ====
 
-Japanese string and charactor converter.
+Japanese charactor converter.
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
 [![Build Status](https://travis-ci.org/YusukeHirao/jaco.svg?branch=master)](https://travis-ci.org/YusukeHirao/jaco)
@@ -30,36 +30,45 @@ jStr01.toKatakana(); // => カタカナ
 
 ## Methods
 
-- toString
-- valueOf
-- concat
-- slice
-- substr
-- substring
-- append
-- prepend
-- replace
-- trim
-- remove
-- test
-- is
-- isEmpty
-- isOnly
-- isOnlyHiragana
-- isOnlyKatakana
-- isNumeric
-- toNumber
-- toNumeric
-- toLowerCase
-- toUpperCase
-- toHiragana
-- toKatakana
-- toNarrowKatakana
-- toWideKatakana
-- size
-- byteSize
-- clone
-- combinate
+### Instance methods of Class Jaco
+
+```javascript
+var jaco = require('jaco');
+var instance = new jaco.Jaco('ニホンゴのモジなど');
+```
+
+name|return type|bang|chainable
+---|---|---|---
+toString|`string`|✗|✗
+valueOf|`string`|✗|✗
+concat|`Jaco`|✓|✓
+slice|`Jaco`|✓|✓
+substr|`Jaco`|✓|✓
+substring|`Jaco`|✓|✓
+append|`Jaco`|✓|✓
+prepend|`Jaco`|✓|✓
+replace|`Jaco`|✓|✓
+trim|`Jaco`|✓|✓
+remove|`Jaco`|✓|✓
+test|`Jaco`|✓|✓
+is|`boolean`|✗|✗
+isEmpty|`boolean`|✗|✗
+isOnly|`boolean`|✗|✗
+isOnlyHiragana|`boolean`|✗|✗
+isOnlyKatakana|`boolean`|✗|✗
+isNumeric|`boolean`|✗|✗
+toNumeric|`Jaco`|✓|✓
+combinate|`Jaco`|✓|✓
+toLowerCase|`Jaco`|✓|✓
+toUpperCase|`Jaco`|✓|✓
+toHiragana|`Jaco`|✓|✓
+toKatakana|`Jaco`|✓|✓
+toNarrowKatakana|`Jaco`|✓|✓
+toWideKatakana|`Jaco`|✓|✓
+toNumber|`number`|✗|✗
+size|`number`|✗|✗
+byteSize|`number`|✗|✗
+clone|`Jaco`|✓|✓
 
 ## Documents
 
