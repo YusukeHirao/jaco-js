@@ -1,3 +1,4 @@
+var exec = require('child_process').exec;
 var should = require('should');
 var jaco = require('../lib/jaco.js');
 var Jaco = jaco.Jaco;
@@ -958,4 +959,144 @@ describe('jaco Module', function () {
 	it('カタカナをひらがなに変換', function () {
 		jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
 	});
+});
+
+describe('jaco command', function () {
+
+	var HELP_STDOUT = '\n\
+  Usage: jaco [options] <string> [fileOption] <path>\n\
+\n\
+  Options:\n\
+\n\
+    -h, --help                 output usage information\n\
+    -V, --version              output the version number\n\
+    -f, --file <path>          convert in file\n\
+    -o, --output <path>        output to file\n\
+    -K, --katakanize [string]  katakanize method\n\
+    -H, --hiraganize [string]  hiraganize method\n\
+\n';
+
+	it('引数なしでヘルプが出力', function(done) {
+		exec('./bin/jaco', function(error, stdout, stderr) {
+			stdout.should.equal(HELP_STDOUT);
+			done();
+		});
+	});
+
+	it('引数 -h でヘルプが出力', function(done) {
+		exec('./bin/jaco -h', function(error, stdout, stderr) {
+			stdout.should.equal(HELP_STDOUT);
+			done();
+		});
+	});
+
+	it('引数 --help でヘルプが出力', function(done) {
+		exec('./bin/jaco --help', function(error, stdout, stderr) {
+			stdout.should.equal(HELP_STDOUT);
+			done();
+		});
+	});
+
+	it('引数 -K のみ', function(done) {
+		exec('./bin/jaco -K', function(error, stdout, stderr) {
+			/^jaco:\s[0-9]+ms$/.test(stdout.trim()).should.ok;
+			done();
+		});
+	});
+
+	it('引数 -H のみ', function(done) {
+		exec('./bin/jaco -H', function(error, stdout, stderr) {
+			/^jaco:\s[0-9]+ms$/.test(stdout.trim()).should.ok;
+			done();
+		});
+	});
+
+	it('引数 -K と 文字列', function(done) {
+		exec('./bin/jaco -K あいうえお', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('アイウエオ');
+			done();
+		});
+	});
+
+	it('引数 -H と 文字列', function(done) {
+		exec('./bin/jaco -H アイウエオ', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('あいうえお');
+			done();
+		});
+	});
+
+	it('引数 -H と -K と 文字列', function(done) {
+		exec('./bin/jaco -H ドラえもん -K ドラえもん', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('どらえもん');
+			line[1].should.equal('ドラエモン');
+			done();
+		});
+	});
+
+	it('引数 -H と -K と 文字列 (順序逆)', function(done) {
+		exec('./bin/jaco -K ドラえもん -H ドラえもん', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('ドラエモン');
+			line[1].should.equal('どらえもん');
+			done();
+		});
+	});
+
+	it('引数 -f のみでエラー出力', function(done) {
+		exec('./bin/jaco -f', function(error, stdout, stderr) {
+			stderr.trim().should.equal('error: option `-f, --file <path>\' argument missing');
+			done();
+		});
+	});
+
+	it('引数 -f と 存在しないパスでエラー出力', function(done) {
+		exec('./bin/jaco -f xxx/xxx', function(error, stdout, stderr) {
+			stderr.trim().should.equal('no such file or directory "xxx/xxx"');
+			done();
+		});
+	});
+
+	it('引数 -f と テキストファイル (変換オプションなし)', function(done) {
+		exec('./bin/jaco -f test/test.txt', function(error, stdout, stderr) {
+			/^jaco:\s[0-9]+ms$/.test(stdout.trim()).should.ok;
+			done();
+		});
+	});
+
+	it('引数 -K と -f と テキストファイル', function(done) {
+		exec('./bin/jaco -K -f test/test.txt', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "katakanize" method\u001b[39m');
+			line[1].should.equal('テスト');
+			line[2].should.equal('テスト');
+			line[3].should.equal('テスト');
+			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			done();
+		});
+	});
+
+	it('引数 -H と -f と テキストファイル', function(done) {
+		exec('./bin/jaco -H -f test/test.txt', function(error, stdout, stderr) {
+			var line = stdout.split(/[\n\r]+/);
+			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "hiraganize" method\u001b[39m');
+			line[1].should.equal('てすと');
+			line[2].should.equal('てすと');
+			line[3].should.equal('てすと');
+			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			done();
+		});
+	});
+
+	it('TODO: 引数 -H と -K 同時の -f ファイル変換');
+	it('TODO: 引数 -o のみでエラー出力');
+	it('TODO: 引数 -o あり -f なしでエラー出力');
+	it('TODO: 引数 -o 変更権限なしでエラー出力');
+	it('TODO: 引数 -H 変換で -o の出力');
+	it('TODO: 引数 -K 変換で -o の出力');
+	it('TODO: 引数 -H と -K 同時の -f ファイル変換 -o で出力');
+	it('TODO: 引数 -H と -K 同時の -f ファイル変換 -o で出力 (順番逆)');
+
 });

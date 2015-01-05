@@ -72,4 +72,4 @@ name|return type|bang|chainable
 
 ## Documents
 
-comming soon
+http://yusukehirao.github.io/jaco/
