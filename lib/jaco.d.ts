@@ -186,7 +186,7 @@ declare module jaco {
         *
         * @version 0.1.0
         * @since 0.1.0
-        * @return 自身が保持する文字列
+        * @return インスタンス自身が保持する文字列
         */
         toString(): string;
         /**
@@ -194,7 +194,7 @@ declare module jaco {
         *
         * @version 0.1.0
         * @since 0.1.0
-        * @return 自身が保持する文字列
+        * @return インスタンス自身が保持する文字列
         */
         valueOf(): string;
         /**
@@ -202,7 +202,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.2.0
-        * @return 自身
+        * @return インスタンス自身
         */
         concat(...likeStrings: any[]): Jaco;
         /**
@@ -212,7 +212,7 @@ declare module jaco {
         * @since 0.2.0
         * @param pattern  対象のパターン
         * @param replacement 置換する文字列
-        * @return 自身
+        * @return インスタンス自身
         */
         replace(pattern: RegExp, replacement: string): Jaco;
         replace(pattern: string, replacement: string): Jaco;
@@ -254,7 +254,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.2.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toLowerCase(): Jaco;
         /**
@@ -262,7 +262,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.2.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toUpperCase(): Jaco;
         /**
@@ -271,7 +271,7 @@ declare module jaco {
         * @version 0.2.0
         * @since 0.2.0
         * @param pattern 取り除く文字列
-        * @return 自身
+        * @return インスタンス自身
         */
         remove(pattern: RegExp): Jaco;
         remove(pattern: string): Jaco;
@@ -282,7 +282,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.2.0
-        * @return 自身
+        * @return インスタンス自身
         */
         trim(): Jaco;
         /**
@@ -337,7 +337,7 @@ declare module jaco {
         * @version 0.2.0
         * @since 0.2.0
         * @param element 結合する文字列
-        * @return 自身
+        * @return インスタンス自身
         */
         prepend(element: Jaco): Jaco;
         prepend(element: string): Jaco;
@@ -347,7 +347,7 @@ declare module jaco {
         * @version 0.2.0
         * @since 0.2.0
         * @param element 結合する文字列
-        * @return 自身
+        * @return インスタンス自身
         */
         append(element: Jaco): Jaco;
         append(element: string): Jaco;
@@ -421,7 +421,7 @@ declare module jaco {
         * @since 0.5.0
         * @param negative 負の値を許可してマイナスをつけるかどうか
         * @param floatingPoint 小数を許可してドットをつけるかどうか
-        * @return 自身
+        * @return インスタンス自身
         */
         toNumeric(negative?: boolean, floatingPoint?: boolean): Jaco;
         /**
@@ -429,7 +429,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.1.0
-        * @return 自身
+        * @return インスタンス自身
         */
         combinate(): Jaco;
         /**
@@ -438,7 +438,7 @@ declare module jaco {
         * @version 0.2.0
         * @since 0.1.0
         * @param isCombinate 濁点・半濁点を結合文字にするかどうか
-        * @return 自身
+        * @return インスタンス自身
         */
         toHiragana(isCombinate?: boolean): Jaco;
         /**
@@ -447,7 +447,7 @@ declare module jaco {
         * @version 0.2.0
         * @since 0.1.0
         * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
-        * @return 自身
+        * @return インスタンス自身
         */
         toKatakana(toWide?: boolean): Jaco;
         /**
@@ -456,7 +456,7 @@ declare module jaco {
         * @version 0.6.0
         * @since 0.1.0
         * @param fromHiragana ひらがなも変換する
-        * @return 自身
+        * @return インスタンス自身
         */
         toNarrowKatakana(fromHiragana?: boolean): Jaco;
         /**
@@ -464,7 +464,7 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.1.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toWideKatakana(): Jaco;
         /**
@@ -472,7 +472,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toNarrowJapneseSymbol(): Jaco;
         /**
@@ -480,7 +480,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toWideJapneseSymbol(): Jaco;
         /**
@@ -488,7 +488,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toNarrowJapnese(): Jaco;
         /**
@@ -496,7 +496,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toWideJapnese(): Jaco;
         /**
@@ -504,7 +504,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toNarrow(convertJapaneseChars?: boolean): Jaco;
         /**
@@ -512,7 +512,7 @@ declare module jaco {
         *
         * @version 0.4.0
         * @since 0.4.0
-        * @return 自身
+        * @return インスタンス自身
         */
         toWide(): Jaco;
         /**
@@ -522,7 +522,7 @@ declare module jaco {
         * @since 0.1.0
         * @param needle 対象のパターン
         * @param shiftNum ずらす数値
-        * @return 自身
+        * @return インスタンス自身
         */
         private _shift(needle, shiftNum);
         /**
@@ -531,7 +531,7 @@ declare module jaco {
         * @version 0.6.0
         * @since 0.1.0
         * @param convMap キーがパターン・値が置換文字列のハッシュマップ
-        * @return 自身
+        * @return インスタンス自身
         */
         replaceMap(...convMap: any[]): Jaco;
         /**
@@ -543,7 +543,7 @@ declare module jaco {
         * @since 0.1.0
         * @param needle 対象のパターン
         * @param replace 置換する文字列
-        * @return 自身
+        * @return インスタンス自身
         */
         private _replace(needle, replace);
         /**
@@ -552,7 +552,7 @@ declare module jaco {
         * @version 0.6.0
         * @since 0.1.0
         * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
-        * @return 自身
+        * @return インスタンス自身
         */
         private _replaceMap(convMap);
     }

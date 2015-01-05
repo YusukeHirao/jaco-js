@@ -39,36 +39,36 @@ var instance = new jaco.Jaco('ニホンゴのモジなど');
 
 name|return type|bang|chainable
 ---|---|---|---
-toString|`string`|✗|✗
-valueOf|`string`|✗|✗
-concat|`Jaco`|✓|✓
-slice|`Jaco`|✓|✓
-substr|`Jaco`|✓|✓
-substring|`Jaco`|✓|✓
-append|`Jaco`|✓|✓
-prepend|`Jaco`|✓|✓
-replace|`Jaco`|✓|✓
-trim|`Jaco`|✓|✓
-remove|`Jaco`|✓|✓
-test|`Jaco`|✓|✓
-is|`boolean`|✗|✗
-isEmpty|`boolean`|✗|✗
-isOnly|`boolean`|✗|✗
-isOnlyHiragana|`boolean`|✗|✗
-isOnlyKatakana|`boolean`|✗|✗
-isNumeric|`boolean`|✗|✗
-toNumeric|`Jaco`|✓|✓
-combinate|`Jaco`|✓|✓
-toLowerCase|`Jaco`|✓|✓
-toUpperCase|`Jaco`|✓|✓
-toHiragana|`Jaco`|✓|✓
-toKatakana|`Jaco`|✓|✓
-toNarrowKatakana|`Jaco`|✓|✓
-toWideKatakana|`Jaco`|✓|✓
-toNumber|`number`|✗|✗
-size|`number`|✗|✗
-byteSize|`number`|✗|✗
-clone|`Jaco`|✓|✓
+[toString](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tostring)|`string`|✗|✗
+[valueOf](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#valueof)|`string`|✗|✗
+[concat](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#concat)|`Jaco`|✓|✓
+[slice](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#slice)|`Jaco`|✓|✓
+[substr](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#substr)|`Jaco`|✓|✓
+[substring](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#substring)|`Jaco`|✓|✓
+[append](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#append)|`Jaco`|✓|✓
+[prepend](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#prepend)|`Jaco`|✓|✓
+[replace](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#replace)|`Jaco`|✓|✓
+[trim](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#trim)|`Jaco`|✓|✓
+[remove](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#remove)|`Jaco`|✓|✓
+[test](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#test)|`Jaco`|✓|✓
+[is](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#is)|`boolean`|✗|✗
+[isEmpty](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isempty)|`boolean`|✗|✗
+[isOnly](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonly)|`boolean`|✗|✗
+[isOnlyHiragana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonlyhiragana)|`boolean`|✗|✗
+[isOnlyKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonlykatakana)|`boolean`|✗|✗
+[isNumeric](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isnumeric)|`boolean`|✗|✗
+[toNumeric](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonumeric)|`Jaco`|✓|✓
+[combinate](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#combinate)|`Jaco`|✓|✓
+[toLowerCase](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tolowercase)|`Jaco`|✓|✓
+[toUpperCase](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#touppercase)|`Jaco`|✓|✓
+[toHiragana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tohiragana)|`Jaco`|✓|✓
+[toKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tokatakana)|`Jaco`|✓|✓
+[toNarrowKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonarrowkatakana)|`Jaco`|✓|✓
+[toWideKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#towidekatakana)|`Jaco`|✓|✓
+[toNumber](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonumber)|`number`|✗|✗
+[size](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#size)|`number`|✗|✗
+[byteSize](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#bytesize)|`number`|✗|✗
+[clone](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#clone)|`Jaco`|✓|✓
 
 ## Documents
 

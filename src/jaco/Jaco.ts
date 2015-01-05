@@ -48,7 +48,7 @@ module jaco {
 		*
 		* @version 0.1.0
 		* @since 0.1.0
-		* @return 自身が保持する文字列
+		* @return インスタンス自身が保持する文字列
 		*/
 		public toString (): string {
 			return this._str;
@@ -59,7 +59,7 @@ module jaco {
 		*
 		* @version 0.1.0
 		* @since 0.1.0
-		* @return 自身が保持する文字列
+		* @return インスタンス自身が保持する文字列
 		*/
 		public valueOf (): string {
 			return this.toString();
@@ -70,7 +70,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.2.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public concat (...likeStrings: any[]): Jaco {
 			this._str += likeStrings.join('');
@@ -84,7 +84,7 @@ module jaco {
 		* @since 0.2.0
 		* @param pattern  対象のパターン
 		* @param replacement 置換する文字列
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public replace (pattern: RegExp, replacement: string): Jaco;
 		public replace (pattern: string, replacement: string): Jaco;
@@ -140,7 +140,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.2.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toLowerCase (): Jaco {
 			this._str = this._str.toLowerCase();
@@ -152,7 +152,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.2.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toUpperCase (): Jaco {
 			this._str = this._str.toUpperCase();
@@ -165,7 +165,7 @@ module jaco {
 		* @version 0.2.0
 		* @since 0.2.0
 		* @param pattern 取り除く文字列
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public remove (pattern: RegExp): Jaco;
 		public remove (pattern: string): Jaco;
@@ -180,7 +180,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.2.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public trim (): Jaco {
 			return this.remove(/^\s*|\s*$/g);
@@ -260,7 +260,7 @@ module jaco {
 		* @version 0.2.0
 		* @since 0.2.0
 		* @param element 結合する文字列
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public prepend (element: Jaco): Jaco;
 		public prepend (element: string): Jaco;
@@ -275,7 +275,7 @@ module jaco {
 		* @version 0.2.0
 		* @since 0.2.0
 		* @param element 結合する文字列
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public append (element: Jaco): Jaco;
 		public append (element: string): Jaco;
@@ -384,7 +384,7 @@ module jaco {
 		* @since 0.5.0
 		* @param negative 負の値を許可してマイナスをつけるかどうか
 		* @param floatingPoint 小数を許可してドットをつけるかどうか
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toNumeric (negative: boolean = false, floatingPoint: boolean = false): Jaco {
 			// 半角化
@@ -419,7 +419,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.1.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public combinate (): Jaco {
 			// 濁点・半濁点を結合文字に変換
@@ -437,7 +437,7 @@ module jaco {
 		* @version 0.2.0
 		* @since 0.1.0
 		* @param isCombinate 濁点・半濁点を結合文字にするかどうか
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toHiragana (isCombinate: boolean = false): Jaco {
 			// 半角カタカナを全角カタカナへ
@@ -464,7 +464,7 @@ module jaco {
 		* @version 0.2.0
 		* @since 0.1.0
 		* @param toWide 半角カタカナを全角カタカナへ変換するかどうか
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toKatakana (toWide: boolean = true): Jaco {
 			// 半角カタカナを全角カタカナへ
@@ -490,7 +490,7 @@ module jaco {
 		* @version 0.6.0
 		* @since 0.1.0
 		* @param fromHiragana ひらがなも変換する
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toNarrowKatakana (fromHiragana: boolean = false): Jaco {
 			// ひらがなを一旦全角カタカナに変換する
@@ -533,7 +533,7 @@ module jaco {
 		*
 		* @version 0.2.0
 		* @since 0.1.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toWideKatakana (): Jaco {
 			// カタカナ・濁点・半濁点の変換
@@ -567,7 +567,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toNarrowJapneseSymbol (): Jaco {
 			this._replaceMap({
@@ -585,7 +585,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toWideJapneseSymbol (): Jaco {
 			this._replaceMap({
@@ -603,7 +603,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toNarrowJapnese (): Jaco {
 			// 半角カタカナへ
@@ -618,7 +618,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toWideJapnese (): Jaco {
 			// 全角カタカナへ
@@ -633,7 +633,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toNarrow (convertJapaneseChars: boolean = false): Jaco {
 			// スペースの変換
@@ -652,7 +652,7 @@ module jaco {
 		*
 		* @version 0.4.0
 		* @since 0.4.0
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public toWide (): Jaco {
 			// スペースの変換
@@ -671,7 +671,7 @@ module jaco {
 		* @since 0.1.0
 		* @param needle 対象のパターン
 		* @param shiftNum ずらす数値
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		private _shift (needle: RegExp, shiftNum: number): Jaco {
 			this._str = this._str.replace(needle, (char: string): string => {
@@ -686,7 +686,7 @@ module jaco {
 		* @version 0.6.0
 		* @since 0.1.0
 		* @param convMap キーがパターン・値が置換文字列のハッシュマップ
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		public replaceMap (...convMap: any[]): Jaco {
 			return this;
@@ -701,7 +701,7 @@ module jaco {
 		* @since 0.1.0
 		* @param needle 対象のパターン
 		* @param replace 置換する文字列
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		private _replace (needle: RegExp, replace: string): Jaco {
 			this._str = this._str.replace(needle, replace);
@@ -714,7 +714,7 @@ module jaco {
 		* @version 0.6.0
 		* @since 0.1.0
 		* @param  convMap キーがパターン・値が置換文字列のハッシュマップ
-		* @return 自身
+		* @return インスタンス自身
 		*/
 		private _replaceMap (convMap: any): Jaco {
 			var needle: string;
