@@ -6,6 +6,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-typedoc'
+	grunt.loadNpmTasks 'grunt-dtsm'
 
 	# Package Data
 	pkg = grunt.file.readJSON 'package.json'
@@ -31,6 +32,7 @@ module.exports = (grunt) ->
 			options:
 				comments: on
 				declaration: on
+				module: 'commonjs'
 			jaco:
 				src: [
 					'src/index.ts'
@@ -42,7 +44,9 @@ module.exports = (grunt) ->
 				banner: '<%= meta.banner %>\n\n'
 			jaco:
 				src: [
+					'src/__wrap/__intro.js'
 					'lib/jaco.js'
+					'src/__wrap/__outro.js'
 				]
 				dest: 'lib/jaco.js'
 
@@ -68,6 +72,11 @@ module.exports = (grunt) ->
 					name: '<%= pkg.name %>'
 					out: 'docs/'
 
+		dtsm:
+			main:
+				options:
+					config: 'dtsm.json'
+
 		watch:
 			scripts:
 				files: [
@@ -82,6 +91,7 @@ module.exports = (grunt) ->
 					interrupt: on
 
 	grunt.registerTask 'default', [
+		'dtsm'
 		'typescript'
 		'concat'
 		'uglify'
