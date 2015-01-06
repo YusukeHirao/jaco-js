@@ -4,37 +4,90 @@ jaco
 Japanese charactor converter.
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
-[![Build Status](https://travis-ci.org/YusukeHirao/jaco.svg?branch=master)](https://travis-ci.org/YusukeHirao/jaco)
-[![Code Climate](https://codeclimate.com/github/YusukeHirao/jaco.png)](https://codeclimate.com/github/YusukeHirao/jaco)
+[![Build Status](https://travis-ci.org/YusukeHirao/jaco.svg)](https://travis-ci.org/YusukeHirao/jaco)
 [![Dependency Status](https://david-dm.org/YusukeHirao/jaco.svg)](https://david-dm.org/YusukeHirao/jaco)
 [![devDependency Status](https://david-dm.org/YusukeHirao/jaco/dev-status.svg)](https://david-dm.org/YusukeHirao/jaco#info=devDependencies)
 
 ## install
 
+### for browser
+
+```sh
+$ bower install jaco
+```
+
+### for NodeJS
+
 ```sh
 $ npm install jaco
 ```
 
+### CLI
+
+```sh
+$ npm install -g jaco
+```
+
 ## Usage
+
+### for browser
+
+```html
+<script src="jaco.min.js"></script>
+<script>
+jaco.katakanize('ニホンゴのモジなど'); // => ニホンゴノモジ
+jaco.hiraganize('ニホンゴのモジなど'); // => にほんごのもじ
+
+var jStr01 = new jaco.Jaco('ニホンゴのモジなど');
+jStr01.toKatakana(); // => ニホンゴノモジ
+</script>
+```
+
+### for NodeJS
 
 ```javascript
 var jaco = require('jaco');
-var Jaco = jaco.Jaco;
 
-jaco.hiraganize('カタカナ'); // => かたかな
-jaco.katakanize('かたかな'); // => カタカナ
+jaco.katakanize('ニホンゴのモジなど'); // => ニホンゴノモジ
+jaco.hiraganize('ニホンゴのモジなど'); // => にほんごのもじ
 
-var jStr01 = new Jaco('かたかな');
-jStr01.toKatakana(); // => カタカナ
+var jStr01 = new jaco.Jaco('ニホンゴのモジなど');
+jStr01.toKatakana(); // => ニホンゴノモジ
+```
+
+### CLI
+
+```
+Usage: jaco [options] <string> [fileOption] <path>
+
+Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -f, --file <path>          convert in file
+    -o, --output <path>        output to file
+    -K, --katakanize [string]  katakanize method
+    -H, --hiraganize [string]  hiraganize method
 ```
 
 ## Methods
 
+### Static Functions
+
+```javascript
+jaco.katakanize('ニホンゴのモジなど');
+```
+
+name|return type
+---|---
+[katakanize]()|`string`
+[hiraganize]()|`string`
+
 ### Instance methods of Class Jaco
 
 ```javascript
-var jaco = require('jaco');
 var instance = new jaco.Jaco('ニホンゴのモジなど');
+instance.toString();
 ```
 
 name|return type|bang|chainable
