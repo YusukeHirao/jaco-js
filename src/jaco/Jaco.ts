@@ -545,7 +545,7 @@ module jaco {
 				'ﾊﾟ': 'パ', 'ﾋﾟ': 'ピ', 'ﾌﾟ': 'プ', 'ﾍﾟ': 'ペ', 'ﾎﾟ': 'ポ',
 				'ﾜﾞ': 'ヷ', 'ｲﾞ': 'ヸ', 'ｳﾞ': 'ヴ', 'ｴﾞ': 'ヹ', 'ｦﾞ': 'ヺ',
 				'ﾞ': '゛', 'ﾟ': '゜',
-				'ｧ': 'ァ', 'ｨ': 'ィ','ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
+				'ｧ': 'ァ', 'ｨ': 'ィ', 'ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
 				'ｬ': 'ャ', 'ｭ': 'ュ', 'ｮ': 'ョ',
 				'ｯ': 'ッ', 'ｰ': 'ー',
 				'ｱ': 'ア', 'ｲ': 'イ', 'ｳ': 'ウ', 'ｴ': 'エ', 'ｵ': 'オ',
@@ -607,7 +607,7 @@ module jaco {
 		*/
 		public toNarrowJapnese (): Jaco {
 			// 半角カタカナへ
-			this.toNarrowKatakana()
+			this.toNarrowKatakana();
 			// 半角記号へ
 			this.toNarrowJapneseSymbol();
 			return this;
@@ -622,7 +622,7 @@ module jaco {
 		*/
 		public toWideJapnese (): Jaco {
 			// 全角カタカナへ
-			this.toWideKatakana()
+			this.toWideKatakana();
 			// 全角記号へ
 			this.toWideJapneseSymbol();
 			return this;
@@ -661,7 +661,7 @@ module jaco {
 			this.toWideJapnese();
 			// 半角英数記号の変換
 			this._shift(toPattern(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
-			return this
+			return this;
 		}
 
 		/**
