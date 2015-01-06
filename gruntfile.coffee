@@ -54,6 +54,7 @@ module.exports = (grunt) ->
 		uglify:
 			options:
 				banner: '<%= meta.banner %>\n\n'
+				sourceMap: on
 			jaco:
 				files:
 					'lib/jaco.min.js': ['lib/jaco.js']
