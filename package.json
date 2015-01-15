@@ -1,7 +1,7 @@
 {
   "name": "jaco",
   "version": "0.7.0",
-  "description": "Japanese string and charactor converter.",
+  "description": "Japanese string and character converter.",
   "main": "lib/jaco.js",
   "scripts": {
     "test": "mocha test/test.js"
@@ -14,7 +14,7 @@
     "japanese",
     "javascript",
     "string",
-    "charactor",
+    "character",
     "katakana",
     "hiragana"
   ],
