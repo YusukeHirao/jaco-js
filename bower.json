@@ -1,0 +1,31 @@
+{
+  "name": "jaco",
+  "version": "1.0.0",
+  "homepage": "https://yusukehirao.github.io/jaco/",
+  "authors": [
+    "YusukeHirao"
+  ],
+  "description": "Japanese character converter",
+  "main": "lib/jaco.js",
+  "keywords": [
+    "japanese",
+    "javascript",
+    "string",
+    "character",
+    "katakana",
+    "hiragana"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bin",
+    "lib/jaco-cli.js",
+    "bower_components",
+    "gruntfile.coffee",
+    "node_modules",
+    "src",
+    "test",
+    "dtsm.json",
+    "tslint.json",
+    "typings"
+  ]
+}

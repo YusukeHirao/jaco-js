@@ -7,6 +7,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-typedoc'
 	grunt.loadNpmTasks 'grunt-dtsm'
+	grunt.loadNpmTasks 'grunt-tslint'
 
 	# Package Data
 	pkg = grunt.file.readJSON 'package.json'
@@ -53,6 +54,7 @@ module.exports = (grunt) ->
 		uglify:
 			options:
 				banner: '<%= meta.banner %>\n\n'
+				sourceMap: on
 			jaco:
 				files:
 					'lib/jaco.min.js': ['lib/jaco.js']
@@ -77,6 +79,16 @@ module.exports = (grunt) ->
 				options:
 					config: 'dtsm.json'
 
+		tslint:
+			options:
+				configuration: grunt.file.readJSON 'tslint.json'
+			files:
+				src: [
+					'src/jaco/Jaco.ts'
+					'src/jaco.ts'
+					'src/index.ts'
+				]
+
 		watch:
 			scripts:
 				files: [
@@ -92,6 +104,7 @@ module.exports = (grunt) ->
 
 	grunt.registerTask 'default', [
 		'dtsm'
+		'tslint'
 		'typescript'
 		'concat'
 		'uglify'

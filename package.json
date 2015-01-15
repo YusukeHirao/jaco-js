@@ -1,10 +1,12 @@
 {
   "name": "jaco",
-  "version": "0.7.0",
-  "description": "Japanese string and character converter.",
+  "version": "1.0.0",
+  "description": "Japanese character converter.",
   "main": "lib/jaco.js",
+  "bin": "bin/jaco",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha --reporter spec test/test.js",
+    "bin-test": "bin/jaco"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,10 @@
     "url": "https://github.com/YusukeHirao/jaco/issues"
   },
   "homepage": "https://github.com/YusukeHirao/jaco",
+  "dependencies": {
+    "colors": "^1.0.3",
+    "commander": "^2.6.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
@@ -31,6 +37,7 @@
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-dtsm": "^0.2.1",
+    "grunt-tslint": "^1.0.1",
     "grunt-typedoc": "^0.2.1",
     "grunt-typescript": "^0.4.5",
     "should": "^4.0.4",
