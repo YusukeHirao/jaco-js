@@ -5,13 +5,13 @@
   "authors": [
     "YusukeHirao"
   ],
-  "description": "Japanese charactor converter",
+  "description": "Japanese character converter",
   "main": "lib/jaco.js",
   "keywords": [
     "japanese",
     "javascript",
     "string",
-    "charactor",
+    "character",
     "katakana",
     "hiragana"
   ],

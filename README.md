@@ -1,7 +1,7 @@
 jaco
 ====
 
-Japanese charactor converter.
+Japanese character converter.
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
 [![Build Status](https://travis-ci.org/YusukeHirao/jaco.svg)](https://travis-ci.org/YusukeHirao/jaco)
