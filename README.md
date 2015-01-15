@@ -80,8 +80,8 @@ jaco.katakanize('ニホンゴのモジなど');
 
 name|return type
 ---|---
-[katakanize]()|`string`
-[hiraganize]()|`string`
+[katakanize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#katakanize)|`string`
+[hiraganize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#hiraganize)|`string`
 
 ### Instance methods of Class Jaco
 
