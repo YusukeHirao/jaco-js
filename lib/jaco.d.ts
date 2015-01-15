@@ -374,10 +374,10 @@ declare module jaco {
         *
         * @version 0.2.0
         * @since 0.2.0
-        * @param charactors 文字セット
+        * @param characters 文字セット
         * @return 結果の真偽
         */
-        isOnly(charactors: string): boolean;
+        isOnly(characters: string): boolean;
         /**
         * ひらがなだけで構成されているかどうか
         *
