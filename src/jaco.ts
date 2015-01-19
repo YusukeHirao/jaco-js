@@ -84,12 +84,28 @@ module jaco {
 	export var HIRAGANA_CHARS: string = '\\u3041-\\u3096\\u309D-\\u309F';
 
 	/**
+	* ひらがな（繰り返し記号・合字なし）
+	*
+	* [ぁ-ゖ]
+	*
+	*/
+	export var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS: string = '\\u3041-\\u3096';
+
+	/**
 	* カタカナ
 	*
 	* [ァ-ヺヽ-ヿ]
 	*
 	*/
 	export var KATAKANA_CHARS: string = '\\u30A1-\\u30FA\\u30FD\\u30FF';
+
+	/**
+	* カタカナ（繰り返し記号・合字なし）
+	*
+	* [ァ-ヺ]
+	*
+	*/
+	export var KATAKANA_CHARS_IGNORE_ITERATION_MARKS: string = '\\u30A1-\\u30FA';
 
 	/**
 	* 濁点／半濁点(結合文字含む)・長音符
@@ -160,6 +176,41 @@ module jaco {
 	*/
 	export function katakanize (str: string, toWide: boolean = true): string {
 		return new Jaco(str).toKatakana(toWide).toString();
+	}
+
+	/**
+	* 配列の五十音順ソートをする
+	* JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+	*
+	* @version 1.1.0
+	* @since 1.1.0
+	* @param array 対象の配列
+	* @return 五十音順にソートされた配列
+	*/
+	export function naturalKanaSort (array: string[]): string[] {
+		return array.sort(jaco.naturalKanaOrder);
+	}
+
+	/**
+	* 配列の五十音順ソートをするためのソート関数
+	* JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+	*
+	* @version 1.1.0
+	* @since 1.1.0
+	* @param string Array.prototype.sort から渡される配列要素
+	* @param string Array.prototype.sort から渡される配列要素
+	* @return 比較数値
+	*/
+	export function naturalKanaOrder (a: string, b: string): number {
+		var _a: string = new jaco.Jaco(a).toStringForNaturalKanaOrder();
+		var _b: string = new jaco.Jaco(b).toStringForNaturalKanaOrder();
+		if (_a < _b) {
+			return -1;
+		} else if (_a > _b) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

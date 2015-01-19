@@ -76,12 +76,26 @@ declare module jaco {
     */
     var HIRAGANA_CHARS: string;
     /**
+    * ひらがな（繰り返し記号・合字なし）
+    *
+    * [ぁ-ゖ]
+    *
+    */
+    var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS: string;
+    /**
     * カタカナ
     *
     * [ァ-ヺヽ-ヿ]
     *
     */
     var KATAKANA_CHARS: string;
+    /**
+    * カタカナ（繰り返し記号・合字なし）
+    *
+    * [ァ-ヺ]
+    *
+    */
+    var KATAKANA_CHARS_IGNORE_ITERATION_MARKS: string;
     /**
     * 濁点／半濁点(結合文字含む)・長音符
     *
@@ -142,6 +156,27 @@ declare module jaco {
     * @return カタカナ化された文字列
     */
     function katakanize(str: string, toWide?: boolean): string;
+    /**
+    * 配列の五十音順ソートをする
+    * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param array 対象の配列
+    * @return 五十音順にソートされた配列
+    */
+    function naturalKanaSort(array: string[]): string[];
+    /**
+    * 配列の五十音順ソートをするためのソート関数
+    * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param string Array.prototype.sort から渡される配列要素
+    * @param string Array.prototype.sort から渡される配列要素
+    * @return 比較数値
+    */
+    function naturalKanaOrder(a: string, b: string): number;
 }
 declare module jaco {
     /**
@@ -514,16 +549,6 @@ declare module jaco {
         */
         toWide(): Jaco;
         /**
-        * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
-        *
-        * @version 0.2.0
-        * @since 0.1.0
-        * @param needle 対象のパターン
-        * @param shiftNum ずらす数値
-        * @return インスタンス自身
-        */
-        private _shift(needle, shiftNum);
-        /**
         * キーがパターン・値が置換文字列のハッシュマップによって置換する
         *
         * @version 0.6.0
@@ -533,17 +558,48 @@ declare module jaco {
         */
         replaceMap(...convMap: any[]): Jaco;
         /**
-        * 【非推奨】文字列をパターンで置換する
-        * 同機能の`replace`メソッドを使う
+        * 濁点・半濁点を取り除く
         *
-        * @deprecated 非推奨
-        * @version 0.1.0
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        removeVoicedMarks(): Jaco;
+        /**
+        * 長音符をかなに置き換える
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        convertProlongedSoundMarks(): Jaco;
+        /**
+        * 繰り返し記号をかなに置き換える
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        convertIterationMarks(): Jaco;
+        /**
+        * 五十音順ソート用の文字列に変換する
+        * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return 擬似的に入れ替えた文字列
+        */
+        toStringForNaturalKanaOrder(): string;
+        /**
+        * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+        *
+        * @version 0.2.0
         * @since 0.1.0
         * @param needle 対象のパターン
-        * @param replace 置換する文字列
+        * @param shiftNum ずらす数値
         * @return インスタンス自身
         */
-        private _replace(needle, replace);
+        private _shift(needle, shiftNum);
         /**
         * キーがパターン・値が置換文字列のハッシュマップによって置換する
         *

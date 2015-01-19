@@ -665,22 +665,6 @@ module jaco {
 		}
 
 		/**
-		* 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
-		*
-		* @version 0.2.0
-		* @since 0.1.0
-		* @param needle 対象のパターン
-		* @param shiftNum ずらす数値
-		* @return インスタンス自身
-		*/
-		private _shift (needle: RegExp, shiftNum: number): Jaco {
-			this._str = this._str.replace(needle, (char: string): string => {
-				return String.fromCharCode(char.charCodeAt(0) + shiftNum);
-			});
-			return this;
-		}
-
-		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
 		* @version 0.6.0
@@ -693,18 +677,144 @@ module jaco {
 		}
 
 		/**
-		* 【非推奨】文字列をパターンで置換する
-		* 同機能の`replace`メソッドを使う
+		* 濁点・半濁点を取り除く
 		*
-		* @deprecated 非推奨
-		* @version 0.1.0
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自信
+		*/
+		public removeVoicedMarks (): Jaco {
+			// 濁点・半濁点単体の除去
+			this.remove(/\u309B|\u3099|\uFF9E/g);
+			this.remove(/\u309C|\u309A|\uFF9F/g);
+			return this._replaceMap({
+				'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
+				'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
+				'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
+				'ば': 'は', 'び': 'ひ', 'ぶ': 'ふ', 'べ': 'へ', 'ぼ': 'ほ',
+				'ぱ': 'は', 'ぴ': 'ひ', 'ぷ': 'ふ', 'ぺ': 'へ', 'ぽ': 'ほ',
+				'ガ': 'カ', 'ギ': 'キ', 'グ': 'ク', 'ゲ': 'ケ', 'ゴ': 'コ',
+				'ザ': 'サ', 'ジ': 'シ', 'ズ': 'ス', 'ゼ': 'セ', 'ゾ': 'ソ',
+				'ダ': 'タ', 'ヂ': 'チ', 'ヅ': 'ツ', 'デ': 'テ', 'ド': 'ト',
+				'バ': 'ハ', 'ビ': 'ヒ', 'ブ': 'フ', 'ベ': 'ヘ', 'ボ': 'ホ',
+				'パ': 'ハ', 'ピ': 'ヒ', 'プ': 'フ', 'ペ': 'ヘ', 'ポ': 'ホ',
+				'ヷ': 'ワ', 'ヸ': 'イ', 'ヴ': 'ウ', 'ヹ': 'エ', 'ヺ': 'ヲ'
+			});
+		}
+
+		/**
+		* 長音符をかなに置き換える
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自信
+		*/
+		public convertProlongedSoundMarks (): Jaco {
+			var kanaWithProlongedSoundMarksPattern: RegExp = new RegExp('[' + jaco.HIRAGANA_CHARS + jaco.KATAKANA_CHARS + ']ー');
+			var converted: string = this._str;
+			var conv = (_str: string): string => {
+				_str = _str.replace(/([あぁかゕがさざただなはばぱまやゃらわゎ])ー/g, '$1あ')
+					.replace(/([いぃきぎしじちぢにひびぴみりゐ])ー/g, '$1い')
+					.replace(/([うぅゔくぐすずつづぬふぶぷむゆゅる])ー/g, '$1う')
+					.replace(/([えぇけゖげせぜてでねへべぺめれゑ])ー/g, '$1え')
+					.replace(/([おぉこごそぞとどのほぼぽもよょろを])ー/g, '$1お')
+					.replace(/んー/g, 'んん')
+					.replace(/っー/g, 'っっ')
+					.replace(/([アァカヵガサザタダナハバパマヤャラワヮヷ])ー/g, '$1ア')
+					.replace(/([イィキギシジチヂニヒビピミリヰヸ])ー/g, '$1イ')
+					.replace(/([ウゥヴクグスズツヅヌフブプムユュル])ー/g, '$1ウ')
+					.replace(/([エェケヶゲセゼテデネヘベペメレヱヹ])ー/g, '$1エ')
+					.replace(/([オォコゴソゾトドノホボポモヨョロヲヺ])ー/g, '$1オ')
+					.replace(/ンー/g, 'ンン')
+					.replace(/ッー/g, 'ッッ');
+				return _str;
+			};
+			while (kanaWithProlongedSoundMarksPattern.test(converted)) {
+				converted = conv(converted);
+			}
+			this._str = converted;
+			return this;
+		}
+
+		/**
+		* 繰り返し記号をかなに置き換える
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自信
+		*/
+		public convertIterationMarks (): Jaco {
+			var kanaWithIterationMarks: RegExp = new RegExp(
+				'([' +
+				jaco.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS +
+				jaco.KATAKANA_CHARS_IGNORE_ITERATION_MARKS +
+				'])([ゝヽゞヾ])'
+			);
+			var conv = (_str): string => {
+				return _str.replace(kanaWithIterationMarks, ($0: string, $1: string, $2: string): string => {
+					var beforeString = $1;
+					var converted = new jaco.Jaco($1).removeVoicedMarks();
+					var iterationMark = $2;
+					switch (iterationMark) {
+						case 'ゝ': {
+							converted.toHiragana();
+							break;
+						}
+						case 'ヽ': {
+							converted.toKatakana();
+							break;
+						}
+						case 'ゞ': {
+							break;
+						}
+						case 'ヾ': {
+							break;
+						}
+					}
+					return beforeString + converted;
+				});
+			};
+			while (kanaWithIterationMarks.test(this._str)) {
+				this._str = conv(this._str);
+			}
+			return this;
+		}
+
+		/**
+		* 五十音順ソート用の文字列に変換する
+		* JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return 擬似的に入れ替えた文字列
+		*/
+		public toStringForNaturalKanaOrder (): string {
+			// 濁点半濁点を取り除いてひらがな化
+			var psuedo: Jaco = this.clone()
+				// 濁点半濁点を取り除く
+				.removeVoicedMarks()
+				// ひらがな化
+				.toHiragana()
+				// 長音符を置き換える
+				.convertProlongedSoundMarks()
+				// 繰り返し記号を置き換える
+				.convertIterationMarks();
+			return psuedo.toString();
+		}
+
+		/**
+		* 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+		*
+		* @version 0.2.0
 		* @since 0.1.0
 		* @param needle 対象のパターン
-		* @param replace 置換する文字列
+		* @param shiftNum ずらす数値
 		* @return インスタンス自身
 		*/
-		private _replace (needle: RegExp, replace: string): Jaco {
-			this._str = this._str.replace(needle, replace);
+		private _shift (needle: RegExp, shiftNum: number): Jaco {
+			this._str = this._str.replace(needle, (char: string): string => {
+				return String.fromCharCode(char.charCodeAt(0) + shiftNum);
+			});
 			return this;
 		}
 
