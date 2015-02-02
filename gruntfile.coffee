@@ -5,7 +5,6 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-concat'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
-	grunt.loadNpmTasks 'grunt-typedoc'
 	grunt.loadNpmTasks 'grunt-dtsm'
 	grunt.loadNpmTasks 'grunt-tslint'
 
@@ -59,21 +58,6 @@ module.exports = (grunt) ->
 				files:
 					'lib/jaco.min.js': ['lib/jaco.js']
 
-		clean:
-			options:
-				force: on
-			docs:
-				src: [
-					'docs/'
-				]
-
-		typedoc:
-			app:
-				src: 'src/index.ts'
-				options:
-					name: '<%= pkg.name %>'
-					out: 'docs/'
-
 		dtsm:
 			main:
 				options:
@@ -108,6 +92,4 @@ module.exports = (grunt) ->
 		'typescript'
 		'concat'
 		'uglify'
-		'clean:docs'
-		'typedoc'
 	]
