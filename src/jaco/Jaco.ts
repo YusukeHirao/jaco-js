@@ -845,6 +845,17 @@ module jaco {
 		}
 
 		/**
+		* 小書き文字を含むかどうか
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return 小書き文字を含むかどうか
+		*/
+		public hasSmallLetter (): boolean {
+			return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this._str);
+		}
+
+		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
 		* @version 0.1.1
