@@ -26,9 +26,7 @@ module jaco {
 		* @since 0.1.0
 		* @param str 対象の文字列
 		*/
-		constructor (str: string);
-		constructor (str: Jaco);
-		constructor (str: any = '') {
+		constructor (str: string | Jaco) {
 			if (!(this instanceof Jaco)) { //newつけずに呼んだ際はtrue
 				return new Jaco(str);
 			}
@@ -86,10 +84,9 @@ module jaco {
 		* @param replacement 置換する文字列
 		* @return インスタンス自身
 		*/
-		public replace (pattern: RegExp, replacement: string): Jaco;
-		public replace (pattern: string, replacement: string): Jaco;
-		public replace (pattern: any, replacement: string): Jaco {
-			this._str = this._str.replace(pattern, replacement);
+		public replace (pattern: string | RegExp, replacement: string): Jaco {
+			// TODO: replaceメソッドの型が (string | RexExp) だとコンパイルエラー TSv1.4.1時点
+			this._str = this._str.replace(<RegExp> pattern, replacement);
 			return this;
 		}
 
@@ -167,9 +164,7 @@ module jaco {
 		* @param pattern 取り除く文字列
 		* @return インスタンス自身
 		*/
-		public remove (pattern: RegExp): Jaco;
-		public remove (pattern: string): Jaco;
-		public remove (pattern: any): Jaco {
+		public remove (pattern: string | RegExp): Jaco {
 			return this.replace(pattern, '');
 		}
 
@@ -238,14 +233,12 @@ module jaco {
 		* @param pattern パターン
 		* @return 結果の真偽
 		*/
-		public test (pattern: RegExp): boolean;
-		public test (pattern: string): boolean;
-		public test (pattern: any): boolean {
+		public test (pattern: string | RegExp): boolean {
 			var res: boolean;
-			if (pattern instanceof RegExp) {
-				res = pattern.test(this._str);
-			} else {
+			if (typeof pattern === 'string') {
 				res = this._str === pattern;
+			} else {
+				res = pattern.test(this._str);
 			}
 			return res;
 		}
@@ -262,9 +255,7 @@ module jaco {
 		* @param element 結合する文字列
 		* @return インスタンス自身
 		*/
-		public prepend (element: Jaco): Jaco;
-		public prepend (element: string): Jaco;
-		public prepend (element: any): Jaco {
+		public prepend (element: string | Jaco): Jaco {
 			this._str = new Jaco(element).concat(this).toString();
 			return this;
 		}
@@ -277,9 +268,7 @@ module jaco {
 		* @param element 結合する文字列
 		* @return インスタンス自身
 		*/
-		public append (element: Jaco): Jaco;
-		public append (element: string): Jaco;
-		public append (element: any): Jaco {
+		public append (element: string | Jaco): Jaco {
 			return this.concat(element);
 		}
 
@@ -291,9 +280,7 @@ module jaco {
 		* @param target 比較する文字列
 		* @return 結果の真偽
 		*/
-		public is (target: Jaco): boolean;
-		public is (target: string): boolean;
-		public is (target: any): boolean {
+		public is (target: string | Jaco): boolean {
 			return this._str === target.toString();
 		}
 
@@ -305,9 +292,7 @@ module jaco {
 		* @param target 比較する文字列
 		* @return 結果の真偽
 		*/
-		public has (target: Jaco): boolean;
-		public has (target: string): boolean;
-		public has (target: any): boolean {
+		public has (target: string | Jaco): boolean {
 			return this._str.indexOf(target.toString()) !== -1;
 		}
 
