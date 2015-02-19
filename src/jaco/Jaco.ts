@@ -769,6 +769,52 @@ module jaco {
 		}
 
 		/**
+		* 繰り返し記号をかなに置き換える
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自信
+		*/
+		public convertIterationMarks (): Jaco {
+			var kanaWithIterationMarks: RegExp = new RegExp(
+				'([' +
+				jaco.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS +
+				jaco.KATAKANA_CHARS_IGNORE_ITERATION_MARKS +
+				'])([ゝゞヽヾ])'
+			);
+			var conv = (_str): string => {
+				return _str.replace(kanaWithIterationMarks, ($0: string, $1: string, $2: string): string => {
+					var beforeString = $1;
+					var converted = new jaco.Jaco($1).removeVoicedMarks();
+					var iterationMark = $2;
+					switch (iterationMark) {
+						case 'ゝ': {
+							converted.toHiragana();
+							break;
+						}
+						case 'ヽ': {
+							converted.toKatakana();
+							break;
+						}
+						case 'ゞ': {
+							converted.toHiragana().addVoicedMarks();
+							break;
+						}
+						case 'ヾ': {
+							converted.toKatakana().addVoicedMarks();
+							break;
+						}
+					}
+					return beforeString + converted;
+				});
+			};
+			while (kanaWithIterationMarks.test(this._str)) {
+				this._str = conv(this._str);
+			}
+			return this;
+		}
+
+		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
 		* @version 0.1.1

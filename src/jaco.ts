@@ -84,12 +84,28 @@ module jaco {
 	export var HIRAGANA_CHARS: string = '\\u3041-\\u3096\\u309D-\\u309F';
 
 	/**
+	* ひらがな（繰り返し記号・合字なし）
+	*
+	* [ぁ-ゖ]
+	*
+	*/
+	export var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS: string = '\\u3041-\\u3096';
+
+	/**
 	* カタカナ
 	*
 	* [ァ-ヺヽ-ヿ]
 	*
 	*/
 	export var KATAKANA_CHARS: string = '\\u30A1-\\u30FA\\u30FD\\u30FF';
+
+	/**
+	* カタカナ（繰り返し記号・合字なし）
+	*
+	* [ァ-ヺ]
+	*
+	*/
+	export var KATAKANA_CHARS_IGNORE_ITERATION_MARKS: string = '\\u30A1-\\u30FA';
 
 	/**
 	* 濁点／半濁点(結合文字含む)・長音符
