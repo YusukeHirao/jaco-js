@@ -735,6 +735,40 @@ module jaco {
 		}
 
 		/**
+		* 長音符をかなに置き換える
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自信
+		*/
+		public convertProlongedSoundMarks (): Jaco {
+			var kanaWithProlongedSoundMarksPattern: RegExp = new RegExp('[' + jaco.HIRAGANA_CHARS + jaco.KATAKANA_CHARS + ']ー');
+			var converted: string = this._str;
+			var conv = (_str: string): string => {
+				_str = _str.replace(/([あぁかゕがさざただなはばぱまやゃらわゎ])ー/g, '$1あ')
+					.replace(/([いぃきぎしじちぢにひびぴみりゐ])ー/g, '$1い')
+					.replace(/([うぅゔくぐすずつづぬふぶぷむゆゅる])ー/g, '$1う')
+					.replace(/([えぇけゖげせぜてでねへべぺめれゑ])ー/g, '$1え')
+					.replace(/([おぉこごそぞとどのほぼぽもよょろを])ー/g, '$1お')
+					.replace(/んー/g, 'んん')
+					.replace(/っー/g, 'っっ')
+					.replace(/([アァカヵガサザタダナハバパマヤャラワヮヷ])ー/g, '$1ア')
+					.replace(/([イィキギシジチヂニヒビピミリヰヸ])ー/g, '$1イ')
+					.replace(/([ウゥヴクグスズツヅヌフブプムユュル])ー/g, '$1ウ')
+					.replace(/([エェケヶゲセゼテデネヘベペメレヱヹ])ー/g, '$1エ')
+					.replace(/([オォコゴソゾトドノホボポモヨョロヲヺ])ー/g, '$1オ')
+					.replace(/ンー/g, 'ンン')
+					.replace(/ッー/g, 'ッッ');
+				return _str;
+			};
+			while (kanaWithProlongedSoundMarksPattern.test(converted)) {
+				converted = conv(converted);
+			}
+			this._str = converted;
+			return this;
+		}
+
+		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
 		* @version 0.1.1
