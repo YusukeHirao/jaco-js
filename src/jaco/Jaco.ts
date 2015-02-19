@@ -856,6 +856,27 @@ module jaco {
 		}
 
 		/**
+		* よみの文字に変換する
+		* JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+		*
+		* @version 1.1.0
+		* @since 1.1.0
+		* @return インスタンス自身
+		*/
+		public toPhoeticKana (): Jaco {
+			this
+				// ひらがな化
+				.toHiragana()
+				// 小書き文字を基底文字に変換
+				.toBasicLetter()
+				// 長音符を置き換える
+				.convertProlongedSoundMarks()
+				// 繰り返し記号を置き換える
+				.convertIterationMarks();
+			return this;
+		}
+
+		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
 		* @version 0.1.1
