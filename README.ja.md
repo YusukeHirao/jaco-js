@@ -1,7 +1,7 @@
 jaco
 ====
 
-Japanese character converter.
+Japanese Character Optimizer.
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
 [![Build Status](https://travis-ci.org/jaco-project/jaco-js.svg)](https://travis-ci.org/jaco-project/jaco-js)
@@ -16,7 +16,15 @@ Japanese character converter.
 
 全てカタカナの文字列かどうかや、一部カタカナを含んでいるかなどの判定も可能なので、フォームのバリデーションなどに利用できます。
 
+## 主な機能
 
+- ひらがな・カタカナ判定
+- ひらがな・カタカナ相互変換
+- 半角・全角判定
+- 半角・全角相互変換
+- 五十音順の自然ソート
+  - 平音・濁音、長音、繰り返し記号対応
+- ビルトイン文字列オブジェクトAPI互換
 
 ## インストール
 
@@ -92,6 +100,9 @@ jaco.katakanize('ニホンゴのモジなど');
 ---|---
 [katakanize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#katakanize)|`string`
 [hiraganize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#hiraganize)|`string`
+hiraganaOnly|`boolean`
+katakanaOnly|`boolean`
+naturalKanaSort|`Array`
 
 ### Jacoクラスのインスタンスメソッド
 
@@ -132,7 +143,20 @@ instance.toString();
 [size](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#size)|`number`|✗|✗
 [byteSize](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#bytesize)|`number`|✗|✗
 [clone](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#clone)|`Jaco`|◯|◯
+toNarrowJapneseSymbol|`Jaco`|◯|◯
+toWideJapnese|`Jaco`|◯|◯
+toNarrow|`Jaco`|◯|◯
+toWide|`Jaco`|◯|◯
+addVoicedMarks|`Jaco`|◯|◯
+addSemivoicedMarks|`Jaco`|◯|◯
+removeVoicedMarks|`Jaco`|◯|◯
+convertProlongedSoundMarks|`Jaco`|◯|◯
+convertIterationMarks|`Jaco`|◯|◯
+toBasicLetter|`Jaco`|◯|◯
+hasSmallLetter|`boolean`|✗|✗
+toPhoeticKana|`Jaco`|◯|◯
+replaceMap|`Jaco`|◯|◯
 
 ## ドキュメント
 
-http://jaco-project.github.io/docs/
+[http://jaco-project.github.io/docs/](http://jaco-project.github.io/docs/)

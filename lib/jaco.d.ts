@@ -76,12 +76,26 @@ declare module jaco {
     */
     var HIRAGANA_CHARS: string;
     /**
+    * ひらがな（繰り返し記号・合字なし）
+    *
+    * [ぁ-ゖ]
+    *
+    */
+    var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS: string;
+    /**
     * カタカナ
     *
     * [ァ-ヺヽ-ヿ]
     *
     */
     var KATAKANA_CHARS: string;
+    /**
+    * カタカナ（繰り返し記号・合字なし）
+    *
+    * [ァ-ヺ]
+    *
+    */
+    var KATAKANA_CHARS_IGNORE_ITERATION_MARKS: string;
     /**
     * 濁点／半濁点(結合文字含む)・長音符
     *
@@ -142,6 +156,45 @@ declare module jaco {
     * @return カタカナ化された文字列
     */
     function katakanize(str: string, toWide?: boolean): string;
+    /**
+    * ひらがなだけで構成されているかどうか
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param str 対象の文字列
+    * @return ひらがなだけで構成されているかどうか
+    */
+    function hiraganaOnly(str: string): boolean;
+    /**
+    * カタカナだけで構成されているかどうか
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param str 対象の文字列
+    * @return カタカナだけで構成されているかどうか
+    */
+    function katakanaOnly(str: string): boolean;
+    /**
+    * 配列の五十音順ソートをする
+    * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param array 対象の配列
+    * @return 五十音順にソートされた配列
+    */
+    function naturalKanaSort(array: string[]): string[];
+    /**
+    * 配列の五十音順ソートをするためのソート関数
+    * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+    *
+    * @version 1.1.0
+    * @since 1.1.0
+    * @param string Array.prototype.sort から渡される配列要素
+    * @param string Array.prototype.sort から渡される配列要素
+    * @return 比較数値
+    */
+    function naturalKanaOrder(a: string, b: string): number;
 }
 declare module jaco {
     /**
@@ -170,8 +223,7 @@ declare module jaco {
         * @since 0.1.0
         * @param str 対象の文字列
         */
-        constructor(str: string);
-        constructor(str: Jaco);
+        constructor(str: string | Jaco);
         /**
         * 保持する文字列
         *
@@ -212,8 +264,7 @@ declare module jaco {
         * @param replacement 置換する文字列
         * @return インスタンス自身
         */
-        replace(pattern: RegExp, replacement: string): Jaco;
-        replace(pattern: string, replacement: string): Jaco;
+        replace(pattern: string | RegExp, replacement: string): Jaco;
         /**
         * 文字位置による抽出
         * (非破壊的メソッド)
@@ -271,8 +322,7 @@ declare module jaco {
         * @param pattern 取り除く文字列
         * @return インスタンス自身
         */
-        remove(pattern: RegExp): Jaco;
-        remove(pattern: string): Jaco;
+        remove(pattern: string | RegExp): Jaco;
         /**
         * 先頭と末尾の空白を取り除く
         *
@@ -323,8 +373,7 @@ declare module jaco {
         * @param pattern パターン
         * @return 結果の真偽
         */
-        test(pattern: RegExp): boolean;
-        test(pattern: string): boolean;
+        test(pattern: string | RegExp): boolean;
         /**
         * 前方結合
         *
@@ -337,8 +386,7 @@ declare module jaco {
         * @param element 結合する文字列
         * @return インスタンス自身
         */
-        prepend(element: Jaco): Jaco;
-        prepend(element: string): Jaco;
+        prepend(element: string | Jaco): Jaco;
         /**
         * 後方結合
         *
@@ -347,8 +395,7 @@ declare module jaco {
         * @param element 結合する文字列
         * @return インスタンス自身
         */
-        append(element: Jaco): Jaco;
-        append(element: string): Jaco;
+        append(element: string | Jaco): Jaco;
         /**
         * 完全マッチ
         *
@@ -357,8 +404,7 @@ declare module jaco {
         * @param target 比較する文字列
         * @return 結果の真偽
         */
-        is(target: Jaco): boolean;
-        is(target: string): boolean;
+        is(target: string | Jaco): boolean;
         /**
         * 該当の文字を含んでいるかどうか
         *
@@ -367,17 +413,16 @@ declare module jaco {
         * @param target 比較する文字列
         * @return 結果の真偽
         */
-        has(target: Jaco): boolean;
-        has(target: string): boolean;
+        has(target: string | Jaco): boolean;
         /**
         * 該当の文字だけで構成されているかどうか
         *
-        * @version 0.2.0
+        * @version 1.1.0
         * @since 0.2.0
         * @param characters 文字セット
         * @return 結果の真偽
         */
-        isOnly(characters: string): boolean;
+        isOnly(characters: string | Jaco): boolean;
         /**
         * ひらがなだけで構成されているかどうか
         *
@@ -514,6 +559,83 @@ declare module jaco {
         */
         toWide(): Jaco;
         /**
+        * 濁点を追加する
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        addVoicedMarks(): Jaco;
+        /**
+        * 半濁点を追加する
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        addSemivoicedMarks(): Jaco;
+        /**
+        * 濁点・半濁点を取り除く
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @param ignoreSingleMark 単体の濁点・半濁点を除去するかどうか
+        * @return インスタンス自信
+        */
+        removeVoicedMarks(ignoreSingleMark?: boolean): Jaco;
+        /**
+        * 長音符をかなに置き換える
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        convertProlongedSoundMarks(): Jaco;
+        /**
+        * 繰り返し記号をかなに置き換える
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自信
+        */
+        convertIterationMarks(): Jaco;
+        /**
+        * 小書き文字を基底文字に変換する
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自身
+        */
+        toBasicLetter(): Jaco;
+        /**
+        * 小書き文字を含むかどうか
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return 小書き文字を含むかどうか
+        */
+        hasSmallLetter(): boolean;
+        /**
+        * よみの文字に変換する
+        * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+        *
+        * @version 1.1.0
+        * @since 1.1.0
+        * @return インスタンス自身
+        */
+        toPhoeticKana(): Jaco;
+        /**
+        * キーがパターン・値が置換文字列のハッシュマップによって置換する
+        *
+        * @version 0.1.1
+        * @since 0.1.0
+        * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
+        * @return インスタンス自身
+        */
+        replaceMap(convMap: {
+            [target: string]: string;
+        }): Jaco;
+        /**
         * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
         *
         * @version 0.2.0
@@ -523,35 +645,5 @@ declare module jaco {
         * @return インスタンス自身
         */
         private _shift(needle, shiftNum);
-        /**
-        * キーがパターン・値が置換文字列のハッシュマップによって置換する
-        *
-        * @version 0.6.0
-        * @since 0.1.0
-        * @param convMap キーがパターン・値が置換文字列のハッシュマップ
-        * @return インスタンス自身
-        */
-        replaceMap(...convMap: any[]): Jaco;
-        /**
-        * 【非推奨】文字列をパターンで置換する
-        * 同機能の`replace`メソッドを使う
-        *
-        * @deprecated 非推奨
-        * @version 0.1.0
-        * @since 0.1.0
-        * @param needle 対象のパターン
-        * @param replace 置換する文字列
-        * @return インスタンス自身
-        */
-        private _replace(needle, replace);
-        /**
-        * キーがパターン・値が置換文字列のハッシュマップによって置換する
-        *
-        * @version 0.6.0
-        * @since 0.1.0
-        * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
-        * @return インスタンス自身
-        */
-        private _replaceMap(convMap);
     }
 }

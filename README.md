@@ -1,7 +1,7 @@
 jaco
 ====
 
-Japanese character converter.
+Japanese Character Optimizer.
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
 [![Build Status](https://travis-ci.org/jaco-project/jaco-js.svg)](https://travis-ci.org/jaco-project/jaco-js)
@@ -12,7 +12,16 @@ Japanese character converter.
 
 This module optimize Japanese characters.
 
-Convert to Katakana from Hiragana mutually, or list by natural phonetic order, or convert to halfwidth from fullwidth mutually.
+Convert to Katakana from Hiragana mutually, or sort list by natural phonetic order, or convert to halfwidth from fullwidth mutually.
+
+## functions
+
+- Convert Hiragana <-> Katakana
+- Convert halfwidth <-> fullwidth
+- Check Hiragana, Katakana, halfwidth, fullwidth, and so on.
+- Sort by natural phonetic order.
+  - Supported voiced marks, prolonged sound marks, iteration marks.
+- Has compatible native string object API.
 
 ## install
 
@@ -88,6 +97,9 @@ name|return type
 ---|---
 [katakanize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#katakanize)|`string`
 [hiraganize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#hiraganize)|`string`
+hiraganaOnly|`boolean`
+katakanaOnly|`boolean`
+naturalKanaSort|`Array`
 
 ### Instance methods of Class Jaco
 
@@ -128,7 +140,20 @@ name|return type|bang|chainable
 [size](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#size)|`number`|✗|✗
 [byteSize](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#bytesize)|`number`|✗|✗
 [clone](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#clone)|`Jaco`|✓|✓
+toNarrowJapneseSymbol|`Jaco`|✓|✓
+toWideJapnese|`Jaco`|✓|✓
+toNarrow|`Jaco`|✓|✓
+toWide|`Jaco`|✓|✓
+addVoicedMarks|`Jaco`|✓|✓
+addSemivoicedMarks|`Jaco`|✓|✓
+removeVoicedMarks|`Jaco`|✓|✓
+convertProlongedSoundMarks|`Jaco`|✓|✓
+convertIterationMarks|`Jaco`|✓|✓
+toBasicLetter|`Jaco`|✓|✓
+hasSmallLetter|`boolean`|✗|✗
+toPhoeticKana|`Jaco`|✓|✓
+replaceMap|`Jaco`|✓|✓
 
 ## Documents
 
-http://jaco-project.github.io/docs/
+[http://jaco-project.github.io/docs/](http://jaco-project.github.io/docs/)

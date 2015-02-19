@@ -1,11 +1,11 @@
 {
   "name": "jaco",
-  "version": "1.0.1",
-  "homepage": "https://yusukehirao.github.io/jaco/",
+  "version": "1.1.0",
+  "homepage": "http://jaco-project.github.io/docs/",
   "authors": [
     "YusukeHirao"
   ],
-  "description": "Japanese character converter",
+  "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
   "keywords": [
     "japanese",

@@ -650,22 +650,6 @@ module jaco {
 		}
 
 		/**
-		* 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
-		*
-		* @version 0.2.0
-		* @since 0.1.0
-		* @param needle 対象のパターン
-		* @param shiftNum ずらす数値
-		* @return インスタンス自身
-		*/
-		private _shift (needle: RegExp, shiftNum: number): Jaco {
-			this._str = this._str.replace(needle, (char: string): string => {
-				return String.fromCharCode(char.charCodeAt(0) + shiftNum);
-			});
-			return this;
-		}
-
-		/**
 		* 濁点を追加する
 		*
 		* @version 1.1.0
@@ -893,6 +877,22 @@ module jaco {
 					this._str = this._str.replace(toRegExp(needle), replace);
 				}
 			}
+			return this;
+		}
+
+		/**
+		* 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+		*
+		* @version 0.2.0
+		* @since 0.1.0
+		* @param needle 対象のパターン
+		* @param shiftNum ずらす数値
+		* @return インスタンス自身
+		*/
+		private _shift (needle: RegExp, shiftNum: number): Jaco {
+			this._str = this._str.replace(needle, (char: string): string => {
+				return String.fromCharCode(char.charCodeAt(0) + shiftNum);
+			});
 			return this;
 		}
 
