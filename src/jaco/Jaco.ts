@@ -299,12 +299,12 @@ module jaco {
 		/**
 		* 該当の文字だけで構成されているかどうか
 		*
-		* @version 0.2.0
+		* @version 1.1.0
 		* @since 0.2.0
 		* @param characters 文字セット
 		* @return 結果の真偽
 		*/
-		public isOnly (characters: string): boolean {
+		public isOnly (characters: string | Jaco): boolean {
 			return this.test(new RegExp('^[' + characters + ']+$', 'gm'));
 		}
 
