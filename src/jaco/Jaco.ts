@@ -408,7 +408,7 @@ module jaco {
 		*/
 		public combinate (): Jaco {
 			// 濁点・半濁点を結合文字に変換
-			return this._replaceMap({
+			return this.replaceMap({
 				// 濁点
 				'\u309B': '\u3099',
 				// 半濁点
@@ -428,7 +428,7 @@ module jaco {
 			// 半角カタカナを全角カタカナへ
 			this.toWideKatakana();
 			// ヷヸヹヺの変換
-			this._replaceMap({
+			this.replaceMap({
 				'ヷ': 'わ゛',
 				'ヸ': 'ゐ゛',
 				'ヹ': 'ゑ゛',
@@ -487,7 +487,7 @@ module jaco {
 			// 半濁点の変換 (全角半濁点2種類対応)
 			this.replace(/\u309C|\u309A/g, '\uFF9F');
 			// カタカナの変換
-			this._replaceMap({
+			this.replaceMap({
 				'ァ': 'ｧ', 'ィ': 'ｨ', 'ゥ': 'ｩ', 'ェ': 'ｪ', 'ォ': 'ｫ', 'ャ': 'ｬ',
 				'ュ': 'ｭ', 'ョ': 'ｮ', 'ッ': 'ｯ',
 				'ヵ': 'ｶ', 'ヶ': 'ｹ',
@@ -522,7 +522,7 @@ module jaco {
 		*/
 		public toWideKatakana (): Jaco {
 			// カタカナ・濁点・半濁点の変換
-			this._replaceMap({
+			this.replaceMap({
 				'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
 				'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
 				'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
@@ -555,7 +555,7 @@ module jaco {
 		* @return インスタンス自身
 		*/
 		public toNarrowJapneseSymbol (): Jaco {
-			this._replaceMap({
+			this.replaceMap({
 				'。': '｡',
 				'「': '｢',
 				'」': '｣',
@@ -573,7 +573,7 @@ module jaco {
 		* @return インスタンス自身
 		*/
 		public toWideJapneseSymbol (): Jaco {
-			this._replaceMap({
+			this.replaceMap({
 				'｡': '。',
 				'｢': '「',
 				'｣': '」',
@@ -668,40 +668,12 @@ module jaco {
 		/**
 		* キーがパターン・値が置換文字列のハッシュマップによって置換する
 		*
-		* @version 0.6.0
-		* @since 0.1.0
-		* @param convMap キーがパターン・値が置換文字列のハッシュマップ
-		* @return インスタンス自身
-		*/
-		public replaceMap (...convMap: any[]): Jaco {
-			return this;
-		}
-
-		/**
-		* 【非推奨】文字列をパターンで置換する
-		* 同機能の`replace`メソッドを使う
-		*
-		* @deprecated 非推奨
-		* @version 0.1.0
-		* @since 0.1.0
-		* @param needle 対象のパターン
-		* @param replace 置換する文字列
-		* @return インスタンス自身
-		*/
-		private _replace (needle: RegExp, replace: string): Jaco {
-			this._str = this._str.replace(needle, replace);
-			return this;
-		}
-
-		/**
-		* キーがパターン・値が置換文字列のハッシュマップによって置換する
-		*
-		* @version 0.6.0
+		* @version 0.1.1
 		* @since 0.1.0
 		* @param  convMap キーがパターン・値が置換文字列のハッシュマップ
 		* @return インスタンス自身
 		*/
-		private _replaceMap (convMap: any): Jaco {
+		public replaceMap (convMap: { [target: string]: string; }): Jaco {
 			var needle: string;
 			var replace: string;
 			for (needle in convMap) {
