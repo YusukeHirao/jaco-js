@@ -417,6 +417,34 @@ describe('Jaco Class', function () {
 		a.combinate().toString().should.equal('ぱぴぷぺぽ');
 	});
 
+	// combinateSoundMarks(true)
+	it('濁点の結合文字化2', function () {
+		var a = new Jaco('か゛き゛く゛け゛こ゛');
+		a.combinateSoundMarks(true).toString().should.equal('がぎぐげご');
+	});
+	it('半濁点の結合文字化2', function () {
+		var a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
+		a.combinateSoundMarks(true).toString().should.equal('ぱぴぷぺぽ');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合', function () {
+		var a = new Jaco('か゛き゛く゛け゛こ゛');
+		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
+	});
+	it('濁点・半濁点の結合2', function () {
+		var a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
+		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
+	});
+	it('濁点・半濁点の結合3', function () {
+		var a = new Jaco('がぎぐげご');
+		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
+	});
+	it('濁点・半濁点の結合4', function () {
+		var a = new Jaco('ぱぴぷぺぽ');
+		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
+	});
+
 	// toHiragana()
 	it('ひらがなに変換', function () {
 		var a = new Jaco([

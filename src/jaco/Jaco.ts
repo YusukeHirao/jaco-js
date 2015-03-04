@@ -400,8 +400,12 @@ module jaco {
 		}
 
 		/**
-		* 濁点・半濁点を結合文字に変換
+		* [非推奨] 濁点・半濁点を結合文字に変換
 		*
+		* メソッド名変更およびAPI更新につき非推奨
+		*
+		* @deprecated v2.0.0削除予定
+		* @see [combinateSoundMarks](#combinatesoundmarks)
 		* @version 0.2.0
 		* @since 0.1.0
 		* @return インスタンス自身
@@ -414,6 +418,46 @@ module jaco {
 				// 半濁点
 				'\u309C': '\u309A'
 			});
+		}
+
+		/**
+		* 濁点・半濁点を結合するか、もしくは結合文字に変換
+		*
+		* @deprecated
+		* @version 1.2.0
+		* @since 1.2.0
+		* @return インスタンス自身
+		*/
+		public combinateSoundMarks (isConvertCombiningSoundMarks: boolean = false): Jaco {
+			if (!isConvertCombiningSoundMarks) {
+				// 濁点・半濁点を結合文字に変換
+				this.combinateSoundMarks(true);
+				// 濁点・半濁点を結合する
+				return this.replaceMap({
+					// 濁点
+					'か\u3099': 'が', 'き\u3099': 'ぎ', 'く\u3099': 'ぐ', 'け\u3099': 'げ', 'こ\u3099': 'ご',
+					'さ\u3099': 'ざ', 'し\u3099': 'じ', 'す\u3099': 'ず', 'せ\u3099': 'ぜ', 'そ\u3099': 'ぞ',
+					'た\u3099': 'だ', 'ち\u3099': 'ぢ', 'つ\u3099': 'づ', 'て\u3099': 'で', 'と\u3099': 'ど',
+					'は\u3099': 'ば', 'ひ\u3099': 'び', 'ふ\u3099': 'ぶ', 'へ\u3099': 'べ', 'ほ\u3099': 'ぼ',
+					'カ\u3099': 'ガ', 'キ\u3099': 'ギ', 'ク\u3099': 'グ', 'ケ\u3099': 'ゲ', 'コ\u3099': 'ゴ',
+					'サ\u3099': 'ザ', 'シ\u3099': 'ジ', 'ス\u3099': 'ズ', 'セ\u3099': 'ゼ', 'ソ\u3099': 'ゾ',
+					'タ\u3099': 'ダ', 'チ\u3099': 'ヂ', 'ツ\u3099': 'ヅ', 'テ\u3099': 'デ', 'ト\u3099': 'ド',
+					'ハ\u3099': 'バ', 'ヒ\u3099': 'ビ', 'フ\u3099': 'ブ', 'ヘ\u3099': 'ベ', 'ホ\u3099': 'ボ',
+					'ワ\u3099': 'ヷ', 'イ\u3099': 'ヸ', 'ウ\u3099': 'ヴ', 'エ\u3099': 'ヹ', 'ヺ\u3099': 'ヲ',
+					'ゝ\u3099': 'ゞ', 'ヽ\u3099': 'ヾ',
+					// 半濁点
+					'は\u309A': 'ぱ', 'ひ\u309A': 'ぴ', 'ふ\u309A': 'ぷ', 'へ\u309A': 'ぺ', 'ほ\u309A': 'ぽ',
+					'ハ\u309A': 'パ', 'ヒ\u309A': 'ピ', 'フ\u309A': 'プ', 'ヘ\u309A': 'ペ', 'ホ\u309A': 'ポ'
+				});
+			} else {
+				// 濁点・半濁点を結合文字に変換
+				return this.replaceMap({
+					// 濁点
+					'\u309B': '\u3099',
+					// 半濁点
+					'\u309C': '\u309A'
+				});
+			}
 		}
 
 		/**
@@ -438,7 +482,7 @@ module jaco {
 			this._shift(toPattern(KATAKANA_CHARS), -96);
 			// 濁点・半濁点を結合文字に変換
 			if (isCombinate) {
-				this.combinate();
+				this.combinateSoundMarks();
 			}
 			return this;
 		}
@@ -808,7 +852,7 @@ module jaco {
 		public toBasicLetter (): Jaco {
 			this
 				//
-				.combinate()
+				.combinateSoundMarks()
 				.replaceMap({
 					'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
 					'っ': 'つ',
