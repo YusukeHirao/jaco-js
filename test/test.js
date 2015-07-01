@@ -1492,11 +1492,11 @@ describe('jaco command', function () {
 	it('引数 -K と -f と テキストファイル', function(done) {
 		exec('./bin/jaco -K -f test/test.txt', function(error, stdout, stderr) {
 			var line = stdout.split(/[\n\r]+/);
-			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "katakanize" method\u001b[39m');
+			line[0].should.equal('test/test.txt - converting "katakanize" method');
 			line[1].should.equal('テスト');
 			line[2].should.equal('テスト');
 			line[3].should.equal('テスト');
-			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			line[4].should.equal('[EOF]');
 			should.not.exist(error);
 			done();
 		});
@@ -1505,11 +1505,11 @@ describe('jaco command', function () {
 	it('引数 -H と -f と テキストファイル', function(done) {
 		exec('./bin/jaco -H -f test/test.txt', function(error, stdout, stderr) {
 			var line = stdout.split(/[\n\r]+/);
-			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "hiraganize" method\u001b[39m');
+			line[0].should.equal('test/test.txt - converting "hiraganize" method');
 			line[1].should.equal('てすと');
 			line[2].should.equal('てすと');
 			line[3].should.equal('てすと');
-			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			line[4].should.equal('[EOF]');
 			should.not.exist(error);
 			done();
 		});
@@ -1518,11 +1518,11 @@ describe('jaco command', function () {
 	it('TODO: 引数 -H と -K 同時の -f ファイル変換', function(done) {
 		exec('./bin/jaco -H -K -f test/test.txt', function(error, stdout, stderr) {
 			var line = stdout.split(/[\n\r]+/);
-			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "katakanize" method\u001b[39m');
+			line[0].should.equal('test/test.txt - converting "katakanize" method');
 			line[1].should.equal('テスト');
 			line[2].should.equal('テスト');
 			line[3].should.equal('テスト');
-			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			line[4].should.equal('[EOF]');
 			should.not.exist(error);
 			done();
 		});
@@ -1531,11 +1531,11 @@ describe('jaco command', function () {
 	it('TODO: 引数 -H と -K 同時の -f ファイル変換（-H -K 引数反転 -K の優先の確認）', function(done) {
 		exec('./bin/jaco -K -H -f test/test.txt', function(error, stdout, stderr) {
 			var line = stdout.split(/[\n\r]+/);
-			line[0].should.equal('\u001b[32mtest/test.txt\u001b[39m\u001b[33m - converting "katakanize" method\u001b[39m');
+			line[0].should.equal('test/test.txt - converting "katakanize" method');
 			line[1].should.equal('テスト');
 			line[2].should.equal('テスト');
 			line[3].should.equal('テスト');
-			line[4].should.equal('\u001b[36m[EOF]\u001b[39m');
+			line[4].should.equal('[EOF]');
 			should.not.exist(error);
 			done();
 		});

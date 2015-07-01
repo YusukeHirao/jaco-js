@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
   "bin": "bin/jaco",
@@ -27,17 +27,18 @@
   },
   "homepage": "http://jaco-project.github.io/docs/",
   "dependencies": {
-    "colors": "^1.0.3",
-    "commander": "^2.6.0"
+    "colors": "^1.1.2",
+    "commander": "^2.8.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-dtsm": "^0.2.5",
-    "grunt-tslint": "^2.0.0",
-    "grunt-typescript": "^0.6.1",
-    "should": "^5.0.1"
+    "grunt-dtsm": "^0.2.9",
+    "grunt-tslint": "^2.3.1-beta",
+    "grunt-typescript": "^0.6.2",
+    "should": "^7.0.1",
+    "tslint": "^2.3.1-beta"
   }
 }
