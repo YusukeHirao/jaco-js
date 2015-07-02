@@ -1,4 +1,4 @@
-jaco
+![jaco](http://jaco-project.github.io/docs/jaco.png)
 ====
 
 Japanese Character Optimizer.
