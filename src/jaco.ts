@@ -886,22 +886,6 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
-		// 改行の一時退避
-		let rnUID = this._createBRUID('rn');
-		while (this.includes(rnUID)) {
-			rnUID = this._createBRUID('rn');
-		}
-		this.replace(/\n\r/g, rnUID);
-		let rUID = this._createBRUID('r');
-		while (this.includes(rUID)) {
-			rUID = this._createBRUID('r');
-		}
-		this.replace(/\r/g, rUID);
-		let nUID = this._createBRUID('n');
-		while (this.includes(nUID)) {
-			nUID = this._createBRUID('n');
-		}
-		this.replace(/\n/g, nUID);
 		// スペースの変換
 		this.replace(toPattern(SPACE_CHARS), ' ');
 		// 半角英数記号の変換
@@ -910,10 +894,6 @@ export default class Jaco {
 			// 日本語カタカナ記号の変換
 			this.toNarrowJapnese();
 		}
-		// 改行の復元
-		this.replace(new RegExp(`${rnUID}`, 'g'), '\n\r');
-		this.replace(new RegExp(`${rUID}`, 'g'), '\r');
-		this.replace(new RegExp(`${nUID}`, 'g'), '\n');
 		return this;
 	}
 
@@ -1287,14 +1267,6 @@ export default class Jaco {
 			pad.push(char);
 		}
 		return pad.join('');
-	}
-
-	/**
-	 * UIDの生成
-	 */
-	private _createBRUID (prefix: string): string {
-		const time = new Date().getTime().toString(36);
-		return `___${prefix}_${time}___`;
 	}
 
 }
