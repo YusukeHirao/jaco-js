@@ -697,15 +697,15 @@ describe('Jaco Class', function () {
 
 	// toNarrowJapneseSymbol()
 	it('日本語記号の半角化', function () {
-		var a = new Jaco('。「」、・');
-		var b = '｡｢｣､･';
+		var a = new Jaco('。（）「」、・');
+		var b = '｡()｢｣､･';
 		a.toNarrowJapneseSymbol().toString().should.equal(b);
 	});
 
 	// toWideJapneseSymbol()
 	it('日本語記号の全角化', function () {
-		var a = new Jaco('｡｢｣､･');
-		var b = '。「」、・';
+		var a = new Jaco('｡()｢｣､･');
+		var b = '。（）「」、・';
 		a.toWideJapneseSymbol().toString().should.equal(b);
 	});
 

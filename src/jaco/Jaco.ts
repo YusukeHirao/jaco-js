@@ -601,6 +601,8 @@ module jaco {
 		public toNarrowJapneseSymbol (): Jaco {
 			this.replaceMap({
 				'。': '｡',
+				'（': '(',
+				'）': ')',
 				'「': '｢',
 				'」': '｣',
 				'、': '､',
@@ -619,6 +621,8 @@ module jaco {
 		public toWideJapneseSymbol (): Jaco {
 			this.replaceMap({
 				'｡': '。',
+				'\\(': '（',
+				'\\)': '）',
 				'｢': '「',
 				'｣': '」',
 				'､': '、',
