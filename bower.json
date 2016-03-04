@@ -6,7 +6,7 @@
     "YusukeHirao"
   ],
   "description": "Japanese Character Optimizer.",
-  "main": "lib/jaco.js",
+  "main": "dist/jaco.min.js",
   "keywords": [
     "japanese",
     "javascript",
@@ -17,15 +17,15 @@
   ],
   "license": "MIT",
   "ignore": [
+    ".npmignore",
+    ".travis.yml",
     "bin",
-    "lib/jaco-cli.js",
-    "bower_components",
-    "gruntfile.coffee",
+    "lib",
+    "gulpfile.coffee",
     "node_modules",
     "src",
     "test",
-    "dtsm.json",
-    "tslint.json",
-    "typings"
+    "tsconfig.json",
+    "tslint.json"
   ]
 }
