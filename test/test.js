@@ -1,8 +1,9 @@
-var exec = require('child_process').exec;
-var should = require('should');
-var fs = require('fs');
-var jaco = require('../lib/jaco.js');
-var Jaco = jaco.Jaco;
+'use strict';
+
+import { exec } from 'child_process';
+import should from 'should';
+import * as fs from 'fs';
+import Jaco from '../lib/Jaco.js';
 
 describe('Jaco Class', function () {
 
@@ -11,10 +12,6 @@ describe('Jaco Class', function () {
 		var a = new Jaco('あ');
 		var b = new Jaco('あ');
 		a.should.not.equal(b);
-	});
-	it('newがなくてもコンストラクタとして機能する', function () {
-		var a = Jaco('あ');
-		(a instanceof Jaco).should.ok;
 	});
 
 	// toString()
@@ -32,7 +29,7 @@ describe('Jaco Class', function () {
 	// concat()
 	it('連結', function () {
 		var a = new Jaco('あ');
-		a.concat('い', new Jaco('う'), 'え', Jaco('お'));
+		a.concat('い', new Jaco('う'), 'え', new Jaco('お'));
 		a.toString().should.equal('あいうえお');
 	});
 
@@ -994,9 +991,9 @@ describe('Jaco Class', function () {
 
 });
 
-describe('jaco Module', function () {
+describe('Jaco Static Methods', function () {
 	it('半角を全角カタカナに変換', function () {
-		jaco.katakanize('ｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞ').should.equal('ガガガガガガガガ');
+		Jaco.katakanize('ｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞ').should.equal('ガガガガガガガガ');
 	});
 	it('ひらがなをカタカナに変換', function () {
 		var test = [
@@ -1009,7 +1006,7 @@ describe('jaco Module', function () {
 			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ'
 		].join('');
-		jaco.katakanize(test).should.equal(mean);
+		Jaco.katakanize(test).should.equal(mean);
 	});
 	it('カタカナをひらがなに変換', function () {
 		var test = [
@@ -1027,7 +1024,7 @@ describe('jaco Module', function () {
 			'やゆよらりるれろわんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺ',
 			'ぽわ゛ゐ゛ゔゑ゛を゛'
 		].join('');
-		jaco.hiraganize(test).should.equal(mean);
+		Jaco.hiraganize(test).should.equal(mean);
 	});
 	it('カタカナをひらがなに変換(濁点・半濁点を結合文字に変換)', function () {
 		var test = [
@@ -1045,13 +1042,13 @@ describe('jaco Module', function () {
 			'やゆよらりるれろわんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺ',
 			'ぽわ゙ゐ゙ゔゑ゙を゙'
 		].join('');
-		jaco.hiraganize(test, true).should.equal(mean);
+		Jaco.hiraganize(test, true).should.equal(mean);
 	});
 	it('カタカナをひらがなに変換', function () {
-		jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
+		Jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
 	});
 	it('カタカナをひらがなに変換', function () {
-		jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
+		Jaco.hiraganize('ガガガガガガガガ').should.equal('がががががががが');
 	});
 	it('五十音順ソート', function() {
 		var origin = [
@@ -1096,7 +1093,7 @@ describe('jaco Module', function () {
 			'みやこぐん',
 			'ちくじょうぐん'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'あさくらぐん',
 			'あさくらし',
@@ -1145,7 +1142,7 @@ describe('jaco Module', function () {
 			'あい゛',
 			'あい'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'あい',
 			'あい゛'
@@ -1156,7 +1153,7 @@ describe('jaco Module', function () {
 			'あい',
 			'あー'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'あー',
 			'あい'
@@ -1167,7 +1164,7 @@ describe('jaco Module', function () {
 			'かゞくのこ',
 			'がゝくのと'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'かゞくのこ',
 			'がゝくのと'
@@ -1180,7 +1177,7 @@ describe('jaco Module', function () {
 			'ぼぼほぼ',
 			'ほぼほほ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'ほぼほほ',
 			'ほぼほぼ',
@@ -1195,7 +1192,7 @@ describe('jaco Module', function () {
 			'ぼぼゝぼ',
 			'ほゞほゝ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'ほゞほゝ',
 			'ほぼゝぼ',
@@ -1230,7 +1227,7 @@ describe('jaco Module', function () {
 			'パあー',
 			'パあゝ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'はあー',
 			'ハあー',
@@ -1275,7 +1272,7 @@ describe('jaco Module', function () {
 			'オガサワラチビヒョウタンヒゲナガゾウムシ',
 			'パブロ・ディエゴ・ホセ・フランシスコ・デ・パウラ・ファン・ネポムセノ・マリア・デ・ロス・レメディオス・クリスピン・クリスピニャーノ・デ・ラ・サンテシマ・トリニダー・ルイス・イ・ピカソ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'オガサワラチビヒョウタンヒゲナガゾウムシ',
 			'キャプテン・ファンタスティック・ファースター・ザン・スーパーマン・スパイダーマン・バットマン・ウルヴァリン・ハルク・アンド・ザ・フラッシュ・コンバインド',
@@ -1320,7 +1317,7 @@ describe('jaco Module', function () {
 			'fはあゝ',
 			'９パあゝ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'0ばあゝ',
 			'1バあゝ',
@@ -1355,7 +1352,7 @@ describe('jaco Module', function () {
 			'あかカぁ',
 			'ァアァカ'
 		];
-		var sorted = jaco.naturalKanaSort(origin);
+		var sorted = Jaco.naturalKanaSort(origin);
 		sorted.should.eql([
 			'あぁああ',
 			'ああぁァ',
@@ -1365,7 +1362,7 @@ describe('jaco Module', function () {
 	});
 	it('五十音順ソート11(引数なし)', function(done) {
 		try {
-			var sorted = jaco.naturalKanaSort();
+			var sorted = Jaco.naturalKanaSort();
 		} catch (error) {
 			done();
 		}
