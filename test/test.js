@@ -3,7 +3,7 @@
 import { exec } from 'child_process';
 import should from 'should';
 import * as fs from 'fs';
-import Jaco from '../lib/Jaco.js';
+import Jaco from '../lib/jaco.js';
 
 describe('Jaco Class', function () {
 
