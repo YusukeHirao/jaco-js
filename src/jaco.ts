@@ -44,19 +44,13 @@ export default class Jaco {
 	 *
 	 * ```javascript
 	 * var a = new Jaco("あああ");
-	 *
-	 * // newなしでも生成できる
-	 * var b = Jaco("あああ");
 	 * ```
 	 *
-	 * @version 0.2.0
+	 * @version 2.0.0
 	 * @since 0.1.0
 	 * @param str 対象の文字列
 	 */
-	constructor (str: string | Jaco) {
-		// newつけずに呼んだ際はtrue
-		if (!(this instanceof Jaco)) {
-			return new Jaco(str);
+	constructor (str: any) { // tslint:disable-line:no-any
 		this.$ = `${str}`;
 		}
 
