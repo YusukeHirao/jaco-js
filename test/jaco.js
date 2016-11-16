@@ -9,6 +9,30 @@ describe('Jaco Class', () => {
 		a.should.not.equal(b);
 	});
 
+	// charAt()
+	it('抜き出し', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charAt().should.equal('𩸽');
+	});
+
+	// charAt()
+	it('抜き出し2', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charAt(0).should.equal('𩸽');
+	});
+
+	// charAt()
+	it('抜き出し3', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charAt(1).should.equal('の');
+	});
+
+	// charAt()
+	it('抜き出し4', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charAt(99).should.equal('');
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
