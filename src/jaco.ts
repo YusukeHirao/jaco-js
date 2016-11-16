@@ -207,6 +207,22 @@ export default class Jaco {
 	}
 
 	/**
+	 * 【未実装】Unicode 正規化形式を返す
+	 *
+	 * TODO: 日本語に関係する文字になるべく対応する
+	 *
+	 * - String.prototype.normalize とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param form 正規化形式の種類
+	 * @return マッチした文字列の配列
+	 */
+	public normalize (form: 'NFC' | 'NFD' | 'NFKC' | 'NFKD' = 'NFC'): Jaco {
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
