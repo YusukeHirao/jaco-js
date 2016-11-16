@@ -57,6 +57,13 @@ describe('Jaco Class', () => {
 		a.charCodeAt(99).should.be.eql(NaN);
 	});
 
+	// concat()
+	it('連結', () => {
+		const a = new Jaco('あ');
+		a.concat('い', new Jaco('う'), 'え', new Jaco('お'), ['か', new Jaco('き')]);
+		a.toString().should.equal('あいうえおかき');
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -67,13 +74,6 @@ describe('Jaco Class', () => {
 	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
 		const a = new Jaco('1');
 		(+a).should.equal(1);
-	});
-
-	// concat()
-	it('連結', () => {
-		const a = new Jaco('あ');
-		a.concat('い', new Jaco('う'), 'え', new Jaco('お'));
-		a.toString().should.equal('あいうえお');
 	});
 
 	// replace()

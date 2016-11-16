@@ -100,8 +100,8 @@ export default class Jaco {
 	 * @since 0.2.0
 	 * @return インスタンス自身
 	 */
-	public concat (...likeStrings: (Jaco | string)[]): Jaco {
-		this.$ += likeStrings.join('');
+	public concat (...args: (Jaco | string | Jaco[] | string[])[]): Jaco {
+		this.$ += args.map(str => Array.isArray(str) ? str.join('') : str).join('');
 		return this;
 	}
 
