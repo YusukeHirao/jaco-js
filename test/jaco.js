@@ -64,6 +64,30 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('あいうえおかき');
 	});
 
+	// endWith()
+	it('末尾合致 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.endWith('ひらき').should.ok;
+	});
+
+	// endWith()
+	it('末尾合致2 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.endWith('𩸽の').should.not.ok;
+	});
+
+	// endWith()
+	it('末尾合致3 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.endWith('ひら', 4).should.ok;
+	});
+
+	// endWith()
+	it('末尾合致4 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.endWith('𩸽の', 2).should.ok;
+	});
+
 	// lastIndexOf()
 	it('後方検索 ', () => {
 		const a = new Jaco('𩸽のひらき');

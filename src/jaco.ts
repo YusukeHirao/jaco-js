@@ -106,6 +106,26 @@ export default class Jaco {
 	}
 
 	/**
+	 * 引数に指定された別の文字列を末尾と合致するか
+	 *
+	 * - String.prototype.endWith とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param search 合致対象文字列
+	 * @param position 末尾の位置
+	 * @return インスタンス自身
+	 */
+	public endWith (search: string, position?: number): boolean {
+		if (!isFinite(position) || Math.floor(position) !== position || position > this.length) {
+			position = this.length;
+		}
+		position -= search.length;
+		const lastIndex = this.lastIndexOf(search, position);
+		return lastIndex !== -1 && lastIndex === position;
+	}
+
+	/**
 	 * 指定された文字が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
