@@ -52,7 +52,7 @@ export default class Jaco {
 	 */
 	constructor (str: any) { // tslint:disable-line:no-any
 		this.$ = `${str}`;
-		}
+	}
 
 	/**
 	 * 文字列から指定位置の文字を返す
@@ -66,6 +66,31 @@ export default class Jaco {
 	 */
 	public charAt (index: number = 0): string {
 		return this._toArray()[index] || '';
+	}
+
+	/**
+	 * Unicodeポイント値である負でない整数を返す
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.charCodeAt とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public charCodeAt (index: number = 0): number {
+		const char = this.charAt(index);
+		if (!char) {
+			return NaN;
+		}
+		if (char.length === 1) {
+			return char.charCodeAt(0);
+		} else {
+			const first = char.charCodeAt(0);
+			const second = char.charCodeAt(1);
+			const code = (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+			return code;
+		}
 	}
 
 	/**

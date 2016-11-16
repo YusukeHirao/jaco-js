@@ -33,6 +33,30 @@ describe('Jaco Class', () => {
 		a.charAt(99).should.equal('');
 	});
 
+	// charCodeAt()
+	it('コード抜き出し', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charCodeAt().should.equal(0x29E3D);
+	});
+
+	// charCodeAt()
+	it('コード抜き出し2', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charCodeAt(0).should.equal(0x29E3D);
+	});
+
+	// charCodeAt()
+	it('コード抜き出し3', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charCodeAt(1).should.equal(0x306e);
+	});
+
+	// charCodeAt()
+	it('コード抜き出し4', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.charCodeAt(99).should.be.eql(NaN);
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
