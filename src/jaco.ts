@@ -24,10 +24,10 @@ export default class Jaco {
 	/**
 	 * 保持する文字列
 	 *
-	 * @version 0.1.0
+	 * @version 2.0.0
 	 * @since 0.1.0
 	 */
-	private _str: string;
+	private $: string;
 
 	/**
 	 * コンストラクタ
@@ -47,8 +47,8 @@ export default class Jaco {
 		// newつけずに呼んだ際はtrue
 		if (!(this instanceof Jaco)) {
 			return new Jaco(str);
+		this.$ = `${str}`;
 		}
-		this._str = str.toString();
 	}
 
 	/**
@@ -59,7 +59,7 @@ export default class Jaco {
 	 * @return インスタンス自身が保持する文字列
 	 */
 	public toString (): string {
-		return this._str;
+		return this.$;
 	}
 
 	/**
@@ -81,7 +81,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public concat (...likeStrings: (Jaco | string)[]): Jaco {
-		this._str += likeStrings.join('');
+		this.$ += likeStrings.join('');
 		return this;
 	}
 
@@ -96,7 +96,7 @@ export default class Jaco {
 	 */
 	public replace (pattern: string | RegExp, replacement: string): Jaco {
 		// TODO: replaceメソッドの型が (string | RegExp) だとコンパイルエラー TSv2.0.0時点
-		this._str = this._str.replace(pattern as RegExp, replacement);
+		this.$ = this.$.replace(pattern as RegExp, replacement);
 		return this;
 	}
 
@@ -111,7 +111,7 @@ export default class Jaco {
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public slice (from: number, to?: number): Jaco {
-		return new Jaco(this._str.slice(from, to));
+		return new Jaco(this.$.slice(from, to));
 	}
 
 	/**
@@ -125,7 +125,7 @@ export default class Jaco {
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public substr (start: number, length?: number): Jaco {
-		return new Jaco(this._str.slice(start, length));
+		return new Jaco(this.$.slice(start, length));
 	}
 
 	/**
@@ -139,7 +139,7 @@ export default class Jaco {
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public substring (indexA: number, indexB: number): Jaco {
-		return new Jaco(this._str.substring(indexA, indexB));
+		return new Jaco(this.$.substring(indexA, indexB));
 	}
 
 	/**
@@ -150,7 +150,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toLowerCase (): Jaco {
-		this._str = this._str.toLowerCase();
+		this.$ = this.$.toLowerCase();
 		return this;
 	}
 
@@ -162,7 +162,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toUpperCase (): Jaco {
-		this._str = this._str.toUpperCase();
+		this.$ = this.$.toUpperCase();
 		return this;
 	}
 
@@ -199,7 +199,7 @@ export default class Jaco {
 	 * @return 文字列数
 	 */
 	public size (): number {
-		return this._str.length;
+		return this.$.length;
 	}
 
 	/**
@@ -210,7 +210,7 @@ export default class Jaco {
 	 * @return バイト数
 	 */
 	public byteSize (): number {
-		return encodeURIComponent(this._str).replace(/%../g, 'x').length;
+		return encodeURIComponent(this.$).replace(/%../g, 'x').length;
 	}
 
 	/**
@@ -221,7 +221,7 @@ export default class Jaco {
 	 * @return 結果の真偽
 	 */
 	public isEmpty (): boolean {
-		return this._str === '';
+		return this.$ === '';
 	}
 
 	/**
@@ -232,7 +232,7 @@ export default class Jaco {
 	 * @return コピー
 	 */
 	public clone (): Jaco {
-		return new Jaco(this._str);
+		return new Jaco(this.$);
 	}
 
 	/**
@@ -245,9 +245,9 @@ export default class Jaco {
 	 */
 	public test (pattern: string | RegExp): boolean {
 		if (typeof pattern === 'string') {
-			return this._str === pattern;
+			return this.$ === pattern;
 		} else {
-			return pattern.test(this._str);
+			return pattern.test(this.$);
 		}
 	}
 
@@ -264,7 +264,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public prepend (element: string | Jaco): Jaco {
-		this._str = new Jaco(element).concat(this).toString();
+		this.$ = new Jaco(element).concat(this).toString();
 		return this;
 	}
 
@@ -289,7 +289,7 @@ export default class Jaco {
 	 * @return 結果の真偽
 	 */
 	public is (target: string | Jaco): boolean {
-		return this._str === target.toString();
+		return this.$ === target.toString();
 	}
 
 	/**
@@ -301,7 +301,7 @@ export default class Jaco {
 	 * @return 結果の真偽
 	 */
 	public has (target: string | Jaco): boolean {
-		return this._str.indexOf(target.toString()) !== -1;
+		return this.$.indexOf(target.toString()) !== -1;
 	}
 
 	/**
@@ -367,7 +367,7 @@ export default class Jaco {
 	 * @return 数値
 	 */
 	public toNumber (): number {
-		return parseFloat(this._str);
+		return parseFloat(this.$);
 	}
 
 	/**
@@ -779,7 +779,7 @@ export default class Jaco {
 	 */
 	public convertProlongedSoundMarks (): Jaco {
 		const kanaWithProlongedSoundMarksPattern: RegExp = new RegExp('[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー');
-		let converted: string = this._str;
+		let converted: string = this.$;
 		const conv: (_str: string) => string = (_str: string): string => {
 			_str = _str.replace(/([あぁかゕがさざただなはばぱまやゃらわゎ])ー/g, '$1あ')
 				.replace(/([いぃきぎしじちぢにひびぴみりゐ])ー/g, '$1い')
@@ -800,7 +800,7 @@ export default class Jaco {
 		while (kanaWithProlongedSoundMarksPattern.test(converted)) {
 			converted = conv(converted);
 		}
-		this._str = converted;
+		this.$ = converted;
 		return this;
 	}
 
@@ -847,8 +847,8 @@ export default class Jaco {
 				return beforeString + converted;
 			});
 		};
-		while (kanaWithIterationMarks.test(this._str)) {
-			this._str = conv(this._str);
+		while (kanaWithIterationMarks.test(this.$)) {
+			this.$ = conv(this.$);
 		}
 		return this;
 	}
@@ -891,7 +891,7 @@ export default class Jaco {
 	 * @return 小書き文字を含むかどうか
 	 */
 	public hasSmallLetter (): boolean {
-		return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this._str);
+		return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this.$);
 	}
 
 	/**
@@ -927,7 +927,7 @@ export default class Jaco {
 		for (const needle in convMap) {
 			if (convMap.hasOwnProperty(needle)) {
 				const replace: string = convMap[needle];
-				this._str = this._str.replace(new RegExp(needle, 'g'), replace);
+				this.$ = this.$.replace(new RegExp(needle, 'g'), replace);
 			}
 		}
 		return this;
@@ -943,7 +943,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	private _shift (needle: RegExp, shiftNum: number): Jaco {
-		this._str = this._str.replace(needle, (char: string): string => {
+		this.$ = this.$.replace(needle, (char: string): string => {
 			return String.fromCharCode(char.charCodeAt(0) + shiftNum);
 		});
 		return this;
