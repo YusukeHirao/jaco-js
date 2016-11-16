@@ -1,4 +1,4 @@
-import Jaco from '../jaco';
+import naturalKanaOrder from './naturalKanaOrder';
 
 /**
  * 配列の五十音順ソートをする
@@ -10,5 +10,5 @@ import Jaco from '../jaco';
  * @return 五十音順にソートされた配列
  */
 export default function (array: string[]): string[] {
-	return array.sort(Jaco.naturalKanaOrder);
+	return array.sort(naturalKanaOrder);
 }

@@ -1,20 +1,12 @@
 import { ALPHANUMERIC_CHARS_WITH_SIGN } from './const/ALPHANUMERIC_CHARS_WITH_SIGN';
-// import { ALPHA_CHARS } from './const/ALPHA_CHARS';
-// import { DIGIT_CAHRS } from './const/DIGIT_CAHRS';
 import { FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN } from './const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN';
-// import { FULLWIDTH_ALPHA_CHARS } from './const/FULLWIDTH_ALPHA_CHARS';
-// import { FULLWIDTH_DIGIT_CHARS } from './const/FULLWIDTH_DIGIT_CHARS';
-// import { FULLWIDTH_SING_CHARS } from './const/FULLWIDTH_SING_CHARS';
 import { HIRAGANA_CHARS } from './const/HIRAGANA_CHARS';
 import { HIRAGANA_CHARS_IGNORE_ITERATION_MARKS } from './const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS';
-// import { JAPANESE_SIGN_CHARS } from './const/JAPANESE_SIGN_CHARS';
 import { KANA_COMMON_CAHRS } from './const/KANA_COMMON_CAHRS';
 import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
 import { KATAKANA_CHARS_IGNORE_ITERATION_MARKS } from './const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS';
-// import { NARROW_JAPANESE_SIGN_CHARS } from './const/NARROW_JAPANESE_SIGN_CHARS';
-// import { NARROW_KATAKANA_CHARS } from './const/NARROW_KATAKANA_CHARS';
-// import { SIGN_CHARS } from './const/SIGN_CHARS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
+import toPattern from './fn/toPattern';
 
 /**
  * ## Jacoクラス
@@ -28,6 +20,14 @@ import { SPACE_CHARS } from './const/SPACE_CHARS';
  * @since 0.1.0
  */
 export default class Jaco {
+
+	/**
+	 * 保持する文字列
+	 *
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 */
+	private _str: string;
 
 	/**
 	 * コンストラクタ
@@ -76,11 +76,11 @@ export default class Jaco {
 	/**
 	 * 文字列連結をおこなう
 	 *
-	 * @version 0.2.0
+	 * @version 2.0.0
 	 * @since 0.2.0
 	 * @return インスタンス自身
 	 */
-	public concat (...likeStrings: any[]): Jaco {
+	public concat (...likeStrings: (Jaco | string)[]): Jaco {
 		this._str += likeStrings.join('');
 		return this;
 	}
@@ -88,15 +88,15 @@ export default class Jaco {
 	/**
 	 * 文字列をパターンで置換する
 	 *
-	 * @version 0.2.0
+	 * @version 2.0.0
 	 * @since 0.2.0
 	 * @param pattern  対象のパターン
 	 * @param replacement 置換する文字列
 	 * @return インスタンス自身
 	 */
 	public replace (pattern: string | RegExp, replacement: string): Jaco {
-		// TODO: replaceメソッドの型が (string | RexExp) だとコンパイルエラー TSv1.4.1時点
-		this._str = this._str.replace(<RegExp> pattern, replacement);
+		// TODO: replaceメソッドの型が (string | RegExp) だとコンパイルエラー TSv2.0.0時点
+		this._str = this._str.replace(pattern as RegExp, replacement);
 		return this;
 	}
 
@@ -348,7 +348,7 @@ export default class Jaco {
 	 * @return 結果の真偽
 	 */
 	public isNumeric (negative: boolean = true, floatingPoint: boolean = true): boolean {
-		let pattern: string = '^';
+		let pattern = '^';
 		if (negative) {
 			pattern += '-?';
 		}
@@ -356,7 +356,7 @@ export default class Jaco {
 			pattern += '(?:[0-9]*\\.)?';
 		}
 		pattern += '[0-9]+$';
-		return this.test(toRegExp(pattern));
+		return this.test(new RegExp(pattern));
 	}
 
 	/**
@@ -424,7 +424,7 @@ export default class Jaco {
 			// 濁点
 			'\u309B': '\u3099',
 			// 半濁点
-			'\u309C': '\u309A'
+			'\u309C': '\u309A',
 		});
 	}
 
@@ -455,7 +455,7 @@ export default class Jaco {
 				'ゝ\u3099': 'ゞ', 'ヽ\u3099': 'ヾ',
 				// 半濁点
 				'は\u309A': 'ぱ', 'ひ\u309A': 'ぴ', 'ふ\u309A': 'ぷ', 'へ\u309A': 'ぺ', 'ほ\u309A': 'ぽ',
-				'ハ\u309A': 'パ', 'ヒ\u309A': 'ピ', 'フ\u309A': 'プ', 'ヘ\u309A': 'ペ', 'ホ\u309A': 'ポ'
+				'ハ\u309A': 'パ', 'ヒ\u309A': 'ピ', 'フ\u309A': 'プ', 'ヘ\u309A': 'ペ', 'ホ\u309A': 'ポ',
 			});
 		} else {
 			// 濁点・半濁点を結合文字に変換
@@ -463,7 +463,7 @@ export default class Jaco {
 				// 濁点
 				'\u309B': '\u3099',
 				// 半濁点
-				'\u309C': '\u309A'
+				'\u309C': '\u309A',
 			});
 		}
 	}
@@ -484,7 +484,7 @@ export default class Jaco {
 			'ヷ': 'わ゛',
 			'ヸ': 'ゐ゛',
 			'ヹ': 'ゑ゛',
-			'ヺ': 'を゛'
+			'ヺ': 'を゛',
 		});
 		// カタカナをひらがなへ(Unicodeの番号をずらす)
 		this._shift(toPattern(KATAKANA_CHARS), -96);
@@ -560,7 +560,7 @@ export default class Jaco {
 			'ダ': 'ﾀﾞ', 'ヂ': 'ﾁﾞ', 'ヅ': 'ﾂﾞ', 'デ': 'ﾃﾞ', 'ド': 'ﾄﾞ',
 			'バ': 'ﾊﾞ', 'ビ': 'ﾋﾞ', 'ブ': 'ﾌﾞ', 'ベ': 'ﾍﾞ', 'ボ': 'ﾎﾞ',
 			'パ': 'ﾊﾟ', 'ピ': 'ﾋﾟ', 'プ': 'ﾌﾟ', 'ペ': 'ﾍﾟ', 'ポ': 'ﾎﾟ',
-			'ヷ': 'ﾜﾞ', 'ヸ': 'ｲﾞ', 'ヴ': 'ｳﾞ', 'ヹ': 'ｴﾞ', 'ヺ': 'ｦﾞ'
+			'ヷ': 'ﾜﾞ', 'ヸ': 'ｲﾞ', 'ヴ': 'ｳﾞ', 'ヹ': 'ｴﾞ', 'ヺ': 'ｦﾞ',
 		});
 		return this;
 	}
@@ -594,7 +594,7 @@ export default class Jaco {
 			'ﾏ': 'マ', 'ﾐ': 'ミ', 'ﾑ': 'ム', 'ﾒ': 'メ', 'ﾓ': 'モ',
 			'ﾔ': 'ヤ', 'ﾕ': 'ユ', 'ﾖ': 'ヨ',
 			'ﾗ': 'ラ', 'ﾘ': 'リ', 'ﾙ': 'ル', 'ﾚ': 'レ', 'ﾛ': 'ロ',
-			'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン'
+			'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン',
 		});
 		return this;
 	}
@@ -612,7 +612,7 @@ export default class Jaco {
 			'「': '｢',
 			'」': '｣',
 			'、': '､',
-			'・': '･'
+			'・': '･',
 		});
 		return this;
 	}
@@ -630,7 +630,7 @@ export default class Jaco {
 			'｢': '「',
 			'｣': '」',
 			'､': '、',
-			'･': '・'
+			'･': '・',
 		});
 		return this;
 	}
@@ -722,7 +722,7 @@ export default class Jaco {
 			'タ': 'ダ', 'チ': 'ヂ', 'ツ': 'ヅ', 'テ': 'デ', 'ト': 'ド',
 			'ハ': 'バ', 'ヒ': 'ビ', 'フ': 'ブ', 'ヘ': 'ベ', 'ホ': 'ボ',
 			'ワ': 'ヷ', 'イ': 'ヸ', 'ウ': 'ヴ', 'エ': 'ヹ', 'ヺ': 'ヲ',
-			'ゝ': 'ゞ', 'ヽ': 'ヾ'
+			'ゝ': 'ゞ', 'ヽ': 'ヾ',
 		});
 	}
 
@@ -736,7 +736,7 @@ export default class Jaco {
 	public addSemivoicedMarks (): Jaco {
 		return this.replaceMap({
 			'は': 'ぱ', 'ひ': 'ぴ', 'ふ': 'ぷ', 'へ': 'ぺ', 'ほ': 'ぽ',
-			'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ'
+			'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ',
 		});
 	}
 
@@ -766,7 +766,7 @@ export default class Jaco {
 			'バ': 'ハ', 'ビ': 'ヒ', 'ブ': 'フ', 'ベ': 'ヘ', 'ボ': 'ホ',
 			'パ': 'ハ', 'ピ': 'ヒ', 'プ': 'フ', 'ペ': 'ヘ', 'ポ': 'ホ',
 			'ヷ': 'ワ', 'ヸ': 'イ', 'ヴ': 'ウ', 'ヹ': 'エ', 'ヺ': 'ヲ',
-			'ゞ': 'ゝ', 'ヾ': 'ヽ'
+			'ゞ': 'ゝ', 'ヾ': 'ヽ',
 		});
 	}
 
@@ -878,7 +878,7 @@ export default class Jaco {
 				'ㇺ': 'ム',
 				'ャ': 'ヤ', 'ュ': 'ユ', 'ョ': 'ヨ',
 				'ㇻ': 'ラ', 'ㇼ': 'リ', 'ㇽ': 'ル', 'ㇾ': 'レ', 'ㇿ': 'ロ',
-				'ヮ': 'ワ'
+				'ヮ': 'ワ',
 			});
 		return this;
 	}
@@ -918,7 +918,7 @@ export default class Jaco {
 	/**
 	 * キーがパターン・値が置換文字列のハッシュマップによって置換する
 	 *
-	 * @version 0.1.1
+	 * @version 2.0.0
 	 * @since 0.1.0
 	 * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
 	 * @return インスタンス自身
@@ -927,7 +927,7 @@ export default class Jaco {
 		for (const needle in convMap) {
 			if (convMap.hasOwnProperty(needle)) {
 				const replace: string = convMap[needle];
-				this._str = this._str.replace(toRegExp(needle), replace);
+				this._str = this._str.replace(new RegExp(needle, 'g'), replace);
 			}
 		}
 		return this;
@@ -948,136 +948,4 @@ export default class Jaco {
 		});
 		return this;
 	}
-
-}
-
-/**
- * キャラクターリストを正規表現に変換する
- *
- * @version 0.1.0
- * @since 0.1.0
- * @param chars 文字の集合
- * @return 正規表現化された文字セット
- */
-function toPattern (chars: string): RegExp {
-	'use strict';
-	return new RegExp('[' + chars + ']', 'g');
-}
-
-/**
- * 文字列を正規表現に変換する
- *
- * @version 0.1.0
- * @since 0.1.0
- * @param str 対象の文字列
- * @param option 正規表現のオプション `"i"`:小大文字無視 `"g"`:すべてにマッチ `"m"`:複数行にマッチ
- * @return 正規表現化された文字
- */
-function toRegExp (str: string, option: string = 'igm'): RegExp {
-	'use strict';
-	return new RegExp(str, option);
-}
-
-/**
- * ソートのために内部コードを擬似的に置き換える フェーズ2
- *
- * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
- *
- * @version 1.1.0
- * @since 1.1.0
- * @param string 変換する文字（一文字しか受け取らない予定）
- * @return 変換された文字列
- */
-function convertNaturalKanaOrderNumberPhase2 (str: string): string {
-	'use strict';
-	// naturalKanaOrder関数で使用される場合は str は一文字想定
-	const result: string = str
-		.replace('ー', '0')
-		.replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/, ($0: string): string => {
-			return $0.charCodeAt(0).toString(16);
-		})
-		.replace('ゝ', '4000')
-		.replace('ヽ', '4001')
-		.replace('ゞ', '4002')
-		.replace('ヾ', '4003')
-		// この時点で4桁の数字になっている
-		.replace(/[^0-9]/, '9000');
-	return result;
-}
-
-/**
- * ソートのために内部コードを擬似的に置き換える フェーズ1
- *
- * 「あ」「い」「う」「え」「お」
- * 「か」「き」「く」「け」「こ」
- * 「さ」「し」「す」「せ」「そ」
- * 「た」「ち」「つ」「て」「と」
- * 「な」「に」「ぬ」「ね」「の」
- * 「は」「ひ」「ふ」「へ」「ほ」
- * 「ま」「み」「む」「め」「も」
- * 「や」「ゆ」「よ」
- * 「ら」「り」「る」「れ」「ろ」
- * 「わ」「ゐ」「ゑ」「を」「ん」
- * 「ゝ」「ー」
- * 上記の順にならぶように擬似的に文字のコード数値を変換する
- *
- * @version 1.1.0
- * @since 1.1.0
- * @param string 変換する文字列
- * @return 変換された文字列
- */
-function convertNaturalKanaOrderNumberPhase1 (str: string): string {
-	'use strict';
-	return new Jaco(str).replaceMap({
-		'あ': '\u3041',
-		'い': '\u3042',
-		'う': '\u3043',
-		'え': '\u3044',
-		'お': '\u3045',
-		'か': '\u3046',
-		'き': '\u3047',
-		'く': '\u3048',
-		'け': '\u3049',
-		'こ': '\u304A',
-		'さ': '\u304B',
-		'し': '\u304C',
-		'す': '\u304D',
-		'せ': '\u304E',
-		'そ': '\u304F',
-		'た': '\u3050',
-		'ち': '\u3052',
-		'つ': '\u3053',
-		'て': '\u3054',
-		'と': '\u3055',
-		'な': '\u3056',
-		'に': '\u3057',
-		'ぬ': '\u3058',
-		'ね': '\u3059',
-		'の': '\u305A',
-		'は': '\u305B',
-		'ひ': '\u305C',
-		'ふ': '\u305D',
-		'へ': '\u305E',
-		'ほ': '\u305F',
-		'ま': '\u3060',
-		'み': '\u3061',
-		'む': '\u3062',
-		'め': '\u3063',
-		'も': '\u3064',
-		'や': '\u3065',
-		'ゆ': '\u3066',
-		'よ': '\u3067',
-		'ら': '\u3068',
-		'り': '\u3069',
-		'る': '\u306A',
-		'れ': '\u306B',
-		'ろ': '\u306C',
-		'わ': '\u306D',
-		'ゐ': '\u306E',
-		'ゑ': '\u306F',
-		'を': '\u3070',
-		'ん': '\u3071',
-		'ゝ': '\u3072',
-		'ー': '\u3073'
-	}).toString();
 }

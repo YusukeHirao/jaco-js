@@ -1,18 +1,98 @@
+/**!
+* jaco - v2.0.0
+* revision: d7a51b987e39e80c093b0aeea0586a8595f9bdb7
+* update: 2016-11-16
+* Author: YusukeHirao []
+* Github: git@github.com:jaco-project/jaco-js.git
+* License: Licensed under the MIT License
+*/
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// identity function for calling harmory imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+
+/******/ 	// define getter function for harmory exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		Object.defineProperty(exports, name, {
+/******/ 			configurable: false,
+/******/ 			enumerable: true,
+/******/ 			get: getter
+/******/ 		});
+/******/ 	};
+
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ALPHANUMERIC_CHARS_WITH_SIGN_1 = require("./const/ALPHANUMERIC_CHARS_WITH_SIGN");
-var FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1 = require("./const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN");
-var HIRAGANA_CHARS_1 = require("./const/HIRAGANA_CHARS");
-var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1 = require("./const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS");
-var KANA_COMMON_CAHRS_1 = require("./const/KANA_COMMON_CAHRS");
-var KATAKANA_CHARS_1 = require("./const/KATAKANA_CHARS");
-var KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1 = require("./const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS");
-var SPACE_CHARS_1 = require("./const/SPACE_CHARS");
-var toPattern_1 = require("./fn/toPattern");
+var ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(7);
+var FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(8);
+var HIRAGANA_CHARS_1 = __webpack_require__(9);
+var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(10);
+var KANA_COMMON_CAHRS_1 = __webpack_require__(11);
+var KATAKANA_CHARS_1 = __webpack_require__(12);
+var KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(13);
+var SPACE_CHARS_1 = __webpack_require__(14);
+var toPattern_1 = __webpack_require__(15);
 /**
  * ## Jacoクラス
  *
@@ -1059,3 +1139,487 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @since 0.1.0
  */
 exports.default = Jaco;
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var jaco_1 = __webpack_require__(0);
+/**
+ * ひらがなだけで構成されているかどうか
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param str 対象の文字列
+ * @return ひらがなだけで構成されているかどうか
+ */
+function default_1(str) {
+  return new jaco_1.default(str).isOnlyHiragana();
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * ひらがなだけで構成されているかどうか
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param str 対象の文字列
+ * @return ひらがなだけで構成されているかどうか
+ */
+exports.default = default_1;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var jaco_1 = __webpack_require__(0);
+var hiraganaOnly_1 = __webpack_require__(1);
+/**
+ * 配列の五十音順ソートをするためのソート関数
+ * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param string Array.prototype.sort から渡される配列要素
+ * @param string Array.prototype.sort から渡される配列要素
+ * @return 比較数値
+ */
+function default_1(a, b) {
+    // 完全に一致ならば比較の必要なし
+    if (a === b) {
+        return 0;
+    }
+    var _a = new jaco_1.default(a).toNarrow().toPhoeticKana();
+    var _b = new jaco_1.default(b).toNarrow().toPhoeticKana();
+    var _tmpA = void 0; // tempString
+    var _tmpB = void 0; // tempString
+    var phoneticA = _a.toString();
+    var phoneticB = _b.toString();
+    var unvoicedA = _a.removeVoicedMarks(true).toString();
+    var unvoicedB = _b.removeVoicedMarks(true).toString();
+    var codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);
+    var codeB = _convertNaturalKanaOrderNumberPhase1(unvoicedB);
+    var l = Math.max(a.length, b.length);
+    var rSpecificPhoneticSign = /[ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ]/;
+    // 濁音・半濁音をのぞいたよみがなで比較
+    if (codeA < codeB) {
+        return -1;
+    } else if (codeA > codeB) {
+        return 1;
+    } else {
+        // 上記比較が全く同じであれば
+        // 一文字ずつ比較する
+        for (var i = 0; i < l; i++) {
+            if (rSpecificPhoneticSign.test(a[i]) || rSpecificPhoneticSign.test(b[i])) {
+                // 片方が「ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ」に該当する場合
+                _tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
+                _tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
+                if (_tmpA < _tmpB) {
+                    return -1;
+                } else if (_tmpA > _tmpB) {
+                    return 1;
+                }
+            } else {
+                // 平音・濁音・半濁音で比較
+                if (phoneticA[i] < phoneticB[i]) {
+                    return -1;
+                } else if (phoneticB[i] < phoneticA[i]) {
+                    return 1;
+                }
+            }
+        }
+        // もう一度、頭から一文字ずつ比較する
+        for (var _i = 0; _i < l; _i++) {
+            // ひらがな・カタカナで比較
+            _tmpA = hiraganaOnly_1.default(a[_i]) ? '0' : '1';
+            _tmpB = hiraganaOnly_1.default(b[_i]) ? '0' : '1';
+            if (_tmpA < _tmpB) {
+                return -1;
+            } else if (_tmpA > _tmpB) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 配列の五十音順ソートをするためのソート関数
+ * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param string Array.prototype.sort から渡される配列要素
+ * @param string Array.prototype.sort から渡される配列要素
+ * @return 比較数値
+ */
+exports.default = default_1;
+/**
+ * ソートのために内部コードを擬似的に置き換える フェーズ2
+ *
+ * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
+ *
+ * @version 1.1.0
+ * @since 1.1.0
+ * @param string 変換する文字（一文字しか受け取らない予定）
+ * @return 変換された文字列
+ */
+function _convertNaturalKanaOrderNumberPhase2(str) {
+    // naturalKanaOrder関数で使用される場合は str は一文字想定
+    var result = str.replace('ー', '0').replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/, function ($0) {
+        return $0.charCodeAt(0).toString(16);
+    }).replace('ゝ', '4000').replace('ヽ', '4001').replace('ゞ', '4002').replace('ヾ', '4003').replace(/[^0-9]/, '9000');
+    return result;
+}
+/**
+ * ソートのために内部コードを擬似的に置き換える フェーズ1
+ *
+ * 「あ」「い」「う」「え」「お」
+ * 「か」「き」「く」「け」「こ」
+ * 「さ」「し」「す」「せ」「そ」
+ * 「た」「ち」「つ」「て」「と」
+ * 「な」「に」「ぬ」「ね」「の」
+ * 「は」「ひ」「ふ」「へ」「ほ」
+ * 「ま」「み」「む」「め」「も」
+ * 「や」「ゆ」「よ」
+ * 「ら」「り」「る」「れ」「ろ」
+ * 「わ」「ゐ」「ゑ」「を」「ん」
+ * 「ゝ」「ー」
+ * 上記の順にならぶように擬似的に文字のコード数値を変換する
+ *
+ * @version 1.1.0
+ * @since 1.1.0
+ * @param string 変換する文字列
+ * @return 変換された文字列
+ */
+function _convertNaturalKanaOrderNumberPhase1(str) {
+    return new jaco_1.default(str).replaceMap({
+        'あ': "\u3041", 'い': "\u3042", 'う': "\u3043", 'え': "\u3044", 'お': "\u3045",
+        'か': "\u3046", 'き': "\u3047", 'く': "\u3048", 'け': "\u3049", 'こ': "\u304A",
+        'さ': "\u304B", 'し': "\u304C", 'す': "\u304D", 'せ': "\u304E", 'そ': "\u304F",
+        'た': "\u3050", 'ち': "\u3052", 'つ': "\u3053", 'て': "\u3054", 'と': "\u3055",
+        'な': "\u3056", 'に': "\u3057", 'ぬ': "\u3058", 'ね': "\u3059", 'の': "\u305A",
+        'は': "\u305B", 'ひ': "\u305C", 'ふ': "\u305D", 'へ': "\u305E", 'ほ': "\u305F",
+        'ま': "\u3060", 'み': "\u3061", 'む': "\u3062", 'め': "\u3063", 'も': "\u3064",
+        'や': "\u3065", 'ゆ': "\u3066", 'よ': "\u3067",
+        'ら': "\u3068", 'り': "\u3069", 'る': "\u306A", 'れ': "\u306B", 'ろ': "\u306C",
+        'わ': "\u306D", 'ゐ': "\u306E", 'ゑ': "\u306F", 'を': "\u3070", 'ん': "\u3071",
+        'ゝ': "\u3072", 'ー': "\u3073"
+    }).toString();
+}
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var jaco_1 = __webpack_require__(0);
+/**
+ * ひらがな化
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param isCombinate 濁点・半濁点を結合文字にするかどうか
+ * @return ひらがな化された文字列
+ */
+function default_1(str) {
+  var isCombinate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  return new jaco_1.default(str).toHiragana(isCombinate).toString();
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * ひらがな化
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param isCombinate 濁点・半濁点を結合文字にするかどうか
+ * @return ひらがな化された文字列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var jaco_1 = __webpack_require__(0);
+/**
+ * カタカナだけで構成されているかどうか
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param str 対象の文字列
+ * @return カタカナだけで構成されているかどうか
+ */
+function default_1(str) {
+  return new jaco_1.default(str).isOnlyKatakana();
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * カタカナだけで構成されているかどうか
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param str 対象の文字列
+ * @return カタカナだけで構成されているかどうか
+ */
+exports.default = default_1;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var jaco_1 = __webpack_require__(0);
+/**
+ * カタカナ化
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param isCombinate 濁点・半濁点を結合文字にするかどうか
+ * @return カタカナ化された文字列
+ */
+function default_1(str) {
+  var toWide = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+  return new jaco_1.default(str).toKatakana(toWide).toString();
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * カタカナ化
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param isCombinate 濁点・半濁点を結合文字にするかどうか
+ * @return カタカナ化された文字列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var naturalKanaOrder_1 = __webpack_require__(2);
+/**
+ * 配列の五十音順ソートをする
+ * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param array 対象の配列
+ * @return 五十音順にソートされた配列
+ */
+function default_1(array) {
+  return array.sort(naturalKanaOrder_1.default);
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 配列の五十音順ソートをする
+ * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param array 対象の配列
+ * @return 五十音順にソートされた配列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * 半角英数記号
+ *
+ * [!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]
+ *
+ */
+
+exports.ALPHANUMERIC_CHARS_WITH_SIGN = "\\u0020-\\u007E";
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * 全角英数記号
+ *
+ * [！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～]
+ *
+ */
+
+exports.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN = "\\uFF01-\\uFF5F";
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * ひらがな
+ *
+ * [ぁ-ゖゝ-ゟ]
+ *
+ */
+
+exports.HIRAGANA_CHARS = "\\u3041-\\u3096\\u309D-\\u309F";
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * ひらがな（繰り返し記号・合字なし）
+ *
+ * [ぁ-ゖ]
+ *
+ */
+
+exports.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = "\\u3041-\\u3096";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * 濁点／半濁点(結合文字含む)・長音符
+ *
+ * [゛゜ー]
+ *
+ */
+
+exports.KANA_COMMON_CAHRS = "\u3099-\u309C\u30FC";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * カタカナ
+ *
+ * [ァ-ヺヽ-ヿ]
+ *
+ */
+
+exports.KATAKANA_CHARS = "\\u30A1-\\u30FA\\u30FD\\u30FF";
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * カタカナ（繰り返し記号・合字なし）
+ *
+ * [ァ-ヺ]
+ *
+ */
+
+exports.KATAKANA_CHARS_IGNORE_ITERATION_MARKS = "\\u30A1-\\u30FA";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * スペース
+ *
+ * 仕様上、実際には「\u0009\u0020\u00A0\u2002〜\u200B\u3000\uFEFF'」すべて「\s」に含まれる
+ *
+ */
+
+exports.SPACE_CHARS = "\\s\\n\\t\\u0009\\u0020\\u00A0\\u2002-\\u200B\\u3000\\uFEFF";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * キャラクターリストを正規表現に変換する
+ *
+ * @version 0.1.0
+ * @since 0.1.0
+ * @param chars 文字の集合
+ * @return 正規表現化された文字セット
+ */
+
+function default_1(chars) {
+  return new RegExp('[' + chars + ']', 'g');
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * キャラクターリストを正規表現に変換する
+ *
+ * @version 0.1.0
+ * @since 0.1.0
+ * @param chars 文字の集合
+ * @return 正規表現化された文字セット
+ */
+exports.default = default_1;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
+var hiraganaOnly_1 = __webpack_require__(1);
+var hiraganize_1 = __webpack_require__(3);
+var katakanaOnly_1 = __webpack_require__(4);
+var katakanize_1 = __webpack_require__(5);
+var naturalKanaOrder_1 = __webpack_require__(2);
+var naturalKanaSort_1 = __webpack_require__(6);
+var jaco_1 = __webpack_require__(0);
+// tslint:disable:no-namespace no-mergeable-namespace
+var jaco;
+(function (jaco) {
+    'use strict';
+
+    jaco.hiraganaOnly = hiraganaOnly_1.default;
+    jaco.hiraganize = hiraganize_1.default;
+    jaco.katakanaOnly = katakanaOnly_1.default;
+    jaco.katakanize = katakanize_1.default;
+    jaco.naturalKanaOrder = naturalKanaOrder_1.default;
+    jaco.naturalKanaSort = naturalKanaSort_1.default;
+    jaco.Jaco = jaco_1.default;
+})(jaco || (jaco = {}));
+window['jaco'] = jaco; // tslint:disable-line:no-string-literal
+
+/***/ }
+/******/ ]);
