@@ -5,7 +5,7 @@
   "main": "lib/jaco.js",
   "bin": "bin/jaco",
   "scripts": {
-    "test": "mocha --reporter spec --compilers js:babel-register test/test.js",
+    "test": "mocha --reporter spec --compilers js:babel-register test/*.js",
     "bin-test": "bin/jaco"
   },
   "repository": {
