@@ -1,3 +1,5 @@
+import 'core-js/fn/array/from';
+
 import { ALPHANUMERIC_CHARS_WITH_SIGN } from './const/ALPHANUMERIC_CHARS_WITH_SIGN';
 import { FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN } from './const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN';
 import { HIRAGANA_CHARS } from './const/HIRAGANA_CHARS';
@@ -117,7 +119,7 @@ export default class Jaco {
 	 * @since 2.0.0
 	 * @param search 合致対象文字列
 	 * @param position 末尾の位置
-	 * @return インスタンス自身
+	 * @return 合致したかどうか
 	 */
 	public endWith (search: Jaco | string, position?: number): boolean {
 		if (!isFinite(position) || Math.floor(position) !== position || position > this.length) {
@@ -135,7 +137,7 @@ export default class Jaco {
 	 * @since 2.0.0
 	 * @param search 合致対象文字列
 	 * @param position 開始位置
-	 * @return インスタンス自身
+	 * @return 合致したかどうか
 	 */
 	public includes (search: Jaco | string, position: number = 0): boolean {
 		if (position + search.length > this.length) {
@@ -177,6 +179,31 @@ export default class Jaco {
 	 */
 	public lastIndexOf (str: Jaco | string, fromIndex: number = Infinity): number {
 		return this._toArray().lastIndexOf(str.toString(), fromIndex);
+	}
+
+	/**
+	 * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を得る
+	 *
+	 * - String.prototype.match とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return マッチ結果
+	 */
+	public match (regexp: RegExp): RegExpMatchArray | null {
+		return this.$.match(regexp);
+	}
+
+	/**
+	 * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return マッチした文字列の配列
+	 */
+	public matches (regexp: RegExp): string[] {
+		const matches = this.$.match(regexp);
+		return Array.from(matches || []);
 	}
 
 	/**

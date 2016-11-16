@@ -1,4 +1,5 @@
 import Jaco from '../lib/jaco.js';
+import should from 'should';
 
 describe('Jaco Class', () => {
 
@@ -176,6 +177,42 @@ describe('Jaco Class', () => {
 	it('後方検索5', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
 		a.lastIndexOf(new Jaco('挿し')).should.equal(-1);
+	});
+
+	// match()
+	it('マッチ', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.match(/の/g).should.be.eql(['の', 'の']);
+	});
+
+	// match()
+	it('マッチ2', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		Array.from(a.match(/.+(の).+/)).should.be.eql(['𩸽の刺し身の切り身', 'の']);
+	});
+
+	// match()
+	it('マッチ3', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		should(a.match(/挿し/)).not.be.ok();
+	});
+
+	// matches()
+	it('マッチ取得', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.matches(/の/g).should.be.eql(['の', 'の']);
+	});
+
+	// matches()
+	it('マッチ取得', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		Array.from(a.matches(/.+(の).+/)).should.be.eql(['𩸽の刺し身の切り身', 'の']);
+	});
+
+	// matches()
+	it('マッチ取得3', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.matches(/挿し/).should.be.eql([]);
 	});
 
 	// toString()
