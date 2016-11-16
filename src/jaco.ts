@@ -59,6 +59,19 @@ export default class Jaco {
 			return new Jaco(str);
 		this.$ = `${str}`;
 		}
+
+	/**
+	 * 文字列から指定位置の文字を返す
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.charAt とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public charAt (index: number = 0): string {
+		return this._toArray()[index] || '';
 	}
 
 	/**
