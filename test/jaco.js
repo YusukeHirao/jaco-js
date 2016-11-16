@@ -88,16 +88,94 @@ describe('Jaco Class', () => {
 		a.endWith('𩸽の', 2).should.ok;
 	});
 
-	// lastIndexOf()
-	it('後方検索 ', () => {
+	// endWith()
+	it('末尾合致5 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.lastIndexOf('の').should.equal(1);
+		a.endWith(new Jaco('ひら'), 4).should.ok;
+	});
+
+	// endWith()
+	it('末尾合致6 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.endWith(new Jaco('𩸽の'), 2).should.ok;
+	});
+
+	// includes()
+	it('部分合致', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.includes('𩸽の').should.ok;
+	});
+
+	// includes()
+	it('部分合致2', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.includes('の刺し身の切り').should.ok;
+	});
+
+	// includes()
+	it('部分合致3', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.includes('𩸽の刺しの切り身').should.not.ok;
+	});
+
+	// indexOf()
+	it('前方検索', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf('の').should.equal(1);
+	});
+
+	// indexOf()
+	it('前方検索2', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf('の', 3).should.equal(5);
+	});
+
+	// indexOf()
+	it('前方検索3', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf(new Jaco('の')).should.equal(1);
+	});
+
+	// indexOf()
+	it('前方検索4', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf(new Jaco('の'), 3).should.equal(5);
+	});
+
+	// indexOf()
+	it('前方検索5', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf(new Jaco('挿し')).should.equal(-1);
 	});
 
 	// lastIndexOf()
-	it('後方検索 ', () => {
-		const a = new Jaco('𩸽のひらき');
+	it('後方検索', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.lastIndexOf('の').should.equal(5);
+	});
+
+	// lastIndexOf()
+	it('後方検索2', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
 		a.lastIndexOf('の', 0).should.equal(-1);
+	});
+
+	// lastIndexOf()
+	it('後方検索3', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.lastIndexOf(new Jaco('の')).should.equal(5);
+	});
+
+	// lastIndexOf()
+	it('後方検索4', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.lastIndexOf(new Jaco('の'), 0).should.equal(-1);
+	});
+
+	// lastIndexOf()
+	it('後方検索5', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.lastIndexOf(new Jaco('挿し')).should.equal(-1);
 	});
 
 	// toString()

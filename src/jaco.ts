@@ -62,7 +62,7 @@ export default class Jaco {
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
-	 * @return インスタンス自身が保持する文字列
+	 * @return 指定位置の文字
 	 */
 	public charAt (index: number = 0): string {
 		return this._toArray()[index] || '';
@@ -76,7 +76,7 @@ export default class Jaco {
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
-	 * @return インスタンス自身が保持する文字列
+	 * @return Unicodeポイント値
 	 */
 	public charCodeAt (index: number = 0): number {
 		const char = this.charAt(index);
@@ -96,8 +96,11 @@ export default class Jaco {
 	/**
 	 * 文字列連結をおこなう
 	 *
+	 * - String.prototype.concat とは非互換
+	 *
 	 * @version 2.0.0
 	 * @since 0.2.0
+	 * @param ...args 文字列もしくはJacoインスタンス
 	 * @return インスタンス自身
 	 */
 	public concat (...args: (Jaco | string | Jaco[] | string[])[]): Jaco {
@@ -116,7 +119,7 @@ export default class Jaco {
 	 * @param position 末尾の位置
 	 * @return インスタンス自身
 	 */
-	public endWith (search: string, position?: number): boolean {
+	public endWith (search: Jaco | string, position?: number): boolean {
 		if (!isFinite(position) || Math.floor(position) !== position || position > this.length) {
 			position = this.length;
 		}
@@ -126,21 +129,54 @@ export default class Jaco {
 	}
 
 	/**
-	 * 指定された文字が最後に現れるインデックスを返す
+	 * 引数に指定された文字列が部分合致するか
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param search 合致対象文字列
+	 * @param position 開始位置
+	 * @return インスタンス自身
+	 */
+	public includes (search: Jaco | string, position: number = 0): boolean {
+		if (position + search.length > this.length) {
+			return false;
+		} else {
+			return this.indexOf(search, position) !== -1;
+		}
+	}
+
+	/**
+	 * 指定された文字列が最初に現れるインデックスを返す
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.indexOf とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param str 検索文字列
+	 * @param [fromIndex] 検索位置
+	 * @return インデックス
+	 *
+	 */
+	public indexOf (str: Jaco | string, fromIndex: number = 0): number {
+		return this._toArray().indexOf(str.toString(), fromIndex);
+	}
+
+	/**
+	 * 指定された文字列が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
 	 * - String.prototype.lastIndexOf とは非互換
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
-	 * @param char 検索文字
-	 * @param [fromIndex=0] 検索位置
+	 * @param str 検索文字列
+	 * @param [fromIndex] 検索位置
 	 * @return インデックス
 	 *
 	 */
-	public lastIndexOf (char: Jaco | string, fromIndex: number = Infinity): number {
-		const optChar = new Jaco(char).charAt(0);
-		return this._toArray().lastIndexOf(optChar, fromIndex);
+	public lastIndexOf (str: Jaco | string, fromIndex: number = Infinity): number {
+		return this._toArray().lastIndexOf(str.toString(), fromIndex);
 	}
 
 	/**
