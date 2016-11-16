@@ -22,6 +22,16 @@ import toPattern from './fn/toPattern';
 export default class Jaco {
 
 	/**
+	 * 文字列長
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 */
+	public get length (): number {
+		return this.$.length;
+	}
+
+	/**
 	 * 保持する文字列
 	 *
 	 * @version 2.0.0
