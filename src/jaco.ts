@@ -94,6 +94,18 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字列連結をおこなう
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @return インスタンス自身
+	 */
+	public concat (...likeStrings: (Jaco | string)[]): Jaco {
+		this.$ += likeStrings.join('');
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -113,18 +125,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 文字列連結をおこなう
-	 *
-	 * @version 2.0.0
-	 * @since 0.2.0
-	 * @return インスタンス自身
-	 */
-	public concat (...likeStrings: (Jaco | string)[]): Jaco {
-		this.$ += likeStrings.join('');
-		return this;
 	}
 
 	/**
