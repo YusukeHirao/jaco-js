@@ -64,6 +64,18 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('あいうえおかき');
 	});
 
+	// lastIndexOf()
+	it('後方検索 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.lastIndexOf('の').should.equal(1);
+	});
+
+	// lastIndexOf()
+	it('後方検索 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.lastIndexOf('の', 0).should.equal(-1);
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');

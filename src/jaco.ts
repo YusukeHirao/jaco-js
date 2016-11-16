@@ -106,6 +106,24 @@ export default class Jaco {
 	}
 
 	/**
+	 * 指定された文字が最後に現れるインデックスを返す
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.lastIndexOf とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param char 検索文字
+	 * @param [fromIndex=0] 検索位置
+	 * @return インデックス
+	 *
+	 */
+	public lastIndexOf (char: Jaco | string, fromIndex: number = Infinity): number {
+		const optChar = new Jaco(char).charAt(0);
+		return this._toArray().lastIndexOf(optChar, fromIndex);
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
