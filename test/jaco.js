@@ -261,6 +261,23 @@ describe('Jaco Class', () => {
 		}
 	});
 
+	// replace()
+	it('置換', () => {
+		const a = new Jaco('abcdeABCDE');
+		a.replace(/abc/ig, 'z');
+		a.toString().should.equal('zdezDE');
+	});
+
+	// replaceFromMap()
+	it('マップから置換', () => {
+		const a = new Jaco('abcdeABCDE');
+		a.replaceFromMap({
+			abc: 'z',
+			ABC: 'Z',
+		});
+		a.toString().should.equal('zdeZDE');
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -271,13 +288,6 @@ describe('Jaco Class', () => {
 	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
 		const a = new Jaco('1');
 		(+a).should.equal(1);
-	});
-
-	// replace()
-	it('置換', () => {
-		const a = new Jaco('abcdeABCDE');
-		a.replace(/abc/ig, 'z');
-		a.toString().should.equal('zdezDE');
 	});
 
 	// slice()

@@ -245,6 +245,39 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字列をパターンで置換する
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @param pattern  対象のパターン
+	 * @param replacement 置換する文字列
+	 * @return インスタンス自身
+	 */
+	public replace (pattern: string | RegExp, replacement: string): Jaco {
+		// TODO: replaceメソッドの型が (string | RegExp) だとコンパイルエラー TSv2.0.0時点
+		this.$ = this.$.replace(pattern as RegExp, replacement);
+		return this;
+	}
+
+	/**
+	 * キーがパターン・値が置換文字列のハッシュマップによって置換する
+	 *
+	 * @version 2.0.0
+	 * @since 0.1.0
+	 * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
+	 * @return インスタンス自身
+	 */
+	public replaceFromMap (convMap: { [target: string]: string; }): Jaco {
+		for (const needle in convMap) {
+			if (convMap.hasOwnProperty(needle)) {
+				const replace: string = convMap[needle];
+				this.$ = this.$.replace(new RegExp(needle, 'g'), replace);
+			}
+		}
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -264,21 +297,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 文字列をパターンで置換する
-	 *
-	 * @version 2.0.0
-	 * @since 0.2.0
-	 * @param pattern  対象のパターン
-	 * @param replacement 置換する文字列
-	 * @return インスタンス自身
-	 */
-	public replace (pattern: string | RegExp, replacement: string): Jaco {
-		// TODO: replaceメソッドの型が (string | RegExp) だとコンパイルエラー TSv2.0.0時点
-		this.$ = this.$.replace(pattern as RegExp, replacement);
-		return this;
 	}
 
 	/**
@@ -600,7 +618,7 @@ export default class Jaco {
 			// 濁点・半濁点を結合文字に変換
 			this.combinateSoundMarks(true);
 			// 濁点・半濁点を結合する
-			return this.replaceMap({
+			return this.replaceFromMap({
 				// 濁点
 				'か\u3099': 'が', 'き\u3099': 'ぎ', 'く\u3099': 'ぐ', 'け\u3099': 'げ', 'こ\u3099': 'ご',
 				'さ\u3099': 'ざ', 'し\u3099': 'じ', 'す\u3099': 'ず', 'せ\u3099': 'ぜ', 'そ\u3099': 'ぞ',
@@ -618,7 +636,7 @@ export default class Jaco {
 			});
 		} else {
 			// 濁点・半濁点を結合文字に変換
-			return this.replaceMap({
+			return this.replaceFromMap({
 				// 濁点
 				'\u309B': '\u3099',
 				// 半濁点
@@ -639,7 +657,7 @@ export default class Jaco {
 		// 半角カタカナを全角カタカナへ
 		this.toWideKatakana();
 		// ヷヸヹヺの変換
-		this.replaceMap({
+		this.replaceFromMap({
 			'ヷ': 'わ゛',
 			'ヸ': 'ゐ゛',
 			'ヹ': 'ゑ゛',
@@ -698,7 +716,7 @@ export default class Jaco {
 		// 半濁点の変換 (全角半濁点2種類対応)
 		this.replace(/\u309C|\u309A/g, '\uFF9F');
 		// カタカナの変換
-		this.replaceMap({
+		this.replaceFromMap({
 			'ァ': 'ｧ', 'ィ': 'ｨ', 'ゥ': 'ｩ', 'ェ': 'ｪ', 'ォ': 'ｫ', 'ャ': 'ｬ',
 			'ュ': 'ｭ', 'ョ': 'ｮ', 'ッ': 'ｯ',
 			'ヵ': 'ｶ', 'ヶ': 'ｹ',
@@ -733,7 +751,7 @@ export default class Jaco {
 	 */
 	public toWideKatakana (): Jaco {
 		// カタカナ・濁点・半濁点の変換
-		this.replaceMap({
+		this.replaceFromMap({
 			'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
 			'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
 			'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
@@ -766,7 +784,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toNarrowJapneseSymbol (): Jaco {
-		this.replaceMap({
+		this.replaceFromMap({
 			'。': '｡',
 			'「': '｢',
 			'」': '｣',
@@ -784,7 +802,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toWideJapneseSymbol (): Jaco {
-		this.replaceMap({
+		this.replaceFromMap({
 			'｡': '。',
 			'｢': '「',
 			'｣': '」',
@@ -871,7 +889,7 @@ export default class Jaco {
 		// 濁点・半濁点単体の除去
 		this.remove(/\u309B|\u3099|\uFF9E/g);
 		this.remove(/\u309C|\u309A|\uFF9F/g);
-		return this.replaceMap({
+		return this.replaceFromMap({
 			'か': 'が', 'き': 'ぎ', 'く': 'ぐ', 'け': 'げ', 'こ': 'ご',
 			'さ': 'ざ', 'し': 'じ', 'す': 'ず', 'せ': 'ぜ', 'そ': 'ぞ',
 			'た': 'だ', 'ち': 'ぢ', 'つ': 'づ', 'て': 'で', 'と': 'ど',
@@ -893,7 +911,7 @@ export default class Jaco {
 	 * @return インスタンス自信
 	 */
 	public addSemivoicedMarks (): Jaco {
-		return this.replaceMap({
+		return this.replaceFromMap({
 			'は': 'ぱ', 'ひ': 'ぴ', 'ふ': 'ぷ', 'へ': 'ぺ', 'ほ': 'ぽ',
 			'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ',
 		});
@@ -913,7 +931,7 @@ export default class Jaco {
 			this.remove(/\u309B|\u3099|\uFF9E/g);
 			this.remove(/\u309C|\u309A|\uFF9F/g);
 		}
-		return this.replaceMap({
+		return this.replaceFromMap({
 			'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
 			'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
 			'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
@@ -1023,7 +1041,7 @@ export default class Jaco {
 		this
 			//
 			.combinateSoundMarks()
-			.replaceMap({
+			.replaceFromMap({
 				'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
 				'っ': 'つ',
 				'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
@@ -1071,24 +1089,6 @@ export default class Jaco {
 			.convertProlongedSoundMarks()
 			// 繰り返し記号を置き換える
 			.convertIterationMarks();
-		return this;
-	}
-
-	/**
-	 * キーがパターン・値が置換文字列のハッシュマップによって置換する
-	 *
-	 * @version 2.0.0
-	 * @since 0.1.0
-	 * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
-	 * @return インスタンス自身
-	 */
-	public replaceMap (convMap: { [target: string]: string; }): Jaco {
-		for (const needle in convMap) {
-			if (convMap.hasOwnProperty(needle)) {
-				const replace: string = convMap[needle];
-				this.$ = this.$.replace(new RegExp(needle, 'g'), replace);
-			}
-		}
 		return this;
 	}
 

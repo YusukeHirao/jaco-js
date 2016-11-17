@@ -118,7 +118,7 @@ function _convertNaturalKanaOrderNumberPhase2 (str: string): string {
  * @return 変換された文字列
  */
 function _convertNaturalKanaOrderNumberPhase1 (str: string): string {
-	return new Jaco(str).replaceMap({
+	return new Jaco(str).replaceFromMap({
 		'あ': '\u3041', 'い': '\u3042', 'う': '\u3043', 'え': '\u3044', 'お': '\u3045',
 		'か': '\u3046', 'き': '\u3047', 'く': '\u3048', 'け': '\u3049', 'こ': '\u304A',
 		'さ': '\u304B', 'し': '\u304C', 'す': '\u304D', 'せ': '\u304E', 'そ': '\u304F',
