@@ -233,6 +233,7 @@ export default class Jaco {
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
+	 * @param times 繰り返しの回数
 	 * @return インスタンス自身が保持する文字列
 	 */
 	public repeat (times: number = 0): Jaco {
@@ -289,6 +290,7 @@ export default class Jaco {
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
+	 * @param searcher パターン
 	 * @return インデックス
 	 */
 	public search (searcher: RegExp | string | Jaco): number {
