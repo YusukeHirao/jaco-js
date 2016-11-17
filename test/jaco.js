@@ -290,6 +290,30 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('zdeZDE');
 	});
 
+	// search()
+	it('検索', () => {
+		const a = new Jaco('食べたい𩸽');
+		a.search(/𩸽/).should.equal(4);
+	});
+
+	// search()
+	it('検索2', () => {
+		const a = new Jaco('𩸽の刺し身');
+		a.search(/の/).should.equal(1);
+	});
+
+	// search()
+	it('検索3', () => {
+		const a = new Jaco('食べたい𩸽の刺し身');
+		a.search('の').should.equal(5);
+	});
+
+	// search()
+	it('検索4', () => {
+		const a = new Jaco('𩸽の刺し身');
+		a.search(new Jaco('の')).should.equal(1);
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');

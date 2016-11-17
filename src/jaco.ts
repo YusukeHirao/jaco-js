@@ -282,6 +282,22 @@ export default class Jaco {
 	}
 
 	/**
+	 * 正規表現にマッチしたインデックスを返す
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.search とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インデックス
+	 */
+	public search (searcher: RegExp | string | Jaco): number {
+		const reg = searcher instanceof RegExp ? searcher : new RegExp(searcher.toString());
+		const before = (this.$.split(reg) || [])[0] || '';
+		return new Jaco(before).length;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
