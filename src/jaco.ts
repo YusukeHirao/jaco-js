@@ -294,8 +294,7 @@ export default class Jaco {
 	 * @return インデックス
 	 */
 	public search (searcher: RegExp | string | Jaco): number {
-		const reg = searcher instanceof RegExp ? searcher : new RegExp(searcher.toString());
-		const before = (this.$.split(reg) || [])[0] || '';
+		const before = this.split(searcher)[0] || '';
 		return new Jaco(before).length;
 	}
 
@@ -316,6 +315,22 @@ export default class Jaco {
 		const array = this._toArray();
 		const res = array.slice(start, end);
 		return new Jaco(res.join(''));
+	}
+
+	/**
+	 * 文字列の配列に分割する
+	 *
+	 * - String.prototype.split とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param separator 区切り文字
+	 * @param limit 配列の数を指定
+	 * @return 分割された配列
+	 */
+	public split (separator: string | RegExp | Jaco, limit?: number): string[] {
+		const reg = separator instanceof RegExp ? separator : new RegExp(separator.toString());
+		return this.$.split(reg, limit);
 	}
 
 	/**

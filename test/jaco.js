@@ -356,6 +356,36 @@ describe('Jaco Class', () => {
 		b.toString().should.equal('の刺し身');
 	});
 
+	// split()
+	it('分割', () => {
+		const a = new Jaco('𩸽の刺し身');
+		a.split('の').should.be.eql(['𩸽', '刺し身']);
+	});
+
+	// split()
+	it('分割2', () => {
+		const a = new Jaco('asadafa');
+		a.split('a').should.be.eql(['', 's', 'd', 'f', '']);
+	});
+
+	// split()
+	it('分割3', () => {
+		const a = new Jaco('asadafa');
+		a.split(/a/).should.be.eql(['', 's', 'd', 'f', '']);
+	});
+
+	// split()
+	it('分割4', () => {
+		const a = new Jaco('asadafa');
+		a.split(/a/g).should.be.eql(['', 's', 'd', 'f', '']);
+	});
+
+	// split()
+	it('分割5', () => {
+		const a = new Jaco('asadafa');
+		a.split(/(a)/).should.be.eql(['', 'a', 's', 'a', 'd', 'a', 'f', 'a', '']);
+	});
+
 	// substr()
 	it('抽出3', () => {
 		const a = new Jaco('いろはにほへと');
