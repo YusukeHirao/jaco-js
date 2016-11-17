@@ -26,11 +26,15 @@ export default class Jaco {
 	/**
 	 * 文字列長
 	 *
+	 * - サロゲートペアを考慮する
+	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
+	 * @readonly
 	 */
 	public get length (): number {
-		return this.$.length;
+		const array = this._toArray();
+		return array.length;
 	}
 
 	/**

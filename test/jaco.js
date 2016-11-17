@@ -10,6 +10,18 @@ describe('Jaco Class', () => {
 		a.should.not.equal(b);
 	});
 
+	// length
+	it('文字列長', () => {
+		const a = new Jaco('魚花');
+		a.length.should.equal(2);
+	});
+
+	// length
+	it('文字列長', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.length.should.equal(5);
+	});
+
 	// charAt()
 	it('抜き出し', () => {
 		const a = new Jaco('𩸽のひらき');
