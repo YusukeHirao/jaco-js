@@ -202,7 +202,7 @@ export default class Jaco {
 	 * @return マッチした文字列の配列
 	 */
 	public matches (regexp: RegExp): string[] {
-		const matches = this.$.match(regexp);
+		const matches = this.match(regexp);
 		return Array.from(matches || []);
 	}
 
