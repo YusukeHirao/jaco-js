@@ -213,10 +213,10 @@ export default class Jaco {
 	 *
 	 * - String.prototype.normalize とは非互換
 	 *
-	 * @version 2.0.0
-	 * @since 2.0.0
+	 * @version x.x.x
+	 * @since x.x.x
 	 * @param form 正規化形式の種類
-	 * @return マッチした文字列の配列
+	 * @return インスタンス自身
 	 */
 	public normalize (form: 'NFC' | 'NFD' | 'NFKC' | 'NFKD' = 'NFC'): Jaco {
 		return this;
