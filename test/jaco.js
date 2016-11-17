@@ -644,16 +644,6 @@ describe('Jaco Class', () => {
 		a.isOnlyKatakana().should.not.ok;
 	});
 
-	// combinate()
-	it('濁点の結合文字化', () => {
-		const a = new Jaco('か゛き゛く゛け゛こ゛');
-		a.combinate().toString().should.equal('がぎぐげご');
-	});
-	it('半濁点の結合文字化', () => {
-		const a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
-		a.combinate().toString().should.equal('ぱぴぷぺぽ');
-	});
-
 	// combinateSoundMarks(true)
 	it('濁点の結合文字化2', () => {
 		const a = new Jaco('か゛き゛く゛け゛こ゛');

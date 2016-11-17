@@ -589,30 +589,8 @@ export default class Jaco {
 	}
 
 	/**
-	 * [非推奨] 濁点・半濁点を結合文字に変換
-	 *
-	 * メソッド名変更およびAPI更新につき非推奨
-	 *
-	 * @deprecated v2.0.0削除予定
-	 * @see [combinateSoundMarks](#combinatesoundmarks)
-	 * @version 0.2.0
-	 * @since 0.1.0
-	 * @return インスタンス自身
-	 */
-	public combinate (): Jaco {
-		// 濁点・半濁点を結合文字に変換
-		return this.replaceMap({
-			// 濁点
-			'\u309B': '\u3099',
-			// 半濁点
-			'\u309C': '\u309A',
-		});
-	}
-
-	/**
 	 * 濁点・半濁点を結合するか、もしくは結合文字に変換
 	 *
-	 * @deprecated
 	 * @version 1.2.0
 	 * @since 1.2.0
 	 * @return インスタンス自身
