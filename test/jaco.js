@@ -215,6 +215,52 @@ describe('Jaco Class', () => {
 		a.matches(/挿し/).should.be.eql([]);
 	});
 
+	// repeat()
+	it('くりかえし', () => {
+		const a = new Jaco('あ');
+		a.repeat(3).toString().should.equal('あああ');
+	});
+
+	// repeat()
+	it('くりかえし2', () => {
+		const a = new Jaco('𩸽と');
+		a.repeat(6).toString().should.equal('𩸽と𩸽と𩸽と𩸽と𩸽と𩸽と');
+	});
+
+	// repeat()
+	it('くりかえし3', () => {
+		const a = new Jaco('𩸽');
+		a.repeat(0).toString().should.equal('');
+	});
+
+	// repeat()
+	it('くりかえし4', () => {
+		const a = new Jaco('𩸽');
+		a.repeat().toString().should.equal('');
+	});
+
+	// repeat()
+	it('くりかえし5 小数点切り捨て', () => {
+		const a = new Jaco('𩸽');
+		a.repeat(3.5).toString().should.equal('𩸽𩸽𩸽');
+	});
+
+	// repeat()
+	it('くりかえし6 負の数は0強制', () => {
+		const a = new Jaco('𩸽');
+		a.repeat(-1).toString().should.equal('');
+	});
+
+	// repeat()
+	it('くりかえし7 無限エラー', (done) => {
+		const a = new Jaco('𩸽');
+		try {
+			a.repeat(Infinity);
+		} catch (e) {
+			done();
+		}
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');

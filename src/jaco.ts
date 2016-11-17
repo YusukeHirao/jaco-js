@@ -223,6 +223,28 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字列を繰り返す
+	 *
+	 * - String.prototype.normalize とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public repeat (times: number = 0): Jaco {
+		let res: string[] = [];
+		times = Math.floor(Math.max(times, 0));
+		if (times === Infinity) {
+			throw new RangeError('repeat count must be less than infinity');
+		}
+		while (times--) {
+			res.push(this.$);
+		}
+		this.$ = res.join('');
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
