@@ -280,6 +280,20 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('zdezDE');
 	});
 
+	// replace()
+	it('置換2', () => {
+		const a = new Jaco('abcdeABCDE');
+		a.replace('abc', 'z');
+		a.toString().should.equal('zdeABCDE');
+	});
+
+	// replace()
+	it('置換3', () => {
+		const a = new Jaco('abcdeABCDE');
+		a.replace(new Jaco('abc'), 'z');
+		a.toString().should.equal('zdeABCDE');
+	});
+
 	// replaceFromMap()
 	it('マップから置換', () => {
 		const a = new Jaco('abcdeABCDE');

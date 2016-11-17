@@ -258,9 +258,9 @@ export default class Jaco {
 	 * @param replacement 置換する文字列
 	 * @return インスタンス自身
 	 */
-	public replace (pattern: string | RegExp, replacement: string): Jaco {
-		// TODO: replaceメソッドの型が (string | RegExp) だとコンパイルエラー TSv2.0.0時点
-		this.$ = this.$.replace(pattern as RegExp, replacement);
+	public replace (pattern: string | RegExp | Jaco, replacement: string | Jaco): Jaco {
+		const reg = pattern instanceof RegExp ? pattern : new RegExp(pattern.toString());
+		this.$ = this.$.replace(reg, replacement.toString());
 		return this;
 	}
 
