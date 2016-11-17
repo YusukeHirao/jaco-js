@@ -300,39 +300,22 @@ export default class Jaco {
 	}
 
 	/**
-	 * 明示もしくは暗黙の文字列変換メソッド
-	 *
-	 * @version 0.1.0
-	 * @since 0.1.0
-	 * @return インスタンス自身が保持する文字列
-	 */
-	public toString (): string {
-		return this.$;
-	}
-
-	/**
-	 * 暗黙の値変換に呼び出されるメソッド
-	 *
-	 * @version 0.1.0
-	 * @since 0.1.0
-	 * @return インスタンス自身が保持する文字列
-	 */
-	public valueOf (): string {
-		return this.toString();
-	}
-
-	/**
 	 * 文字位置による抽出
 	 * (非破壊的メソッド)
 	 *
-	 * @version 0.2.0
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.slice とは非互換
+	 *
+	 * @version 2.0.0
 	 * @since 0.2.0
-	 * @param from 開始インデックス
-	 * @param to 終了インデックス 省略すると最後まで
+	 * @param start 開始インデックス
+	 * @param end 終了インデックス 省略すると最後まで
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
-	public slice (from: number, to?: number): Jaco {
-		return new Jaco(this.$.slice(from, to));
+	public slice (start: number, end?: number): Jaco {
+		const array = this._toArray();
+		const res = array.slice(start, end);
+		return new Jaco(res.join(''));
 	}
 
 	/**
@@ -361,6 +344,28 @@ export default class Jaco {
 	 */
 	public substring (indexA: number, indexB: number): Jaco {
 		return new Jaco(this.$.substring(indexA, indexB));
+	}
+
+	/**
+	 * 明示もしくは暗黙の文字列変換メソッド
+	 *
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public toString (): string {
+		return this.$;
+	}
+
+	/**
+	 * 暗黙の値変換に呼び出されるメソッド
+	 *
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public valueOf (): string {
+		return this.toString();
 	}
 
 	/**

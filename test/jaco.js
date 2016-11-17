@@ -314,28 +314,32 @@ describe('Jaco Class', () => {
 		a.search(new Jaco('の')).should.equal(1);
 	});
 
-	// toString()
-	it('暗黙の型変換 文字列に変換', () => {
-		const a = new Jaco('あ');
-		`${a}い`.should.equal('あい');
-	});
-
-	// valueOf()
-	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
-		const a = new Jaco('1');
-		(+a).should.equal(1);
-	});
-
 	// slice()
 	it('抽出', () => {
 		const a = new Jaco('いろはにほへと');
-		const b = a._str.slice(1, 5);
+		const b = a.slice(1, 5);
 		b.toString().should.equal('ろはにほ');
 	});
+
+	// slice()
 	it('抽出2', () => {
 		const a = new Jaco('いろはにほへと');
-		const b = a._str.slice(1);
+		const b = a.slice(1);
 		b.toString().should.equal('ろはにほへと');
+	});
+
+	// slice()
+	it('抽出3', () => {
+		const a = new Jaco('𩸽の刺し身');
+		const b = a.slice(1, 3);
+		b.toString().should.equal('の刺');
+	});
+
+	// slice()
+	it('抽出4', () => {
+		const a = new Jaco('𩸽の刺し身');
+		const b = a.slice(1);
+		b.toString().should.equal('の刺し身');
 	});
 
 	// substr()
@@ -360,6 +364,18 @@ describe('Jaco Class', () => {
 		const a = new Jaco('いろはにほへと');
 		const b = a._str.substring(1, 3);
 		b.toString().should.equal('ろは');
+	});
+
+	// toString()
+	it('暗黙の型変換 文字列に変換', () => {
+		const a = new Jaco('あ');
+		`${a}い`.should.equal('あい');
+	});
+
+	// valueOf()
+	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
+		const a = new Jaco('1');
+		(+a).should.equal(1);
 	});
 
 	// toLowerCase()
