@@ -306,6 +306,16 @@ describe('Jaco Class', () => {
 		a.is(new Jaco('いろはに')).should.not.ok;
 	});
 
+	// isEmpty()
+	it('空', () => {
+		const a = new Jaco('');
+		a.isEmpty().should.ok;
+	});
+	it('空2', () => {
+		const a = new Jaco(' ');
+		a.isEmpty().should.not.ok;
+	});
+
 	// lastIndexOf()
 	it('後方検索', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
@@ -841,16 +851,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	// isEmpty()
-	it('空', () => {
-		const a = new Jaco('');
-		a.isEmpty().should.ok;
-	});
-	it('空2', () => {
-		const a = new Jaco(' ');
-		a.isEmpty().should.not.ok;
 	});
 
 	// test()

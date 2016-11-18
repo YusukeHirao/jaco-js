@@ -255,6 +255,17 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字が空かどうか
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return 結果の真偽
+	 */
+	public isEmpty (): boolean {
+		return this.$ === '';
+	}
+
+	/**
 	 * 指定された文字列が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
@@ -620,17 +631,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 文字が空かどうか
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return 結果の真偽
-	 */
-	public isEmpty (): boolean {
-		return this.$ === '';
 	}
 
 	/**
