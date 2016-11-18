@@ -96,13 +96,6 @@ describe('Jaco Class', () => {
 		a.toString().should.equal(b.toString());
 	});
 
-	// concat()
-	it('連結', () => {
-		const a = new Jaco('あ');
-		a.concat('い', new Jaco('う'), 'え', new Jaco('お'), ['か', new Jaco('き')]);
-		a.toString().should.equal('あいうえおかき');
-	});
-
 	// combinateSoundMarks()
 	it('濁点・半濁点の結合', () => {
 		const a = new Jaco('か゛き゛く゛け゛こ゛');
@@ -137,6 +130,13 @@ describe('Jaco Class', () => {
 	it('濁点・半濁点の結合6', () => {
 		const a = new Jaco('ぱぴぷぺぽ');
 		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
+	});
+
+	// concat()
+	it('連結', () => {
+		const a = new Jaco('あ');
+		a.concat('い', new Jaco('う'), 'え', new Jaco('お'), ['か', new Jaco('き')]);
+		a.toString().should.equal('あいうえおかき');
 	});
 
 	// endWith()

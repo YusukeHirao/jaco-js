@@ -122,21 +122,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 文字列連結をおこなう
-	 *
-	 * - String.prototype.concat とは非互換
-	 *
-	 * @version 2.0.0
-	 * @since 0.2.0
-	 * @param ...args 文字列もしくはJacoインスタンス
-	 * @return インスタンス自身
-	 */
-	public concat (...args: (Jaco | string | Jaco[] | string[])[]): Jaco {
-		this.$ += args.map(str => Array.isArray(str) ? str.join('') : str).join('');
-		return this;
-	}
-
-	/**
 	 * 濁点・半濁点を結合するか、もしくは結合文字に変換
 	 *
 	 * @version 1.2.0
@@ -173,6 +158,21 @@ export default class Jaco {
 				'\u309C': '\u309A',
 			});
 		}
+	}
+
+	/**
+	 * 文字列連結をおこなう
+	 *
+	 * - String.prototype.concat とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @param ...args 文字列もしくはJacoインスタンス
+	 * @return インスタンス自身
+	 */
+	public concat (...args: (Jaco | string | Jaco[] | string[])[]): Jaco {
+		this.$ += args.map(str => Array.isArray(str) ? str.join('') : str).join('');
+		return this;
 	}
 
 	/**
