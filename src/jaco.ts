@@ -7,6 +7,7 @@ import { KANA_COMMON_CAHRS } from './const/KANA_COMMON_CAHRS';
 import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
 import convertIterationMarks from './fn/convertIterationMarks';
+import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
 import toPattern from './fn/toPattern';
 
 
@@ -1102,29 +1103,7 @@ export default class Jaco {
 	 * @return インスタンス自信
 	 */
 	public convertProlongedSoundMarks (): Jaco {
-		const kanaWithProlongedSoundMarksPattern: RegExp = new RegExp('[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー');
-		let converted: string = this.$;
-		const conv: (_str: string) => string = (_str: string): string => {
-			_str = _str.replace(/([あぁかゕがさざただなはばぱまやゃらわゎ])ー/g, '$1あ')
-				.replace(/([いぃきぎしじちぢにひびぴみりゐ])ー/g, '$1い')
-				.replace(/([うぅゔくぐすずつづぬふぶぷむゆゅる])ー/g, '$1う')
-				.replace(/([えぇけゖげせぜてでねへべぺめれゑ])ー/g, '$1え')
-				.replace(/([おぉこごそぞとどのほぼぽもよょろを])ー/g, '$1お')
-				.replace(/んー/g, 'んん')
-				.replace(/っー/g, 'っっ')
-				.replace(/([アァカヵガサザタダナハバパマヤャラワヮヷ])ー/g, '$1ア')
-				.replace(/([イィキギシジチヂニヒビピミリヰヸ])ー/g, '$1イ')
-				.replace(/([ウゥヴクグスズツヅヌフブプムユュル])ー/g, '$1ウ')
-				.replace(/([エェケヶゲセゼテデネヘベペメレヱヹ])ー/g, '$1エ')
-				.replace(/([オォコゴソゾトドノホボポモヨョロヲヺ])ー/g, '$1オ')
-				.replace(/ンー/g, 'ンン')
-				.replace(/ッー/g, 'ッッ');
-			return _str;
-		};
-		while (kanaWithProlongedSoundMarksPattern.test(converted)) {
-			converted = conv(converted);
-		}
-		this.$ = converted;
+		this.$ = convertProlongedSoundMarks(this.$);
 		return this;
 	}
 
