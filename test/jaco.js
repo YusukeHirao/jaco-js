@@ -387,15 +387,31 @@ describe('Jaco Class', () => {
 	});
 
 	// substr()
-	it('抽出3', () => {
+	it('長さで抽出', () => {
 		const a = new Jaco('いろはにほへと');
-		const b = a._str.substr(1, 2);
+		const b = a.substr(1, 2);
 		b.toString().should.equal('ろは');
 	});
-	it('抽出4', () => {
+
+	// substr()
+	it('長さで抽出2', () => {
 		const a = new Jaco('いろはにほへと');
-		const b = a._str.substr(1);
+		const b = a.substr(1);
 		b.toString().should.equal('ろはにほへと');
+	});
+
+	// substr()
+	it('長さで抽出3', () => {
+		const a = new Jaco('𩸽の刺し身');
+		const b = a.substr(2, 3);
+		b.toString().should.equal('刺し身');
+	});
+
+	// substr()
+	it('長さで抽出4', () => {
+		const a = new Jaco('𩸽の刺し身');
+		const b = a.substr(-1, 1);
+		b.toString().should.equal('身');
 	});
 
 	// substring()

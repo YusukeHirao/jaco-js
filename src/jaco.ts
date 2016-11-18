@@ -337,14 +337,28 @@ export default class Jaco {
 	 * 指定した位置から指定した数だけ文字列を抽出
 	 * (非破壊的メソッド)
 	 *
-	 * @version 0.2.0
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.substr とは非互換
+	 *
+	 * @version 2.0.0
 	 * @since 0.2.0
 	 * @param start 開始インデックス
 	 * @param length 指定数
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public substr (start: number, length?: number): Jaco {
-		return new Jaco(this.$.slice(start, length));
+		const array = this._toArray();
+		const thisLength = array.length;
+		if (length == null || length < 0 || thisLength < length) {
+			length = thisLength;
+		}
+		if (start < 0) {
+			start = thisLength + start;
+		}
+		let end = Math.max(start + length, start);
+		start = Math.min(start + length, start);
+		const res = array.slice(start, end);
+		return new Jaco(res.join(''));
 	}
 
 	/**
