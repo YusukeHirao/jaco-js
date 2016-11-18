@@ -241,8 +241,8 @@ describe('Jaco Class', () => {
 
 	// padEnd()
 	it('後ろ埋め3', () => {
-		const a = new Jaco('𩸽');
-		a.padEnd(3, '𩸽').toString().should.equal('𩸽𩸽𩸽');
+		const a = new Jaco('a');
+		a.padEnd(3, '𩸽').toString().should.equal('a𩸽𩸽');
 	});
 
 	// padEnd()
@@ -267,6 +267,48 @@ describe('Jaco Class', () => {
 	it('後ろ埋め7', () => {
 		const a = new Jaco('𩸽のひらき');
 		a.padEnd(-1).toString().should.equal('𩸽のひらき');
+	});
+
+	// padStart()
+	it('前埋め', () => {
+		const a = new Jaco('𩸽');
+		a.padStart(3).toString().should.equal('  𩸽');
+	});
+
+	// padStart()
+	it('前埋め2', () => {
+		const a = new Jaco('𩸽');
+		a.padStart(3, '𩸽').toString().should.equal('𩸽𩸽𩸽');
+	});
+
+	// padStart()
+	it('前埋め3', () => {
+		const a = new Jaco('a');
+		a.padStart(3, '𩸽').toString().should.equal('𩸽𩸽a');
+	});
+
+	// padStart()
+	it('前埋め4', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padStart(3).toString().should.equal('𩸽のひ');
+	});
+
+	// padStart()
+	it('前埋め5', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padStart(3, 'abc').toString().should.equal('𩸽のひ');
+	});
+
+	// padStart()
+	it('前埋め6', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padStart(10, 'abc').toString().should.equal('abcab𩸽のひらき');
+	});
+
+	// padStart()
+	it('前埋め7', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padStart(-1).toString().should.equal('𩸽のひらき');
 	});
 
 	// repeat()

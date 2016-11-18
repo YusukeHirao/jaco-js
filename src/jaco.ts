@@ -244,15 +244,32 @@ export default class Jaco {
 		if (targetLength < thisLength) {
 			this.$ = this.substr(0, targetLength).toString();
 		} else {
-			const pad: string[] = [];
-			const padStringArray = new Jaco(padString)._toArray();
-			const padLength = padStringArray.length;
-			const count = targetLength - thisLength;
-			for (let i = 0; i < count; i++) {
-				const char = padStringArray[i % padLength];
-				pad.push(char);
-			}
-			this.$ += pad.join('');
+			const pad = new Jaco(padString)._pad(targetLength - thisLength);
+			this.$ += pad;
+		}
+		return this;
+	}
+
+	/**
+	 * 最終的な文字列が指定された長さに到達するように文字列を先頭に追加する
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.padStart とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param targetLength 最終的な長さ
+	 * @param padString 延長する文字列
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public padStart (targetLength: number, padString: string | Jaco = ' '): Jaco {
+		const thisArray = this._toArray();
+		const thisLength = thisArray.length;
+		if (targetLength < thisLength) {
+			this.$ = this.substr(0, targetLength).toString();
+		} else {
+			const pad = new Jaco(padString)._pad(targetLength - thisLength);
+			this.$ = pad + this.$;
 		}
 		return this;
 	}
@@ -1228,6 +1245,25 @@ export default class Jaco {
 	 */
 	private _toArray (): string[] {
 		return this.$.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+	}
+
+	/**
+	 * 指定数の文字列長になるように繰り返して埋める
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param length 指定の文字列長
+	 * @return 埋められた文字列
+	 */
+	private _pad (length: number): string {
+		const pad: string[] = [];
+		const padStringArray = this._toArray();
+		const padLength = padStringArray.length;
+		for (let i = 0; i < length; i++) {
+			const char = padStringArray[i % padLength];
+			pad.push(char);
+		}
+		return pad.join('');
 	}
 
 }
