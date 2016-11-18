@@ -366,7 +366,7 @@ export default class Jaco {
 	 * (非破壊的メソッド)
 	 *
 	 * - サロゲートペアを考慮する
-	 * - String.prototype.substr とは非互換
+	 * - String.prototype.substring とは非互換
 	 *
 	 * @version 2.0.0
 	 * @since 0.2.0
