@@ -266,6 +266,27 @@ export default class Jaco {
 	}
 
 	/**
+	 * 数字だけで構成されているかどうか
+	 *
+	 * @version 2.0.0
+	 * @since 0.5.0
+	 * @param negative 負の数値も含めてチェックするかどうか
+	 * @param floatingPoint 小数としてチェックするかどうか
+	 * @return 結果の真偽
+	 */
+	public isNumeric (negative: boolean = true, floatingPoint: boolean = true): boolean {
+		let pattern = '^';
+		if (negative) {
+			pattern += '-?';
+		}
+		if (floatingPoint) {
+			pattern += '(?:[0-9]*\\.)?';
+		}
+		pattern += '[0-9]+$';
+		return this.test(new RegExp(pattern));
+	}
+
+	/**
 	 * 指定された文字列が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
@@ -722,27 +743,6 @@ export default class Jaco {
 	 */
 	public isOnlyKatakana (): boolean {
 		return this.isOnly(KATAKANA_CHARS + KANA_COMMON_CAHRS);
-	}
-
-	/**
-	 * 数字だけで構成されているかどうか
-	 *
-	 * @version 2.0.0
-	 * @since 0.5.0
-	 * @param negative 負の数値も含めてチェックするかどうか
-	 * @param floatingPoint 小数としてチェックするかどうか
-	 * @return 結果の真偽
-	 */
-	public isNumeric (negative: boolean = true, floatingPoint: boolean = true): boolean {
-		let pattern = '^';
-		if (negative) {
-			pattern += '-?';
-		}
-		if (floatingPoint) {
-			pattern += '(?:[0-9]*\\.)?';
-		}
-		pattern += '[0-9]+$';
-		return this.test(new RegExp(pattern));
 	}
 
 	/**

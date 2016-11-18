@@ -316,6 +316,90 @@ describe('Jaco Class', () => {
 		a.isEmpty().should.not.ok;
 	});
 
+	// isNumeric()
+	it('数字かどうか1', () => {
+		const a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
+		a.isNumeric().should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか2', () => {
+		const a = new Jaco('２３０３');
+		a.isNumeric().should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか3', () => {
+		const a = new Jaco('000012303234');
+		a.isNumeric().should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか4', () => {
+		const a = new Jaco('-123.3234');
+		a.isNumeric().should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか5', () => {
+		const a = new Jaco('-123.3234.');
+		a.isNumeric().should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか6', () => {
+		const a = new Jaco('12-3.3234.');
+		a.isNumeric().should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか7', () => {
+		const a = new Jaco('.3234');
+		a.isNumeric().should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか8', () => {
+		const a = new Jaco('-.3234');
+		a.isNumeric().should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか9', () => {
+		const a = new Jaco('.3234');
+		a.isNumeric(false).should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか10', () => {
+		const a = new Jaco('-.3234');
+		a.isNumeric(true).should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか11', () => {
+		const a = new Jaco('.3234');
+		a.isNumeric(true, true).should.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか12', () => {
+		const a = new Jaco('-.3234');
+		a.isNumeric(true, false).should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか13', () => {
+		const a = new Jaco('.3234');
+		a.isNumeric(false, false).should.not.ok;
+	});
+
+	// isNumeric()
+	it('数字かどうか14', () => {
+		const a = new Jaco('-.3234');
+		a.isNumeric(false, true).should.not.ok;
+	});
+
 	// lastIndexOf()
 	it('後方検索', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
@@ -1515,64 +1599,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ...');
 		const b = '2303';
 		a.toNumeric(false, true).toString().should.equal(b);
-	});
-
-	// isNumeric() v0.5.0で追加
-	it('数字かどうか1', () => {
-		const a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
-		a.isNumeric().should.not.ok;
-	});
-	it('数字かどうか2', () => {
-		const a = new Jaco('２３０３');
-		a.isNumeric().should.not.ok;
-	});
-	it('数字かどうか3', () => {
-		const a = new Jaco('000012303234');
-		a.isNumeric().should.ok;
-	});
-	it('数字かどうか4', () => {
-		const a = new Jaco('-123.3234');
-		a.isNumeric().should.ok;
-	});
-	it('数字かどうか5', () => {
-		const a = new Jaco('-123.3234.');
-		a.isNumeric().should.not.ok;
-	});
-	it('数字かどうか6', () => {
-		const a = new Jaco('12-3.3234.');
-		a.isNumeric().should.not.ok;
-	});
-	it('数字かどうか7', () => {
-		const a = new Jaco('.3234');
-		a.isNumeric().should.ok;
-	});
-	it('数字かどうか8', () => {
-		const a = new Jaco('-.3234');
-		a.isNumeric().should.ok;
-	});
-	it('数字かどうか9', () => {
-		const a = new Jaco('.3234');
-		a.isNumeric(false).should.ok;
-	});
-	it('数字かどうか10', () => {
-		const a = new Jaco('-.3234');
-		a.isNumeric(true).should.ok;
-	});
-	it('数字かどうか11', () => {
-		const a = new Jaco('.3234');
-		a.isNumeric(true, true).should.ok;
-	});
-	it('数字かどうか12', () => {
-		const a = new Jaco('-.3234');
-		a.isNumeric(true, false).should.not.ok;
-	});
-	it('数字かどうか13', () => {
-		const a = new Jaco('.3234');
-		a.isNumeric(false, false).should.not.ok;
-	});
-	it('数字かどうか14', () => {
-		const a = new Jaco('-.3234');
-		a.isNumeric(false, true).should.not.ok;
 	});
 	it('濁点・半濁点除去', () => {
 		const a = [
