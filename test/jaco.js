@@ -227,6 +227,48 @@ describe('Jaco Class', () => {
 		a.matches(/挿し/).should.be.eql([]);
 	});
 
+	// padEnd()
+	it('後ろ埋め', () => {
+		const a = new Jaco('𩸽');
+		a.padEnd(3).toString().should.equal('𩸽  ');
+	});
+
+	// padEnd()
+	it('後ろ埋め2', () => {
+		const a = new Jaco('𩸽');
+		a.padEnd(3, '𩸽').toString().should.equal('𩸽𩸽𩸽');
+	});
+
+	// padEnd()
+	it('後ろ埋め3', () => {
+		const a = new Jaco('𩸽');
+		a.padEnd(3, '𩸽').toString().should.equal('𩸽𩸽𩸽');
+	});
+
+	// padEnd()
+	it('後ろ埋め4', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padEnd(3).toString().should.equal('𩸽のひ');
+	});
+
+	// padEnd()
+	it('後ろ埋め5', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padEnd(3, 'abc').toString().should.equal('𩸽のひ');
+	});
+
+	// padEnd()
+	it('後ろ埋め6', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padEnd(10, 'abc').toString().should.equal('𩸽のひらきabcab');
+	});
+
+	// padEnd()
+	it('後ろ埋め7', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.padEnd(-1).toString().should.equal('𩸽のひらき');
+	});
+
 	// repeat()
 	it('くりかえし', () => {
 		const a = new Jaco('あ');

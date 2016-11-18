@@ -227,6 +227,37 @@ export default class Jaco {
 	}
 
 	/**
+	 * 最終的な文字列が指定された長さに到達するように文字列で延長する
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.padEnd とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param targetLength 最終的な長さ
+	 * @param padString 延長する文字列
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public padEnd (targetLength: number, padString: string | Jaco = ' '): Jaco {
+		const thisArray = this._toArray();
+		const thisLength = thisArray.length;
+		if (targetLength < thisLength) {
+			this.$ = this.substr(0, targetLength).toString();
+		} else {
+			const pad: string[] = [];
+			const padStringArray = new Jaco(padString)._toArray();
+			const padLength = padStringArray.length;
+			const count = targetLength - thisLength;
+			for (let i = 0; i < count; i++) {
+				const char = padStringArray[i % padLength];
+				pad.push(char);
+			}
+			this.$ += pad.join('');
+		}
+		return this;
+	}
+
+	/**
 	 * 文字列を繰り返す
 	 *
 	 * - String.prototype.normalize とは非互換
