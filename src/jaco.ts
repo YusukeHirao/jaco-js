@@ -365,14 +365,20 @@ export default class Jaco {
 	 * 指定した位置の間の文字列を抽出
 	 * (非破壊的メソッド)
 	 *
-	 * @version 0.2.0
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.substr とは非互換
+	 *
+	 * @version 2.0.0
 	 * @since 0.2.0
 	 * @param indexA インデックス
 	 * @param indexB インデックス
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public substring (indexA: number, indexB: number): Jaco {
-		return new Jaco(this.$.substring(indexA, indexB));
+		const start = Math.max(Math.min(indexA, indexB), 0);
+		const end = Math.min(Math.max(indexA, indexB), this.length);
+		const length = end - start;
+		return this.substr(start, length);
 	}
 
 	/**
