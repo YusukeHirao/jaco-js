@@ -350,7 +350,7 @@ export default class Jaco {
 	/**
 	 * 文字列を繰り返す
 	 *
-	 * - String.prototype.normalize とは非互換
+	 * - String.prototype.repeat とは非互換
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
