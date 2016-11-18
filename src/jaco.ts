@@ -243,6 +243,18 @@ export default class Jaco {
 	}
 
 	/**
+	 * 完全マッチ
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @param target 比較する文字列
+	 * @return 結果の真偽
+	 */
+	public is (target: string | Jaco): boolean {
+		return this.$ === target.toString();
+	}
+
+	/**
 	 * 指定された文字列が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
@@ -664,18 +676,6 @@ export default class Jaco {
 	 */
 	public append (element: string | Jaco): Jaco {
 		return this.concat(element);
-	}
-
-	/**
-	 * 完全マッチ
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @param target 比較する文字列
-	 * @return 結果の真偽
-	 */
-	public is (target: string | Jaco): boolean {
-		return this.$ === target.toString();
 	}
 
 	/**

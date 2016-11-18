@@ -282,6 +282,30 @@ describe('Jaco Class', () => {
 		a.indexOf(new Jaco('挿し')).should.equal(-1);
 	});
 
+	// is()
+	it('完全マッチ', () => {
+		const a = new Jaco('いろは');
+		a.is('いろは').should.ok;
+	});
+
+	// is()
+	it('完全マッチ2', () => {
+		const a = new Jaco('いろは');
+		a.is(new Jaco('いろは')).should.ok;
+	});
+
+	// is()
+	it('完全マッチ3', () => {
+		const a = new Jaco('いろは');
+		a.is('いろはに').should.not.ok;
+	});
+
+	// is()
+	it('完全マッチ4', () => {
+		const a = new Jaco('いろは');
+		a.is(new Jaco('いろはに')).should.not.ok;
+	});
+
 	// lastIndexOf()
 	it('後方検索', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
@@ -864,24 +888,6 @@ describe('Jaco Class', () => {
 	it('後方結合2', () => {
 		const a = new Jaco('いろは');
 		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
-	});
-
-	// is()
-	it('完全マッチ', () => {
-		const a = new Jaco('いろは');
-		a.is('いろは').should.ok;
-	});
-	it('完全マッチ2', () => {
-		const a = new Jaco('いろは');
-		a.is(new Jaco('いろは')).should.ok;
-	});
-	it('完全マッチ3', () => {
-		const a = new Jaco('いろは');
-		a.is('いろはに').should.not.ok;
-	});
-	it('完全マッチ4', () => {
-		const a = new Jaco('いろは');
-		a.is(new Jaco('いろはに')).should.not.ok;
 	});
 
 	// has()
