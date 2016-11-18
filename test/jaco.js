@@ -569,18 +569,6 @@ describe('Jaco Class', () => {
 		b.toString().should.equal('𩸽の刺し身');
 	});
 
-	// toString()
-	it('暗黙の型変換 文字列に変換', () => {
-		const a = new Jaco('あ');
-		`${a}い`.should.equal('あい');
-	});
-
-	// valueOf()
-	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
-		const a = new Jaco('1');
-		(+a).should.equal(1);
-	});
-
 	// toLowerCase()
 	it('小文字に変換', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
@@ -591,6 +579,18 @@ describe('Jaco Class', () => {
 	it('大文字に変換', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
 		a.toUpperCase().toString().should.equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	});
+
+	// toString()
+	it('暗黙の型変換 文字列に変換', () => {
+		const a = new Jaco('あ');
+		`${a}い`.should.equal('あい');
+	});
+
+	// valueOf()
+	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
+		const a = new Jaco('1');
+		(+a).should.equal(1);
 	});
 
 	// remove()
@@ -1103,7 +1103,7 @@ describe('Jaco Class', () => {
 		].join('');
 		a.toKatakana(false).toString().should.equal(b);
 	});
-	it('カタカナに変換 パフォーマンステスト(目標 1000ms以下)', () => {
+	it('カタカナに変換 パフォーマンステスト(目標 2000ms以下)', () => {
 		const a = new Jaco([
 			'。「」、・',
 			'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝｶﾞｷﾞｸﾞｹﾞ',

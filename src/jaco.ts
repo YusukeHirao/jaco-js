@@ -446,28 +446,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 明示もしくは暗黙の文字列変換メソッド
-	 *
-	 * @version 0.1.0
-	 * @since 0.1.0
-	 * @return インスタンス自身が保持する文字列
-	 */
-	public toString (): string {
-		return this.$;
-	}
-
-	/**
-	 * 暗黙の値変換に呼び出されるメソッド
-	 *
-	 * @version 0.1.0
-	 * @since 0.1.0
-	 * @return インスタンス自身が保持する文字列
-	 */
-	public valueOf (): string {
-		return this.toString();
-	}
-
-	/**
 	 * 英字の大文字を小文字に変換する
 	 *
 	 * @version 0.2.0
@@ -489,6 +467,28 @@ export default class Jaco {
 	public toUpperCase (): Jaco {
 		this.$ = this.$.toUpperCase();
 		return this;
+	}
+
+	/**
+	 * 明示もしくは暗黙の文字列変換メソッド
+	 *
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public toString (): string {
+		return this.$;
+	}
+
+	/**
+	 * 暗黙の値変換に呼び出されるメソッド
+	 *
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 * @return インスタンス自身が保持する文字列
+	 */
+	public valueOf (): string {
+		return this.toString();
 	}
 
 	/**
