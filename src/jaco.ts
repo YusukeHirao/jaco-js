@@ -111,6 +111,17 @@ export default class Jaco {
 	}
 
 	/**
+	 * コピーを生成する
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return コピー
+	 */
+	public clone (): Jaco {
+		return new Jaco(this.$);
+	}
+
+	/**
 	 * 文字列連結をおこなう
 	 *
 	 * - String.prototype.concat とは非互換
@@ -556,17 +567,6 @@ export default class Jaco {
 	 */
 	public isEmpty (): boolean {
 		return this.$ === '';
-	}
-
-	/**
-	 * コピーを生成する
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return コピー
-	 */
-	public clone (): Jaco {
-		return new Jaco(this.$);
 	}
 
 	/**

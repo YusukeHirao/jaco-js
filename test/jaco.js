@@ -82,6 +82,20 @@ describe('Jaco Class', () => {
 		a.charCodeAt(99).should.be.eql(NaN);
 	});
 
+	// clone()
+	it('コピー', () => {
+		const a = new Jaco('あ');
+		const b = a.clone();
+		a.should.not.equal(b);
+	});
+
+	// clone()
+	it('コピー', () => {
+		const a = new Jaco('あ');
+		const b = a.clone();
+		a.toString().should.equal(b.toString());
+	});
+
 	// concat()
 	it('連結', () => {
 		const a = new Jaco('あ');
@@ -718,18 +732,6 @@ describe('Jaco Class', () => {
 	it('空2', () => {
 		const a = new Jaco(' ');
 		a.isEmpty().should.not.ok;
-	});
-
-	// clone()
-	it('コピー', () => {
-		const a = new Jaco('あ');
-		const b = a.clone();
-		a.should.not.equal(b);
-	});
-	it('コピー', () => {
-		const a = new Jaco('あ');
-		const b = a.clone();
-		a.toString().should.equal(b.toString());
 	});
 
 	// test()
