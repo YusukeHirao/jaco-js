@@ -33,7 +33,6 @@ gulp.task 'pack', ->
   gulp.src './lib/index.js'
     .pipe wpGilp
       plugins: [
-        new webpack.optimize.DedupePlugin()
         new webpack.optimize.AggressiveMergingPlugin()
       ]
       output: filename: 'jaco.js'
