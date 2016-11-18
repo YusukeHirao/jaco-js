@@ -596,16 +596,16 @@ describe('Jaco Class', () => {
 		a.toLowerCase().toString().should.equal('abcdefghijklmnopqrstuvwxyz');
 	});
 
-	// toUpperCase()
-	it('大文字に変換', () => {
-		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.toUpperCase().toString().should.equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-	});
-
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
 		`${a}い`.should.equal('あい');
+	});
+
+	// toUpperCase()
+	it('大文字に変換', () => {
+		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
+		a.toUpperCase().toString().should.equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 	});
 
 	// valueOf()
