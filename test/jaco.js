@@ -103,6 +103,42 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('あいうえおかき');
 	});
 
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合', () => {
+		const a = new Jaco('か゛き゛く゛け゛こ゛');
+		a.combinateSoundMarks(true).toString().should.equal('がぎぐげご');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合2', () => {
+		const a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
+		a.combinateSoundMarks(true).toString().should.equal('ぱぴぷぺぽ');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合3', () => {
+		const a = new Jaco('か゛き゛く゛け゛こ゛');
+		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合4', () => {
+		const a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
+		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合5', () => {
+		const a = new Jaco('がぎぐげご');
+		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
+	});
+
+	// combinateSoundMarks()
+	it('濁点・半濁点の結合6', () => {
+		const a = new Jaco('ぱぴぷぺぽ');
+		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
+	});
+
 	// endWith()
 	it('末尾合致 ', () => {
 		const a = new Jaco('𩸽のひらき');
@@ -967,34 +1003,6 @@ describe('Jaco Class', () => {
 		].join('');
 		const a = new Jaco(test);
 		a.isOnlyKatakana().should.not.ok;
-	});
-
-	// combinateSoundMarks(true)
-	it('濁点の結合文字化2', () => {
-		const a = new Jaco('か゛き゛く゛け゛こ゛');
-		a.combinateSoundMarks(true).toString().should.equal('がぎぐげご');
-	});
-	it('半濁点の結合文字化2', () => {
-		const a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
-		a.combinateSoundMarks(true).toString().should.equal('ぱぴぷぺぽ');
-	});
-
-	// combinateSoundMarks()
-	it('濁点・半濁点の結合', () => {
-		const a = new Jaco('か゛き゛く゛け゛こ゛');
-		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
-	});
-	it('濁点・半濁点の結合2', () => {
-		const a = new Jaco('は゜ひ゜ふ゜へ゜ほ゜');
-		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
-	});
-	it('濁点・半濁点の結合3', () => {
-		const a = new Jaco('がぎぐげご');
-		a.combinateSoundMarks().toString().should.equal('がぎぐげご');
-	});
-	it('濁点・半濁点の結合4', () => {
-		const a = new Jaco('ぱぴぷぺぽ');
-		a.combinateSoundMarks().toString().should.equal('ぱぴぷぺぽ');
 	});
 
 	// toHiragana()
