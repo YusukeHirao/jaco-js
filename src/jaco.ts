@@ -61,6 +61,17 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字列のバイトサイズを返す
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return バイト数
+	 */
+	public byteSize (): number {
+		return encodeURIComponent(this.$).replace(/%../g, 'x').length;
+	}
+
+	/**
 	 * 文字列から指定位置の文字を返す
 	 *
 	 * - サロゲートペアを考慮する
@@ -534,17 +545,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 文字列のバイトサイズを返す
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return バイト数
-	 */
-	public byteSize (): number {
-		return encodeURIComponent(this.$).replace(/%../g, 'x').length;
 	}
 
 	/**

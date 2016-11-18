@@ -22,6 +22,18 @@ describe('Jaco Class', () => {
 		a.length.should.equal(5);
 	});
 
+	// byteSize()
+	it('バイト数', () => {
+		const a = new Jaco('あいうえおabc');
+		a.byteSize().should.equal(18);
+	});
+
+	// byteSize()
+	it('バイト数2', () => {
+		const a = new Jaco('あ い う え\nお a b c');
+		a.byteSize().should.equal(25);
+	});
+
 	// charAt()
 	it('抜き出し', () => {
 		const a = new Jaco('𩸽のひらき');
@@ -696,16 +708,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	// byteSize()
-	it('バイト数', () => {
-		const a = new Jaco('あいうえおabc');
-		a.byteSize().should.equal(18);
-	});
-	it('バイト数2', () => {
-		const a = new Jaco('あ い う え\nお a b c');
-		a.byteSize().should.equal(25);
 	});
 
 	// isEmpty()
