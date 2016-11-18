@@ -275,6 +275,18 @@ export default class Jaco {
 	}
 
 	/**
+	 * 文字列を取り除く
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @param pattern 取り除く文字列
+	 * @return インスタンス自身
+	 */
+	public remove (pattern: string | RegExp | Jaco): Jaco {
+		return this.replace(pattern, '');
+	}
+
+	/**
 	 * 文字列を繰り返す
 	 *
 	 * - String.prototype.normalize とは非互換
@@ -489,18 +501,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 文字列を取り除く
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @param pattern 取り除く文字列
-	 * @return インスタンス自身
-	 */
-	public remove (pattern: string | RegExp): Jaco {
-		return this.replace(pattern, '');
 	}
 
 	/**

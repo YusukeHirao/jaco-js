@@ -311,6 +311,27 @@ describe('Jaco Class', () => {
 		a.padStart(-1).toString().should.equal('𩸽のひらき');
 	});
 
+	// remove()
+	it('削除', () => {
+		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
+		a.remove('aBc');
+		a.toString().should.equal('DeFgHiJkLmNoPqRsTuVwXyZ');
+	});
+
+	// remove()
+	it('削除2', () => {
+		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
+		a.remove(/[a-z]/);
+		a.toString().should.equal('BcDeFgHiJkLmNoPqRsTuVwXyZ');
+	});
+
+	// remove()
+	it('削除3', () => {
+		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
+		a.remove(/[a-z]/g);
+		a.toString().should.equal('BDFHJLNPRTVXZ');
+	});
+
 	// repeat()
 	it('くりかえし', () => {
 		const a = new Jaco('あ');
@@ -591,23 +612,6 @@ describe('Jaco Class', () => {
 	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
 		const a = new Jaco('1');
 		(+a).should.equal(1);
-	});
-
-	// remove()
-	it('削除', () => {
-		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove('aBc');
-		a.toString().should.equal('DeFgHiJkLmNoPqRsTuVwXyZ');
-	});
-	it('削除2', () => {
-		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove(/[a-z]/);
-		a.toString().should.equal('BcDeFgHiJkLmNoPqRsTuVwXyZ');
-	});
-	it('削除3', () => {
-		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove(/[a-z]/g);
-		a.toString().should.equal('BDFHJLNPRTVXZ');
 	});
 
 	// trim()
