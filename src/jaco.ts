@@ -3,12 +3,12 @@ import 'core-js/fn/array/from';
 import { ALPHANUMERIC_CHARS_WITH_SIGN } from './const/ALPHANUMERIC_CHARS_WITH_SIGN';
 import { FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN } from './const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN';
 import { HIRAGANA_CHARS } from './const/HIRAGANA_CHARS';
-import { HIRAGANA_CHARS_IGNORE_ITERATION_MARKS } from './const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS';
 import { KANA_COMMON_CAHRS } from './const/KANA_COMMON_CAHRS';
 import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
-import { KATAKANA_CHARS_IGNORE_ITERATION_MARKS } from './const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
+import convertIterationMarks from './fn/convertIterationMarks';
 import toPattern from './fn/toPattern';
+
 
 /**
  * ## Jacoクラス
@@ -172,6 +172,18 @@ export default class Jaco {
 	 */
 	public concat (...args: (Jaco | string | Jaco[] | string[])[]): Jaco {
 		this.$ += args.map(str => Array.isArray(str) ? str.join('') : str).join('');
+		return this;
+	}
+
+	/**
+	 * 繰り返し記号をかなに置き換える
+	 *
+	 * @version 1.1.0
+	 * @since 1.1.0
+	 * @return インスタンス自信
+	 */
+	public convertIterationMarks (): Jaco {
+		this.$ = convertIterationMarks(this.$);
 		return this;
 	}
 
@@ -1113,55 +1125,6 @@ export default class Jaco {
 			converted = conv(converted);
 		}
 		this.$ = converted;
-		return this;
-	}
-
-	/**
-	 * 繰り返し記号をかなに置き換える
-	 *
-	 * @version 1.1.0
-	 * @since 1.1.0
-	 * @return インスタンス自信
-	 */
-	public convertIterationMarks (): Jaco {
-		const kanaWithIterationMarks: RegExp = new RegExp(
-			'([' +
-			HIRAGANA_CHARS_IGNORE_ITERATION_MARKS +
-			KATAKANA_CHARS_IGNORE_ITERATION_MARKS +
-			'])([ゝゞヽヾ])'
-		);
-		const conv: (_str: string) => string = (_str: string): string => {
-			return _str.replace(kanaWithIterationMarks, ($0: string, $1: string, $2: string): string => {
-				const beforeString: string = $1;
-				const iterationMark: string = $2;
-				const converted: Jaco = new Jaco($1).removeVoicedMarks();
-				switch (iterationMark) {
-					case 'ゝ': {
-						converted.toHiragana();
-					}
-					break;
-					case 'ヽ': {
-						converted.toKatakana();
-					}
-					break;
-					case 'ゞ': {
-						converted.toHiragana().addVoicedMarks();
-					}
-					break;
-					case 'ヾ': {
-						converted.toKatakana().addVoicedMarks();
-					}
-					break;
-					default: {
-						// void
-					}
-				}
-				return beforeString + converted;
-			});
-		};
-		while (kanaWithIterationMarks.test(this.$)) {
-			this.$ = conv(this.$);
-		}
 		return this;
 	}
 

@@ -139,6 +139,26 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('あいうえおかき');
 	});
 
+	// convertIterationMarks()
+	it('繰り返し記号変換', () => {
+		new Jaco('がくもんのすゝめ').convertIterationMarks().toString().should.equal('がくもんのすすめ');
+	});
+
+	// convertIterationMarks()
+	it('繰り返し記号変換2', () => {
+		new Jaco('がくもんのすゝゝゝゝゝゝゝゝゝゝゝゝめ').convertIterationMarks().toString().should.equal('がくもんのすすすすすすすすすすすすすめ');
+	});
+
+	// convertIterationMarks()
+	it('繰り返し記号変換3', () => {
+		new Jaco('がくもんのすゝゝゝゞゝゝゝゝゝゝゝゝゝめ').convertIterationMarks().toString().should.equal('がくもんのすすすすずすすすすすすすすすめ');
+	});
+
+	// convertIterationMarks()
+	it('繰り返し記号変換4', () => {
+		new Jaco('ゝゞあゝゞかゞゝがゝゞゝ').convertIterationMarks().toString().should.equal('ゝゞあああかがかがかがか');
+	});
+
 	// endWith()
 	it('末尾合致 ', () => {
 		const a = new Jaco('𩸽のひらき');
@@ -1555,18 +1575,6 @@ describe('Jaco Class', () => {
 	});
 	it('長音符変換2', () => {
 		new Jaco('ウバッシャアーーーーーーーーー').convertProlongedSoundMarks().toString().should.equal('ウバッシャアアアアアアアアアア');
-	});
-	it('繰り返し記号変換', () => {
-		new Jaco('がくもんのすゝめ').convertIterationMarks().toString().should.equal('がくもんのすすめ');
-	});
-	it('繰り返し記号変換2', () => {
-		new Jaco('がくもんのすゝゝゝゝゝゝゝゝゝゝゝゝめ').convertIterationMarks().toString().should.equal('がくもんのすすすすすすすすすすすすすめ');
-	});
-	it('繰り返し記号変換3', () => {
-		new Jaco('がくもんのすゝゝゝゞゝゝゝゝゝゝゝゝゝめ').convertIterationMarks().toString().should.equal('がくもんのすすすすずすすすすすすすすすめ');
-	});
-	it('繰り返し記号変換4', () => {
-		new Jaco('ゝゞあゝゞかゞゝがゝゞゝ').convertIterationMarks().toString().should.equal('ゝゞあああかがかがかがか');
 	});
 
 	it('よみ変換', () => {
