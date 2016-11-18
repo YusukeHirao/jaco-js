@@ -620,20 +620,82 @@ describe('Jaco Class', () => {
 		a.trim();
 		a.toString().should.equal('a b');
 	});
+
+	// trim()
 	it('前後の空白を削除2', () => {
 		const a = new Jaco(' a b');
 		a.trim();
 		a.toString().should.equal('a b');
 	});
+
+	// trim()
 	it('前後の空白を削除3', () => {
 		const a = new Jaco('a b  　');
 		a.trim();
 		a.toString().should.equal('a b');
 	});
+
+	// trim()
 	it('前後の空白を削除4', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trim();
 		a.toString().should.equal('a 　b');
+	});
+
+	// trimLeft()
+	it('前の空白を削除', () => {
+		const a = new Jaco('a b');
+		a.trimLeft();
+		a.toString().should.equal('a b');
+	});
+
+	// trimLeft()
+	it('前の空白を削除2', () => {
+		const a = new Jaco(' a b');
+		a.trimLeft();
+		a.toString().should.equal('a b');
+	});
+
+	// trimLeft()
+	it('前の空白を削除3', () => {
+		const a = new Jaco('a b  　');
+		a.trimLeft();
+		a.toString().should.equal('a b  　');
+	});
+
+	// trimLeft()
+	it('前の空白を削除4', () => {
+		const a = new Jaco('　a 　b\n');
+		a.trimLeft();
+		a.toString().should.equal('a 　b\n');
+	});
+
+	// trimRight()
+	it('後ろの空白を削除', () => {
+		const a = new Jaco('a b');
+		a.trimRight();
+		a.toString().should.equal('a b');
+	});
+
+	// trimRight()
+	it('後ろの空白を削除2', () => {
+		const a = new Jaco(' a b');
+		a.trimRight();
+		a.toString().should.equal(' a b');
+	});
+
+	// trimRight()
+	it('後ろの空白を削除3', () => {
+		const a = new Jaco('a b  　');
+		a.trimRight();
+		a.toString().should.equal('a b');
+	});
+
+	// trimRight()
+	it('後ろの空白を削除4', () => {
+		const a = new Jaco('　a 　b\n');
+		a.trimRight();
+		a.toString().should.equal('　a 　b');
 	});
 
 	// size()

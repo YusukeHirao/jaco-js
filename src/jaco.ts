@@ -493,6 +493,39 @@ export default class Jaco {
 	}
 
 	/**
+	 * 先頭と末尾の空白を取り除く
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @return インスタンス自身
+	 */
+	public trim (): Jaco {
+		return this.trimLeft().trimRight();
+	}
+
+	/**
+	 * 先頭の空白を取り除く
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身
+	 */
+	public trimLeft (): Jaco {
+		return this.remove(/^\s+/);
+	}
+
+	/**
+	 * 末尾の空白を取り除く
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身
+	 */
+	public trimRight (): Jaco {
+		return this.remove(/\s+$/);
+	}
+
+	/**
 	 * 暗黙の値変換に呼び出されるメソッド
 	 *
 	 * @version 0.1.0
@@ -501,19 +534,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 先頭と末尾の空白を取り除く
-	 *
-	 * [\s]で判定するのでほとんどの空白文字はヒットする
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return インスタンス自身
-	 */
-	public trim (): Jaco {
-		return this.remove(/^\s*|\s*$/g);
 	}
 
 	/**
