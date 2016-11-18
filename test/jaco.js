@@ -386,6 +386,42 @@ describe('Jaco Class', () => {
 		a.split(/(a)/).should.be.eql(['', 'a', 's', 'a', 'd', 'a', 'f', 'a', '']);
 	});
 
+	// startsWith()
+	it('先頭合致 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith('𩸽のひらき').should.ok;
+	});
+
+	// startsWith()
+	it('先頭合致2 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith('のひらき').should.not.ok;
+	});
+
+	// startsWith()
+	it('先頭合致3 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith('ひら', 2).should.ok;
+	});
+
+	// startsWith()
+	it('先頭合致4 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith('ひらき', 2).should.ok;
+	});
+
+	// startsWith()
+	it('先頭合致5 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith(new Jaco('ら'), 3).should.ok;
+	});
+
+	// startsWith()
+	it('先頭合致6 ', () => {
+		const a = new Jaco('𩸽のひらき');
+		a.startsWith(new Jaco('𩸽の'), 0).should.ok;
+	});
+
 	// substr()
 	it('長さで抽出', () => {
 		const a = new Jaco('いろはにほへと');

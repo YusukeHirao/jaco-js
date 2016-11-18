@@ -115,7 +115,7 @@ export default class Jaco {
 	}
 
 	/**
-	 * 引数に指定された別の文字列を末尾と合致するか
+	 * 引数に指定された文字列が末尾と合致するか
 	 *
 	 * - String.prototype.endWith とは非互換
 	 *
@@ -331,6 +331,22 @@ export default class Jaco {
 	public split (separator: string | RegExp | Jaco, limit?: number): string[] {
 		const reg = separator instanceof RegExp ? separator : new RegExp(separator.toString());
 		return this.$.split(reg, limit);
+	}
+
+	/**
+	 * 引数に指定された文字列が先頭と合致するか
+	 *
+	 * - サロゲートペアを考慮する
+	 * - String.prototype.startsWith とは非互換
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @param search 合致対象文字列
+	 * @param position 先頭の位置
+	 * @return 合致したかどうか
+	 */
+	public startsWith (search: Jaco | string, position: number = 0): boolean {
+		return this.substr(position, search.length).toString() === search.toString();
 	}
 
 	/**
