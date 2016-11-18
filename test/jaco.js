@@ -698,16 +698,6 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('　a 　b');
 	});
 
-	// size()
-	it('文字数', () => {
-		const a = new Jaco('あいうえおabc');
-		a.size().should.equal(8);
-	});
-	it('文字数2', () => {
-		const a = new Jaco('あ い う え\nお a b c');
-		a.size().should.equal(15);
-	});
-
 	// byteSize()
 	it('バイト数', () => {
 		const a = new Jaco('あいうえおabc');

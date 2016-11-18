@@ -537,17 +537,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 文字列の長さを返す
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return 文字列数
-	 */
-	public size (): number {
-		return this.$.length;
-	}
-
-	/**
 	 * 文字列のバイトサイズを返す
 	 *
 	 * @version 0.2.0
