@@ -18,7 +18,9 @@
     "string",
     "character",
     "katakana",
-    "hiragana"
+    "hiragana",
+    "unicode",
+    "surrogate pair"
   ],
   "author": "YusukeHirao",
   "license": "MIT",
