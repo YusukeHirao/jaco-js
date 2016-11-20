@@ -191,6 +191,7 @@ export default class Jaco {
 	/**
 	 * 引数に指定された文字列が末尾と合致するか
 	 *
+	 * - サロゲートペアを考慮する
 	 * - String.prototype.endWith とは非互換
 	 *
 	 * @version 2.0.0
@@ -200,12 +201,15 @@ export default class Jaco {
 	 * @return 合致したかどうか
 	 */
 	public endWith (search: Jaco | string, position?: number): boolean {
-		if (!isFinite(position) || Math.floor(position) !== position || position > this.length) {
-			position = this.length;
+		const thisLength = this.length;
+		const searchLength = new Jaco(search).length;
+		if (!isFinite(position) || Math.floor(position) !== position || position > thisLength) {
+			position = thisLength;
 		}
-		position -= search.length;
-		const lastIndex = this.lastIndexOf(search, position);
-		return lastIndex !== -1 && lastIndex === position;
+		const end = position;
+		const start = position - searchLength;
+		const endStr = this.substring(start, end);
+		return endStr.is(search);
 	}
 
 	/**
@@ -218,11 +222,7 @@ export default class Jaco {
 	 * @return 合致したかどうか
 	 */
 	public includes (search: Jaco | string, position: number = 0): boolean {
-		if (position + search.length > this.length) {
-			return false;
-		} else {
-			return this.indexOf(search, position) !== -1;
-		}
+		return this.indexOf(search, position) !== -1;
 	}
 
 	/**
@@ -234,12 +234,17 @@ export default class Jaco {
 	 * @version 2.0.0
 	 * @since 2.0.0
 	 * @param str 検索文字列
-	 * @param [fromIndex] 検索位置
+	 * @param fromIndex 検索位置
 	 * @return インデックス
 	 *
 	 */
 	public indexOf (str: Jaco | string, fromIndex: number = 0): number {
-		return this._toArray().indexOf(str.toString(), fromIndex);
+		const splited = this.slice(fromIndex).split(str)[0];
+		if (this.is(splited)) {
+			return -1;
+		} else {
+			return new Jaco(splited).length + fromIndex;
+		}
 	}
 
 	/**
@@ -284,6 +289,26 @@ export default class Jaco {
 		}
 		pattern += '[0-9]+$';
 		return this.test(new RegExp(pattern));
+	}
+
+	/**
+	 * 該当の文字だけで構成されているかどうか
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @param characters 文字セット
+	 * @return 結果の真偽
+	 */
+	public isOnly (characters: string | Jaco): boolean {
+		const chars = characters
+			.toString()
+			// .replace(/\\/g, '\\\\')
+			.replace(/\(/g, '\\(')
+			.replace(/\)/g, '\\)')
+			.replace(/\[/g, '\\[')
+			.replace(/\]/g, '\\]');
+		const pattern = new RegExp('^[' + chars + ']+$', 'gm');
+		return pattern.test(this.$);
 	}
 
 	/**
@@ -709,18 +734,6 @@ export default class Jaco {
 	 */
 	public has (target: string | Jaco): boolean {
 		return this.$.indexOf(target.toString()) !== -1;
-	}
-
-	/**
-	 * 該当の文字だけで構成されているかどうか
-	 *
-	 * @version 1.1.0
-	 * @since 0.2.0
-	 * @param characters 文字セット
-	 * @return 結果の真偽
-	 */
-	public isOnly (characters: string | Jaco): boolean {
-		return this.test(new RegExp('^[' + characters + ']+$', 'gm'));
 	}
 
 	/**

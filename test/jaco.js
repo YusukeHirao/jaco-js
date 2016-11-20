@@ -201,55 +201,55 @@ describe('Jaco Class', () => {
 	// endWith()
 	it('末尾合致 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith('ひらき').should.ok;
+		a.endWith('ひらき').should.ok();
 	});
 
 	// endWith()
 	it('末尾合致2 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith('𩸽の').should.not.ok;
+		a.endWith('𩸽の').should.not.ok();
 	});
 
 	// endWith()
 	it('末尾合致3 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith('ひら', 4).should.ok;
+		a.endWith('ひら', 4).should.ok();
 	});
 
 	// endWith()
 	it('末尾合致4 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith('𩸽の', 2).should.ok;
+		a.endWith('𩸽の', 2).should.ok();
 	});
 
 	// endWith()
 	it('末尾合致5 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith(new Jaco('ひら'), 4).should.ok;
+		a.endWith(new Jaco('ひら'), 4).should.ok();
 	});
 
 	// endWith()
 	it('末尾合致6 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.endWith(new Jaco('𩸽の'), 2).should.ok;
+		a.endWith(new Jaco('𩸽の'), 2).should.ok();
 	});
 
 	// includes()
 	it('部分合致', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
-		a.includes('𩸽の').should.ok;
+		a.includes('𩸽の').should.ok();
 	});
 
 	// includes()
 	it('部分合致2', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
-		a.includes('の刺し身の切り').should.ok;
+		a.includes('の刺し身の切り').should.ok();
 	});
 
 	// includes()
 	it('部分合致3', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
-		a.includes('𩸽の刺しの切り身').should.not.ok;
+		a.includes('𩸽の刺しの切り身').should.not.ok();
 	});
 
 	// indexOf()
@@ -282,122 +282,182 @@ describe('Jaco Class', () => {
 		a.indexOf(new Jaco('挿し')).should.equal(-1);
 	});
 
+	// indexOf()
+	it('前方検索6', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf(new Jaco('𩸽の刺し')).should.equal(0);
+	});
+
+	// indexOf()
+	it('前方検索7', () => {
+		const a = new Jaco('𩸽の刺し身の切り身');
+		a.indexOf(new Jaco('身の切り身')).should.equal(4);
+	});
+
 	// is()
 	it('完全マッチ', () => {
 		const a = new Jaco('いろは');
-		a.is('いろは').should.ok;
+		a.is('いろは').should.ok();
 	});
 
 	// is()
 	it('完全マッチ2', () => {
 		const a = new Jaco('いろは');
-		a.is(new Jaco('いろは')).should.ok;
+		a.is(new Jaco('いろは')).should.ok();
 	});
 
 	// is()
 	it('完全マッチ3', () => {
 		const a = new Jaco('いろは');
-		a.is('いろはに').should.not.ok;
+		a.is('いろはに').should.not.ok();
 	});
 
 	// is()
 	it('完全マッチ4', () => {
 		const a = new Jaco('いろは');
-		a.is(new Jaco('いろはに')).should.not.ok;
+		a.is(new Jaco('いろはに')).should.not.ok();
 	});
 
 	// isEmpty()
 	it('空', () => {
 		const a = new Jaco('');
-		a.isEmpty().should.ok;
+		a.isEmpty().should.ok();
 	});
 	it('空2', () => {
 		const a = new Jaco(' ');
-		a.isEmpty().should.not.ok;
+		a.isEmpty().should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか1', () => {
 		const a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
-		a.isNumeric().should.not.ok;
+		a.isNumeric().should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか2', () => {
 		const a = new Jaco('２３０３');
-		a.isNumeric().should.not.ok;
+		a.isNumeric().should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか3', () => {
 		const a = new Jaco('000012303234');
-		a.isNumeric().should.ok;
+		a.isNumeric().should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか4', () => {
 		const a = new Jaco('-123.3234');
-		a.isNumeric().should.ok;
+		a.isNumeric().should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか5', () => {
 		const a = new Jaco('-123.3234.');
-		a.isNumeric().should.not.ok;
+		a.isNumeric().should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか6', () => {
 		const a = new Jaco('12-3.3234.');
-		a.isNumeric().should.not.ok;
+		a.isNumeric().should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか7', () => {
 		const a = new Jaco('.3234');
-		a.isNumeric().should.ok;
+		a.isNumeric().should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか8', () => {
 		const a = new Jaco('-.3234');
-		a.isNumeric().should.ok;
+		a.isNumeric().should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか9', () => {
 		const a = new Jaco('.3234');
-		a.isNumeric(false).should.ok;
+		a.isNumeric(false).should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか10', () => {
 		const a = new Jaco('-.3234');
-		a.isNumeric(true).should.ok;
+		a.isNumeric(true).should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか11', () => {
 		const a = new Jaco('.3234');
-		a.isNumeric(true, true).should.ok;
+		a.isNumeric(true, true).should.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか12', () => {
 		const a = new Jaco('-.3234');
-		a.isNumeric(true, false).should.not.ok;
+		a.isNumeric(true, false).should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか13', () => {
 		const a = new Jaco('.3234');
-		a.isNumeric(false, false).should.not.ok;
+		a.isNumeric(false, false).should.not.ok();
 	});
 
 	// isNumeric()
 	it('数字かどうか14', () => {
 		const a = new Jaco('-.3234');
-		a.isNumeric(false, true).should.not.ok;
+		a.isNumeric(false, true).should.not.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ', () => {
+		const a = new Jaco('いろは');
+		a.isOnly('いろはにほへと').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ2', () => {
+		const a = new Jaco('いろは');
+		a.isOnly('いはにほへと').should.not.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ3', () => {
+		const a = new Jaco('abcいろは');
+		a.isOnly('いろはにほへと').should.not.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ4', () => {
+		const a = new Jaco('いろは');
+		a.isOnly('いろは').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ5', () => {
+		const a = new Jaco('いろは');
+		a.isOnly('いろ').should.not.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ6', () => {
+		const a = new Jaco('いろは');
+		a.isOnly('いろろろろははははにににに').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ7', () => {
+		const a = new Jaco('いろはち');
+		a.isOnly('いろはにほへと').should.not.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ8', () => {
+		const a = new Jaco('いろはち');
+		a.isOnly(']()[][').should.not.ok();
 	});
 
 	// lastIndexOf()
@@ -733,37 +793,37 @@ describe('Jaco Class', () => {
 	// startsWith()
 	it('先頭合致 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith('𩸽のひらき').should.ok;
+		a.startsWith('𩸽のひらき').should.ok();
 	});
 
 	// startsWith()
 	it('先頭合致2 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith('のひらき').should.not.ok;
+		a.startsWith('のひらき').should.not.ok();
 	});
 
 	// startsWith()
 	it('先頭合致3 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith('ひら', 2).should.ok;
+		a.startsWith('ひら', 2).should.ok();
 	});
 
 	// startsWith()
 	it('先頭合致4 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith('ひらき', 2).should.ok;
+		a.startsWith('ひらき', 2).should.ok();
 	});
 
 	// startsWith()
 	it('先頭合致5 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith(new Jaco('ら'), 3).should.ok;
+		a.startsWith(new Jaco('ら'), 3).should.ok();
 	});
 
 	// startsWith()
 	it('先頭合致6 ', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.startsWith(new Jaco('𩸽の'), 0).should.ok;
+		a.startsWith(new Jaco('𩸽の'), 0).should.ok();
 	});
 
 	// substr()
@@ -940,19 +1000,19 @@ describe('Jaco Class', () => {
 	// test()
 	it('テスト', () => {
 		const a = new Jaco('あいう');
-		a.test('あいう').should.ok;
+		a.test('あいう').should.ok();
 	});
 	it('テスト2', () => {
 		const a = new Jaco('あいう');
-		a.test(/^あ/).should.ok;
+		a.test(/^あ/).should.ok();
 	});
 	it('テスト', () => {
 		const a = new Jaco('あいう');
-		a.test('あいうえ').should.not.ok;
+		a.test('あいうえ').should.not.ok();
 	});
 	it('テスト2', () => {
 		const a = new Jaco('あいう');
-		a.test(/あ$/).should.not.ok;
+		a.test(/あ$/).should.not.ok();
 	});
 
 	// prepend()
@@ -977,57 +1037,27 @@ describe('Jaco Class', () => {
 	// has()
 	it('含むかどうか', () => {
 		const a = new Jaco('いろは');
-		a.has('い').should.ok;
+		a.has('い').should.ok();
 	});
 	it('含むかどうか2', () => {
 		const a = new Jaco('いろは');
-		a.has(new Jaco('い')).should.ok;
+		a.has(new Jaco('い')).should.ok();
 	});
 	it('含むかどうか3', () => {
 		const a = new Jaco('いろは');
-		a.has(new Jaco('あ')).should.not.ok;
+		a.has(new Jaco('あ')).should.not.ok();
 	});
 	it('含むかどうか4', () => {
 		const a = new Jaco('いろは');
-		a.has('いろ').should.ok;
+		a.has('いろ').should.ok();
 	});
 	it('含むかどうか5', () => {
 		const a = new Jaco('いろは');
-		a.has('いは').should.not.ok;
+		a.has('いは').should.not.ok();
 	});
 	it('含むかどうか6', () => {
 		const a = new Jaco('いろは');
-		a.has('ろは').should.ok;
-	});
-
-	// isOnly()
-	it('該当の文字のみ', () => {
-		const a = new Jaco('いろは');
-		a.isOnly('いろはにほへと').should.ok;
-	});
-	it('該当の文字のみ2', () => {
-		const a = new Jaco('いろは');
-		a.isOnly('いはにほへと').should.not.ok;
-	});
-	it('該当の文字のみ3', () => {
-		const a = new Jaco('abcいろは');
-		a.isOnly('いろはにほへと').should.not.ok;
-	});
-	it('該当の文字のみ4', () => {
-		const a = new Jaco('いろは');
-		a.isOnly('いろは').should.ok;
-	});
-	it('該当の文字のみ5', () => {
-		const a = new Jaco('いろは');
-		a.isOnly('いろ').should.not.ok;
-	});
-	it('該当の文字のみ6', () => {
-		const a = new Jaco('いろは');
-		a.isOnly('いろろろろははははにににに').should.ok;
-	});
-	it('該当の文字のみ7', () => {
-		const a = new Jaco('いろはち');
-		a.isOnly('いろはにほへと').should.not.ok;
+		a.has('ろは').should.ok();
 	});
 
 	// toNumber()
@@ -1068,7 +1098,7 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyHiragana().should.ok;
+		a.isOnlyHiragana().should.ok();
 	});
 	it('ひらがなのみ2', () => {
 		const test = [
@@ -1077,7 +1107,7 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok;
+		a.isOnlyHiragana().should.not.ok();
 	});
 	it('ひらがなのみ3', () => {
 		const test = [
@@ -1086,7 +1116,7 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛漢字',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok;
+		a.isOnlyHiragana().should.not.ok();
 	});
 	it('ひらがなのみ4', () => {
 		const test = [
@@ -1095,7 +1125,7 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛123',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok;
+		a.isOnlyHiragana().should.not.ok();
 	});
 	it('ひらがなのみ5', () => {
 		const test = [
@@ -1104,7 +1134,7 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛abc',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok;
+		a.isOnlyHiragana().should.not.ok();
 	});
 
 	// isOnlyKatakana()
@@ -1115,7 +1145,7 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyKatakana().should.ok;
+		a.isOnlyKatakana().should.ok();
 	});
 	it('カタカナのみ2', () => {
 		const test = [
@@ -1124,7 +1154,7 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok;
+		a.isOnlyKatakana().should.not.ok();
 	});
 	it('カタカナのみ3', () => {
 		const test = [
@@ -1133,7 +1163,7 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜漢字',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok;
+		a.isOnlyKatakana().should.not.ok();
 	});
 	it('カタカナのみ4', () => {
 		const test = [
@@ -1142,7 +1172,7 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜123',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok;
+		a.isOnlyKatakana().should.not.ok();
 	});
 	it('カタカナのみ5', () => {
 		const test = [
@@ -1151,7 +1181,7 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜abc',
 		].join('');
 		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok;
+		a.isOnlyKatakana().should.not.ok();
 	});
 
 	// toHiragana()
@@ -1319,28 +1349,6 @@ describe('Jaco Class', () => {
 			'ヅデドバビブベボパピプペポヷヸヴヹヺ',
 		].join('');
 		a.toKatakana(false).toString().should.equal(b);
-	});
-	it('カタカナに変換 パフォーマンステスト(目標 2000ms以下)', () => {
-		const a = new Jaco([
-			'。「」、・',
-			'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝｶﾞｷﾞｸﾞｹﾞ',
-			'ｺﾞｻﾞｼﾞｽﾞｾﾞｿﾞﾀﾞﾁﾞﾂﾞﾃﾞﾄﾞﾊﾞﾋﾞﾌﾞﾍﾞﾎﾞﾊﾟﾋﾟﾌﾟﾍﾟﾎﾟﾜﾞｲﾞｳﾞｴﾞｦﾞ',
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゙ゐ゙ゔゑ゙を゙', // 結合文字濁点・半濁点
-		].join(''));
-		const b = [
-			'。「」、・',
-			'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝｶﾞｷﾞｸﾞｹﾞ',
-			'ｺﾞｻﾞｼﾞｽﾞｾﾞｿﾞﾀﾞﾁﾞﾂﾞﾃﾞﾄﾞﾊﾞﾋﾞﾌﾞﾍﾞﾎﾞﾊﾟﾋﾟﾌﾟﾍﾟﾎﾟﾜﾞｲﾞｳﾞｴﾞｦﾞ',
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ',
-		].join('');
-		let i = 100000;
-		while (i--) {
-			a.toKatakana(false).toString().should.equal(b);
-		}
 	});
 	it('カタカナ以外は変換しない', () => {
 		const a = new Jaco('012０１２abcａｂｃABCＡＢＣ!"#$%&\'()！＂＃＄％＆＇（）。「」、・');
