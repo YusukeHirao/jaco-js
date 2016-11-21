@@ -121,15 +121,16 @@ export default class Jaco {
 	}
 
 	/**
-	 * 濁点・半濁点を結合するか、もしくは結合文字に変換
+	 * 濁点・半濁点とひらがな・かたかなを結合させる
 	 *
-	 * @version 1.2.0
+	 * @version 2.0.0
 	 * @since 1.2.0
+	 * @param convertOnly ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
 	 * @return インスタンス自身
 	 */
-	public combinateSoundMarks (isConvertCombiningSoundMarks: boolean = false): Jaco {
-		if (!isConvertCombiningSoundMarks) {
-			// 濁点・半濁点を結合文字に変換
+	public combinateSoundMarks (convertOnly: boolean = false): Jaco {
+		if (!convertOnly) {
+			// 結合文字に変換
 			this.combinateSoundMarks(true);
 			// 濁点・半濁点を結合する
 			return this.replaceFromMap({
@@ -149,7 +150,7 @@ export default class Jaco {
 				'ハ\u309A': 'パ', 'ヒ\u309A': 'ピ', 'フ\u309A': 'プ', 'ヘ\u309A': 'ペ', 'ホ\u309A': 'ポ',
 			});
 		} else {
-			// 濁点・半濁点を結合文字に変換
+			// ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
 			return this.replaceFromMap({
 				// 濁点
 				'\u309B': '\u3099',
@@ -653,6 +654,36 @@ export default class Jaco {
 	}
 
 	/**
+	 * ひらがなに変換する
+	 *
+	 * 第一引数に true を渡した場合、濁点・半濁点は基本的に結合される
+	 * ヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる
+	 *
+	 * @version 0.2.0
+	 * @since 0.1.0
+	 * @param isCombinate 濁点・半濁点を結合文字にするかどうか
+	 * @return インスタンス自身
+	 */
+	public toHiragana (isCombinate: boolean = false): Jaco {
+		// 半角カタカナを全角カタカナへ
+		this.toWideKatakana();
+		// ヷヸヹヺの変換
+		this.replaceFromMap({
+			'ヷ': 'わ゛',
+			'ヸ': 'ゐ゛',
+			'ヹ': 'ゑ゛',
+			'ヺ': 'を゛',
+		});
+		// カタカナをひらがなへ(Unicodeの番号をずらす)
+		this._shift(toPattern(KATAKANA_CHARS), -96);
+		// 濁点・半濁点を結合文字に変換
+		if (isCombinate) {
+			this.combinateSoundMarks();
+		}
+		return this;
+	}
+
+	/**
 	 * 英字の大文字を小文字に変換する
 	 *
 	 * @version 0.2.0
@@ -804,33 +835,6 @@ export default class Jaco {
 		if (floatingPoint) {
 			// ドットを元に戻す
 			this.replace('_', '.');
-		}
-		return this;
-	}
-
-	/**
-	 * ひらがなに変換する
-	 *
-	 * @version 0.2.0
-	 * @since 0.1.0
-	 * @param isCombinate 濁点・半濁点を結合文字にするかどうか
-	 * @return インスタンス自身
-	 */
-	public toHiragana (isCombinate: boolean = false): Jaco {
-		// 半角カタカナを全角カタカナへ
-		this.toWideKatakana();
-		// ヷヸヹヺの変換
-		this.replaceFromMap({
-			'ヷ': 'わ゛',
-			'ヸ': 'ゐ゛',
-			'ヹ': 'ゑ゛',
-			'ヺ': 'を゛',
-		});
-		// カタカナをひらがなへ(Unicodeの番号をずらす)
-		this._shift(toPattern(KATAKANA_CHARS), -96);
-		// 濁点・半濁点を結合文字に変換
-		if (isCombinate) {
-			this.combinateSoundMarks();
 		}
 		return this;
 	}
