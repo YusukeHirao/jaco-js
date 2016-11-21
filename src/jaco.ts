@@ -641,6 +641,18 @@ export default class Jaco {
 	}
 
 	/**
+	 * パターンとマッチするかどうか
+	 *
+	 * @version 2.0.0
+	 * @since 0.2.0
+	 * @param pattern パターン
+	 * @return 結果の真偽
+	 */
+	public test (pattern: string | RegExp | Jaco): boolean {
+		return pattern instanceof RegExp ? pattern.test(this.$) : this.$ === pattern.toString();
+	}
+
+	/**
 	 * 英字の大文字を小文字に変換する
 	 *
 	 * @version 0.2.0
@@ -717,22 +729,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * パターンとマッチするかどうか
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @param pattern パターン
-	 * @return 結果の真偽
-	 */
-	public test (pattern: string | RegExp): boolean {
-		if (typeof pattern === 'string') {
-			return this.$ === pattern;
-		} else {
-			return pattern.test(this.$);
-		}
 	}
 
 	/**

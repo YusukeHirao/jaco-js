@@ -1095,6 +1095,30 @@ describe('Jaco Class', () => {
 		b.toString().should.equal('𩸽の刺し身');
 	});
 
+	// test()
+	it('テスト', () => {
+		const a = new Jaco('あいう');
+		a.test('あいう').should.ok();
+	});
+
+	// test()
+	it('テスト2', () => {
+		const a = new Jaco('あいう');
+		a.test(/^あ/).should.ok();
+	});
+
+	// test()
+	it('テスト3', () => {
+		const a = new Jaco('あいう');
+		a.test('あいうえ').should.not.ok();
+	});
+
+	// test()
+	it('テスト4', () => {
+		const a = new Jaco('あいう');
+		a.test(/あ$/).should.not.ok();
+	});
+
 	// toLowerCase()
 	it('小文字に変換', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
@@ -1201,24 +1225,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	// test()
-	it('テスト', () => {
-		const a = new Jaco('あいう');
-		a.test('あいう').should.ok();
-	});
-	it('テスト2', () => {
-		const a = new Jaco('あいう');
-		a.test(/^あ/).should.ok();
-	});
-	it('テスト', () => {
-		const a = new Jaco('あいう');
-		a.test('あいうえ').should.not.ok();
-	});
-	it('テスト2', () => {
-		const a = new Jaco('あいう');
-		a.test(/あ$/).should.not.ok();
 	});
 
 	// prepend()
