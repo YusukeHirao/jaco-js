@@ -502,6 +502,116 @@ describe('Jaco Class', () => {
 		a.isOnly('あ-お').should.not.ok();
 	});
 
+	// isOnlyHiragana()
+	it('ひらがなのみ', () => {
+		const test = [
+			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
+			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
+			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyHiragana().should.ok();
+	});
+
+	// isOnlyHiragana()
+	it('ひらがなのみ2', () => {
+		const test = [
+			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
+			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
+			'ヅデドバビブベボパピプペポヷヸヴヹヺ',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyHiragana().should.not.ok();
+	});
+
+	// isOnlyHiragana()
+	it('ひらがなのみ3', () => {
+		const test = [
+			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
+			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
+			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛漢字',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyHiragana().should.not.ok();
+	});
+
+	// isOnlyHiragana()
+	it('ひらがなのみ4', () => {
+		const test = [
+			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
+			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
+			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛123',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyHiragana().should.not.ok();
+	});
+
+	// isOnlyHiragana()
+	it('ひらがなのみ5', () => {
+		const test = [
+			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
+			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
+			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛abc',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyHiragana().should.not.ok();
+	});
+
+	// isOnlyKatakana()
+	it('カタカナのみ', () => {
+		const test = [
+			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
+			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
+			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyKatakana().should.ok();
+	});
+
+	// isOnlyKatakana()
+	it('カタカナのみ2', () => {
+		const test = [
+			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
+			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
+			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyKatakana().should.not.ok();
+	});
+
+	// isOnlyKatakana()
+	it('カタカナのみ3', () => {
+		const test = [
+			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
+			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
+			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜漢字',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyKatakana().should.not.ok();
+	});
+
+	// isOnlyKatakana()
+	it('カタカナのみ4', () => {
+		const test = [
+			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
+			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
+			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜123',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyKatakana().should.not.ok();
+	});
+
+	// isOnlyKatakana()
+	it('カタカナのみ5', () => {
+		const test = [
+			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
+			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
+			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜abc',
+		].join('');
+		const a = new Jaco(test);
+		a.isOnlyKatakana().should.not.ok();
+	});
+
 	// lastIndexOf()
 	it('後方検索', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
@@ -1130,100 +1240,6 @@ describe('Jaco Class', () => {
 	it('数値変換7', () => {
 		const a = new Jaco('あ');
 		a.toNumber().should.be.NaN;
-	});
-
-	// isOnlyHiragana()
-	it('ひらがなのみ', () => {
-		const test = [
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyHiragana().should.ok();
-	});
-	it('ひらがなのみ2', () => {
-		const test = [
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok();
-	});
-	it('ひらがなのみ3', () => {
-		const test = [
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛漢字',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok();
-	});
-	it('ひらがなのみ4', () => {
-		const test = [
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛123',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok();
-	});
-	it('ひらがなのみ5', () => {
-		const test = [
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛abc',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyHiragana().should.not.ok();
-	});
-
-	// isOnlyKatakana()
-	it('カタカナのみ', () => {
-		const test = [
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyKatakana().should.ok();
-	});
-	it('カタカナのみ2', () => {
-		const test = [
-			'をぁぃぅぇぉゃゅょっーあいうえおかきくけこさしすせそたちつてとなにぬ',
-			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
-			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok();
-	});
-	it('カタカナのみ3', () => {
-		const test = [
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜漢字',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok();
-	});
-	it('カタカナのみ4', () => {
-		const test = [
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜123',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok();
-	});
-	it('カタカナのみ5', () => {
-		const test = [
-			'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌ',
-			'ネノハヒフヘホマミムメモヤユヨラリルレロワンガギグゲゴザジズゼゾダヂ',
-			'ヅデドバビブベボパピプペポヷヸヴヹヺ゛゜abc',
-		].join('');
-		const a = new Jaco(test);
-		a.isOnlyKatakana().should.not.ok();
 	});
 
 	// toHiragana()

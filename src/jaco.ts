@@ -310,6 +310,28 @@ export default class Jaco {
 	}
 
 	/**
+	 * ひらがなだけで構成されているかどうか
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return 結果の真偽
+	 */
+	public isOnlyHiragana (): boolean {
+		return this.isOnly(HIRAGANA_CHARS + KANA_COMMON_CAHRS);
+	}
+
+	/**
+	 * カタカナだけで構成されているかどうか
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return 結果の真偽
+	 */
+	public isOnlyKatakana (): boolean {
+		return this.isOnly(KATAKANA_CHARS + KANA_COMMON_CAHRS);
+	}
+
+	/**
 	 * 指定された文字列が最後に現れるインデックスを返す
 	 *
 	 * - サロゲートペアを考慮する
@@ -732,28 +754,6 @@ export default class Jaco {
 	 */
 	public has (target: string | Jaco): boolean {
 		return this.$.indexOf(target.toString()) !== -1;
-	}
-
-	/**
-	 * ひらがなだけで構成されているかどうか
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return 結果の真偽
-	 */
-	public isOnlyHiragana (): boolean {
-		return this.isOnly(HIRAGANA_CHARS + KANA_COMMON_CAHRS);
-	}
-
-	/**
-	 * カタカナだけで構成されているかどうか
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return 結果の真偽
-	 */
-	public isOnlyKatakana (): boolean {
-		return this.isOnly(KATAKANA_CHARS + KANA_COMMON_CAHRS);
 	}
 
 	/**
