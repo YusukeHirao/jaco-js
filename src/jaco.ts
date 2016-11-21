@@ -300,7 +300,7 @@ export default class Jaco {
 	public isOnly (characters: string | Jaco): boolean {
 		const chars = characters
 			.toString()
-			// .replace(/\\/g, '\\\\')
+			.replace(/\\/g, '\\\\')
 			.replace(/\(/g, '\\(')
 			.replace(/\)/g, '\\)')
 			.replace(/\[/g, '\\[')

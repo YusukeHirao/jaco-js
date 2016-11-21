@@ -460,6 +460,48 @@ describe('Jaco Class', () => {
 		a.isOnly(']()[][').should.not.ok();
 	});
 
+	// isOnly()
+	it('該当の文字のみ9', () => {
+		const a = new Jaco('\\');
+		a.isOnly(']()[]\\').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ10', () => {
+		const a = new Jaco('\\');
+		a.isOnly('\\').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ11', () => {
+		const a = new Jaco('\\あ\\');
+		a.isOnly('\\あ').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ12', () => {
+		const a = new Jaco('^^^');
+		a.isOnly('^').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ13', () => {
+		const a = new Jaco('^$^');
+		a.isOnly('$^').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ14', () => {
+		const a = new Jaco('あいうえお');
+		a.isOnly('あ-お').should.ok();
+	});
+
+	// isOnly()
+	it('該当の文字のみ15', () => {
+		const a = new Jaco('あいうえおか');
+		a.isOnly('あ-お').should.not.ok();
+	});
+
 	// lastIndexOf()
 	it('後方検索', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');

@@ -7,4 +7,4 @@
  * @deprecated
  *
  */
-export const FULLWIDTH_DIGIT_CHARS = '\\uFF10-\\uFF19';
+export const FULLWIDTH_DIGIT_CHARS = '\uFF10-\uFF19';

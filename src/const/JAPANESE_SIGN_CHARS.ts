@@ -9,4 +9,4 @@
  * @deprecated
  *
  */
-export const JAPANESE_SIGN_CHARS = '\u3000-\u3036\u30FB\\uFF5E';
+export const JAPANESE_SIGN_CHARS = '\u3000-\u3036\u30FB\uFF5E';

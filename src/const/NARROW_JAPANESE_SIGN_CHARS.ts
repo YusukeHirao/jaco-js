@@ -7,4 +7,4 @@
  * @deprecated
  *
  */
-export const NARROW_JAPANESE_SIGN_CHARS = '\\uFF61-\\uFF65';
+export const NARROW_JAPANESE_SIGN_CHARS = '\uFF61-\uFF65';

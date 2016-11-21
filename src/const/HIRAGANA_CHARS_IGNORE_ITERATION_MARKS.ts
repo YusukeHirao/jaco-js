@@ -4,4 +4,4 @@
  * [ぁ-ゖ]
  *
  */
-export const HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = '\\u3041-\\u3096';
+export const HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = '\u3041-\u3096';

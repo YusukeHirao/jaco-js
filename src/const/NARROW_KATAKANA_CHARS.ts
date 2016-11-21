@@ -10,4 +10,4 @@
  * @deprecated
  *
  */
-export const NARROW_KATAKANA_CHARS = '\\uFF66-\\uFF9F';
+export const NARROW_KATAKANA_CHARS = '\uFF66-\uFF9F';
