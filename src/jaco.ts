@@ -1,5 +1,3 @@
-import 'core-js/fn/array/from';
-
 import { ALPHANUMERIC_CHARS_WITH_SIGN } from './const/ALPHANUMERIC_CHARS_WITH_SIGN';
 import { FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN } from './const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN';
 import { HIRAGANA_CHARS } from './const/HIRAGANA_CHARS';
@@ -350,7 +348,7 @@ export default class Jaco {
 	 */
 	public matches (regexp: RegExp): string[] {
 		const matches = this.match(regexp);
-		return Array.from(matches || []);
+		return Array.prototype.concat.apply(matches || []);
 	}
 
 	/**
