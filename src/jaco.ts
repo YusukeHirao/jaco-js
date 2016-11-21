@@ -211,6 +211,20 @@ export default class Jaco {
 	}
 
 	/**
+	 * 該当の文字列を含んでいるかどうか
+	 *
+	 * Jaco.prototype.includes のエイリアス（第2引数なし）
+	 *
+	 * @version 2.0.0
+	 * @since 0.3.0
+	 * @param target 比較する文字列
+	 * @return 結果の真偽
+	 */
+	public has (target: string | Jaco): boolean {
+		return this.includes(target);
+	}
+
+	/**
 	 * 引数に指定された文字列が部分合致するか
 	 *
 	 * @version 2.0.0
@@ -742,18 +756,6 @@ export default class Jaco {
 	 */
 	public append (element: string | Jaco): Jaco {
 		return this.concat(element);
-	}
-
-	/**
-	 * 該当の文字を含んでいるかどうか
-	 *
-	 * @version 0.3.0
-	 * @since 0.3.0
-	 * @param target 比較する文字列
-	 * @return 結果の真偽
-	 */
-	public has (target: string | Jaco): boolean {
-		return this.$.indexOf(target.toString()) !== -1;
 	}
 
 	/**

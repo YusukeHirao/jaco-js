@@ -234,6 +234,42 @@ describe('Jaco Class', () => {
 		a.endWith(new Jaco('𩸽の'), 2).should.ok();
 	});
 
+	// has()
+	it('含むかどうか', () => {
+		const a = new Jaco('いろは');
+		a.has('い').should.ok();
+	});
+
+	// has()
+	it('含むかどうか2', () => {
+		const a = new Jaco('いろは');
+		a.has(new Jaco('い')).should.ok();
+	});
+
+	// has()
+	it('含むかどうか3', () => {
+		const a = new Jaco('いろは');
+		a.has(new Jaco('あ')).should.not.ok();
+	});
+
+	// has()
+	it('含むかどうか4', () => {
+		const a = new Jaco('いろは');
+		a.has('いろ').should.ok();
+	});
+
+	// has()
+	it('含むかどうか5', () => {
+		const a = new Jaco('いろは');
+		a.has('いは').should.not.ok();
+	});
+
+	// has()
+	it('含むかどうか6', () => {
+		const a = new Jaco('いろは');
+		a.has('ろは').should.ok();
+	});
+
 	// includes()
 	it('部分合致', () => {
 		const a = new Jaco('𩸽の刺し身の切り身');
@@ -1184,32 +1220,6 @@ describe('Jaco Class', () => {
 	it('後方結合2', () => {
 		const a = new Jaco('いろは');
 		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
-	});
-
-	// has()
-	it('含むかどうか', () => {
-		const a = new Jaco('いろは');
-		a.has('い').should.ok();
-	});
-	it('含むかどうか2', () => {
-		const a = new Jaco('いろは');
-		a.has(new Jaco('い')).should.ok();
-	});
-	it('含むかどうか3', () => {
-		const a = new Jaco('いろは');
-		a.has(new Jaco('あ')).should.not.ok();
-	});
-	it('含むかどうか4', () => {
-		const a = new Jaco('いろは');
-		a.has('いろ').should.ok();
-	});
-	it('含むかどうか5', () => {
-		const a = new Jaco('いろは');
-		a.has('いは').should.not.ok();
-	});
-	it('含むかどうか6', () => {
-		const a = new Jaco('いろは');
-		a.has('ろは').should.ok();
 	});
 
 	// toNumber()
