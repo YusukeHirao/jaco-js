@@ -261,13 +261,31 @@ describe('Jaco Class', () => {
 	// has()
 	it('含むかどうか5', () => {
 		const a = new Jaco('いろは');
-		a.has('いは').should.not.ok();
+		a.has('いは').should.ok();
 	});
 
 	// has()
 	it('含むかどうか6', () => {
 		const a = new Jaco('いろは');
 		a.has('ろは').should.ok();
+	});
+
+	// has()
+	it('含むかどうか7', () => {
+		const a = new Jaco('いろは');
+		a.has('にほへと').should.not.ok();
+	});
+
+	// has()
+	it('含むかどうか8', () => {
+		const a = new Jaco('いろは');
+		a.has('a-z').should.not.ok();
+	});
+
+	// has()
+	it('含むかどうか9', () => {
+		const a = new Jaco('いろは');
+		a.has('あ-ん').should.ok();
 	});
 
 	// includes()

@@ -211,17 +211,23 @@ export default class Jaco {
 	}
 
 	/**
-	 * 該当の文字列を含んでいるかどうか
-	 *
-	 * Jaco.prototype.includes のエイリアス（第2引数なし）
+	 * 該当の文字のいずれかを含んでいるかどうか
 	 *
 	 * @version 2.0.0
-	 * @since 0.3.0
-	 * @param target 比較する文字列
+	 * @since 2.0.0
+	 * @param characters 文字セット
 	 * @return 結果の真偽
 	 */
-	public has (target: string | Jaco): boolean {
-		return this.includes(target);
+	public has (characters: string | Jaco): boolean {
+		const chars = characters
+			.toString()
+			.replace(/\\/g, '\\\\')
+			.replace(/\(/g, '\\(')
+			.replace(/\)/g, '\\)')
+			.replace(/\[/g, '\\[')
+			.replace(/\]/g, '\\]');
+		const pattern = new RegExp('[' + chars + ']', 'gm');
+		return pattern.test(this.$);
 	}
 
 	/**
