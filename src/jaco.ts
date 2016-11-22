@@ -765,6 +765,21 @@ export default class Jaco {
 	}
 
 	/**
+	 * カタカナと日本語で使われる記号を半角に変換
+	 *
+	 * @version 0.4.0
+	 * @since 0.4.0
+	 * @return インスタンス自身
+	 */
+	public toNarrowJapnese (): Jaco {
+		// 半角カタカナへ
+		this.toNarrowKatakana();
+		// 半角記号へ
+		this.toNarrowJapneseSymbol();
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -1019,21 +1034,6 @@ export default class Jaco {
 			'､': '、',
 			'･': '・',
 		});
-		return this;
-	}
-
-	/**
-	 * カタカナと日本語で使われる記号を半角に変換
-	 *
-	 * @version 0.4.0
-	 * @since 0.4.0
-	 * @return インスタンス自身
-	 */
-	public toNarrowJapnese (): Jaco {
-		// 半角カタカナへ
-		this.toNarrowKatakana();
-		// 半角記号へ
-		this.toNarrowJapneseSymbol();
 		return this;
 	}
 
