@@ -241,6 +241,18 @@ export default class Jaco {
 	}
 
 	/**
+	 * 長音符をかなに置き換える
+	 *
+	 * @version 1.1.0
+	 * @since 1.1.0
+	 * @return インスタンス自信
+	 */
+	public convertProlongedSoundMarks (): Jaco {
+		this.$ = convertProlongedSoundMarks(this.$);
+		return this;
+	}
+
+	/**
 	 * 引数に指定された文字列が末尾と合致するか
 	 *
 	 * - サロゲートペアを考慮する
@@ -1190,18 +1202,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 長音符をかなに置き換える
-	 *
-	 * @version 1.1.0
-	 * @since 1.1.0
-	 * @return インスタンス自信
-	 */
-	public convertProlongedSoundMarks (): Jaco {
-		this.$ = convertProlongedSoundMarks(this.$);
-		return this;
 	}
 
 	/**
