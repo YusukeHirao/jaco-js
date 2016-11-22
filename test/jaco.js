@@ -828,6 +828,18 @@ describe('Jaco Class', () => {
 		a.padStart(-1).toString().should.equal('𩸽のひらき');
 	});
 
+	// prepend()
+	it('前方結合', () => {
+		const a = new Jaco('うえお');
+		a.prepend('あい').toString().should.equal('あいうえお');
+	});
+
+	// prepend()
+	it('前方結合2', () => {
+		const a = new Jaco('にほへと');
+		a.prepend(new Jaco('いろは')).toString().should.equal('いろはにほへと');
+	});
+
 	// remove()
 	it('削除', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
@@ -1836,16 +1848,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	// prepend()
-	it('前方結合', () => {
-		const a = new Jaco('うえお');
-		a.prepend('あい').toString().should.equal('あいうえお');
-	});
-	it('前方結合2', () => {
-		const a = new Jaco('にほへと');
-		a.prepend(new Jaco('いろは')).toString().should.equal('いろはにほへと');
 	});
 
 	it('濁点・半濁点除去', () => {

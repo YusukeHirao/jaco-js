@@ -512,6 +512,23 @@ export default class Jaco {
 	}
 
 	/**
+	 * 前方結合
+	 *
+	 * ```javascript
+	 * new Jaco("あああ").prepend("いいい").toString() // => "いいいあああ"
+	 * ```
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @param element 結合する文字列
+	 * @return インスタンス自身
+	 */
+	public prepend (element: string | Jaco): Jaco {
+		this.$ = new Jaco(element).concat(this).toString();
+		return this;
+	}
+
+	/**
 	 * 文字列を取り除く
 	 *
 	 * @version 2.0.0
@@ -1143,23 +1160,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 前方結合
-	 *
-	 * ```javascript
-	 * new Jaco("あああ").prepend("いいい").toString() // => "いいいあああ"
-	 * ```
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @param element 結合する文字列
-	 * @return インスタンス自身
-	 */
-	public prepend (element: string | Jaco): Jaco {
-		this.$ = new Jaco(element).concat(this).toString();
-		return this;
 	}
 
 	/**
