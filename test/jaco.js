@@ -1684,6 +1684,11 @@ describe('Jaco Class', () => {
 		a.toNumeric(false, true).toString().should.equal(b);
 	});
 
+	// toPhoeticKana
+	it('よみ変換', () => {
+		new Jaco('あーぁあゝアア').toPhoeticKana().toString().should.equal('あああああああ');
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -1862,10 +1867,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	it('よみ変換', () => {
-		new Jaco('あーぁあゝアア').toPhoeticKana().toString().should.equal('あああああああ');
 	});
 
 });

@@ -297,6 +297,19 @@ export default class Jaco {
 	}
 
 	/**
+	 * 小書き文字を含むかどうか
+	 *
+	 * TODO: test
+	 *
+	 * @version 1.1.0
+	 * @since 1.1.0
+	 * @return 小書き文字を含むかどうか
+	 */
+	public hasSmallLetter (): boolean {
+		return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this.$);
+	}
+
+	/**
 	 * 引数に指定された文字列が部分合致するか
 	 *
 	 * @version 2.0.0
@@ -1202,17 +1215,6 @@ export default class Jaco {
 	 */
 	public valueOf (): string {
 		return this.toString();
-	}
-
-	/**
-	 * 小書き文字を含むかどうか
-	 *
-	 * @version 1.1.0
-	 * @since 1.1.0
-	 * @return 小書き文字を含むかどうか
-	 */
-	public hasSmallLetter (): boolean {
-		return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this.$);
 	}
 
 	/**
