@@ -861,6 +861,20 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('BDFHJLNPRTVXZ');
 	});
 
+	// removeVoicedMarks()
+	it('濁点・半濁点除去', () => {
+		const a = [
+			'がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ',
+			'ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヷヸヴヹヺ',
+		].join('');
+		const a2 = new Jaco(a);
+		const b = [
+			'かきくけこさしすせそたちつてとはひふへほはひふへほ',
+			'カキクケコサシスセソタチツテトハヒフヘホハヒフヘホワイウエヲ',
+		].join('');
+		a2.removeVoicedMarks().toString().should.equal(b);
+	});
+
 	// repeat()
 	it('くりかえし', () => {
 		const a = new Jaco('あ');
@@ -1848,19 +1862,6 @@ describe('Jaco Class', () => {
 		const a = new Jaco('　a 　b\n');
 		a.trimRight();
 		a.toString().should.equal('　a 　b');
-	});
-
-	it('濁点・半濁点除去', () => {
-		const a = [
-			'がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ',
-			'ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヷヸヴヹヺ',
-		].join('');
-		const a2 = new Jaco(a);
-		const b = [
-			'かきくけこさしすせそたちつてとはひふへほはひふへほ',
-			'カキクケコサシスセソタチツテトハヒフヘホハヒフヘホワイウエヲ',
-		].join('');
-		a2.removeVoicedMarks().toString().should.equal(b);
 	});
 
 	it('よみ変換', () => {
