@@ -1729,6 +1729,13 @@ describe('Jaco Class', () => {
 		a.toWideKatakana().toString().should.equal(b);
 	});
 
+	// toWideSymbolJapanese()
+	it('日本語記号の全角化', () => {
+		const a = new Jaco('｡｢｣､･');
+		const b = '。「」、・';
+		a.toWideSymbolJapanese().toString().should.equal(b);
+	});
+
 	// valueOf()
 	it('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
 		const a = new Jaco('1');
@@ -1836,13 +1843,6 @@ describe('Jaco Class', () => {
 	it('後方結合2', () => {
 		const a = new Jaco('いろは');
 		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
-	});
-
-	// toWideJapneseSymbol()
-	it('日本語記号の全角化', () => {
-		const a = new Jaco('｡｢｣､･');
-		const b = '。「」、・';
-		a.toWideJapneseSymbol().toString().should.equal(b);
 	});
 	it('濁点・半濁点除去', () => {
 		const a = [
