@@ -1869,4 +1869,12 @@ describe('Jaco Class', () => {
 		a.toString().should.equal('　a 　b');
 	});
 
+	// [@@iterator]()
+	it('イテレータ', () => {
+		const a = new Jaco('𩸽のひらき');
+		for (const j of a) {
+			console.log(j);
+		}
+	});
+
 });

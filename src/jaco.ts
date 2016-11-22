@@ -1217,6 +1217,21 @@ export default class Jaco {
 		return this.toString();
 	}
 
+	public *[Symbol.iterator] () {
+		let counter = 0;
+		const iterator: Iterator<Jaco> = {
+			next () {
+				const count = counter++;
+				const result: IteratorResult<Jaco> = {
+					value: this._toArray()[count] ? new Jaco(this._toArray()[count]) : undefined,
+					done: count <= this.length,
+				};
+				return result;
+			}
+		};
+		return iterator;
+	}
+
 	/**
 	 * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
 	 *
