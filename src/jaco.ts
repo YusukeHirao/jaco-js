@@ -890,23 +890,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 全角に変換
-	 *
-	 * @version 0.4.0
-	 * @since 0.4.0
-	 * @return インスタンス自身
-	 */
-	public toWide (): Jaco {
-		// スペースの変換
-		this.replace(' ', '\u3000');
-		// 日本語カタカナ記号の変換
-		this.toWideJapnese();
-		// 半角英数記号の変換
-		this._shift(toPattern(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
-		return this;
-	}
-
-	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -926,6 +909,38 @@ export default class Jaco {
 	 */
 	public toUpperCase (): Jaco {
 		this.$ = this.$.toUpperCase();
+		return this;
+	}
+
+	/**
+	 * 全角に変換
+	 *
+	 * @version 0.4.0
+	 * @since 0.4.0
+	 * @return インスタンス自身
+	 */
+	public toWide (): Jaco {
+		// スペースの変換
+		this.replace(' ', '\u3000');
+		// 日本語カタカナ記号の変換
+		this.toWideJapnese();
+		// 半角英数記号の変換
+		this._shift(toPattern(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+		return this;
+	}
+
+	/**
+	 * カタカナと日本語で使われる記号を全角に変換
+	 *
+	 * @version 0.4.0
+	 * @since 0.4.0
+	 * @return インスタンス自身
+	 */
+	public toWideJapnese (): Jaco {
+		// 全角カタカナへ
+		this.toWideKatakana();
+		// 全角記号へ
+		this.toWideJapneseSymbol();
 		return this;
 	}
 
@@ -1051,21 +1066,6 @@ export default class Jaco {
 			'､': '、',
 			'･': '・',
 		});
-		return this;
-	}
-
-	/**
-	 * カタカナと日本語で使われる記号を全角に変換
-	 *
-	 * @version 0.4.0
-	 * @since 0.4.0
-	 * @return インスタンス自身
-	 */
-	public toWideJapnese (): Jaco {
-		// 全角カタカナへ
-		this.toWideKatakana();
-		// 全角記号へ
-		this.toWideJapneseSymbol();
 		return this;
 	}
 
