@@ -1844,6 +1844,7 @@ describe('Jaco Class', () => {
 		const a = new Jaco('いろは');
 		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
 	});
+
 	it('濁点・半濁点除去', () => {
 		const a = [
 			'がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ',
