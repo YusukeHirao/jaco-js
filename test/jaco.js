@@ -1597,6 +1597,55 @@ describe('Jaco Class', () => {
 		a.toNumber().should.be.NaN;
 	});
 
+	// toNumeric()
+	it('数字化', () => {
+		const a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
+		const b = '2303';
+		a.toNumeric().toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化2', () => {
+		const a = new Jaco(' ー-.。２.３ｓ０。３.ｓｄｋふぁえ');
+		const b = '2303';
+		a.toNumeric().toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化3', () => {
+		const a = new Jaco(' ２-３ｓ０３ｓｄｋふぁえ');
+		const b = '2303';
+		a.toNumeric(true).toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化4', () => {
+		const a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ');
+		const b = '-2303';
+		a.toNumeric(true).toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化5', () => {
+		const a = new Jaco(' -２-３-.ｓ０.３ｓｄｋふぁえ');
+		const b = '-23.03';
+		a.toNumeric(true, true).toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化6', () => {
+		const a = new Jaco(' ２３.-.-ｓ０３.ｓｄｋふぁえ');
+		const b = '23.03';
+		a.toNumeric(true, true).toString().should.equal(b);
+	});
+
+	// toNumeric()
+	it('数字化7', () => {
+		const a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ...');
+		const b = '2303';
+		a.toNumeric(false, true).toString().should.equal(b);
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -1794,43 +1843,6 @@ describe('Jaco Class', () => {
 			'。「」、・',
 		].join('');
 		a.toWide().toString().should.equal(b);
-	});
-
-	// toNumeric() v0.5.0で追加
-	it('数字化', () => {
-		const a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');
-		const b = '2303';
-		a.toNumeric().toString().should.equal(b);
-	});
-	it('数字化2', () => {
-		const a = new Jaco(' ー-.。２.３ｓ０。３.ｓｄｋふぁえ');
-		const b = '2303';
-		a.toNumeric().toString().should.equal(b);
-	});
-	it('数字化3', () => {
-		const a = new Jaco(' ２-３ｓ０３ｓｄｋふぁえ');
-		const b = '2303';
-		a.toNumeric(true).toString().should.equal(b);
-	});
-	it('数字化4', () => {
-		const a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ');
-		const b = '-2303';
-		a.toNumeric(true).toString().should.equal(b);
-	});
-	it('数字化5', () => {
-		const a = new Jaco(' -２-３-.ｓ０.３ｓｄｋふぁえ');
-		const b = '-23.03';
-		a.toNumeric(true, true).toString().should.equal(b);
-	});
-	it('数字化6', () => {
-		const a = new Jaco(' ２３.-.-ｓ０３.ｓｄｋふぁえ');
-		const b = '23.03';
-		a.toNumeric(true, true).toString().should.equal(b);
-	});
-	it('数字化7', () => {
-		const a = new Jaco('- ２３ｓ０３ｓｄｋふぁえ...');
-		const b = '2303';
-		a.toNumeric(false, true).toString().should.equal(b);
 	});
 	it('濁点・半濁点除去', () => {
 		const a = [

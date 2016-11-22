@@ -853,6 +853,43 @@ export default class Jaco {
 	}
 
 	/**
+	 * 数字に変換する
+	 *
+	 * @version 0.5.0
+	 * @since 0.5.0
+	 * @param negative 負の値を許可してマイナスをつけるかどうか
+	 * @param floatingPoint 小数を許可してドットをつけるかどうか
+	 * @return インスタンス自身
+	 */
+	public toNumeric (negative: boolean = false, floatingPoint: boolean = false): Jaco {
+		// 半角化
+		this.toNarrow();
+		// 数字・ハイフン（マイナス）・ドット意外を削除
+		this.remove(/[^0-9\.\-]/gm);
+		if (negative) {
+			// 最初のにくるハイフンをnに一時的に変換
+			this.replace(/^-/, 'n');
+		}
+		// ハイフンを全て削除
+		this.remove(/-/g);
+		if (negative) {
+			// ハイフンを元に戻す
+			this.replace('n', '-');
+		}
+		if (floatingPoint) {
+			// 文字列中で一番最初にくるドットを_に一時的に変換
+			this.replace(/\.([0-9])/, '_$1');
+		}
+		// ドットを全て削除
+		this.remove(/\./g);
+		if (floatingPoint) {
+			// ドットを元に戻す
+			this.replace('_', '.');
+		}
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -946,43 +983,6 @@ export default class Jaco {
 	 */
 	public append (element: string | Jaco): Jaco {
 		return this.concat(element);
-	}
-
-	/**
-	 * 数字に変換する
-	 *
-	 * @version 0.5.0
-	 * @since 0.5.0
-	 * @param negative 負の値を許可してマイナスをつけるかどうか
-	 * @param floatingPoint 小数を許可してドットをつけるかどうか
-	 * @return インスタンス自身
-	 */
-	public toNumeric (negative: boolean = false, floatingPoint: boolean = false): Jaco {
-		// 半角化
-		this.toNarrow();
-		// 数字・ハイフン（マイナス）・ドット意外を削除
-		this.remove(/[^0-9\.\-]/gm);
-		if (negative) {
-			// 最初のにくるハイフンをnに一時的に変換
-			this.replace(/^-/, 'n');
-		}
-		// ハイフンを全て削除
-		this.remove(/-/g);
-		if (negative) {
-			// ハイフンを元に戻す
-			this.replace('n', '-');
-		}
-		if (floatingPoint) {
-			// 文字列中で一番最初にくるドットを_に一時的に変換
-			this.replace(/\.([0-9])/, '_$1');
-		}
-		// ドットを全て削除
-		this.remove(/\./g);
-		if (floatingPoint) {
-			// ドットを元に戻す
-			this.replace('_', '.');
-		}
-		return this;
 	}
 
 	/**
