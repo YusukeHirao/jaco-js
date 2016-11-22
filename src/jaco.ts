@@ -153,9 +153,11 @@ export default class Jaco {
 			// ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
 			return this.replaceFromMap({
 				// 濁点
-				'\u309B': '\u3099',
+				'\u309B': '\u3099', // 全角濁点 → 全角結合文字濁点
+				'\uFF9E': '\u3099', // 半角濁点 → 全角結合文字濁点
 				// 半濁点
-				'\u309C': '\u309A',
+				'\u309C': '\u309A', // 全角半濁点 → 全角結合文字半濁点
+				'\uFF9F': '\u309A', // 半角半濁点 → 全角結合文字半濁点
 			});
 		}
 	}
@@ -722,6 +724,47 @@ export default class Jaco {
 	}
 
 	/**
+	 * 半角に変換
+	 *
+	 * 改行は変換しない
+	 *
+	 * @version 2.0.0
+	 * @since 0.4.0
+	 * @return インスタンス自身
+	 */
+	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
+		let rnUID = this._createBRUID('rn');
+		while (this.includes(rnUID)) {
+			rnUID = this._createBRUID('rn');
+		}
+		let rUID = this._createBRUID('r');
+		while (this.includes(rUID)) {
+			rUID = this._createBRUID('r');
+		}
+		let nUID = this._createBRUID('n');
+		while (this.includes(nUID)) {
+			nUID = this._createBRUID('n');
+		}
+		// 改行の一時退避
+		this.replace(/\n\r/g, rnUID);
+		this.replace(/\r/g, rUID);
+		this.replace(/\n/g, nUID);
+		// スペースの変換
+		this.replace(toPattern(SPACE_CHARS), ' ');
+		// 半角英数記号の変換
+		this._shift(toPattern(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+		if (convertJapaneseChars) {
+			// 日本語カタカナ記号の変換
+			this.toNarrowJapnese();
+		}
+		// 改行の復元
+		this.replace(new RegExp(`${rnUID}`, 'g'), '\n\r');
+		this.replace(new RegExp(`${rUID}`, 'g'), '\r');
+		this.replace(new RegExp(`${nUID}`, 'g'), '\n');
+		return this;
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -1010,25 +1053,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 半角に変換
-	 *
-	 * @version 0.4.0
-	 * @since 0.4.0
-	 * @return インスタンス自身
-	 */
-	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
-		// スペースの変換
-		this.replace(toPattern(SPACE_CHARS), ' ');
-		// 半角英数記号の変換
-		this._shift(toPattern(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
-		if (convertJapaneseChars) {
-			// 日本語カタカナ記号の変換
-			this.toNarrowJapnese();
-		}
-		return this;
-	}
-
-	/**
 	 * 全角に変換
 	 *
 	 * @version 0.4.0
@@ -1234,6 +1258,14 @@ export default class Jaco {
 			pad.push(char);
 		}
 		return pad.join('');
+	}
+
+	/**
+	 * UIDの生成
+	 */
+	private _createBRUID (prefix: string): string {
+		const time = new Date().getTime().toString(36);
+		return `___${prefix}_${time}___`;
 	}
 
 }
