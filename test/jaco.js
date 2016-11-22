@@ -22,6 +22,18 @@ describe('Jaco Class', () => {
 		a.length.should.equal(5);
 	});
 
+	// append()
+	it('後方結合', () => {
+		const a = new Jaco('あい');
+		a.append('うえお').toString().should.equal('あいうえお');
+	});
+
+	// append()
+	it('後方結合2', () => {
+		const a = new Jaco('いろは');
+		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
+	});
+
 	// byteSize()
 	it('バイト数', () => {
 		const a = new Jaco('あいうえおabc');
@@ -1834,15 +1846,6 @@ describe('Jaco Class', () => {
 	it('前方結合2', () => {
 		const a = new Jaco('にほへと');
 		a.prepend(new Jaco('いろは')).toString().should.equal('いろはにほへと');
-	});
-	// append()
-	it('後方結合', () => {
-		const a = new Jaco('あい');
-		a.append('うえお').toString().should.equal('あいうえお');
-	});
-	it('後方結合2', () => {
-		const a = new Jaco('いろは');
-		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
 	});
 
 	it('濁点・半濁点除去', () => {
