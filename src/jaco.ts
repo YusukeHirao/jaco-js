@@ -684,6 +684,32 @@ export default class Jaco {
 	}
 
 	/**
+	 * カタカナに変換する
+	 *
+	 * @version 0.2.0
+	 * @since 0.1.0
+	 * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
+	 * @return インスタンス自身
+	 */
+	public toKatakana (toWide: boolean = true): Jaco {
+		// 半角カタカナを全角カタカナへ
+		if (toWide) {
+			this.toWideKatakana();
+		}
+		// わ゛=> ヷ (濁点3種類対応 ※全角濁点・全角結合文字濁点・半角濁点)
+		this.replace(/わ(?:\u309B|\u3099|\uFF9E)/g, 'ヷ');
+		// ゐ゛=> ヸ (濁点3種類対応)
+		this.replace(/ゐ(?:\u309B|\u3099|\uFF9E)/g, 'ヸ');
+		// ゑ゛=> ヹ (濁点3種類対応)
+		this.replace(/ゑ(?:\u309B|\u3099|\uFF9E)/g, 'ヹ');
+		// を゛=> ヺ (濁点3種類対応)
+		this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
+		// ひらがなをカタカナへ(Unicodeの番号をずらす)
+		this._shift(toPattern(HIRAGANA_CHARS), 96);
+		return this;
+	}
+
+	/**
 	 * 英字の大文字を小文字に変換する
 	 *
 	 * @version 0.2.0
@@ -836,32 +862,6 @@ export default class Jaco {
 			// ドットを元に戻す
 			this.replace('_', '.');
 		}
-		return this;
-	}
-
-	/**
-	 * カタカナに変換する
-	 *
-	 * @version 0.2.0
-	 * @since 0.1.0
-	 * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
-	 * @return インスタンス自身
-	 */
-	public toKatakana (toWide: boolean = true): Jaco {
-		// 半角カタカナを全角カタカナへ
-		if (toWide) {
-			this.toWideKatakana();
-		}
-		// わ゛=> ヷ (濁点3種類対応)
-		this.replace(/\u308F(?:\u309B|\u3099|\uFF9E)/g, '\u30F7');
-		// ゐ゛=> ヸ (濁点3種類対応)
-		this.replace(/\u3090(?:\u309B|\u3099|\uFF9E)/g, '\u30F8');
-		// ゑ゛=> ヹ (濁点3種類対応)
-		this.replace(/\u3091(?:\u309B|\u3099|\uFF9E)/g, '\u30F9');
-		// を゛=> ヺ (濁点3種類対応)
-		this.replace(/\u3092(?:\u309B|\u3099|\uFF9E)/g, '\u30FA');
-		// ひらがなをカタカナへ(Unicodeの番号をずらす)
-		this._shift(toPattern(HIRAGANA_CHARS), 96);
 		return this;
 	}
 
