@@ -1491,6 +1491,13 @@ describe('Jaco Class', () => {
 		a.toNarrowJapnese().toString().should.equal(b);
 	});
 
+	// toNarrowSymbolForJapanese()
+	it('日本語記号の半角化', () => {
+		const a = new Jaco('。「」、・');
+		const b = '｡｢｣､･';
+		a.toNarrowSymbolForJapanese().toString().should.equal(b);
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -1713,13 +1720,6 @@ describe('Jaco Class', () => {
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
 		].join('');
 		a.toWideKatakana().toString().should.equal(b);
-	});
-
-	// toNarrowJapneseSymbol()
-	it('日本語記号の半角化', () => {
-		const a = new Jaco('。「」、・');
-		const b = '｡｢｣､･';
-		a.toNarrowJapneseSymbol().toString().should.equal(b);
 	});
 
 	// toWideJapneseSymbol()
