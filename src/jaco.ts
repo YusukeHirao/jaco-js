@@ -842,6 +842,17 @@ export default class Jaco {
 	}
 
 	/**
+	 * 数値に変換する
+	 *
+	 * @version 0.2.0
+	 * @since 0.2.0
+	 * @return 数値
+	 */
+	public toNumber (): number {
+		return parseFloat(this.$);
+	}
+
+	/**
 	 * 明示もしくは暗黙の文字列変換メソッド
 	 *
 	 * @version 0.1.0
@@ -935,17 +946,6 @@ export default class Jaco {
 	 */
 	public append (element: string | Jaco): Jaco {
 		return this.concat(element);
-	}
-
-	/**
-	 * 数値に変換する
-	 *
-	 * @version 0.2.0
-	 * @since 0.2.0
-	 * @return 数値
-	 */
-	public toNumber (): number {
-		return parseFloat(this.$);
 	}
 
 	/**

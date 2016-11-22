@@ -1555,6 +1555,48 @@ describe('Jaco Class', () => {
 		a.toNarrowSymbolForJapanese().toString().should.equal(b);
 	});
 
+	// toNumber()
+	it('数値変換', () => {
+		const a = new Jaco('123');
+		a.toNumber().should.equal(123);
+	});
+
+	// toNumber()
+	it('数値変換2', () => {
+		const a = new Jaco('123.45');
+		a.toNumber().should.equal(123.45);
+	});
+
+	// toNumber()
+	it('数値変換3', () => {
+		const a = new Jaco('-123');
+		a.toNumber().should.equal(-123);
+	});
+
+	// toNumber()
+	it('数値変換4', () => {
+		const a = new Jaco('0123');
+		a.toNumber().should.equal(123);
+	});
+
+	// toNumber()
+	it('数値変換5', () => {
+		const a = new Jaco('0.123');
+		a.toNumber().should.equal(0.123);
+	});
+
+	// toNumber()
+	it('数値変換6', () => {
+		const a = new Jaco('.123');
+		a.toNumber().should.equal(0.123);
+	});
+
+	// toNumber()
+	it('数値変換7', () => {
+		const a = new Jaco('あ');
+		a.toNumber().should.be.NaN;
+	});
+
 	// toString()
 	it('暗黙の型変換 文字列に変換', () => {
 		const a = new Jaco('あ');
@@ -1674,36 +1716,6 @@ describe('Jaco Class', () => {
 	it('後方結合2', () => {
 		const a = new Jaco('いろは');
 		a.append(new Jaco('にほへと')).toString().should.equal('いろはにほへと');
-	});
-
-	// toNumber()
-	it('数値変換', () => {
-		const a = new Jaco('123');
-		a.toNumber().should.equal(123);
-	});
-	it('数値変換2', () => {
-		const a = new Jaco('123.45');
-		a.toNumber().should.equal(123.45);
-	});
-	it('数値変換3', () => {
-		const a = new Jaco('-123');
-		a.toNumber().should.equal(-123);
-	});
-	it('数値変換4', () => {
-		const a = new Jaco('0123');
-		a.toNumber().should.equal(123);
-	});
-	it('数値変換5', () => {
-		const a = new Jaco('0.123');
-		a.toNumber().should.equal(0.123);
-	});
-	it('数値変換6', () => {
-		const a = new Jaco('.123');
-		a.toNumber().should.equal(0.123);
-	});
-	it('数値変換7', () => {
-		const a = new Jaco('あ');
-		a.toNumber().should.be.NaN;
 	});
 
 	// toWideKatakana()
