@@ -8,7 +8,6 @@ import convertIterationMarks from './fn/convertIterationMarks';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
 import toPattern from './fn/toPattern';
 
-
 /**
  * ## Jacoクラス
  *
@@ -887,21 +886,21 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
+		// 改行の一時退避
 		let rnUID = this._createBRUID('rn');
 		while (this.includes(rnUID)) {
 			rnUID = this._createBRUID('rn');
 		}
+		this.replace(/\n\r/g, rnUID);
 		let rUID = this._createBRUID('r');
 		while (this.includes(rUID)) {
 			rUID = this._createBRUID('r');
 		}
+		this.replace(/\r/g, rUID);
 		let nUID = this._createBRUID('n');
 		while (this.includes(nUID)) {
 			nUID = this._createBRUID('n');
 		}
-		// 改行の一時退避
-		this.replace(/\n\r/g, rnUID);
-		this.replace(/\r/g, rUID);
 		this.replace(/\n/g, nUID);
 		// スペースの変換
 		this.replace(toPattern(SPACE_CHARS), ' ');
