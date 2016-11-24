@@ -2,6 +2,8 @@ import katakanize from '../lib/fn/katakanize';
 import hiraganize from '../lib/fn/hiraganize';
 import naturalKanaSort from '../lib/fn/naturalKanaSort';
 
+import 'babel-polyfill';
+
 describe('Jaco Static Methods', () => {
 	it('半角を全角カタカナに変換', () => {
 		katakanize('ｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞｶﾞ').should.equal('ガガガガガガガガ');

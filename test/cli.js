@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 import should from 'should';
-import * as fs from 'fs';
+
+import 'babel-polyfill';
 
 describe('jaco command', () => {
 

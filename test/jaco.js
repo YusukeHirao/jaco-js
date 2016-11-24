@@ -1,5 +1,7 @@
-import Jaco from '../lib/jaco.js';
+import Jaco from '../lib/jaco';
 import should from 'should';
+
+import 'babel-polyfill';
 
 describe('Jaco Class', () => {
 
@@ -1872,9 +1874,18 @@ describe('Jaco Class', () => {
 	// [@@iterator]()
 	it('イテレータ', () => {
 		const a = new Jaco('𩸽のひらき');
+		const b = [];
 		for (const j of a) {
-			console.log(j);
+			b.push(j.toString());
 		}
+		b.join('').should.equal('𩸽のひらき');
+	});
+
+	// [@@iterator]()
+	it('イテレータ2', () => {
+		const a = new Jaco('𩸽のひらき');
+		const b = Array.from(a);
+		b.join('').should.equal('𩸽のひらき');
 	});
 
 });

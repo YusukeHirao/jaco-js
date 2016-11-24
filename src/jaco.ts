@@ -1216,17 +1216,27 @@ export default class Jaco {
 		return this.toString();
 	}
 
-	public *[Symbol.iterator] () {
+	/**
+	 * イテレータ
+	 *
+	 * 要素の型は `string` ではなく `Jaco`
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return イテレータブル `<Jaco>`
+	 */
+	public [Symbol.iterator] (): Iterator<Jaco> {
 		let counter = 0;
 		const iterator: Iterator<Jaco> = {
-			next () {
+			next: () => {
 				const count = counter++;
+				const item: string | undefined = this._toArray()[count];
 				const result: IteratorResult<Jaco> = {
-					value: this._toArray()[count] ? new Jaco(this._toArray()[count]) : undefined,
-					done: count <= this.length,
+					value: item != null ? new Jaco(item) : undefined,
+					done: this.length <= count,
 				};
 				return result;
-			}
+			},
 		};
 		return iterator;
 	}
