@@ -296,6 +296,17 @@ export default class Jaco {
 	}
 
 	/**
+	 * サロゲートペア文字列を含んでいるかどうか
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return 結果の真偽
+	 */
+	public hasSurrogatePair (): boolean {
+		return /[\uD800-\uDBFF][\uDC00-\uDFFF]/.test(this.$);
+	}
+
+	/**
 	 * 小書き文字を含むかどうか
 	 *
 	 * TODO: test
@@ -306,6 +317,17 @@ export default class Jaco {
 	 */
 	public hasSmallLetter (): boolean {
 		return /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(this.$);
+	}
+
+	/**
+	 * ペアになっていないサロゲートコードポイントを含んでいるかどうか
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return 結果の真偽
+	 */
+	public hasUnpairedSurrogate (): boolean {
+		return /[\uD800-\uDBFF](?:[^\uDC00-\uDFFF]|$)|(?:^|[^\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(this.$);
 	}
 
 	/**
@@ -562,6 +584,19 @@ export default class Jaco {
 	 */
 	public remove (pattern: string | RegExp | Jaco): Jaco {
 		return this.replace(pattern, '');
+	}
+
+	/**
+	 * ペアになっていないサロゲートコードポイントの削除
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 * @return インスタンス自身
+	 */
+	public removeUnpairedSurrogate (): Jaco {
+		let res = this.$.replace(/[\uD800-\uDBFF]([^\uDC00-\uDFFF]|$)/g, '$1');
+		this.$ = res.replace(/(^|[^\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '$1');
+		return this;
 	}
 
 	/**
