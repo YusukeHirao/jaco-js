@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0
-* revision: 3512c6441f953257c1dec98465267a410e29ecde
+* revision: d5fdb621c97429fb5897a0fbc9e47a2f38e6677b
 * update: 2016-11-25
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
@@ -70,7 +70,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,7 +92,8 @@ var KATAKANA_CHARS_1 = __webpack_require__(4);
 var SPACE_CHARS_1 = __webpack_require__(14);
 var convertIterationMarks_1 = __webpack_require__(15);
 var convertProlongedSoundMarks_1 = __webpack_require__(16);
-var toPattern_1 = __webpack_require__(17);
+var arrayize_1 = __webpack_require__(17);
+var patternize_1 = __webpack_require__(18);
 /**
  * ## Jacoクラス
  *
@@ -219,7 +220,7 @@ var Jaco = function () {
         value: function charAt() {
             var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-            return this._toArray()[index] || '';
+            return arrayize_1.default(this.$)[index] || '';
         }
         /**
          * Unicodeポイント値である負でない整数を返す
@@ -603,7 +604,7 @@ var Jaco = function () {
         value: function lastIndexOf(str) {
             var fromIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Infinity;
 
-            return this._toArray().lastIndexOf(str.toString(), fromIndex);
+            return arrayize_1.default(this.$).lastIndexOf(str.toString(), fromIndex);
         }
         /**
          * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を得る
@@ -672,7 +673,7 @@ var Jaco = function () {
         value: function padEnd(targetLength) {
             var padString = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
 
-            var thisArray = this._toArray();
+            var thisArray = arrayize_1.default(this.$);
             var thisLength = thisArray.length;
             if (targetLength < thisLength) {
                 this.$ = this.substr(0, targetLength).toString();
@@ -700,7 +701,7 @@ var Jaco = function () {
         value: function padStart(targetLength) {
             var padString = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
 
-            var thisArray = this._toArray();
+            var thisArray = arrayize_1.default(this.$);
             var thisLength = thisArray.length;
             if (targetLength < thisLength) {
                 this.$ = this.substr(0, targetLength).toString();
@@ -891,7 +892,7 @@ var Jaco = function () {
     }, {
         key: "slice",
         value: function slice(start, end) {
-            var array = this._toArray();
+            var array = arrayize_1.default(this.$);
             var res = array.slice(start, end);
             return new Jaco(res.join(''));
         }
@@ -950,7 +951,7 @@ var Jaco = function () {
     }, {
         key: "substr",
         value: function substr(start, length) {
-            var array = this._toArray();
+            var array = arrayize_1.default(this.$);
             var thisLength = array.length;
             if (length == null || length < 0 || thisLength < length) {
                 length = thisLength;
@@ -1057,7 +1058,7 @@ var Jaco = function () {
                 'ヺ': 'を゛'
             });
             // カタカナをひらがなへ(Unicodeの番号をずらす)
-            this._shift(toPattern_1.default(KATAKANA_CHARS_1.KATAKANA_CHARS), -96);
+            this._shift(patternize_1.default(KATAKANA_CHARS_1.KATAKANA_CHARS), -96);
             // 濁点・半濁点を結合文字に変換
             if (isCombinate) {
                 this.combinateSoundMarks();
@@ -1091,7 +1092,7 @@ var Jaco = function () {
             // を゛=> ヺ (濁点3種類対応)
             this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
             // ひらがなをカタカナへ(Unicodeの番号をずらす)
-            this._shift(toPattern_1.default(HIRAGANA_CHARS_1.HIRAGANA_CHARS), 96);
+            this._shift(patternize_1.default(HIRAGANA_CHARS_1.HIRAGANA_CHARS), 96);
             return this;
         }
         /**
@@ -1124,9 +1125,9 @@ var Jaco = function () {
             var convertJapaneseChars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
             // スペースの変換
-            this.replace(toPattern_1.default(SPACE_CHARS_1.SPACE_CHARS), ' ');
+            this.replace(patternize_1.default(SPACE_CHARS_1.SPACE_CHARS), ' ');
             // 半角英数記号の変換
-            this._shift(toPattern_1.default(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+            this._shift(patternize_1.default(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
             if (convertJapaneseChars) {
                 // 日本語カタカナ記号の変換
                 this.toNarrowJapnese();
@@ -1333,7 +1334,7 @@ var Jaco = function () {
             // 日本語カタカナ記号の変換
             this.toWideJapnese();
             // 半角英数記号の変換
-            this._shift(toPattern_1.default(ALPHANUMERIC_CHARS_WITH_SIGN_1.ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+            this._shift(patternize_1.default(ALPHANUMERIC_CHARS_WITH_SIGN_1.ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
             return this;
         }
         /**
@@ -1480,7 +1481,7 @@ var Jaco = function () {
             var iterator = {
                 next: function next() {
                     var count = counter++;
-                    var item = _this._toArray()[count];
+                    var item = arrayize_1.default(_this.$)[count];
                     var result = {
                         value: item != null ? new Jaco(item) : undefined,
                         done: _this.length <= count
@@ -1509,21 +1510,6 @@ var Jaco = function () {
             return this;
         }
         /**
-         * 文字列を配列化する
-         *
-         * サロゲートペア文字列を考慮する
-         *
-         * @version 2.0.0
-         * @since 2.0.0
-         * @return 配列化された文字列
-         */
-
-    }, {
-        key: "_toArray",
-        value: function _toArray() {
-            return this.$.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
-        }
-        /**
          * 指定数の文字列長になるように繰り返して埋める
          *
          * @version 2.0.0
@@ -1536,7 +1522,7 @@ var Jaco = function () {
         key: "_pad",
         value: function _pad(length) {
             var pad = [];
-            var padStringArray = this._toArray();
+            var padStringArray = arrayize_1.default(this.$);
             var padLength = padStringArray.length;
             for (var i = 0; i < length; i++) {
                 var char = padStringArray[i % padLength];
@@ -1547,7 +1533,7 @@ var Jaco = function () {
     }, {
         key: "length",
         get: function get() {
-            var array = this._toArray();
+            var array = arrayize_1.default(this.$);
             return array.length;
         }
     }]);
@@ -2242,6 +2228,37 @@ function converter(str) {
 "use strict";
 "use strict";
 /**
+ * 文字列を配列化する
+ *
+ * サロゲートペア文字列を考慮する
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @return 配列化された文字列
+ */
+
+function default_1(str) {
+  return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 文字列を配列化する
+ *
+ * サロゲートペア文字列を考慮する
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @return 配列化された文字列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
  * キャラクターリストを正規表現に変換する
  *
  * @version 0.1.0
@@ -2265,7 +2282,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

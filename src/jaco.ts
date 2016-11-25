@@ -4,9 +4,12 @@ import { HIRAGANA_CHARS } from './const/HIRAGANA_CHARS';
 import { KANA_COMMON_CAHRS } from './const/KANA_COMMON_CAHRS';
 import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
+
 import convertIterationMarks from './fn/convertIterationMarks';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
-import toPattern from './fn/toPattern';
+
+import arrayize from './util/arrayize';
+import patternize from './util/patternize';
 
 /**
  * ## Jacoクラス
@@ -31,7 +34,7 @@ export default class Jaco {
 	 * @readonly
 	 */
 	public get length (): number {
-		const array = this._toArray();
+		const array = arrayize(this.$);
 		return array.length;
 	}
 
@@ -131,7 +134,7 @@ export default class Jaco {
 	 * @return 指定位置の文字
 	 */
 	public charAt (index: number = 0): string {
-		return this._toArray()[index] || '';
+		return arrayize(this.$)[index] || '';
 	}
 
 	/**
@@ -465,7 +468,7 @@ export default class Jaco {
 	 *
 	 */
 	public lastIndexOf (str: Jaco | string, fromIndex: number = Infinity): number {
-		return this._toArray().lastIndexOf(str.toString(), fromIndex);
+		return arrayize(this.$).lastIndexOf(str.toString(), fromIndex);
 	}
 
 	/**
@@ -522,7 +525,7 @@ export default class Jaco {
 	 * @return インスタンス自身が保持する文字列
 	 */
 	public padEnd (targetLength: number, padString: string | Jaco = ' '): Jaco {
-		const thisArray = this._toArray();
+		const thisArray = arrayize(this.$);
 		const thisLength = thisArray.length;
 		if (targetLength < thisLength) {
 			this.$ = this.substr(0, targetLength).toString();
@@ -546,7 +549,7 @@ export default class Jaco {
 	 * @return インスタンス自身が保持する文字列
 	 */
 	public padStart (targetLength: number, padString: string | Jaco = ' '): Jaco {
-		const thisArray = this._toArray();
+		const thisArray = arrayize(this.$);
 		const thisLength = thisArray.length;
 		if (targetLength < thisLength) {
 			this.$ = this.substr(0, targetLength).toString();
@@ -715,7 +718,7 @@ export default class Jaco {
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public slice (start: number, end?: number): Jaco {
-		const array = this._toArray();
+		const array = arrayize(this.$);
 		const res = array.slice(start, end);
 		return new Jaco(res.join(''));
 	}
@@ -766,7 +769,7 @@ export default class Jaco {
 	 * @return 抽出した文字列からなるJacoインスタンス
 	 */
 	public substr (start: number, length?: number): Jaco {
-		const array = this._toArray();
+		const array = arrayize(this.$);
 		const thisLength = array.length;
 		if (length == null || length < 0 || thisLength < length) {
 			length = thisLength;
@@ -865,7 +868,7 @@ export default class Jaco {
 			'ヺ': 'を゛',
 		});
 		// カタカナをひらがなへ(Unicodeの番号をずらす)
-		this._shift(toPattern(KATAKANA_CHARS), -96);
+		this._shift(patternize(KATAKANA_CHARS), -96);
 		// 濁点・半濁点を結合文字に変換
 		if (isCombinate) {
 			this.combinateSoundMarks();
@@ -895,7 +898,7 @@ export default class Jaco {
 		// を゛=> ヺ (濁点3種類対応)
 		this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
 		// ひらがなをカタカナへ(Unicodeの番号をずらす)
-		this._shift(toPattern(HIRAGANA_CHARS), 96);
+		this._shift(patternize(HIRAGANA_CHARS), 96);
 		return this;
 	}
 
@@ -922,9 +925,9 @@ export default class Jaco {
 	 */
 	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
 		// スペースの変換
-		this.replace(toPattern(SPACE_CHARS), ' ');
+		this.replace(patternize(SPACE_CHARS), ' ');
 		// 半角英数記号の変換
-		this._shift(toPattern(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+		this._shift(patternize(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
 		if (convertJapaneseChars) {
 			// 日本語カタカナ記号の変換
 			this.toNarrowJapnese();
@@ -1116,7 +1119,7 @@ export default class Jaco {
 		// 日本語カタカナ記号の変換
 		this.toWideJapnese();
 		// 半角英数記号の変換
-		this._shift(toPattern(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+		this._shift(patternize(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
 		return this;
 	}
 
@@ -1245,7 +1248,7 @@ export default class Jaco {
 		const iterator: Iterator<Jaco> = {
 			next: () => {
 				const count = counter++;
-				const item: string | undefined = this._toArray()[count];
+				const item: string | undefined = arrayize(this.$)[count];
 				const result: IteratorResult<Jaco> = {
 					value: item != null ? new Jaco(item) : undefined,
 					done: this.length <= count,
@@ -1273,19 +1276,6 @@ export default class Jaco {
 	}
 
 	/**
-	 * 文字列を配列化する
-	 *
-	 * サロゲートペア文字列を考慮する
-	 *
-	 * @version 2.0.0
-	 * @since 2.0.0
-	 * @return 配列化された文字列
-	 */
-	private _toArray (): string[] {
-		return this.$.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
-	}
-
-	/**
 	 * 指定数の文字列長になるように繰り返して埋める
 	 *
 	 * @version 2.0.0
@@ -1295,7 +1285,7 @@ export default class Jaco {
 	 */
 	private _pad (length: number): string {
 		const pad: string[] = [];
-		const padStringArray = this._toArray();
+		const padStringArray = arrayize(this.$);
 		const padLength = padStringArray.length;
 		for (let i = 0; i < length; i++) {
 			const char = padStringArray[i % padLength];
