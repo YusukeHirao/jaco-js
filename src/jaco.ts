@@ -9,7 +9,9 @@ import convertIterationMarks from './fn/convertIterationMarks';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
 
 import arrayize from './util/arrayize';
+import pad from './util/pad';
 import patternize from './util/patternize';
+import shift from './util/shift';
 
 /**
  * ## Jacoクラス
@@ -530,8 +532,8 @@ export default class Jaco {
 		if (targetLength < thisLength) {
 			this.$ = this.substr(0, targetLength).toString();
 		} else {
-			const pad = new Jaco(padString)._pad(targetLength - thisLength);
-			this.$ += pad;
+			const padded = pad(padString.toString(), targetLength - thisLength);
+			this.$ += padded;
 		}
 		return this;
 	}
@@ -554,8 +556,8 @@ export default class Jaco {
 		if (targetLength < thisLength) {
 			this.$ = this.substr(0, targetLength).toString();
 		} else {
-			const pad = new Jaco(padString)._pad(targetLength - thisLength);
-			this.$ = pad + this.$;
+			const padded = pad(padString.toString(), targetLength - thisLength);
+			this.$ = padded + this.$;
 		}
 		return this;
 	}
@@ -868,7 +870,7 @@ export default class Jaco {
 			'ヺ': 'を゛',
 		});
 		// カタカナをひらがなへ(Unicodeの番号をずらす)
-		this._shift(patternize(KATAKANA_CHARS), -96);
+		this.$ = shift(this.$, patternize(KATAKANA_CHARS), -96);
 		// 濁点・半濁点を結合文字に変換
 		if (isCombinate) {
 			this.combinateSoundMarks();
@@ -898,7 +900,7 @@ export default class Jaco {
 		// を゛=> ヺ (濁点3種類対応)
 		this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
 		// ひらがなをカタカナへ(Unicodeの番号をずらす)
-		this._shift(patternize(HIRAGANA_CHARS), 96);
+		this.$ = shift(this.$, patternize(HIRAGANA_CHARS), 96);
 		return this;
 	}
 
@@ -927,7 +929,7 @@ export default class Jaco {
 		// スペースの変換
 		this.replace(patternize(SPACE_CHARS), ' ');
 		// 半角英数記号の変換
-		this._shift(patternize(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+		this.$ = shift(this.$, patternize(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
 		if (convertJapaneseChars) {
 			// 日本語カタカナ記号の変換
 			this.toNarrowJapnese();
@@ -1119,7 +1121,7 @@ export default class Jaco {
 		// 日本語カタカナ記号の変換
 		this.toWideJapnese();
 		// 半角英数記号の変換
-		this._shift(patternize(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+		this.$ = shift(this.$, patternize(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
 		return this;
 	}
 
@@ -1257,41 +1259,6 @@ export default class Jaco {
 			},
 		};
 		return iterator;
-	}
-
-	/**
-	 * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
-	 *
-	 * @version 0.2.0
-	 * @since 0.1.0
-	 * @param needle 対象のパターン
-	 * @param shiftNum ずらす数値
-	 * @return インスタンス自身
-	 */
-	private _shift (needle: RegExp, shiftNum: number): Jaco {
-		this.$ = this.$.replace(needle, (char: string): string => {
-			return String.fromCharCode(char.charCodeAt(0) + shiftNum);
-		});
-		return this;
-	}
-
-	/**
-	 * 指定数の文字列長になるように繰り返して埋める
-	 *
-	 * @version 2.0.0
-	 * @since 2.0.0
-	 * @param length 指定の文字列長
-	 * @return 埋められた文字列
-	 */
-	private _pad (length: number): string {
-		const pad: string[] = [];
-		const padStringArray = arrayize(this.$);
-		const padLength = padStringArray.length;
-		for (let i = 0; i < length; i++) {
-			const char = padStringArray[i % padLength];
-			pad.push(char);
-		}
-		return pad.join('');
 	}
 
 }

@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0
-* revision: d5fdb621c97429fb5897a0fbc9e47a2f38e6677b
+* revision: af55f7559778f405aaa5e9944de9fae7d4385b2a
 * update: 2016-11-25
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
@@ -70,7 +70,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,16 +84,18 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(9);
-var FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(10);
+var ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(10);
+var FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(11);
 var HIRAGANA_CHARS_1 = __webpack_require__(3);
-var KANA_COMMON_CAHRS_1 = __webpack_require__(12);
+var KANA_COMMON_CAHRS_1 = __webpack_require__(13);
 var KATAKANA_CHARS_1 = __webpack_require__(4);
-var SPACE_CHARS_1 = __webpack_require__(14);
-var convertIterationMarks_1 = __webpack_require__(15);
-var convertProlongedSoundMarks_1 = __webpack_require__(16);
-var arrayize_1 = __webpack_require__(17);
-var patternize_1 = __webpack_require__(18);
+var SPACE_CHARS_1 = __webpack_require__(15);
+var convertIterationMarks_1 = __webpack_require__(16);
+var convertProlongedSoundMarks_1 = __webpack_require__(17);
+var arrayize_1 = __webpack_require__(5);
+var pad_1 = __webpack_require__(18);
+var patternize_1 = __webpack_require__(19);
+var shift_1 = __webpack_require__(20);
 /**
  * ## Jacoクラス
  *
@@ -678,8 +680,8 @@ var Jaco = function () {
             if (targetLength < thisLength) {
                 this.$ = this.substr(0, targetLength).toString();
             } else {
-                var pad = new Jaco(padString)._pad(targetLength - thisLength);
-                this.$ += pad;
+                var padded = pad_1.default(padString.toString(), targetLength - thisLength);
+                this.$ += padded;
             }
             return this;
         }
@@ -706,8 +708,8 @@ var Jaco = function () {
             if (targetLength < thisLength) {
                 this.$ = this.substr(0, targetLength).toString();
             } else {
-                var pad = new Jaco(padString)._pad(targetLength - thisLength);
-                this.$ = pad + this.$;
+                var padded = pad_1.default(padString.toString(), targetLength - thisLength);
+                this.$ = padded + this.$;
             }
             return this;
         }
@@ -1058,7 +1060,7 @@ var Jaco = function () {
                 'ヺ': 'を゛'
             });
             // カタカナをひらがなへ(Unicodeの番号をずらす)
-            this._shift(patternize_1.default(KATAKANA_CHARS_1.KATAKANA_CHARS), -96);
+            this.$ = shift_1.default(this.$, patternize_1.default(KATAKANA_CHARS_1.KATAKANA_CHARS), -96);
             // 濁点・半濁点を結合文字に変換
             if (isCombinate) {
                 this.combinateSoundMarks();
@@ -1092,7 +1094,7 @@ var Jaco = function () {
             // を゛=> ヺ (濁点3種類対応)
             this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
             // ひらがなをカタカナへ(Unicodeの番号をずらす)
-            this._shift(patternize_1.default(HIRAGANA_CHARS_1.HIRAGANA_CHARS), 96);
+            this.$ = shift_1.default(this.$, patternize_1.default(HIRAGANA_CHARS_1.HIRAGANA_CHARS), 96);
             return this;
         }
         /**
@@ -1127,7 +1129,7 @@ var Jaco = function () {
             // スペースの変換
             this.replace(patternize_1.default(SPACE_CHARS_1.SPACE_CHARS), ' ');
             // 半角英数記号の変換
-            this._shift(patternize_1.default(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+            this.$ = shift_1.default(this.$, patternize_1.default(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN_1.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
             if (convertJapaneseChars) {
                 // 日本語カタカナ記号の変換
                 this.toNarrowJapnese();
@@ -1334,7 +1336,7 @@ var Jaco = function () {
             // 日本語カタカナ記号の変換
             this.toWideJapnese();
             // 半角英数記号の変換
-            this._shift(patternize_1.default(ALPHANUMERIC_CHARS_WITH_SIGN_1.ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+            this.$ = shift_1.default(this.$, patternize_1.default(ALPHANUMERIC_CHARS_WITH_SIGN_1.ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
             return this;
         }
         /**
@@ -1490,45 +1492,6 @@ var Jaco = function () {
                 }
             };
             return iterator;
-        }
-        /**
-         * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
-         *
-         * @version 0.2.0
-         * @since 0.1.0
-         * @param needle 対象のパターン
-         * @param shiftNum ずらす数値
-         * @return インスタンス自身
-         */
-
-    }, {
-        key: "_shift",
-        value: function _shift(needle, shiftNum) {
-            this.$ = this.$.replace(needle, function (char) {
-                return String.fromCharCode(char.charCodeAt(0) + shiftNum);
-            });
-            return this;
-        }
-        /**
-         * 指定数の文字列長になるように繰り返して埋める
-         *
-         * @version 2.0.0
-         * @since 2.0.0
-         * @param length 指定の文字列長
-         * @return 埋められた文字列
-         */
-
-    }, {
-        key: "_pad",
-        value: function _pad(length) {
-            var pad = [];
-            var padStringArray = arrayize_1.default(this.$);
-            var padLength = padStringArray.length;
-            for (var i = 0; i < length; i++) {
-                var char = padStringArray[i % padLength];
-                pad.push(char);
-            }
-            return pad.join('');
         }
     }, {
         key: "length",
@@ -1760,6 +1723,39 @@ exports.KATAKANA_CHARS = "\u30A1-\u30FA\u30FD\u30FF";
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * 文字列を配列化する
+ *
+ * サロゲートペア文字列を考慮する
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @param str 対象の文字列
+ * @return 配列化された文字列
+ */
+
+function default_1(str) {
+  return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 文字列を配列化する
+ *
+ * サロゲートペア文字列を考慮する
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @param str 対象の文字列
+ * @return 配列化された文字列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1793,7 +1789,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1823,7 +1819,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1857,7 +1853,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1889,7 +1885,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1904,7 +1900,7 @@ exports.default = default_1;
 exports.ALPHANUMERIC_CHARS_WITH_SIGN = " -~";
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1919,7 +1915,7 @@ exports.ALPHANUMERIC_CHARS_WITH_SIGN = " -~";
 exports.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN = "\uFF01-\uFF5F";
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1934,7 +1930,7 @@ exports.FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN = "\uFF01-\uFF5F";
 exports.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = "\u3041-\u3096";
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1949,7 +1945,7 @@ exports.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = "\u3041-\u3096";
 exports.KANA_COMMON_CAHRS = "\u3099-\u309C\u30FC";
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1964,7 +1960,7 @@ exports.KANA_COMMON_CAHRS = "\u3099-\u309C\u30FC";
 exports.KATAKANA_CHARS_IGNORE_ITERATION_MARKS = "\u30A1-\u30FA";
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -2121,15 +2117,15 @@ var ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
 exports.SPACE_CHARS = [CHARACTER_TABULATION, LINE_TABULATION, FORM_FEED, SPACE, NEXT_LINE, NO_BREAK_SPACE, EN_QUAD, EM_QUAD, EN_SPACE, EM_SPACE, THREE_PER_EM_SPACE, FOUR_PER_EM_SPACE, SIX_PER_EM_SPACE, FIGURE_SPACE, PUNCTUATION_SPACE, THIN_SPACE, MONGOLIAN_VOWEL_SEPARATOR, HAIR_SPACE, ZERO_WIDTH_SPACE, ZERO_WIDTH_NON_JOINER, ZERO_WIDTH_JOINER, WORD_JOINER, LINE_SEPARATOR, PARAGRAPH_SEPARATOR, NARROW_NO_BREAK_SPACE, MEDIUM_MATHMETICAL_SPACE, IDEOGRAPHIC_SPACE, ZERO_WIDTH_NO_BREAK_SPACE].join('');
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 
 var jaco_1 = __webpack_require__(0);
-var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(11);
-var KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(13);
+var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(12);
+var KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(14);
 var KANA_WITH_ITERATION_MARKS_REGEXP = new RegExp("([" + HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS + KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1.KATAKANA_CHARS_IGNORE_ITERATION_MARKS + "])([\u309D\u309E\u30FD\u30FE])");
 /**
  * 繰り返し記号をかなに置き換える
@@ -2186,7 +2182,7 @@ function replacer(matchAll, beforeString, iterationMark) {
 }
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2222,38 +2218,50 @@ function converter(str) {
 }
 
 /***/ },
-/* 17 */
-/***/ function(module, exports) {
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
+
+var arrayize_1 = __webpack_require__(5);
 /**
- * 文字列を配列化する
+ * 指定数の文字列長になるように繰り返して埋める
  *
- * サロゲートペア文字列を考慮する
+ * - サロゲートペアを考慮
  *
  * @version 2.0.0
  * @since 2.0.0
- * @return 配列化された文字列
+ * @param str 対象の文字列
+ * @param length 指定の文字列長
+ * @return 埋められた文字列
  */
-
-function default_1(str) {
-  return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+function default_1(str, length) {
+  var pad = [];
+  var padStringArray = arrayize_1.default(str);
+  var padLength = padStringArray.length;
+  for (var i = 0; i < length; i++) {
+    var char = padStringArray[i % padLength];
+    pad.push(char);
+  }
+  return pad.join('');
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * 文字列を配列化する
+ * 指定数の文字列長になるように繰り返して埋める
  *
- * サロゲートペア文字列を考慮する
+ * - サロゲートペアを考慮
  *
  * @version 2.0.0
  * @since 2.0.0
- * @return 配列化された文字列
+ * @param str 対象の文字列
+ * @param length 指定の文字列長
+ * @return 埋められた文字列
  */
 exports.default = default_1;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -2282,18 +2290,53 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 19 */
+/* 20 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+/**
+ * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param needle 対象のパターン
+ * @param shiftNum ずらす数値
+ * @return インスタンス自身
+ */
+
+function default_1(str, needle, shiftNum) {
+  return str.replace(needle, function (char) {
+    return String.fromCharCode(char.charCodeAt(0) + shiftNum);
+  });
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
+ *
+ * @version 2.0.0
+ * @since 0.1.0
+ * @param str 対象の文字列
+ * @param needle 対象のパターン
+ * @param shiftNum ずらす数値
+ * @return インスタンス自身
+ */
+exports.default = default_1;
+
+/***/ },
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 
 var hiraganaOnly_1 = __webpack_require__(1);
-var hiraganize_1 = __webpack_require__(5);
-var katakanaOnly_1 = __webpack_require__(6);
-var katakanize_1 = __webpack_require__(7);
+var hiraganize_1 = __webpack_require__(6);
+var katakanaOnly_1 = __webpack_require__(7);
+var katakanize_1 = __webpack_require__(8);
 var naturalKanaOrder_1 = __webpack_require__(2);
-var naturalKanaSort_1 = __webpack_require__(8);
+var naturalKanaSort_1 = __webpack_require__(9);
 var jaco_1 = __webpack_require__(0);
 // tslint:disable:no-namespace no-mergeable-namespace
 var jaco;
