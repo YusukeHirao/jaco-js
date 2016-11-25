@@ -26,7 +26,6 @@ banner = """/**!
 gulp.task 'ts', ->
   gulp.src('src/**/*.ts')
     .pipe ts 'tsconfig.json'
-    .pipe babel presets: ['es2015']
     .pipe gulp.dest './lib/'
 
 gulp.task 'pack', ->
@@ -36,6 +35,16 @@ gulp.task 'pack', ->
         new webpack.optimize.AggressiveMergingPlugin()
       ]
       output: filename: 'jaco.js'
+      module:
+        loaders: [
+          {
+            test: /\.js$/
+            exclude: /node_modules/
+            loader: 'babel-loader'
+            query:
+              presets: ['es2015']
+          }
+        ]
     ,
       webpack
     .pipe header banner, pkg: pkg, moment: moment, git: git
