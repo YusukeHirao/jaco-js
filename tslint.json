@@ -103,7 +103,6 @@
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
-    "no-unreachable": true,
     "no-unsafe-finally": true,
     "no-unused-expression": true,
     "no-unused-new": true,
@@ -179,7 +178,6 @@
     "no-consecutive-blank-lines": [
       true
     ],
-    "no-constructor-vars": true,
     "object-literal-key-quotes": [
       true,
       "as-needed"
