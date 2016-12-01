@@ -5,8 +5,12 @@ import { KANA_COMMON_CAHRS } from './const/KANA_COMMON_CAHRS';
 import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
 
+import addSemivoicedMarks from './fn/addSemivoicedMarks';
 import convertIterationMarks from './fn/convertIterationMarks';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
+import replace from './fn/replace';
+import replaceFromMap from './fn/replaceFromMap';
+import remove from './fn/remove';
 
 import arrayize from './util/arrayize';
 import pad from './util/pad';
@@ -71,10 +75,8 @@ export default class Jaco {
 	 * @return インスタンス自信
 	 */
 	public addSemivoicedMarks (): Jaco {
-		return this.replaceFromMap({
-			'は': 'ぱ', 'ひ': 'ぴ', 'ふ': 'ぷ', 'へ': 'ぺ', 'ほ': 'ぽ',
-			'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ',
-		});
+		this.$ = addSemivoicedMarks(this.$);
+		return this;
 	}
 
 	/**
@@ -88,7 +90,7 @@ export default class Jaco {
 		// 濁点・半濁点単体の除去
 		this.remove(/\u309B|\u3099|\uFF9E/g);
 		this.remove(/\u309C|\u309A|\uFF9F/g);
-		return this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'か': 'が', 'き': 'ぎ', 'く': 'ぐ', 'け': 'げ', 'こ': 'ご',
 			'さ': 'ざ', 'し': 'じ', 'す': 'ず', 'せ': 'ぜ', 'そ': 'ぞ',
 			'た': 'だ', 'ち': 'ぢ', 'つ': 'づ', 'て': 'で', 'と': 'ど',
@@ -100,6 +102,7 @@ export default class Jaco {
 			'ワ': 'ヷ', 'イ': 'ヸ', 'ウ': 'ヴ', 'エ': 'ヹ', 'ヺ': 'ヲ',
 			'ゝ': 'ゞ', 'ヽ': 'ヾ',
 		});
+		return this;
 	}
 
 	/**
@@ -188,7 +191,7 @@ export default class Jaco {
 			// 結合文字に変換
 			this.combinateSoundMarks(true);
 			// 濁点・半濁点を結合する
-			return this.replaceFromMap({
+			this.$ = replaceFromMap(this.$, {
 				// 濁点
 				'か\u3099': 'が', 'き\u3099': 'ぎ', 'く\u3099': 'ぐ', 'け\u3099': 'げ', 'こ\u3099': 'ご',
 				'さ\u3099': 'ざ', 'し\u3099': 'じ', 'す\u3099': 'ず', 'せ\u3099': 'ぜ', 'そ\u3099': 'ぞ',
@@ -206,7 +209,7 @@ export default class Jaco {
 			});
 		} else {
 			// ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
-			return this.replaceFromMap({
+			this.$ = replaceFromMap(this.$, {
 				// 濁点
 				'\u309B': '\u3099', // 全角濁点 → 全角結合文字濁点
 				'\uFF9E': '\u3099', // 半角濁点 → 全角結合文字濁点
@@ -215,6 +218,7 @@ export default class Jaco {
 				'\uFF9F': '\u309A', // 半角半濁点 → 全角結合文字半濁点
 			});
 		}
+		return this;
 	}
 
 	/**
@@ -587,8 +591,9 @@ export default class Jaco {
 	 * @param pattern 取り除く文字列
 	 * @return インスタンス自身
 	 */
-	public remove (pattern: string | RegExp | Jaco): Jaco {
-		return this.replace(pattern, '');
+	public remove (pattern: RegExp | { toString(): string }): Jaco {
+		this.$ = remove(this.$, pattern);
+		return this;
 	}
 
 	/**
@@ -615,10 +620,10 @@ export default class Jaco {
 	public removeVoicedMarks (ignoreSingleMark: boolean = false): Jaco {
 		if (!ignoreSingleMark) {
 			// 濁点・半濁点単体の除去
-			this.remove(/\u309B|\u3099|\uFF9E/g);
-			this.remove(/\u309C|\u309A|\uFF9F/g);
+			this.$ = remove(this.$, /\u309B|\u3099|\uFF9E/g);
+			this.$ = remove(this.$, /\u309C|\u309A|\uFF9F/g);
 		}
-		return this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
 			'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
 			'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
@@ -632,6 +637,7 @@ export default class Jaco {
 			'ヷ': 'ワ', 'ヸ': 'イ', 'ヴ': 'ウ', 'ヹ': 'エ', 'ヺ': 'ヲ',
 			'ゞ': 'ゝ', 'ヾ': 'ヽ',
 		});
+		return this;
 	}
 
 	/**
@@ -666,9 +672,8 @@ export default class Jaco {
 	 * @param replacement 置換する文字列
 	 * @return インスタンス自身
 	 */
-	public replace (pattern: string | RegExp | Jaco, replacement: string | Jaco): Jaco {
-		const reg = pattern instanceof RegExp ? pattern : new RegExp(pattern.toString());
-		this.$ = this.$.replace(reg, replacement.toString());
+	public replace (pattern: RegExp | { toString(): string }, replacement: { toString(): string }): Jaco {
+		this.$ = replace(this.$, pattern, replacement);
 		return this;
 	}
 
@@ -680,13 +685,8 @@ export default class Jaco {
 	 * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
 	 * @return インスタンス自身
 	 */
-	public replaceFromMap (convMap: { [target: string]: string; }): Jaco {
-		for (const needle in convMap) {
-			if (convMap.hasOwnProperty(needle)) {
-				const replace: string = convMap[needle];
-				this.$ = this.$.replace(new RegExp(needle, 'g'), replace);
-			}
-		}
+	public replaceFromMap (convMap: { [pattern: string]: string; }): Jaco {
+		this.$ = replaceFromMap(this.$, convMap);
 		return this;
 	}
 
@@ -827,24 +827,23 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toBasicLetter (): Jaco {
-		this
-			.combinateSoundMarks()
-			.replaceFromMap({
-				'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
-				'っ': 'つ',
-				'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
-				'ゎ': 'わ',
-				'ァ': 'ア', 'ィ': 'イ', 'ゥ': 'ウ', 'ェ': 'エ', 'ォ': 'オ',
-				'ヵ': 'カ', 'ㇰ': 'ク', 'ヶ': 'ケ',
-				'ㇱ': 'シ', 'ㇲ': 'ス',
-				'ッ': 'ツ', 'ㇳ': 'ト',
-				'ㇴ': 'ヌ', 'ㇵ': 'ハ',
-				'ㇶ': 'ヒ', 'ㇷ': 'フ', 'ㇸ': 'ヘ', 'ㇹ': 'ホ',
-				'ㇺ': 'ム',
-				'ャ': 'ヤ', 'ュ': 'ユ', 'ョ': 'ヨ',
-				'ㇻ': 'ラ', 'ㇼ': 'リ', 'ㇽ': 'ル', 'ㇾ': 'レ', 'ㇿ': 'ロ',
-				'ヮ': 'ワ',
-			});
+		this.combinateSoundMarks();
+		this.$ = replaceFromMap(this.$, {
+			'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
+			'っ': 'つ',
+			'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
+			'ゎ': 'わ',
+			'ァ': 'ア', 'ィ': 'イ', 'ゥ': 'ウ', 'ェ': 'エ', 'ォ': 'オ',
+			'ヵ': 'カ', 'ㇰ': 'ク', 'ヶ': 'ケ',
+			'ㇱ': 'シ', 'ㇲ': 'ス',
+			'ッ': 'ツ', 'ㇳ': 'ト',
+			'ㇴ': 'ヌ', 'ㇵ': 'ハ',
+			'ㇶ': 'ヒ', 'ㇷ': 'フ', 'ㇸ': 'ヘ', 'ㇹ': 'ホ',
+			'ㇺ': 'ム',
+			'ャ': 'ヤ', 'ュ': 'ユ', 'ョ': 'ヨ',
+			'ㇻ': 'ラ', 'ㇼ': 'リ', 'ㇽ': 'ル', 'ㇾ': 'レ', 'ㇿ': 'ロ',
+			'ヮ': 'ワ',
+		});
 		return this;
 	}
 
@@ -863,7 +862,7 @@ export default class Jaco {
 		// 半角カタカナを全角カタカナへ
 		this.toWideKatakana();
 		// ヷヸヹヺの変換
-		this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'ヷ': 'わ゛',
 			'ヸ': 'ゐ゛',
 			'ヹ': 'ゑ゛',
@@ -892,13 +891,13 @@ export default class Jaco {
 			this.toWideKatakana();
 		}
 		// わ゛=> ヷ (濁点3種類対応 ※全角濁点・全角結合文字濁点・半角濁点)
-		this.replace(/わ(?:\u309B|\u3099|\uFF9E)/g, 'ヷ');
+		this.$ = replace(this.$, /わ(?:\u309B|\u3099|\uFF9E)/g, 'ヷ');
 		// ゐ゛=> ヸ (濁点3種類対応)
-		this.replace(/ゐ(?:\u309B|\u3099|\uFF9E)/g, 'ヸ');
+		this.$ = replace(this.$, /ゐ(?:\u309B|\u3099|\uFF9E)/g, 'ヸ');
 		// ゑ゛=> ヹ (濁点3種類対応)
-		this.replace(/ゑ(?:\u309B|\u3099|\uFF9E)/g, 'ヹ');
+		this.$ = replace(this.$, /ゑ(?:\u309B|\u3099|\uFF9E)/g, 'ヹ');
 		// を゛=> ヺ (濁点3種類対応)
-		this.replace(/を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
+		this.$ = replace(this.$, /を(?:\u309B|\u3099|\uFF9E)/g, 'ヺ');
 		// ひらがなをカタカナへ(Unicodeの番号をずらす)
 		this.$ = shift(this.$, patternize(HIRAGANA_CHARS), 96);
 		return this;
@@ -927,7 +926,7 @@ export default class Jaco {
 	 */
 	public toNarrow (convertJapaneseChars: boolean = false): Jaco {
 		// スペースの変換
-		this.replace(patternize(SPACE_CHARS), ' ');
+		this.$ = replace(this.$, patternize(SPACE_CHARS), ' ');
 		// 半角英数記号の変換
 		this.$ = shift(this.$, patternize(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
 		if (convertJapaneseChars) {
@@ -966,11 +965,11 @@ export default class Jaco {
 			this.toKatakana();
 		}
 		// 濁点の変換 (全角濁点2種類対応)
-		this.replace(/\u309B|\u3099/g, '\uFF9E');
+		this.$ = replace(this.$, /\u309B|\u3099/g, '\uFF9E');
 		// 半濁点の変換 (全角半濁点2種類対応)
-		this.replace(/\u309C|\u309A/g, '\uFF9F');
+		this.$ = replace(this.$, /\u309C|\u309A/g, '\uFF9F');
 		// カタカナの変換
-		this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'ァ': 'ｧ', 'ィ': 'ｨ', 'ゥ': 'ｩ', 'ェ': 'ｪ', 'ォ': 'ｫ', 'ャ': 'ｬ',
 			'ュ': 'ｭ', 'ョ': 'ｮ', 'ッ': 'ｯ',
 			'ヵ': 'ｶ', 'ヶ': 'ｹ',
@@ -1004,7 +1003,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toNarrowSymbolForJapanese (): Jaco {
-		this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'。': '｡',
 			'「': '｢',
 			'」': '｣',
@@ -1038,26 +1037,26 @@ export default class Jaco {
 		// 半角化
 		this.toNarrow();
 		// 数字・ハイフン（マイナス）・ドット意外を削除
-		this.remove(/[^0-9\.\-]/gm);
+		this.$ = remove(this.$, /[^0-9\.\-]/gm);
 		if (negative) {
 			// 最初のにくるハイフンをnに一時的に変換
-			this.replace(/^-/, 'n');
+			this.$ = replace(this.$, /^-/, 'n');
 		}
 		// ハイフンを全て削除
-		this.remove(/-/g);
+		this.$ = remove(this.$, /-/g);
 		if (negative) {
 			// ハイフンを元に戻す
-			this.replace('n', '-');
+			this.$ = replace(this.$, 'n', '-');
 		}
 		if (floatingPoint) {
 			// 文字列中で一番最初にくるドットを_に一時的に変換
-			this.replace(/\.([0-9])/, '_$1');
+			this.$ = replace(this.$, /\.([0-9])/, '_$1');
 		}
 		// ドットを全て削除
-		this.remove(/\./g);
+		this.$ = remove(this.$, /\./g);
 		if (floatingPoint) {
 			// ドットを元に戻す
-			this.replace('_', '.');
+			this.$ = replace(this.$, '_', '.');
 		}
 		return this;
 	}
@@ -1117,7 +1116,7 @@ export default class Jaco {
 	 */
 	public toWide (): Jaco {
 		// スペースの変換
-		this.replace(' ', '\u3000');
+		this.$ = replace(this.$, ' ', '\u3000');
 		// 日本語カタカナ記号の変換
 		this.toWideJapnese();
 		// 半角英数記号の変換
@@ -1149,7 +1148,7 @@ export default class Jaco {
 	 */
 	public toWideKatakana (): Jaco {
 		// カタカナ・濁点・半濁点の変換
-		this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
 			'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
 			'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
@@ -1182,7 +1181,7 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public toWideSymbolJapanese (): Jaco {
-		this.replaceFromMap({
+		this.$ = replaceFromMap(this.$, {
 			'｡': '。',
 			'｢': '「',
 			'｣': '」',
@@ -1211,7 +1210,8 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public trimLeft (): Jaco {
-		return this.remove(/^\s+/);
+		this.$ = remove(this.$, /^\s+/);
+		return this;
 	}
 
 	/**
@@ -1222,7 +1222,8 @@ export default class Jaco {
 	 * @return インスタンス自身
 	 */
 	public trimRight (): Jaco {
-		return this.remove(/\s+$/);
+		this.$ = remove(this.$, /\s+$/);
+		return this;
 	}
 
 	/**
