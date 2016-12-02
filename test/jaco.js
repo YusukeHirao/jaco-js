@@ -81,25 +81,25 @@ describe('Jaco Class', () => {
 	// charAt()
 	it('抜き出し', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.charAt().should.equal('𩸽');
+		a.charAt().toString().should.equal('𩸽');
 	});
 
 	// charAt()
 	it('抜き出し2', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.charAt(0).should.equal('𩸽');
+		a.charAt(0).toString().should.equal('𩸽');
 	});
 
 	// charAt()
 	it('抜き出し3', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.charAt(1).should.equal('の');
+		a.charAt(1).toString().should.equal('の');
 	});
 
 	// charAt()
 	it('抜き出し4', () => {
 		const a = new Jaco('𩸽のひらき');
-		a.charAt(99).should.equal('');
+		a.charAt(99).toString().should.equal('');
 	});
 
 	// charCodeAt()
@@ -199,6 +199,7 @@ describe('Jaco Class', () => {
 	});
 
 	// convertIterationMarks()
+	// TODO: これあってる？
 	it('繰り返し記号変換4', () => {
 		new Jaco('ゝゞあゝゞかゞゝがゝゞゝ').convertIterationMarks().toString().should.equal('ゝゞあああかがかがかがか');
 	});

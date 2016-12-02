@@ -10,7 +10,7 @@
 export default function (str: string, convMap: { [pattern: string]: string; }): string {
 	for (const needle in convMap) {
 		if (convMap.hasOwnProperty(needle)) {
-			const replace: string = convMap[needle];
+			const replace = convMap[needle];
 			str = str.replace(new RegExp(needle, 'g'), replace);
 		}
 	}

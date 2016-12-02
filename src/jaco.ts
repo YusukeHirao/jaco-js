@@ -6,11 +6,15 @@ import { KATAKANA_CHARS } from './const/KATAKANA_CHARS';
 import { SPACE_CHARS } from './const/SPACE_CHARS';
 
 import addSemivoicedMarks from './fn/addSemivoicedMarks';
+import addVoicedMarks from './fn/addVoicedMarks';
+import byteSize from './fn/byteSize';
+import charAt from './fn/charAt';
+import charCodeAt from './fn/charCodeAt';
 import convertIterationMarks from './fn/convertIterationMarks';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks';
+import remove from './fn/remove';
 import replace from './fn/replace';
 import replaceFromMap from './fn/replaceFromMap';
-import remove from './fn/remove';
 
 import arrayize from './util/arrayize';
 import pad from './util/pad';
@@ -72,11 +76,10 @@ export default class Jaco {
 	 *
 	 * @version 1.1.0
 	 * @since 1.1.0
-	 * @return インスタンス自信
 	 */
 	public addSemivoicedMarks (): Jaco {
-		this.$ = addSemivoicedMarks(this.$);
-		return this;
+		let newStr = addSemivoicedMarks(this.$);
+		return new Jaco(newStr);
 	}
 
 	/**
@@ -84,25 +87,10 @@ export default class Jaco {
 	 *
 	 * @version 1.1.0
 	 * @since 1.1.0
-	 * @return インスタンス自信
 	 */
 	public addVoicedMarks (): Jaco {
-		// 濁点・半濁点単体の除去
-		this.remove(/\u309B|\u3099|\uFF9E/g);
-		this.remove(/\u309C|\u309A|\uFF9F/g);
-		this.$ = replaceFromMap(this.$, {
-			'か': 'が', 'き': 'ぎ', 'く': 'ぐ', 'け': 'げ', 'こ': 'ご',
-			'さ': 'ざ', 'し': 'じ', 'す': 'ず', 'せ': 'ぜ', 'そ': 'ぞ',
-			'た': 'だ', 'ち': 'ぢ', 'つ': 'づ', 'て': 'で', 'と': 'ど',
-			'は': 'ば', 'ひ': 'び', 'ふ': 'ぶ', 'へ': 'べ', 'ほ': 'ぼ',
-			'カ': 'ガ', 'キ': 'ギ', 'ク': 'グ', 'ケ': 'ゲ', 'コ': 'ゴ',
-			'サ': 'ザ', 'シ': 'ジ', 'ス': 'ズ', 'セ': 'ゼ', 'ソ': 'ゾ',
-			'タ': 'ダ', 'チ': 'ヂ', 'ツ': 'ヅ', 'テ': 'デ', 'ト': 'ド',
-			'ハ': 'バ', 'ヒ': 'ビ', 'フ': 'ブ', 'ヘ': 'ベ', 'ホ': 'ボ',
-			'ワ': 'ヷ', 'イ': 'ヸ', 'ウ': 'ヴ', 'エ': 'ヹ', 'ヺ': 'ヲ',
-			'ゝ': 'ゞ', 'ヽ': 'ヾ',
-		});
-		return this;
+		let newStr = addVoicedMarks(this.$);
+		return new Jaco(newStr);
 	}
 
 	/**
@@ -111,7 +99,6 @@ export default class Jaco {
 	 * @version 0.2.0
 	 * @since 0.2.0
 	 * @param element 結合する文字列
-	 * @return インスタンス自身
 	 */
 	public append (element: string | Jaco): Jaco {
 		return this.concat(element);
@@ -122,10 +109,9 @@ export default class Jaco {
 	 *
 	 * @version 0.2.0
 	 * @since 0.2.0
-	 * @return バイト数
 	 */
 	public byteSize (): number {
-		return encodeURIComponent(this.$).replace(/%../g, 'x').length;
+		return byteSize(this.$);
 	}
 
 	/**
@@ -136,35 +122,25 @@ export default class Jaco {
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
-	 * @return 指定位置の文字
+	 * @param index 指定位置
 	 */
-	public charAt (index: number = 0): string {
-		return arrayize(this.$)[index] || '';
+	public charAt (index: number = 0): Jaco {
+		return new Jaco(charAt(this.$, index));
 	}
 
 	/**
-	 * Unicodeポイント値である負でない整数を返す
+	 * 指定位置のUnicodeコードポイントを返す
 	 *
 	 * - サロゲートペアを考慮する
 	 * - String.prototype.charCodeAt とは非互換
 	 *
 	 * @version 2.0.0
 	 * @since 2.0.0
-	 * @return Unicodeポイント値
+	 * @param charCodeAt 指定位置
+	 * @return Unicodeコードポイント値
 	 */
 	public charCodeAt (index: number = 0): number {
-		const char = this.charAt(index);
-		if (!char) {
-			return NaN;
-		}
-		if (char.length === 1) {
-			return char.charCodeAt(0);
-		} else {
-			const first = char.charCodeAt(0);
-			const second = char.charCodeAt(1);
-			const code = (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
-			return code;
-		}
+		return charCodeAt(this.$, index);
 	}
 
 	/**
@@ -618,12 +594,13 @@ export default class Jaco {
 	 * @return インスタンス自信
 	 */
 	public removeVoicedMarks (ignoreSingleMark: boolean = false): Jaco {
+		let str = this.$;
 		if (!ignoreSingleMark) {
 			// 濁点・半濁点単体の除去
-			this.$ = remove(this.$, /\u309B|\u3099|\uFF9E/g);
-			this.$ = remove(this.$, /\u309C|\u309A|\uFF9F/g);
+			str = remove(str, /\u309B|\u3099|\uFF9E/g);
+			str = remove(str, /\u309C|\u309A|\uFF9F/g);
 		}
-		this.$ = replaceFromMap(this.$, {
+		str = replaceFromMap(str, {
 			'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
 			'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
 			'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
@@ -637,6 +614,7 @@ export default class Jaco {
 			'ヷ': 'ワ', 'ヸ': 'イ', 'ヴ': 'ウ', 'ヹ': 'エ', 'ヺ': 'ヲ',
 			'ゞ': 'ゝ', 'ヾ': 'ヽ',
 		});
+		this.$ = str;
 		return this;
 	}
 
@@ -1078,9 +1056,9 @@ export default class Jaco {
 			// 小書き文字を基底文字に変換
 			.toBasicLetter()
 			// 長音符を置き換える
-			.convertProlongedSoundMarks()
-			// 繰り返し記号を置き換える
-			.convertIterationMarks();
+			.convertProlongedSoundMarks();
+		// 繰り返し記号を置き換える
+		this.$ = convertIterationMarks(this.$);
 		return this;
 	}
 
