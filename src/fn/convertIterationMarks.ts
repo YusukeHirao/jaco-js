@@ -1,9 +1,10 @@
-import Jaco from '../jaco';
-
-import addVoicedMarks from './addVoicedMarks';
-
 import { HIRAGANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS';
 import { KATAKANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS';
+
+import addVoicedMarks from './addVoicedMarks';
+import removeVoicedMarks from './removeVoicedMarks';
+import toHiragana from './toHiragana';
+import toKatakana from './toKatakana';
 
 const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(`([${HIRAGANA_CHARS_IGNORE_ITERATION_MARKS}${KATAKANA_CHARS_IGNORE_ITERATION_MARKS}])([ゝゞヽヾ])`);
 
@@ -13,7 +14,6 @@ const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(`([${HIRAGANA_CHARS_
  * @version 2.0.0
  * @since 1.1.0
  * @param str 対象の文字列
- * @return 置き換えた文字列
  */
 export default function (str: string): string {
 	while (KANA_WITH_ITERATION_MARKS_REGEXP.test(str)) {
@@ -41,24 +41,23 @@ function converter (str: string): string {
  * @return 置き換えた文字列
  */
 function replacer (matchAll: string, beforeString: string, iterationMark: string) {
-	const converted = new Jaco(beforeString).removeVoicedMarks();
-	let str = '';
+	let str = removeVoicedMarks(beforeString);
 	switch (iterationMark) {
 		case 'ゝ': {
-			str = converted.toHiragana().toString();
+			str = toHiragana(str);
 		}
 		break;
 		case 'ヽ': {
-			str = converted.toKatakana().toString();
+			str = toKatakana(str);
 		}
 		break;
 		case 'ゞ': {
-			str = converted.toHiragana().toString();
+			str = toHiragana(str);
 			str = addVoicedMarks(str);
 		}
 		break;
 		case 'ヾ': {
-			str = converted.toKatakana().toString()
+			str = toKatakana(str);
 			str = addVoicedMarks(str);
 		}
 		break;

@@ -4,6 +4,5 @@
  * @version 0.2.0
  * @since 0.2.0
  * @param str 対象の文字列
- * @return バイト数
  */
 export default function (str: string): number;

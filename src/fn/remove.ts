@@ -7,7 +7,6 @@ import replace from './replace';
  * @since 0.2.0
  * @param str  元の文字列
  * @param pattern  取り除く文字列
- * @return 置換された文字列
  */
 export default function (str: string, pattern: RegExp | { toString(): string }): string {
 	return replace(str, pattern, '');

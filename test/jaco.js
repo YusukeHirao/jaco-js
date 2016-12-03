@@ -179,8 +179,7 @@ describe('Jaco Class', () => {
 	// concat()
 	it('連結', () => {
 		const a = new Jaco('あ');
-		a.concat('い', new Jaco('う'), 'え', new Jaco('お'), ['か', new Jaco('き')]);
-		a.toString().should.equal('あいうえおかき');
+		a.concat('い', new Jaco('う'), 'え', new Jaco('お'), ['か', new Jaco('き')]).toString().should.equal('あいうえおかき');
 	});
 
 	// convertIterationMarks()
@@ -1066,22 +1065,19 @@ describe('Jaco Class', () => {
 	// remove()
 	it('削除', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove('aBc');
-		a.toString().should.equal('DeFgHiJkLmNoPqRsTuVwXyZ');
+		a.remove('aBc').toString().should.equal('DeFgHiJkLmNoPqRsTuVwXyZ');
 	});
 
 	// remove()
 	it('削除2', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove(/[a-z]/);
-		a.toString().should.equal('BcDeFgHiJkLmNoPqRsTuVwXyZ');
+		a.remove(/[a-z]/).toString().should.equal('BcDeFgHiJkLmNoPqRsTuVwXyZ');
 	});
 
 	// remove()
 	it('削除3', () => {
 		const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-		a.remove(/[a-z]/g);
-		a.toString().should.equal('BDFHJLNPRTVXZ');
+		a.remove(/[a-z]/g).toString().should.equal('BDFHJLNPRTVXZ');
 	});
 
 	// removeUnpairedSurrogate
@@ -1237,22 +1233,19 @@ describe('Jaco Class', () => {
 	// replace()
 	it('置換', () => {
 		const a = new Jaco('abcdeABCDE');
-		a.replace(/abc/ig, 'z');
-		a.toString().should.equal('zdezDE');
+		a.replace(/abc/ig, 'z').toString().should.equal('zdezDE');
 	});
 
 	// replace()
 	it('置換2', () => {
 		const a = new Jaco('abcdeABCDE');
-		a.replace('abc', 'z');
-		a.toString().should.equal('zdeABCDE');
+		a.replace('abc', 'z').toString().should.equal('zdeABCDE');
 	});
 
 	// replace()
 	it('置換3', () => {
 		const a = new Jaco('abcdeABCDE');
-		a.replace(new Jaco('abc'), 'z');
-		a.toString().should.equal('zdeABCDE');
+		a.replace(new Jaco('abc'), 'z').toString().should.equal('zdeABCDE');
 	});
 
 	// replaceFromMap()
@@ -1261,8 +1254,7 @@ describe('Jaco Class', () => {
 		a.replaceFromMap({
 			abc: 'z',
 			ABC: 'Z',
-		});
-		a.toString().should.equal('zdeZDE');
+		}).toString().should.equal('zdeZDE');
 	});
 
 	// search()
@@ -2085,11 +2077,11 @@ describe('Jaco Class', () => {
 		a.toWideKatakana().toString().should.equal(b);
 	});
 
-	// toWideSymbolJapanese()
+	// toWideSymbolForJapanese()
 	it('日本語記号の全角化', () => {
 		const a = new Jaco('｡｢｣､･');
 		const b = '。「」、・';
-		a.toWideSymbolJapanese().toString().should.equal(b);
+		a.toWideSymbolForJapanese().toString().should.equal(b);
 	});
 
 	// valueOf()
@@ -2108,78 +2100,67 @@ describe('Jaco Class', () => {
 	// trim()
 	it('前後の空白を削除2', () => {
 		const a = new Jaco(' a b');
-		a.trim();
-		a.toString().should.equal('a b');
+		a.trim().toString().should.equal('a b');
 	});
 
 	// trim()
 	it('前後の空白を削除3', () => {
 		const a = new Jaco('a b  　');
-		a.trim();
-		a.toString().should.equal('a b');
+		a.trim().toString().should.equal('a b');
 	});
 
 	// trim()
 	it('前後の空白を削除4', () => {
 		const a = new Jaco('　a 　b\n');
-		a.trim();
-		a.toString().should.equal('a 　b');
+		a.trim().toString().should.equal('a 　b');
 	});
 
 	// trimLeft()
 	it('前の空白を削除', () => {
 		const a = new Jaco('a b');
-		a.trimLeft();
-		a.toString().should.equal('a b');
+		a.trimLeft().toString().should.equal('a b');
 	});
 
 	// trimLeft()
 	it('前の空白を削除2', () => {
 		const a = new Jaco(' a b');
-		a.trimLeft();
-		a.toString().should.equal('a b');
+		a.trimLeft().toString().should.equal('a b');
 	});
 
 	// trimLeft()
 	it('前の空白を削除3', () => {
 		const a = new Jaco('a b  　');
-		a.trimLeft();
-		a.toString().should.equal('a b  　');
+		a.trimLeft().toString().should.equal('a b  　');
 	});
 
 	// trimLeft()
 	it('前の空白を削除4', () => {
 		const a = new Jaco('　a 　b\n');
-		a.trimLeft();
-		a.toString().should.equal('a 　b\n');
+		a.trimLeft().toString().should.equal('a 　b\n');
 	});
 
 	// trimRight()
 	it('後ろの空白を削除', () => {
 		const a = new Jaco('a b');
-		a.trimRight();
-		a.toString().should.equal('a b');
+		a.trimRight().toString().should.equal('a b');
 	});
 
 	// trimRight()
 	it('後ろの空白を削除2', () => {
 		const a = new Jaco(' a b');
-		a.trimRight();
-		a.toString().should.equal(' a b');
+		a.trimRight().toString().should.equal(' a b');
 	});
 
 	// trimRight()
 	it('後ろの空白を削除3', () => {
 		const a = new Jaco('a b  　');
-		a.trimRight();
-		a.toString().should.equal('a b');
+		a.trimRight().toString().should.equal('a b');
 	});
 
 	// trimRight()
 	it('後ろの空白を削除4', () => {
 		const a = new Jaco('　a 　b\n');
-		a.trimRight();
-		a.toString().should.equal('　a 　b');
+		a.trimRight().toString().should.equal('　a 　b');
 	});
 
 	// [@@iterator]()

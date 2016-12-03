@@ -9,7 +9,6 @@ import arrayize from '../util/arrayize';
  * @since 2.0.0
  * @param str 対象の文字列
  * @param index 指定位置
- * @return 指定位置の文字
  */
 export default function (str: string, index: number = 0): string {
 	return arrayize(str)[index] || '';
