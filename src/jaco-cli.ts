@@ -1,8 +1,8 @@
 import * as commander from 'commander';
 import * as fs from 'fs';
 
-import hiraganize from './fn/hiraganize';
-import katakanize from './fn/katakanize';
+import toHiragana from './fn/toHiragana';
+import toKatakana from './fn/toKatakana';
 
 const VERSION = '2.0.0';
 
@@ -17,8 +17,8 @@ function extruct (path: string): string {
 commander
 .version(VERSION)
 .usage('[options] <path or string>')
-.option('-K, --katakanize <path or string>', 'convert to Katakana', path => console.log(katakanize(extruct(path))))
-.option('-H, --hiraganize <path or string>', 'convert to Hiragana', path => console.log(hiraganize(extruct(path))))
+.option('-K, --katakanize <path or string>', 'convert to Katakana', path => console.log(toKatakana(extruct(path))))
+.option('-H, --hiraganize <path or string>', 'convert to Hiragana', path => console.log(toHiragana(extruct(path))))
 .parse(process.argv);
 
 if (process.argv.length <= 2) {

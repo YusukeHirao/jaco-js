@@ -1,7 +1,3 @@
-import _hiraganaOnly from './fn/hiraganaOnly';
-import _hiraganize from './fn/hiraganize';
-import _katakanaOnly from './fn/katakanaOnly';
-import _katakanize from './fn/katakanize';
 import _naturalKanaOrder from './fn/naturalKanaOrder';
 import _naturalKanaSort from './fn/naturalKanaSort';
 import _Jaco from './jaco';
@@ -10,10 +6,6 @@ import _Jaco from './jaco';
 namespace jaco {
 	'use strict';
 
-	export const hiraganaOnly = _hiraganaOnly;
-	export const hiraganize = _hiraganize;
-	export const katakanaOnly = _katakanaOnly;
-	export const katakanize = _katakanize;
 	export const naturalKanaOrder = _naturalKanaOrder;
 	export const naturalKanaSort = _naturalKanaSort;
 	export const Jaco = _Jaco;
