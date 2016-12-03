@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0
-* revision: 3296c96dee28a3a743ce220a224405a506c4b4c4
+* revision: f1362ed1da44f23e25d5efd6a401da42d0c5ab44
 * update: 2016-12-03
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
