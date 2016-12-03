@@ -1,5 +1,8 @@
-import Jaco from '../jaco';
-import hiraganaOnly from './hiraganaOnly';
+import isOnlyHiragana from './isOnlyHiragana';
+import removeVoicedMarks from './removeVoicedMarks';
+import replaceFromMap from './replaceFromMap';
+import toNarrow from './toNarrow';
+import toPhoeticKana from './toPhoeticKana';
 
 /**
  * 配列の五十音順ソートをするためのソート関数
@@ -16,14 +19,15 @@ export default function (a: string, b: string): number {
 	if (a === b) {
 		return 0;
 	}
-	const _a = new Jaco(a).toNarrow().toPhoeticKana();
-	const _b = new Jaco(b).toNarrow().toPhoeticKana();
+
+	const _a = toPhoeticKana(toNarrow(a));
+	const _b = toPhoeticKana(toNarrow(b));
 	let _tmpA: string; // tempString
 	let _tmpB: string; // tempString
 	const phoneticA = _a.toString();
 	const phoneticB = _b.toString();
-	const unvoicedA = _a.removeVoicedMarks(true).toString();
-	const unvoicedB = _b.removeVoicedMarks(true).toString();
+	const unvoicedA = removeVoicedMarks(_a, true);
+	const unvoicedB = removeVoicedMarks(_b, true);
 	const codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);
 	const codeB = _convertNaturalKanaOrderNumberPhase1(unvoicedB);
 	const l = Math.max(a.length, b.length);
@@ -58,8 +62,8 @@ export default function (a: string, b: string): number {
 		// もう一度、頭から一文字ずつ比較する
 		for (let i = 0; i < l; i++) {
 			// ひらがな・カタカナで比較
-			_tmpA = hiraganaOnly(a[i]) ? '0' : '1';
-			_tmpB = hiraganaOnly(b[i]) ? '0' : '1';
+			_tmpA = isOnlyHiragana(a[i]) ? '0' : '1';
+			_tmpB = isOnlyHiragana(b[i]) ? '0' : '1';
 			if (_tmpA < _tmpB) {
 				return -1;
 			} else if (_tmpA > _tmpB) {
@@ -118,7 +122,7 @@ function _convertNaturalKanaOrderNumberPhase2 (str: string): string {
  * @return 変換された文字列
  */
 function _convertNaturalKanaOrderNumberPhase1 (str: string): string {
-	return new Jaco(str).replaceFromMap({
+	return replaceFromMap(str, {
 		'あ': '\u3041', 'い': '\u3042', 'う': '\u3043', 'え': '\u3044', 'お': '\u3045',
 		'か': '\u3046', 'き': '\u3047', 'く': '\u3048', 'け': '\u3049', 'こ': '\u304A',
 		'さ': '\u304B', 'し': '\u304C', 'す': '\u304D', 'せ': '\u304E', 'そ': '\u304F',
