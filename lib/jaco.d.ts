@@ -572,6 +572,22 @@ declare module jaco {
         */
         toWide(): Jaco;
         /**
+        * 半角英数記号を全角に変換
+        *
+        * @version 1.2.2
+        * @since 1.2.2
+        * @return インスタンス自身
+        */
+        toWideAlphaNumericChars(): Jaco;
+        /**
+        * 全角英数記号を半角に変換
+        *
+        * @version 1.2.2
+        * @since 1.2.2
+        * @return インスタンス自身
+        */
+        toNarrowAlphaNumericChars(): Jaco;
+        /**
         * 濁点を追加する
         *
         * @version 1.1.0

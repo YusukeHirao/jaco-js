@@ -833,6 +833,38 @@ describe('Jaco Class', function () {
 		a.toWide().toString().should.equal(b);
 	});
 
+	// toNarrowAlphaNumericChars()
+	it('全角英数字を半角に変換', function () {
+		var a = new Jaco([
+			'！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠Ａ',
+			'ＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［］＾＿｀ａｂｃｄ',
+			'ｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝',
+		].join(''));
+		var b = [
+			'!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`',
+			'abcdefghijklmnopqrstuvwxyz{|}',
+		].join('');
+		a.toNarrowAlphaNumericChars().toString().should.equal(b);
+	});
+
+	// toWideAlphaNumericChars()
+	it('半角英数字を全角に変換', function () {
+		var a = new Jaco([
+			'!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`',
+			'abcdefghijklmnopqrstuvwxyz{|}',
+		].join(''));
+		var b = [
+			'！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠Ａ',
+			'ＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［］＾＿｀ａｂｃｄ',
+			'ｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝',
+		].join('');
+		a.toWideAlphaNumericChars().toString().should.equal(b);
+	});
+
+
+
+
+
 	// toNumeric() v0.5.0で追加
 	it('数字化', function () {
 		var a = new Jaco(' ２３ｓ０３ｓｄｋふぁえ');

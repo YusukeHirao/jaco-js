@@ -668,7 +668,7 @@ module jaco {
 			// スペースの変換
 			this.replace(toPattern(SPACE_CHARS), ' ');
 			// 半角英数記号の変換
-			this._shift(toPattern(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+			this.toNarrowAlphaNumericChars();
 			if (convertJapaneseChars) {
 				// 日本語カタカナ記号の変換
 				this.toNarrowJapnese();
@@ -689,7 +689,32 @@ module jaco {
 			// 日本語カタカナ記号の変換
 			this.toWideJapnese();
 			// 半角英数記号の変換
+			this.toWideAlphaNumericChars();
+
+			return this;
+		}
+
+		/**
+		* 半角英数記号を全角に変換
+		*
+		* @version 1.2.2
+		* @since 1.2.2
+		* @return インスタンス自身
+		*/
+		public toWideAlphaNumericChars (): Jaco {
 			this._shift(toPattern(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
+			return this;
+		}
+
+		/**
+		* 全角英数記号を半角に変換
+		*
+		* @version 1.2.2
+		* @since 1.2.2
+		* @return インスタンス自身
+		*/
+		public toNarrowAlphaNumericChars (): Jaco {
+			this._shift(toPattern(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
 			return this;
 		}
 
