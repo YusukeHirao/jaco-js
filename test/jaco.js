@@ -1812,7 +1812,7 @@ describe('Jaco Class', () => {
 		a.toNarrow(true).toString().should.not.equal(b);
 	});
 
-	// toNarrowJapnese()
+	// toNarrowJapanese()
 	it('日本語半角化', () => {
 		const a = new Jaco([
 			'。「」、・',
@@ -1831,7 +1831,7 @@ describe('Jaco Class', () => {
 			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
 			'づでどばびぶべぼぱぴぷぺぽわﾞゐﾞゔゑﾞをﾞ',
 		].join('');
-		a.toNarrowJapnese().toString().should.equal(b);
+		a.toNarrowJapanese().toString().should.equal(b);
 	});
 
 	// toNarrowKatakana()
@@ -2033,7 +2033,7 @@ describe('Jaco Class', () => {
 		a.toWide().toString().should.equal(b);
 	});
 
-	// toWideJapnese()
+	// toWideJapanese()
 	it('日本語全角化', () => {
 		const a = new Jaco([
 			'｡｢｣､･',
@@ -2052,7 +2052,7 @@ describe('Jaco Class', () => {
 			'ねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだぢ',
 			'づでどばびぶべぼぱぴぷぺぽわ゛ゐ゛ゔゑ゛を゛',
 		].join('');
-		a.toWideJapnese().toString().should.equal(b);
+		a.toWideJapanese().toString().should.equal(b);
 	});
 
 	// toWideKatakana()

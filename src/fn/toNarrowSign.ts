@@ -14,7 +14,7 @@ import shift from '../util/shift';
  * @param str 対象の文字列
  */
 export default function (str: string): string {
-	str = replace(str, SPACE_CHARS, ' ');
+	str = replace(str, patternize(SPACE_CHARS), ' ');
 	str = shift(str, patternize(FULLWIDTH_SIGN_CHARS), -65248);
 	return str;
 }

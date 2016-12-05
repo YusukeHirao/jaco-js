@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0-beta
-* revision: e2b005dada87b96141e92be46bca62a5ae151b08
+* revision: d67d3ea63bdc36fadcbc28a498299f1fdd5588b8
 * update: 2016-12-05
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
@@ -3829,7 +3829,7 @@ var shift_1 = __webpack_require__(5);
  * @param str 対象の文字列
  */
 function default_1(str) {
-  str = replace_1.default(str, SPACE_CHARS_1.SPACE_CHARS, ' ');
+  str = replace_1.default(str, patternize_1.default(SPACE_CHARS_1.SPACE_CHARS), ' ');
   str = shift_1.default(str, patternize_1.default(FULLWIDTH_SIGN_CHARS_1.FULLWIDTH_SIGN_CHARS), -65248);
   return str;
 }
