@@ -2,3 +2,4 @@ node_modules
 src/DefinitelyTyped
 npm-debug.log
 docs
+dist/v*
