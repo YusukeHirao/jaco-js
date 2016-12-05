@@ -3,8 +3,5 @@
  *
  * [！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]
  *
- * @unused
- * @deprecated
- *
  */
-export declare const FULLWIDTH_SING_CHARS = "！-／：-＠［-｀｛-～";
+export declare const FULLWIDTH_SIGN_CHARS = "！-／：-＠［-｀｛-～";
