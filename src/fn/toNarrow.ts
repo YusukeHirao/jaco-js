@@ -1,11 +1,6 @@
-import { FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN } from '../const/FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN';
-import { SPACE_CHARS } from '../const/SPACE_CHARS';
-
-import replace from './replace';
+import toNarrowAlphanumeric from './toNarrowAlphanumeric';
 import toNarrowJapnese from './toNarrowJapnese';
-
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import toNarrowSign from './toNarrowSign';
 
 /**
  * 半角に変換
@@ -16,10 +11,10 @@ import shift from '../util/shift';
  * @param convertJapaneseChars 日本語のカタカナなどを変換するかどうか
  */
 export default function (str: string, convertJapaneseChars: boolean = false): string {
-	// スペースの変換
-	str = replace(str, patternize(SPACE_CHARS), ' ');
-	// 半角英数記号の変換
-	str = shift(str, patternize(FULLWIDTH_ALPHANUMERIC_CHARS_WITH_SIGN), -65248);
+	// 英数字の変換
+	str = toNarrowAlphanumeric(str);
+	// スペース・記号の変換
+	str = toNarrowSign(str);
 	if (convertJapaneseChars) {
 		// 日本語カタカナ記号の変換
 		str = toNarrowJapnese(str);
