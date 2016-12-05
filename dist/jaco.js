@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0-beta
-* revision: b820f27a1b8748394599d0d1de94f8521da72f69
+* revision: e2b005dada87b96141e92be46bca62a5ae151b08
 * update: 2016-12-05
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
@@ -70,7 +70,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 71);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -715,13 +715,9 @@ exports.default = default_1;
 "use strict";
 "use strict";
 
-var FULLWIDTH_SIGN_CHARS_1 = __webpack_require__(41);
-var SPACE_CHARS_1 = __webpack_require__(44);
-var replace_1 = __webpack_require__(2);
 var toNarrowAlphanumeric_1 = __webpack_require__(67);
-var toNarrowJapnese_1 = __webpack_require__(29);
-var patternize_1 = __webpack_require__(4);
-var shift_1 = __webpack_require__(5);
+var toNarrowJapanese_1 = __webpack_require__(29);
+var toNarrowSign_1 = __webpack_require__(68);
 /**
  * 半角に変換
  *
@@ -735,13 +731,11 @@ function default_1(str) {
 
   // 英数字の変換
   str = toNarrowAlphanumeric_1.default(str);
-  // スペースの変換
-  str = replace_1.default(str, patternize_1.default(SPACE_CHARS_1.SPACE_CHARS), ' ');
-  // 記号の変換
-  str = shift_1.default(str, patternize_1.default(FULLWIDTH_SIGN_CHARS_1.FULLWIDTH_SIGN_CHARS), -65248);
+  // スペース・記号の変換
+  str = toNarrowSign_1.default(str);
   if (convertJapaneseChars) {
     // 日本語カタカナ記号の変換
-    str = toNarrowJapnese_1.default(str);
+    str = toNarrowJapanese_1.default(str);
   }
   return str;
 }
@@ -1698,13 +1692,13 @@ var toBasicLetter_1 = __webpack_require__(28);
 var toHiragana_1 = __webpack_require__(15);
 var toKatakana_1 = __webpack_require__(16);
 var toNarrow_1 = __webpack_require__(17);
-var toNarrowJapnese_1 = __webpack_require__(29);
+var toNarrowJapanese_1 = __webpack_require__(29);
 var toNarrowKatakana_1 = __webpack_require__(30);
 var toNarrowSymbolForJapanese_1 = __webpack_require__(31);
-var toNumeric_1 = __webpack_require__(68);
+var toNumeric_1 = __webpack_require__(69);
 var toPhoeticKana_1 = __webpack_require__(32);
-var toWide_1 = __webpack_require__(69);
-var toWideJapnese_1 = __webpack_require__(33);
+var toWide_1 = __webpack_require__(70);
+var toWideJapanese_1 = __webpack_require__(33);
 var toWideKatakana_1 = __webpack_require__(7);
 var toWideSymbolForJapanese_1 = __webpack_require__(34);
 var arrayize_1 = __webpack_require__(0);
@@ -2495,9 +2489,9 @@ var Jaco = function () {
          */
 
     }, {
-        key: "toNarrowJapnese",
-        value: function toNarrowJapnese() {
-            return new Jaco(toNarrowJapnese_1.default(this.$));
+        key: "toNarrowJapanese",
+        value: function toNarrowJapanese() {
+            return new Jaco(toNarrowJapanese_1.default(this.$));
         }
         /**
          * 半角カタカナに変換する
@@ -2617,9 +2611,9 @@ var Jaco = function () {
          */
 
     }, {
-        key: "toWideJapnese",
-        value: function toWideJapnese() {
-            return new Jaco(toWideJapnese_1.default(this.$));
+        key: "toWideJapanese",
+        value: function toWideJapanese() {
+            return new Jaco(toWideJapanese_1.default(this.$));
         }
         /**
          * 全角カタカナに変換する
@@ -3822,6 +3816,40 @@ exports.default = default_1;
 "use strict";
 "use strict";
 
+var FULLWIDTH_SIGN_CHARS_1 = __webpack_require__(41);
+var SPACE_CHARS_1 = __webpack_require__(44);
+var replace_1 = __webpack_require__(2);
+var patternize_1 = __webpack_require__(4);
+var shift_1 = __webpack_require__(5);
+/**
+ * 記号を半角に変換
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @param str 対象の文字列
+ */
+function default_1(str) {
+  str = replace_1.default(str, SPACE_CHARS_1.SPACE_CHARS, ' ');
+  str = shift_1.default(str, patternize_1.default(FULLWIDTH_SIGN_CHARS_1.FULLWIDTH_SIGN_CHARS), -65248);
+  return str;
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 記号を半角に変換
+ *
+ * @version 2.0.0
+ * @since 2.0.0
+ * @param str 対象の文字列
+ */
+exports.default = default_1;
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+
 var remove_1 = __webpack_require__(6);
 var replace_1 = __webpack_require__(2);
 var toNarrow_1 = __webpack_require__(17);
@@ -3877,7 +3905,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3885,7 +3913,7 @@ exports.default = default_1;
 
 var ALPHANUMERIC_CHARS_WITH_SIGN_1 = __webpack_require__(38);
 var replace_1 = __webpack_require__(2);
-var toWideJapnese_1 = __webpack_require__(33);
+var toWideJapanese_1 = __webpack_require__(33);
 var patternize_1 = __webpack_require__(4);
 var shift_1 = __webpack_require__(5);
 /**
@@ -3899,7 +3927,7 @@ function default_1(str) {
   // スペースの変換
   str = replace_1.default(str, ' ', "\u3000");
   // 日本語カタカナ記号の変換
-  str = toWideJapnese_1.default(str);
+  str = toWideJapanese_1.default(str);
   // 半角英数記号の変換
   str = shift_1.default(str, patternize_1.default(ALPHANUMERIC_CHARS_WITH_SIGN_1.ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
   return str;
@@ -3915,7 +3943,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

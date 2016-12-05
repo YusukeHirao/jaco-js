@@ -540,7 +540,7 @@ export default class Jaco {
      * @version 0.4.0
      * @since 0.4.0
      */
-    toNarrowJapnese(): Jaco;
+    toNarrowJapanese(): Jaco;
     /**
      * 半角カタカナに変換する
      *
@@ -612,7 +612,7 @@ export default class Jaco {
      * @version 0.4.0
      * @since 0.4.0
      */
-    toWideJapnese(): Jaco;
+    toWideJapanese(): Jaco;
     /**
      * 全角カタカナに変換する
      *

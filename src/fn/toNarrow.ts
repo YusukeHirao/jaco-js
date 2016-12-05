@@ -1,5 +1,5 @@
 import toNarrowAlphanumeric from './toNarrowAlphanumeric';
-import toNarrowJapnese from './toNarrowJapnese';
+import toNarrowJapanese from './toNarrowJapanese';
 import toNarrowSign from './toNarrowSign';
 
 /**
@@ -17,7 +17,7 @@ export default function (str: string, convertJapaneseChars: boolean = false): st
 	str = toNarrowSign(str);
 	if (convertJapaneseChars) {
 		// 日本語カタカナ記号の変換
-		str = toNarrowJapnese(str);
+		str = toNarrowJapanese(str);
 	}
 	return str;
 }

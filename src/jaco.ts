@@ -41,13 +41,13 @@ import toBasicLetter from './fn/toBasicLetter';
 import toHiragana from './fn/toHiragana';
 import toKatakana from './fn/toKatakana';
 import toNarrow from './fn/toNarrow';
-import toNarrowJapnese from './fn/toNarrowJapnese';
+import toNarrowJapanese from './fn/toNarrowJapanese';
 import toNarrowKatakana from './fn/toNarrowKatakana';
 import toNarrowSymbolForJapanese from './fn/toNarrowSymbolForJapanese';
 import toNumeric from './fn/toNumeric';
 import toPhoeticKana from './fn/toPhoeticKana';
 import toWide from './fn/toWide';
-import toWideJapnese from './fn/toWideJapnese';
+import toWideJapanese from './fn/toWideJapanese';
 import toWideKatakana from './fn/toWideKatakana';
 import toWideSymbolForJapanese from './fn/toWideSymbolForJapanese';
 
@@ -712,8 +712,8 @@ export default class Jaco {
 	 * @version 0.4.0
 	 * @since 0.4.0
 	 */
-	public toNarrowJapnese (): Jaco {
-		return new Jaco(toNarrowJapnese(this.$));
+	public toNarrowJapanese (): Jaco {
+		return new Jaco(toNarrowJapanese(this.$));
 	}
 
 	/**
@@ -811,8 +811,8 @@ export default class Jaco {
 	 * @version 0.4.0
 	 * @since 0.4.0
 	 */
-	public toWideJapnese (): Jaco {
-		return new Jaco(toWideJapnese(this.$));
+	public toWideJapanese (): Jaco {
+		return new Jaco(toWideJapanese(this.$));
 	}
 
 	/**

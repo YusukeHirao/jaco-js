@@ -1,7 +1,7 @@
 import { ALPHANUMERIC_CHARS_WITH_SIGN } from '../const/ALPHANUMERIC_CHARS_WITH_SIGN';
 
 import replace from './replace';
-import toWideJapnese from './toWideJapnese';
+import toWideJapanese from './toWideJapanese';
 
 import patternize from '../util/patternize';
 import shift from '../util/shift';
@@ -17,7 +17,7 @@ export default function (str: string): string {
 	// スペースの変換
 	str = replace(str, ' ', '\u3000');
 	// 日本語カタカナ記号の変換
-	str = toWideJapnese(str);
+	str = toWideJapanese(str);
 	// 半角英数記号の変換
 	str = shift(str, patternize(ALPHANUMERIC_CHARS_WITH_SIGN), 65248);
 	return str;
