@@ -3,8 +3,5 @@
  *
  * [０１２３４５６７８９]
  *
- * @unused
- * @deprecated
- *
  */
 export declare const FULLWIDTH_DIGIT_CHARS = "０-９";

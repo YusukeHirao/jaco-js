@@ -3,8 +3,5 @@
  *
  * [０１２３４５６７８９]
  *
- * @unused
- * @deprecated
- *
  */
 export const FULLWIDTH_DIGIT_CHARS = '\uFF10-\uFF19';
