@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
   "bin": "bin/jaco",
@@ -38,6 +38,7 @@
     "grunt-dtsm": "^0.2.9",
     "grunt-tslint": "^2.3.1-beta",
     "grunt-typescript": "^0.6.2",
+    "mocha": "^3.2.0",
     "should": "^7.0.1",
     "tslint": "^2.3.1-beta"
   }
