@@ -41,14 +41,18 @@ import toBasicLetter from './fn/toBasicLetter';
 import toHiragana from './fn/toHiragana';
 import toKatakana from './fn/toKatakana';
 import toNarrow from './fn/toNarrow';
+import toNarrowAlphanumeric from './fn/toNarrowAlphanumeric';
 import toNarrowJapanese from './fn/toNarrowJapanese';
 import toNarrowKatakana from './fn/toNarrowKatakana';
+import toNarrowSign from './fn/toNarrowSign';
 import toNarrowSymbolForJapanese from './fn/toNarrowSymbolForJapanese';
 import toNumeric from './fn/toNumeric';
 import toPhoeticKana from './fn/toPhoeticKana';
 import toWide from './fn/toWide';
+import toWideAlphanumeric from './fn/toWideAlphanumeric';
 import toWideJapanese from './fn/toWideJapanese';
 import toWideKatakana from './fn/toWideKatakana';
+import toWideSign from './fn/toWideSign';
 import toWideSymbolForJapanese from './fn/toWideSymbolForJapanese';
 
 import arrayize from './util/arrayize';
@@ -707,6 +711,16 @@ export default class Jaco {
 	}
 
 	/**
+	 * 英数字を半角に変換
+	 *
+	 * @version 2.0.0
+	 * @since 1.3.0
+	 */
+	public toNarrowAlphanumeric (): Jaco {
+		return new Jaco(toNarrowAlphanumeric(this.$));
+	}
+
+	/**
 	 * カタカナと日本語で使われる記号を半角に変換
 	 *
 	 * @version 0.4.0
@@ -725,6 +739,16 @@ export default class Jaco {
 	 */
 	public toNarrowKatakana (fromHiragana: boolean = false): Jaco {
 		return new Jaco(toNarrowKatakana(this.$, fromHiragana));
+	}
+
+	/**
+	 * 記号を半角に変換する
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 */
+	public toNarrowSign (): Jaco {
+		return new Jaco(toNarrowSign(this.$));
 	}
 
 	/**
@@ -806,6 +830,16 @@ export default class Jaco {
 	}
 
 	/**
+	 * 英数字を全角に変換
+	 *
+	 * @version 2.0.0
+	 * @since 1.3.0
+	 */
+	public toWideAlphanumeric (): Jaco {
+		return new Jaco(toWideAlphanumeric(this.$));
+	}
+
+	/**
 	 * カタカナと日本語で使われる記号を全角に変換
 	 *
 	 * @version 0.4.0
@@ -823,6 +857,16 @@ export default class Jaco {
 	 */
 	public toWideKatakana (): Jaco {
 		return new Jaco(toWideKatakana(this.$));
+	}
+
+	/**
+	 * 記号を全角に変換する
+	 *
+	 * @version 2.0.0
+	 * @since 2.0.0
+	 */
+	public toWideSign (): Jaco {
+		return new Jaco(toWideSign(this.$));
 	}
 
 	/**

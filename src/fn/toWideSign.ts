@@ -7,7 +7,7 @@ import patternize from '../util/patternize';
 import shift from '../util/shift';
 
 /**
- * 英数字を全角に変換
+ * 記号を全角に変換
  *
  * @version 2.0.0
  * @since 1.3.0

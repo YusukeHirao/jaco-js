@@ -535,6 +535,13 @@ export default class Jaco {
      */
     toNarrow(convertJapaneseChars?: boolean): Jaco;
     /**
+     * 英数字を半角に変換
+     *
+     * @version 2.0.0
+     * @since 1.3.0
+     */
+    toNarrowAlphanumeric(): Jaco;
+    /**
      * カタカナと日本語で使われる記号を半角に変換
      *
      * @version 0.4.0
@@ -549,6 +556,13 @@ export default class Jaco {
      * @param fromHiragana ひらがなも変換する
      */
     toNarrowKatakana(fromHiragana?: boolean): Jaco;
+    /**
+     * 記号を半角に変換する
+     *
+     * @version 2.0.0
+     * @since 2.0.0
+     */
+    toNarrowSign(): Jaco;
     /**
      * 日本語で使われる記号を半角に変換
      *
@@ -607,6 +621,13 @@ export default class Jaco {
      */
     toWide(): Jaco;
     /**
+     * 英数字を全角に変換
+     *
+     * @version 2.0.0
+     * @since 1.3.0
+     */
+    toWideAlphanumeric(): Jaco;
+    /**
      * カタカナと日本語で使われる記号を全角に変換
      *
      * @version 0.4.0
@@ -620,6 +641,13 @@ export default class Jaco {
      * @since 0.1.0
      */
     toWideKatakana(): Jaco;
+    /**
+     * 記号を全角に変換する
+     *
+     * @version 2.0.0
+     * @since 2.0.0
+     */
+    toWideSign(): Jaco;
     /**
      * 日本語で使われる記号を全角に変換
      *
