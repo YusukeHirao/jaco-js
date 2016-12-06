@@ -1,11 +1,11 @@
 {
   "name": "jaco",
-  "version": "1.3.0",
+  "version": "2.0.0-beta",
   "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
   "bin": "bin/jaco",
   "scripts": {
-    "test": "mocha --reporter spec test/test.js",
+    "test": "mocha --reporter spec --compilers js:babel-register test/*.js",
     "bin-test": "bin/jaco"
   },
   "repository": {
@@ -18,7 +18,9 @@
     "string",
     "character",
     "katakana",
-    "hiragana"
+    "hiragana",
+    "unicode",
+    "surrogate pair"
   ],
   "author": "YusukeHirao",
   "license": "MIT",
@@ -27,19 +29,43 @@
   },
   "homepage": "http://jaco-project.github.io/docs/",
   "dependencies": {
-    "colors": "^1.1.2",
-    "commander": "^2.8.1"
+    "commander": "^2.9.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^0.9.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-dtsm": "^0.2.9",
-    "grunt-tslint": "^2.3.1-beta",
-    "grunt-typescript": "^0.6.2",
+    "@types/commander": "^2.3.31",
+    "babel": "^6.5.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-espower": "^2.3.1",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "coffee-script": "^1.12.0",
+    "eslint": "^3.11.1",
+    "git-rev-sync": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^3.1.3",
+    "gulp-uglify": "^2.0.0",
+    "karma": "^1.3.0",
+    "karma-browserify": "^5.1.0",
+    "karma-fixture": "^0.2.6",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.2",
     "mocha": "^3.2.0",
-    "should": "^7.0.1",
-    "tslint": "^2.3.1-beta"
+    "moment": "^2.17.1",
+    "phantomjs-prebuilt": "^2.1.13",
+    "power-assert": "^1.4.2",
+    "run-sequence": "^1.2.2",
+    "should": "11.1.1",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10",
+    "watchify": "^3.7.0",
+    "webpack": "^2.1.0-beta.27",
+    "webpack-stream": "^3.2.0"
   }
 }
