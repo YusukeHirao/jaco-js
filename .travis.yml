@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-  - "current"
-before_script:
-  - npm install -g mocha
+  - "6"
+  - "7"
 script:
   - "npm test"
