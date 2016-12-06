@@ -1,6 +1,6 @@
 /**!
 * jaco - v2.0.0-beta
-* revision: aacdee64e84d85ab194574bad5f73dfcb482d8d4
+* revision: 9c14c57188fbef86bd3e9c0a58fefa6bd3d18c69
 * update: 2016-12-06
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
@@ -3199,7 +3199,7 @@ exports.KATAKANA_CHARS_IGNORE_ITERATION_MARKS = "\u30A1-\u30FA";
  *
  */
 
-exports.SIGN_CHARS = " -/:-A[-a{-~";
+exports.SIGN_CHARS = " -/:-@[-`{-~";
 
 /***/ },
 /* 51 */

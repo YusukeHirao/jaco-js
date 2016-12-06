@@ -4,4 +4,4 @@
  * [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
  *
  */
-export declare const SIGN_CHARS = " -/:-A[-a{-~";
+export declare const SIGN_CHARS = " -/:-@[-`{-~";
