@@ -1,7 +1,7 @@
 /**!
 * jaco - v2.0.0-beta
-* revision: ecafd44c4155106eb70977dfc956733bf2f31793
-* update: 2016-12-06
+* revision: 47dee56a971e56beaaccd3bb2fbdd82c6c5121cc
+* update: 2016-12-08
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
 * License: Licensed under the MIT License
@@ -1339,6 +1339,8 @@ var toHiragana_1 = __webpack_require__(13);
  * よみの文字に変換する
  * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
  *
+ * ひらがな化 -> 小書き文字を基底文字に変換 -> 長音符をかなに変換 -> 繰り返し記号をかなに変換
+ *
  * TODO: test
  *
  * @version 1.1.0
@@ -1350,9 +1352,9 @@ function default_1(str) {
   str = toHiragana_1.default(str);
   // 小書き文字を基底文字に変換
   str = toBasicLetter_1.default(str);
-  // 長音符を置き換える
+  // 長音符をかなに変換
   str = convertProlongedSoundMarks_1.default(str);
-  // 繰り返し記号を置き換える
+  // 繰り返し記号をかなに変換
   str = convertIterationMarks_1.default(str);
   return str;
 }
@@ -1360,6 +1362,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * よみの文字に変換する
  * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
+ *
+ * ひらがな化 -> 小書き文字を基底文字に変換 -> 長音符をかなに変換 -> 繰り返し記号をかなに変換
  *
  * TODO: test
  *
@@ -2063,6 +2067,8 @@ var toPhoeticKana_1 = __webpack_require__(30);
  * 配列の五十音順ソートをするためのソート関数
  * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
  *
+ * 漢字や絵文字はソートの比較にほぼ無関係なのでサロゲートペアを考慮したコードは不要
+ *
  * @version 2.0.0
  * @since 1.1.0
  * @param string Array.prototype.sort から渡される配列要素
@@ -2074,14 +2080,10 @@ function default_1(a, b) {
     if (a === b) {
         return 0;
     }
-    var _a = toPhoeticKana_1.default(toNarrow_1.default(a));
-    var _b = toPhoeticKana_1.default(toNarrow_1.default(b));
-    var _tmpA = void 0; // tempString
-    var _tmpB = void 0; // tempString
-    var phoneticA = _a.toString();
-    var phoneticB = _b.toString();
-    var unvoicedA = removeVoicedMarks_1.default(_a, true);
-    var unvoicedB = removeVoicedMarks_1.default(_b, true);
+    var phoneticA = toPhoeticKana_1.default(toNarrow_1.default(a));
+    var phoneticB = toPhoeticKana_1.default(toNarrow_1.default(b));
+    var unvoicedA = removeVoicedMarks_1.default(phoneticA, true);
+    var unvoicedB = removeVoicedMarks_1.default(phoneticB, true);
     var codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);
     var codeB = _convertNaturalKanaOrderNumberPhase1(unvoicedB);
     var l = Math.max(a.length, b.length);
@@ -2097,11 +2099,11 @@ function default_1(a, b) {
         for (var i = 0; i < l; i++) {
             if (rSpecificPhoneticSign.test(a[i]) || rSpecificPhoneticSign.test(b[i])) {
                 // 片方が「ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ」に該当する場合
-                _tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
-                _tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
-                if (_tmpA < _tmpB) {
+                var tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
+                var tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
+                if (tmpA < tmpB) {
                     return -1;
-                } else if (_tmpA > _tmpB) {
+                } else if (tmpA > tmpB) {
                     return 1;
                 }
             } else {
@@ -2116,11 +2118,11 @@ function default_1(a, b) {
         // もう一度、頭から一文字ずつ比較する
         for (var _i = 0; _i < l; _i++) {
             // ひらがな・カタカナで比較
-            _tmpA = isOnlyHiragana_1.default(a[_i]) ? '0' : '1';
-            _tmpB = isOnlyHiragana_1.default(b[_i]) ? '0' : '1';
-            if (_tmpA < _tmpB) {
+            var codePointA = isOnlyHiragana_1.default(a[_i]) ? 0 : 1;
+            var codePointB = isOnlyHiragana_1.default(b[_i]) ? 0 : 1;
+            if (codePointA < codePointB) {
                 return -1;
-            } else if (_tmpA > _tmpB) {
+            } else if (codePointA > codePointB) {
                 return 1;
             }
         }
@@ -2132,6 +2134,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * 配列の五十音順ソートをするためのソート関数
  * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
  *
+ * 漢字や絵文字はソートの比較にほぼ無関係なのでサロゲートペアを考慮したコードは不要
+ *
  * @version 2.0.0
  * @since 1.1.0
  * @param string Array.prototype.sort から渡される配列要素
@@ -2139,23 +2143,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @return 比較数値
  */
 exports.default = default_1;
-/**
- * ソートのために内部コードを擬似的に置き換える フェーズ2
- *
- * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
- *
- * @version 1.1.0
- * @since 1.1.0
- * @param string 変換する文字（一文字しか受け取らない予定）
- * @return 変換された文字列
- */
-function _convertNaturalKanaOrderNumberPhase2(str) {
-    // naturalKanaOrder関数で使用される場合は str は一文字想定
-    var result = str.replace('ー', '0').replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/, function ($0) {
-        return $0.charCodeAt(0).toString(16);
-    }).replace('ゝ', '4000').replace('ヽ', '4001').replace('ゞ', '4002').replace('ヾ', '4003').replace(/[^0-9]/, '9000');
-    return result;
-}
 /**
  * ソートのために内部コードを擬似的に置き換える フェーズ1
  *
@@ -2172,13 +2159,24 @@ function _convertNaturalKanaOrderNumberPhase2(str) {
  * 「ゝ」「ー」
  * 上記の順にならぶように擬似的に文字のコード数値を変換する
  *
- * @version 1.1.0
+ * @version 2.0.0
  * @since 1.1.0
  * @param string 変換する文字列
  * @return 変換された文字列
  */
 function _convertNaturalKanaOrderNumberPhase1(str) {
     return replaceFromMap_1.default(str, {
+        // 文字クラスで下記順序に並び替える。
+        // 1. スペース（スペースと和字間隔）
+        // 2. 記述記号（句点や疑問符、ダッシュ (記号)など）
+        // 3. 括弧記号（括弧や引用符）
+        // 4. 学術記号（演算記号などの数学記号と雄記号雌記号）
+        // 5. 一般記号（丸印や矢印、アンパサンドなど）
+        // 6. 単位記号（円記号やパーセント記号など）
+        // 7. アラビア数字（0〜9）
+        // 8. 欧字記号（ギリシャ文字とキリル）
+        // 9. ラテンアルファベット（アルファベット及びマクロンかサーカムフレックス付きアルファベット）
+        // 10. 仮名（#仮名での並び替え参照）
         'あ': "\u3041", 'い': "\u3042", 'う': "\u3043", 'え': "\u3044", 'お': "\u3045",
         'か': "\u3046", 'き': "\u3047", 'く': "\u3048", 'け': "\u3049", 'こ': "\u304A",
         'さ': "\u304B", 'し': "\u304C", 'す': "\u304D", 'せ': "\u304E", 'そ': "\u304F",
@@ -2189,8 +2187,28 @@ function _convertNaturalKanaOrderNumberPhase1(str) {
         'や': "\u3065", 'ゆ': "\u3066", 'よ': "\u3067",
         'ら': "\u3068", 'り': "\u3069", 'る': "\u306A", 'れ': "\u306B", 'ろ': "\u306C",
         'わ': "\u306D", 'ゐ': "\u306E", 'ゑ': "\u306F", 'を': "\u3070", 'ん': "\u3071",
-        'ゝ': "\u3072", 'ー': "\u3073"
+        'ゝ': "\u3072", 'ー': "\u3073",
+        // 11. 漢字（「〃」「仝」「々」「〆」「〇」及び漢字）
+        // 12. 下駄記号（下駄記号）
+        '〓': "\uFFFF"
     }).toString();
+}
+/**
+ * ソートのためにコードポイントに一時的に置き換える フェーズ2
+ *
+ * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
+ *
+ * @version 2.0.0
+ * @since 1.1.0
+ * @param string 変換する文字（一文字しか受け取らない予定）
+ * @return 変換された文字列
+ */
+function _convertNaturalKanaOrderNumberPhase2(str) {
+    // naturalKanaOrder関数で使用される場合は str は一文字想定
+    var result = str.replace('ー', '0').replace(/[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/, function ($0) {
+        return $0.charCodeAt(0).toString(16);
+    }).replace('ゝ', '4000').replace('ヽ', '4001').replace('ゞ', '4002').replace('ヾ', '4003').replace(/[^0-9]/, '9000');
+    return result;
 }
 
 /***/ },
