@@ -2,4 +2,7 @@ src
 test
 docs
 npm-debug.log
-
+tslint.json
+.travis.yml
+assert
+gulpfile.coffee

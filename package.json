@@ -1,8 +1,9 @@
 {
   "name": "jaco",
-  "version": "2.0.0-beta",
+  "version": "2.0.0-beta.2",
   "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
+  "types": "lib/jaco.d.ts",
   "bin": "bin/jaco",
   "scripts": {
     "test": "mocha --reporter spec --compilers js:babel-register test/*.js",
