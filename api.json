@@ -1,0 +1,8054 @@
+{
+	"id": 0,
+	"name": "jaco",
+	"kind": 0,
+	"flags": {},
+	"children": [
+		{
+			"id": 71,
+			"name": "Jaco",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "## Jacoクラス",
+				"text": "日本語やマルチバイト文字・ASCII文字を扱いやすくするためのラッパークラス\n\n文字列クラスを継承してはいないがメソッドは同等のものが実装されている。\nただし基本的にほとんどのメソッドが破壊的メソッドかつチェインナブルである。\n",
+				"tags": [
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0\n"
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 75,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "コンストラクタ",
+						"text": "```javascript\nvar a = new Jaco(\"あああ\");\n```\n",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "0.1.0"
+							}
+						]
+					},
+					"signatures": [
+						{
+							"id": 76,
+							"name": "new Jaco",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {},
+							"comment": {
+								"shortText": "コンストラクタ",
+								"text": "```javascript\nvar a = new Jaco(\"あああ\");\n```\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 77,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "対象の文字列\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 92,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 74,
+					"name": "$",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPrivate": true,
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "保持する文字列",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "0.1.0\n"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 92,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				},
+				{
+					"id": 72,
+					"name": "length",
+					"kind": 262144,
+					"kindString": "Accessor",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"comment": {
+						"shortText": "文字列長",
+						"text": "- サロゲートペアを考慮する\n",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "readonly",
+								"text": "\n"
+							}
+						]
+					},
+					"getSignature": [
+						{
+							"id": 73,
+							"name": "__get",
+							"kind": 524288,
+							"kindString": "Get signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列長",
+								"text": "- サロゲートペアを考慮する\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "readonly",
+										"text": "\n"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 82,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 323,
+					"name": "__@iterator",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 324,
+							"name": "__@iterator",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "イテレータ",
+								"text": "要素の型は `string` ではなく `Jaco`\n",
+								"returns": "イテレータブル `<Jaco>`\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Iterator",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Jaco",
+										"id": 71
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 932,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 78,
+					"name": "addSemivoicedMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 79,
+							"name": "addSemivoicedMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "半濁点を追加する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 115,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 80,
+					"name": "addVoicedMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 81,
+							"name": "addVoicedMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "濁点を追加する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 125,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 82,
+					"name": "append",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 83,
+							"name": "append",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "後方結合",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 84,
+									"name": "element",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "結合する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 85,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 86,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 87,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 136,
+															"character": 35
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														86
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 136,
+													"character": 24
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 136,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 88,
+					"name": "byteSize",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 89,
+							"name": "byteSize",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列のバイトサイズを返す",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 146,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 90,
+					"name": "charAt",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 91,
+							"name": "charAt",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列から指定位置の文字を返す",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.charAt とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 92,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "指定位置\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 160,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 93,
+					"name": "charCodeAt",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 94,
+							"name": "charCodeAt",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "指定位置のUnicodeコードポイントを返す",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.charCodeAt とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 95,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 174,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 96,
+					"name": "clone",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 97,
+							"name": "clone",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "コピーを生成する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 184,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 98,
+					"name": "combinateSoundMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 99,
+							"name": "combinateSoundMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "濁点・半濁点とひらがな・かたかなを結合させる",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 100,
+									"name": "convertOnly",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "ひらがな・かたかなと結合させずに、文字だけ結合文字に変換\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 195,
+							"character": 27
+						}
+					]
+				},
+				{
+					"id": 101,
+					"name": "concat",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 102,
+							"name": "concat",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列連結をおこなう",
+								"text": "- String.prototype.concat とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 103,
+									"name": "args",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isRest": true
+									},
+									"type": {
+										"type": "union",
+										"isArray": true,
+										"types": [
+											{
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "instrinct",
+														"name": "string"
+													}
+												]
+											},
+											{
+												"type": "reference",
+												"name": "Jaco",
+												"id": 71
+											},
+											{
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "reflection",
+														"declaration": {
+															"id": 104,
+															"name": "__type",
+															"kind": 65536,
+															"kindString": "Type literal",
+															"flags": {},
+															"children": [
+																{
+																	"id": 105,
+																	"name": "toString",
+																	"kind": 64,
+																	"kindString": "Function",
+																	"flags": {},
+																	"signatures": [
+																		{
+																			"id": 106,
+																			"name": "toString",
+																			"kind": 4096,
+																			"kindString": "Call signature",
+																			"flags": {},
+																			"type": {
+																				"type": "instrinct",
+																				"name": "string"
+																			}
+																		}
+																	],
+																	"sources": [
+																		{
+																			"fileName": "jaco.ts",
+																			"line": 208,
+																			"character": 43
+																		}
+																	]
+																}
+															],
+															"groups": [
+																{
+																	"title": "Functions",
+																	"kind": 64,
+																	"children": [
+																		105
+																	]
+																}
+															]
+														}
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 208,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 107,
+					"name": "convertIterationMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 108,
+							"name": "convertIterationMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "繰り返し記号をかなに置き換える",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 218,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 109,
+					"name": "convertProlongedSoundMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 110,
+							"name": "convertProlongedSoundMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "長音符をかなに置き換える",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 228,
+							"character": 34
+						}
+					]
+				},
+				{
+					"id": 111,
+					"name": "endWith",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 112,
+							"name": "endWith",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "引数に指定された文字列が末尾と合致するか",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.endWith とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 113,
+									"name": "search",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "合致対象文字列"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 114,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 115,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 116,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 243,
+															"character": 35
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														115
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 243,
+													"character": 24
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 117,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "末尾の位置\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 243,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 118,
+					"name": "has",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 119,
+							"name": "has",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "該当の文字のいずれかを含んでいるかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 120,
+									"name": "characters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "文字セット"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 121,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 122,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 123,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 255,
+															"character": 35
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														122
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 255,
+													"character": 24
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 255,
+							"character": 11
+						}
+					]
+				},
+				{
+					"id": 124,
+					"name": "hasSmallLetter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 125,
+							"name": "hasSmallLetter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "小書き文字を含むかどうか",
+								"text": "TODO: test\n",
+								"returns": "小書き文字を含むかどうか\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "1.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 268,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 126,
+					"name": "hasSurrogatePair",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 127,
+							"name": "hasSurrogatePair",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "サロゲートペア文字列を含んでいるかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 279,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 128,
+					"name": "hasUnpairedSurrogate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 129,
+							"name": "hasUnpairedSurrogate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "ペアになっていないサロゲートコードポイントを含んでいるかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 290,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 130,
+					"name": "includes",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 131,
+							"name": "includes",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "引数に指定された文字列が部分合致するか",
+								"returns": "合致したかどうか\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 132,
+									"name": "search",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "合致対象文字列"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Jaco",
+												"id": 71
+											},
+											{
+												"type": "instrinct",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 133,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "開始位置"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 303,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 134,
+					"name": "indexOf",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 135,
+							"name": "indexOf",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "指定された文字列が最初に現れるインデックスを返す",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.indexOf とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 136,
+									"name": "search",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "検索文字列"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 137,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 138,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 139,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 318,
+															"character": 35
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														138
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 318,
+													"character": 24
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 140,
+									"name": "fromIndex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "検索位置\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 318,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 141,
+					"name": "is",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 142,
+							"name": "is",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "完全マッチ",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 143,
+									"name": "target",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "比較する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 144,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 145,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 146,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 329,
+															"character": 30
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														145
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 329,
+													"character": 19
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 329,
+							"character": 10
+						}
+					]
+				},
+				{
+					"id": 147,
+					"name": "isEmpty",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 148,
+							"name": "isEmpty",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字が空かどうか",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 339,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 149,
+					"name": "isNumeric",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 150,
+							"name": "isNumeric",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "数字だけで構成されているかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.5.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 151,
+									"name": "negative",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "負の数値も含めてチェックするかどうか"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								},
+								{
+									"id": 152,
+									"name": "floatingPoint",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "小数としてチェックするかどうか"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 352,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 153,
+					"name": "isOnly",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 154,
+							"name": "isOnly",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "該当の文字だけで構成されているかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 155,
+									"name": "characters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "文字セット"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 156,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 157,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 158,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 364,
+															"character": 38
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														157
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 364,
+													"character": 27
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 364,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 159,
+					"name": "isOnlyHiragana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 160,
+							"name": "isOnlyHiragana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "ひらがなだけで構成されているかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 375,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 161,
+					"name": "isOnlyKatakana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 162,
+							"name": "isOnlyKatakana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "カタカナだけで構成されているかどうか",
+								"returns": "結果の真偽\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 386,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 163,
+					"name": "lastIndexOf",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 164,
+							"name": "lastIndexOf",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "指定された文字列が最後に現れるインデックスを返す",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.lastIndexOf とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 165,
+									"name": "search",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "検索文字列"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 166,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 167,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 168,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 402,
+															"character": 39
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														167
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 402,
+													"character": 28
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 169,
+									"name": "fromIndex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": " Infinity"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 402,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 170,
+					"name": "match",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 171,
+							"name": "match",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "正規表現に対する文字列 のマッチングの際に、そのマッチ結果を得る",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 172,
+									"name": "regexp",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "パターン\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "RegExp"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "RegExpMatchArray"
+									},
+									{
+										"type": "instrinct",
+										"name": "null"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 413,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 173,
+					"name": "matches",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 174,
+							"name": "matches",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 175,
+									"name": "pattern",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "パターン\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "RegExp"
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"isArray": true,
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 424,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 176,
+					"name": "normalize",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 177,
+							"name": "normalize",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "【未実装】Unicode 正規化形式を返す",
+								"text": "TODO: 日本語に関係する文字になるべく対応する\n\n- String.prototype.normalize とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "x.x.x"
+									},
+									{
+										"tag": "since",
+										"text": "x.x.x"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 178,
+									"name": "form",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "正規化形式の種類\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "stringLiteral",
+												"value": "NFC"
+											},
+											{
+												"type": "stringLiteral",
+												"value": "NFD"
+											},
+											{
+												"type": "stringLiteral",
+												"value": "NFKC"
+											},
+											{
+												"type": "stringLiteral",
+												"value": "NFKD"
+											}
+										]
+									},
+									"defaultValue": "\"NFC\""
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "never"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 439,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 179,
+					"name": "padEnd",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 180,
+							"name": "padEnd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "最終的な文字列が指定された長さに到達するように文字列で延長する",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.padEnd とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 181,
+									"name": "targetLength",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "最終的な長さ"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								},
+								{
+									"id": 182,
+									"name": "padString",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "延長する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 183,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 184,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 185,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 454,
+															"character": 59
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														184
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 454,
+													"character": 48
+												}
+											]
+										}
+									},
+									"defaultValue": "\" \""
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 454,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 186,
+					"name": "padStart",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 187,
+							"name": "padStart",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "最終的な文字列が指定された長さに到達するように文字列を先頭に追加する",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.padStart とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 188,
+									"name": "targetLength",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "最終的な長さ"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								},
+								{
+									"id": 189,
+									"name": "padString",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "延長する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 190,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 191,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 192,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 469,
+															"character": 61
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														191
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 469,
+													"character": 50
+												}
+											]
+										}
+									},
+									"defaultValue": "\" \""
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 469,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 193,
+					"name": "prepend",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 194,
+							"name": "prepend",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "前方結合",
+								"text": "```javascript\nnew Jaco(\"あああ\").prepend(\"いいい\").toString() // => \"いいいあああ\"\n```\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 195,
+									"name": "element",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "結合する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 196,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 197,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 198,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 484,
+															"character": 36
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														197
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 484,
+													"character": 25
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 484,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 199,
+					"name": "remove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 200,
+							"name": "remove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列を取り除く",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 201,
+									"name": "pattern",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "取り除く文字列\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "RegExp"
+											},
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 202,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 203,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {},
+															"signatures": [
+																{
+																	"id": 204,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "jaco.ts",
+																	"line": 495,
+																	"character": 44
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																203
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 495,
+															"character": 33
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 495,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 205,
+					"name": "removeUnpairedSurrogate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 206,
+							"name": "removeUnpairedSurrogate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "ペアになっていないサロゲートコードポイントの削除",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 505,
+							"character": 31
+						}
+					]
+				},
+				{
+					"id": 207,
+					"name": "removeVoicedMarks",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 208,
+							"name": "removeVoicedMarks",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "濁点・半濁点を取り除く",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "1.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 209,
+									"name": "ignoreSingleMark",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "単体の濁点・半濁点を除去するかどうか\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 516,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 210,
+					"name": "repeat",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 211,
+							"name": "repeat",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列を繰り返す",
+								"text": "- String.prototype.repeat とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 212,
+									"name": "times",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "繰り返しの回数\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 529,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 213,
+					"name": "replace",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 214,
+							"name": "replace",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列をパターンで置換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 215,
+									"name": "pattern",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "対象のパターン"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "RegExp"
+											},
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 216,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 217,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {},
+															"signatures": [
+																{
+																	"id": 218,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "jaco.ts",
+																	"line": 541,
+																	"character": 45
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																217
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 541,
+															"character": 34
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 219,
+									"name": "replacement",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "置換する文字列\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 220,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 221,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 222,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 541,
+															"character": 82
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														221
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 541,
+													"character": 71
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 541,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 223,
+					"name": "replaceFromMap",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 224,
+							"name": "replaceFromMap",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "キーがパターン・値が置換文字列のハッシュマップによって置換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 225,
+									"name": "convMap",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "キーがパターン・値が置換文字列のハッシュマップ\n"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 226,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"indexSignature": [
+												{
+													"id": 227,
+													"name": "__index",
+													"kind": 8192,
+													"kindString": "Index signature",
+													"flags": {},
+													"parameters": [
+														{
+															"id": 228,
+															"name": "pattern",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"type": {
+														"type": "instrinct",
+														"name": "string"
+													}
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 552,
+													"character": 32
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 552,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 229,
+					"name": "search",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 230,
+							"name": "search",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "正規表現にマッチしたインデックスを返す",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.search とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 231,
+									"name": "pattern",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "パターン\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "RegExp"
+											},
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 232,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 233,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {},
+															"signatures": [
+																{
+																	"id": 234,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "jaco.ts",
+																	"line": 566,
+																	"character": 44
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																233
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 566,
+															"character": 33
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 566,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 235,
+					"name": "slice",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 236,
+							"name": "slice",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字位置による抽出",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.slice とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 237,
+									"name": "start",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "開始インデックス"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								},
+								{
+									"id": 238,
+									"name": "end",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "終了インデックス 省略すると最後まで\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 581,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 239,
+					"name": "split",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 240,
+							"name": "split",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "文字列の配列に分割する",
+								"text": "- String.prototype.split とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 241,
+									"name": "separator",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "区切り文字"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "RegExp"
+											},
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 242,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 243,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {},
+															"signatures": [
+																{
+																	"id": 244,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "jaco.ts",
+																	"line": 595,
+																	"character": 45
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																243
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 595,
+															"character": 34
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									"id": 245,
+									"name": "limit",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "配列の数を指定\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"isArray": true,
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 595,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 246,
+					"name": "startsWith",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 247,
+							"name": "startsWith",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "引数に指定された文字列が先頭と合致するか",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.startsWith とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 248,
+									"name": "search",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "合致対象文字列"
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 249,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 250,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 251,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 610,
+															"character": 38
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														250
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "jaco.ts",
+													"line": 610,
+													"character": 27
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 252,
+									"name": "position",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "先頭の位置\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 610,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 253,
+					"name": "substr",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 254,
+							"name": "substr",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "指定した位置から指定した数だけ文字列を抽出",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.substr とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 255,
+									"name": "start",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "開始インデックス"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								},
+								{
+									"id": 256,
+									"name": "length",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "指定数\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 625,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 257,
+					"name": "substring",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 258,
+							"name": "substring",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "指定した位置の間の文字列を抽出",
+								"text": "- サロゲートペアを考慮する\n- String.prototype.substring とは非互換\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 259,
+									"name": "indexA",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "インデックス"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								},
+								{
+									"id": 260,
+									"name": "indexB",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "インデックス\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 640,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 261,
+					"name": "test",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 262,
+							"name": "test",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "パターンとマッチするかどうか",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 263,
+									"name": "pattern",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "パターン\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "RegExp"
+											},
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 264,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 265,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {},
+															"signatures": [
+																{
+																	"id": 266,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "jaco.ts",
+																	"line": 651,
+																	"character": 42
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																265
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "jaco.ts",
+															"line": 651,
+															"character": 31
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 651,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 267,
+					"name": "toBasicLetter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 268,
+							"name": "toBasicLetter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "小書き文字を基底文字に変換する",
+								"text": "TODO: test\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "1.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 663,
+							"character": 21
+						}
+					]
+				},
+				{
+					"id": 269,
+					"name": "toHiragana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 270,
+							"name": "toHiragana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "ひらがなに変換する",
+								"text": "第一引数に true を渡した場合、濁点・半濁点は基本的に結合される\nヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 271,
+									"name": "isCombinate",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "濁点・半濁点を結合文字にするかどうか\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 677,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 272,
+					"name": "toKatakana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 273,
+							"name": "toKatakana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "カタカナに変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 274,
+									"name": "toWide",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "半角カタカナを全角カタカナへ変換するかどうか\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 688,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 275,
+					"name": "toLowerCase",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 276,
+							"name": "toLowerCase",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "英字の大文字を小文字に変換する",
+								"returns": "インスタンス自身\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 699,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 277,
+					"name": "toNarrow",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 278,
+							"name": "toNarrow",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "半角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 279,
+									"name": "convertJapaneseChars",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 709,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 280,
+					"name": "toNarrowAlphanumeric",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 281,
+							"name": "toNarrowAlphanumeric",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "英数字を半角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.3.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 719,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 282,
+					"name": "toNarrowJapanese",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 283,
+							"name": "toNarrowJapanese",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "カタカナと日本語で使われる記号を半角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.4.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 729,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 284,
+					"name": "toNarrowKatakana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 285,
+							"name": "toNarrowKatakana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "半角カタカナに変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.6.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 286,
+									"name": "fromHiragana",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "ひらがなも変換する\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 740,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 287,
+					"name": "toNarrowSign",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 288,
+							"name": "toNarrowSign",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "記号を半角に変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 750,
+							"character": 20
+						}
+					]
+				},
+				{
+					"id": 289,
+					"name": "toNarrowSymbolForJapanese",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 290,
+							"name": "toNarrowSymbolForJapanese",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "日本語で使われる記号を半角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 760,
+							"character": 33
+						}
+					]
+				},
+				{
+					"id": 291,
+					"name": "toNumber",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 292,
+							"name": "toNumber",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "数値に変換する",
+								"returns": "数値\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 771,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 293,
+					"name": "toNumeric",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 294,
+							"name": "toNumeric",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "数字に変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.5.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.5.0"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 295,
+									"name": "negative",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "負の値を許可してマイナスをつけるかどうか"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								},
+								{
+									"id": 296,
+									"name": "floatingPoint",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "小数を許可してドットをつけるかどうか\n"
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 783,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 297,
+					"name": "toPhoeticKana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 298,
+							"name": "toPhoeticKana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "よみの文字に変換する\nJIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる",
+								"text": "TODO: test\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "1.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 796,
+							"character": 21
+						}
+					]
+				},
+				{
+					"id": 299,
+					"name": "toString",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 300,
+							"name": "toString",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "明示もしくは暗黙の文字列変換メソッド",
+								"returns": "インスタンス自身が保持する文字列\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 807,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 301,
+					"name": "toUpperCase",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 302,
+							"name": "toUpperCase",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "英字の小文字を大文字に変換する",
+								"returns": "インスタンス自身\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 818,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 303,
+					"name": "toWide",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 304,
+							"name": "toWide",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "全角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.4.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 828,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 305,
+					"name": "toWideAlphanumeric",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 306,
+							"name": "toWideAlphanumeric",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "英数字を全角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "1.3.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 838,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 307,
+					"name": "toWideJapanese",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 308,
+							"name": "toWideJapanese",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "カタカナと日本語で使われる記号を全角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.4.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 848,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 309,
+					"name": "toWideKatakana",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 310,
+							"name": "toWideKatakana",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "全角カタカナに変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.2.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 858,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 311,
+					"name": "toWideSign",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 312,
+							"name": "toWideSign",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "記号を全角に変換する",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 868,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 313,
+					"name": "toWideSymbolForJapanese",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 314,
+							"name": "toWideSymbolForJapanese",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "日本語で使われる記号を全角に変換",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.4.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 878,
+							"character": 31
+						}
+					]
+				},
+				{
+					"id": 315,
+					"name": "trim",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 316,
+							"name": "trim",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "先頭と末尾の空白を取り除く",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.2.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 888,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 317,
+					"name": "trimLeft",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 318,
+							"name": "trimLeft",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "先頭の空白を取り除く",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 898,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 319,
+					"name": "trimRight",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 320,
+							"name": "trimRight",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "末尾の空白を取り除く",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "2.0.0"
+									},
+									{
+										"tag": "since",
+										"text": "2.0.0\n"
+									}
+								]
+							},
+							"type": {
+								"type": "reference",
+								"name": "Jaco",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 908,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 321,
+					"name": "valueOf",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 322,
+							"name": "valueOf",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "暗黙の値変換に呼び出されるメソッド",
+								"returns": "インスタンス自身が保持する文字列\n",
+								"tags": [
+									{
+										"tag": "version",
+										"text": "0.1.0"
+									},
+									{
+										"tag": "since",
+										"text": "0.1.0"
+									}
+								]
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "jaco.ts",
+							"line": 919,
+							"character": 15
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"kind": 512,
+					"children": [
+						75
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						74
+					]
+				},
+				{
+					"title": "Accessors",
+					"kind": 262144,
+					"children": [
+						72
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						323,
+						78,
+						80,
+						82,
+						88,
+						90,
+						93,
+						96,
+						98,
+						101,
+						107,
+						109,
+						111,
+						118,
+						124,
+						126,
+						128,
+						130,
+						134,
+						141,
+						147,
+						149,
+						153,
+						159,
+						161,
+						163,
+						170,
+						173,
+						176,
+						179,
+						186,
+						193,
+						199,
+						205,
+						207,
+						210,
+						213,
+						223,
+						229,
+						235,
+						239,
+						246,
+						253,
+						257,
+						261,
+						267,
+						269,
+						272,
+						275,
+						277,
+						280,
+						282,
+						284,
+						287,
+						289,
+						291,
+						293,
+						297,
+						299,
+						301,
+						303,
+						305,
+						307,
+						309,
+						311,
+						313,
+						315,
+						317,
+						319,
+						321
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "jaco.ts",
+					"line": 71,
+					"character": 25
+				}
+			]
+		},
+		{
+			"id": 68,
+			"name": "ALPHA_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "半角英字",
+				"text": "[A-Za-z]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/ALPHA_CHARS.ts",
+					"line": 7,
+					"character": 24
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "A-Za-z"
+			},
+			"defaultValue": "\"A-Za-z\""
+		},
+		{
+			"id": 39,
+			"name": "CHARACTER_TABULATION",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "タブ [HT]"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 5,
+					"character": 26
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "\t"
+			},
+			"defaultValue": "\"\t\""
+		},
+		{
+			"id": 69,
+			"name": "DIGIT_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "半角数字",
+				"text": "[0-9]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/DIGIT_CHARS.ts",
+					"line": 7,
+					"character": 24
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "0-9"
+			},
+			"defaultValue": "\"0-9\""
+		},
+		{
+			"id": 46,
+			"name": "EM_QUAD",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "m幅 クワタ"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 40,
+					"character": 13
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 48,
+			"name": "EM_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "m幅 空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 50,
+					"character": 14
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 45,
+			"name": "EN_QUAD",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "n幅 クワタ"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 35,
+					"character": 13
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 47,
+			"name": "EN_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "n幅 空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 45,
+					"character": 14
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 52,
+			"name": "FIGURE_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Figure space",
+				"text": "> In fonts with monospaced digits, equal to the width of one digit. HTML/XML named entity: &numsp;\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 72,
+					"character": 18
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 41,
+			"name": "FORM_FEED",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "フォームフィード [FF]"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 15,
+					"character": 15
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "\f"
+			},
+			"defaultValue": "\"\f\""
+		},
+		{
+			"id": 50,
+			"name": "FOUR_PER_EM_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "1/4 m幅 空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 60,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 36,
+			"name": "FULLWIDTH_ALPHA_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "全角英字",
+				"text": "[ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/FULLWIDTH_ALPHA_CHARS.ts",
+					"line": 7,
+					"character": 34
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "Ａ-Ｚａ-ｚ"
+			},
+			"defaultValue": "\"Ａ-Ｚａ-ｚ\""
+		},
+		{
+			"id": 37,
+			"name": "FULLWIDTH_DIGIT_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "全角数字",
+				"text": "[０１２３４５６７８９]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/FULLWIDTH_DIGIT_CHARS.ts",
+					"line": 7,
+					"character": 34
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "０-９"
+			},
+			"defaultValue": "\"０-９\""
+		},
+		{
+			"id": 38,
+			"name": "FULLWIDTH_SIGN_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "全角記号",
+				"text": "[！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/FULLWIDTH_SIGN_CHARS.ts",
+					"line": 7,
+					"character": 33
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "！-／：-＠［-｀｛-～"
+			},
+			"defaultValue": "\"！-／：-＠［-｀｛-～\""
+		},
+		{
+			"id": 56,
+			"name": "HAIR_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "より細い空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 98,
+					"character": 16
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 24,
+			"name": "HIRAGANA_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ひらがな",
+				"text": "[ぁ-ゖゝ-ゟ]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/HIRAGANA_CHARS.ts",
+					"line": 7,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "ぁ-ゖゝ-ゟ"
+			},
+			"defaultValue": "\"ぁ-ゖゝ-ゟ\""
+		},
+		{
+			"id": 21,
+			"name": "HIRAGANA_CHARS_IGNORE_ITERATION_MARKS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ひらがな（繰り返し記号・合字なし）",
+				"text": "[ぁ-ゖ]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS.ts",
+					"line": 7,
+					"character": 50
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "ぁ-ゖ"
+			},
+			"defaultValue": "\"ぁ-ゖ\""
+		},
+		{
+			"id": 65,
+			"name": "IDEOGRAPHIC_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "全角空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 164,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "　"
+			},
+			"defaultValue": "\"　\""
+		},
+		{
+			"id": 35,
+			"name": "KANA_COMMON_CAHRS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "濁点／半濁点(結合文字含む)・長音符",
+				"text": "[゛゜ー]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/KANA_COMMON_CAHRS.ts",
+					"line": 7,
+					"character": 30
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "゙-゜ー"
+			},
+			"defaultValue": "\"゙-゜ー\""
+		},
+		{
+			"id": 25,
+			"name": "KANA_WITH_ITERATION_MARKS_REGEXP",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"sources": [
+				{
+					"fileName": "fn/convertIterationMarks.ts",
+					"line": 9,
+					"character": 38
+				}
+			],
+			"type": {
+				"type": "reference",
+				"name": "RegExp"
+			},
+			"defaultValue": " new RegExp(`([${HIRAGANA_CHARS_IGNORE_ITERATION_MARKS}${KATAKANA_CHARS_IGNORE_ITERATION_MARKS}])([ゝゞヽヾ])`)"
+		},
+		{
+			"id": 34,
+			"name": "KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"sources": [
+				{
+					"fileName": "fn/convertProlongedSoundMarks.ts",
+					"line": 4,
+					"character": 52
+				}
+			],
+			"type": {
+				"type": "reference",
+				"name": "RegExp"
+			},
+			"defaultValue": " new RegExp('[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー')"
+		},
+		{
+			"id": 23,
+			"name": "KATAKANA_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "カタカナ",
+				"text": "[ァ-ヺヽ-ヿ]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/KATAKANA_CHARS.ts",
+					"line": 7,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "ァ-ヺヽヿ"
+			},
+			"defaultValue": "\"ァ-ヺヽヿ\""
+		},
+		{
+			"id": 22,
+			"name": "KATAKANA_CHARS_IGNORE_ITERATION_MARKS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "カタカナ（繰り返し記号・合字なし）",
+				"text": "[ァ-ヺ]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS.ts",
+					"line": 7,
+					"character": 50
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "ァ-ヺ"
+			},
+			"defaultValue": "\"ァ-ヺ\""
+		},
+		{
+			"id": 61,
+			"name": "LINE_SEPARATOR",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Line separator"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 138,
+					"character": 20
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 40,
+			"name": "LINE_TABULATION",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "垂直タブ [VT]"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 10,
+					"character": 21
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "\u000b"
+			},
+			"defaultValue": "\"\u000b\""
+		},
+		{
+			"id": 64,
+			"name": "MEDIUM_MATHMETICAL_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Medium mathematical space",
+				"text": "> MMSP. Used in mathematical formulae.\n> Four-eighteenths of an em.\n> In mathematical typography, the widths of spaces are usually given in integral multiples of an eighteenth of an em, and 4/18 em may be used in several situations,\n> for example between the a and the + and between the + and the b in the expression a + b.\n>  HTML/XML named entity: &MediumSpace;\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 159,
+					"character": 30
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 55,
+			"name": "MONGOLIAN_VOWEL_SEPARATOR",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Mongolian vowel separator",
+				"text": "> MVS. A narrow space character, used in Mongolian to cause the final two characters of a word to take on different shapes.\n> It is no longer classified as space character (i.e. in Zs category) in Unicode 6.3.0, even though it was in previous versions of the standard.\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 92,
+					"character": 31
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "᠎"
+			},
+			"defaultValue": "\"᠎\""
+		},
+		{
+			"id": 63,
+			"name": "NARROW_NO_BREAK_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "狭いノーブレークスペース"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 148,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 43,
+			"name": "NEXT_LINE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Next line [NEL]"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 25,
+					"character": 15
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": ""
+			},
+			"defaultValue": "\"\""
+		},
+		{
+			"id": 44,
+			"name": "NO_BREAK_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ノーブレークスペース [NBSP]"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 30,
+					"character": 20
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 62,
+			"name": "PARAGRAPH_SEPARATOR",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Paragraph separator"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 143,
+					"character": 25
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 53,
+			"name": "PUNCTUATION_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "Punctuation space",
+				"text": "> As wide as the narrow punctuation in a font, i.e. the advance width of the period or comma. HTML/XML named entity: &puncsp;\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 79,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 70,
+			"name": "SIGN_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "記号",
+				"text": "[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SIGN_CHARS.ts",
+					"line": 7,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " -/:-@[-`{-~"
+			},
+			"defaultValue": "\" -/:-@[-`{-~\""
+		},
+		{
+			"id": 51,
+			"name": "SIX_PER_EM_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "1/6 m幅 空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 65,
+					"character": 22
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 42,
+			"name": "SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "空白文字"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 20,
+					"character": 11
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 67,
+			"name": "SPACE_CHARS",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ホワイトスペース（空白文字）類",
+				"text": "改行（`\\r|\\n|\\r\\n`）は含まない\n\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 177,
+					"character": 24
+				}
+			],
+			"type": {
+				"type": "instrinct",
+				"name": "string"
+			},
+			"defaultValue": " [\n\tCHARACTER_TABULATION,\n\tLINE_TABULATION,\n\tFORM_FEED,\n\tSPACE,\n\tNEXT_LINE,\n\tNO_BREAK_SPACE,\n\tEN_QUAD,\n\tEM_QUAD,\n\tEN_SPACE,\n\tEM_SPACE,\n\tTHREE_PER_EM_SPACE,\n\tFOUR_PER_EM_SPACE,\n\tSIX_PER_EM_SPACE,\n\tFIGURE_SPACE,\n\tPUNCTUATION_SPACE,\n\tTHIN_SPACE,\n\tMONGOLIAN_VOWEL_SEPARATOR,\n\tHAIR_SPACE,\n\tZERO_WIDTH_SPACE,\n\tZERO_WIDTH_NON_JOINER,\n\tZERO_WIDTH_JOINER,\n\tWORD_JOINER,\n\tLINE_SEPARATOR,\n\tPARAGRAPH_SEPARATOR,\n\tNARROW_NO_BREAK_SPACE,\n\tMEDIUM_MATHMETICAL_SPACE,\n\tIDEOGRAPHIC_SPACE,\n\tZERO_WIDTH_NO_BREAK_SPACE,\n].join('')"
+		},
+		{
+			"id": 54,
+			"name": "THIN_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "細い空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 84,
+					"character": 16
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 49,
+			"name": "THREE_PER_EM_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "1/3 m幅 空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 55,
+					"character": 24
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": " "
+			},
+			"defaultValue": "\" \""
+		},
+		{
+			"id": 60,
+			"name": "WORD_JOINER",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "単語結合子",
+				"text": "> 日本語などのわかち書きをしない言語においては、改行は文章の途中の任意の位置で行われるが、単語の途中など改行してほしくない箇所に単語結合子を入れることで、その場所では改行されなくなる。\n> このコードはUnicode バージョン3.2（2002年発行）でU+2060 word joiner (HTML: &#8288;)として定義された。\n> それ以前より、Unicodeには同じ働きをするゼロ幅ノーブレークスペース(ZWNBSP: zero width no-break space)が存在していた。\n> しかし、そのコードポイント U+FEFF はファイルの先頭のバイトオーダーマークとしても使用されている。\n> この曖昧さを避けるために、ゼロ幅ノーブレークスペースと完全に同じ意味と使用法を持つ単語結合子がUnicode 3.2で追加され、「単語結合の意味では新しい文字だけを使うことを強く推奨する」としている。\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 133,
+					"character": 17
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "⁠"
+			},
+			"defaultValue": "\"⁠\""
+		},
+		{
+			"id": 59,
+			"name": "ZERO_WIDTH_JOINER",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ゼロ幅接合子 [ZWJ]",
+				"text": "> アラビア文字やブラーフミー系文字のような複雑な表記体系のコンピュータによる組版において使われる制御文字である。\n> 本来ならば接合しない形で表示される文字の後ろにゼロ幅接合子が置かれると、接合する形で表示される。\n> 2つの絵文字の間にZWJが置かれると、新しい形が表示されることもある。\n> たとえば、2人の大人の絵文字と1人または2人の子供の絵文字をZWJでつなぐと家族の絵文字が表示される。\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 122,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "‍"
+			},
+			"defaultValue": "\"‍\""
+		},
+		{
+			"id": 58,
+			"name": "ZERO_WIDTH_NON_JOINER",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ゼロ幅非接合子 [ZWNJ]",
+				"text": "> 合字を使用する文字体系のコンピュータ化で用いられる制御文字である。\n> 本来ならば合字として連結される2つの文字の間にZWNJが置かれると、その2つの文字はそれぞれ末尾形および頭字形で表示される。\n> スペースを間に置くことでも同じ効果は得られるが、スペースよりも両者の文字を近づけたい、または単語と形態素を連結したい場合にZWNJが用いられる。\n"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 112,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "‌"
+			},
+			"defaultValue": "\"‌\""
+		},
+		{
+			"id": 66,
+			"name": "ZERO_WIDTH_NO_BREAK_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ゼロ幅ノーブレークスペース"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 169,
+					"character": 31
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "﻿"
+			},
+			"defaultValue": "\"﻿\""
+		},
+		{
+			"id": 57,
+			"name": "ZERO_WIDTH_SPACE",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "ゼロ幅空白"
+			},
+			"sources": [
+				{
+					"fileName": "const/SPACE_CHARS.ts",
+					"line": 103,
+					"character": 22
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "​"
+			},
+			"defaultValue": "\"​\""
+		},
+		{
+			"id": 8,
+			"name": "combinateSoundMarks",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"signatures": [
+				{
+					"id": 9,
+					"name": "combinateSoundMarks",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"comment": {
+						"shortText": "濁点・半濁点とひらがな・かたかなを結合させる",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "1.2.0"
+							}
+						]
+					},
+					"parameters": [
+						{
+							"id": 10,
+							"name": "str",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {
+								"text": "対象の文字列"
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 11,
+							"name": "convertOnly",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {
+								"text": "ひらがな・かたかなと結合させずに、文字だけ結合文字に変換\n"
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							},
+							"defaultValue": "false"
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fn/combinateSoundMarks.ts",
+					"line": 11,
+					"character": 43
+				}
+			]
+		},
+		{
+			"id": 12,
+			"name": "concat",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"signatures": [
+				{
+					"id": 13,
+					"name": "concat",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"comment": {
+						"shortText": "再帰的に文字列連結をおこなう",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "0.2.0"
+							}
+						]
+					},
+					"parameters": [
+						{
+							"id": 14,
+							"name": "args",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isRest": true
+							},
+							"type": {
+								"type": "union",
+								"isArray": true,
+								"types": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 15,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 16,
+													"name": "toString",
+													"kind": 64,
+													"kindString": "Function",
+													"flags": {
+														"isExternal": true
+													},
+													"signatures": [
+														{
+															"id": 17,
+															"name": "toString",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"type": {
+																"type": "instrinct",
+																"name": "string"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "fn/concat.ts",
+															"line": 8,
+															"character": 52
+														}
+													]
+												}
+											],
+											"groups": [
+												{
+													"title": "Functions",
+													"kind": 64,
+													"children": [
+														16
+													]
+												}
+											]
+										}
+									},
+									{
+										"type": "reference",
+										"name": "Array",
+										"typeArguments": [
+											{
+												"type": "reflection",
+												"declaration": {
+													"id": 18,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"children": [
+														{
+															"id": 19,
+															"name": "toString",
+															"kind": 64,
+															"kindString": "Function",
+															"flags": {
+																"isExternal": true
+															},
+															"signatures": [
+																{
+																	"id": 20,
+																	"name": "toString",
+																	"kind": 4096,
+																	"kindString": "Call signature",
+																	"flags": {},
+																	"type": {
+																		"type": "instrinct",
+																		"name": "string"
+																	}
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "fn/concat.ts",
+																	"line": 8,
+																	"character": 77
+																}
+															]
+														}
+													],
+													"groups": [
+														{
+															"title": "Functions",
+															"kind": 64,
+															"children": [
+																19
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fn/concat.ts",
+					"line": 8,
+					"character": 30
+				}
+			]
+		},
+		{
+			"id": 26,
+			"name": "converter",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExternal": true
+			},
+			"signatures": [
+				{
+					"id": 27,
+					"name": "converter",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"comment": {
+						"returns": "置き換えた文字列\n",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "2.0.0"
+							}
+						]
+					},
+					"parameters": [
+						{
+							"id": 28,
+							"name": "str",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {
+								"text": "対象の文字列"
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fn/convertIterationMarks.ts",
+					"line": 31,
+					"character": 18
+				},
+				{
+					"fileName": "fn/convertProlongedSoundMarks.ts",
+					"line": 20,
+					"character": 18
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "default",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"comment": {
+				"shortText": "半濁点を追加する\n文字列をパターンで置換する\n文字列をパターンで置換する\n文字列を取り除く\n文字列を取り除く\n濁点を追加する\n濁点を追加する\n文字列のバイトサイズを返す\n文字列のバイトサイズを返す\n文字列を配列化する\n文字列を配列化する\n文字列から指定位置の文字を返す\n文字列から指定位置の文字を返す\n指定位置のUnicodeコードポイントを返す\n指定位置のUnicodeコードポイントを返す\n濁点・半濁点を取り除く\n濁点・半濁点を取り除く\n全角カタカナに変換する\n全角カタカナに変換する\nキャラクターリストを正規表現に変換する\nキャラクターリストを正規表現に変換する\n文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす\n文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす\nひらがなに変換する\nひらがなに変換する\nカタカナに変換する\nカタカナに変換する\n繰り返し記号をかなに置き換える\n繰り返し記号をかなに置き換える\n長音符をかなに置き換える\n長音符をかなに置き換える\n完全マッチ\n完全マッチ\n指定した位置から指定した数だけ文字列を抽出\n指定した位置から指定した数だけ文字列を抽出\n指定した位置の間の文字列を抽出\n指定した位置の間の文字列を抽出\n引数に指定された文字列が末尾と合致するか\n引数に指定された文字列が末尾と合致するか\n該当の文字のいずれかを含んでいるかどうか\n該当の文字のいずれかを含んでいるかどうか\n小書き文字を含むかどうか\n小書き文字を含むかどうか\nサロゲートペア文字列を含んでいるかどうか\nサロゲートペア文字列を含んでいるかどうか\nペアになっていないサロゲートコードポイントを含んでいるかどうか\nペアになっていないサロゲートコードポイントを含んでいるかどうか\n文字位置による抽出\n文字位置による抽出\n文字列の配列に分割する\n文字列の配列に分割する\n指定された文字列が最初に現れるインデックスを返す\n指定された文字列が最初に現れるインデックスを返す\n指定された文字列が最初に現れるインデックスを返す\n指定された文字列が最初に現れるインデックスを返す\n文字が空かどうか\n文字が空かどうか\n数字だけで構成されているかどうか\n数字だけで構成されているかどうか\n該当の文字だけで構成されているかどうか\n該当の文字だけで構成されているかどうか\nひらがなだけで構成されているかどうか\nひらがなだけで構成されているかどうか\nカタカナだけで構成されているかどうか\nカタカナだけで構成されているかどうか\n指定された文字列が最後に現れるインデックスを返す\n指定された文字列が最後に現れるインデックスを返す\n正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る\n正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る\n指定数の文字列長になるように繰り返して埋める\n指定数の文字列長になるように繰り返して埋める\n最終的な文字列が指定された長さに到達するように文字列で延長する\n最終的な文字列が指定された長さに到達するように文字列で延長する\n最終的な文字列が指定された長さに到達するように文字列を先頭に追加する\n最終的な文字列が指定された長さに到達するように文字列を先頭に追加する\nペアになっていないサロゲートコードポイントの削除\nペアになっていないサロゲートコードポイントの削除\n文字列を繰り返す\n文字列を繰り返す\n正規表現にマッチしたインデックスを返す\n正規表現にマッチしたインデックスを返す\n引数に指定された文字列が先頭と合致するか\n引数に指定された文字列が先頭と合致するか\nパターンとマッチするかどうか\nパターンとマッチするかどうか\n小書き文字を基底文字に変換する\n小書き文字を基底文字に変換する\n英数字を半角に変換\n英数字を半角に変換\n半角カタカナに変換する\n半角カタカナに変換する\n日本語で使われる記号を半角に変換\n日本語で使われる記号を半角に変換\nカタカナと日本語で使われる記号を半角に変換\nカタカナと日本語で使われる記号を半角に変換\n記号を半角に変換\n記号を半角に変換\n半角に変換\n半角に変換\n数字に変換する\n数字に変換する\nよみの文字に変換する\nJIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる\nよみの文字に変換する\nJIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる\n英数字を全角に変換\n英数字を全角に変換\n日本語で使われる記号を全角に変換\n日本語で使われる記号を全角に変換\nカタカナと日本語で使われる記号を全角に変換\nカタカナと日本語で使われる記号を全角に変換\n記号を全角に変換\n記号を全角に変換\n全角に変換\n全角に変換",
+				"text": "サロゲートペア文字列を考慮する\n\nサロゲートペア文字列を考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n第一引数に true を渡した場合、濁点・半濁点は基本的に結合される\nヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる\n\n第一引数に true を渡した場合、濁点・半濁点は基本的に結合される\nヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\nTODO: test\n\nTODO: test\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮\n\n- サロゲートペアを考慮\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\nTODO: test\n\nTODO: test\n\nTODO: test\n\nTODO: test\n",
+				"returns": "配列化された文字列\n",
+				"tags": [
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.2.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.6.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.6.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.5.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.1.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "2.0.0"
+					},
+					{
+						"tag": "since",
+						"text": "1.3.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "version",
+						"text": "0.4.0"
+					},
+					{
+						"tag": "since",
+						"text": "0.4.0"
+					}
+				]
+			},
+			"signatures": [
+				{
+					"id": 2,
+					"name": "default",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"comment": {
+						"shortText": "キーがパターン・値が置換文字列のハッシュマップによって置換する",
+						"text": "サロゲートペア文字列を考慮する\n\nサロゲートペア文字列を考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n第一引数に true を渡した場合、濁点・半濁点は基本的に結合される\nヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる\n\n第一引数に true を渡した場合、濁点・半濁点は基本的に結合される\nヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\nTODO: test\n\nTODO: test\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮\n\n- サロゲートペアを考慮\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\n- サロゲートペアを考慮する\n\nTODO: test\n\nTODO: test\n\nTODO: test\n\nTODO: test\n",
+						"returns": "配列化された文字列\n",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "0.1.0"
+							}
+						]
+					},
+					"parameters": [
+						{
+							"id": 3,
+							"name": "str",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {
+								"shortText": "対象の文字列\n"
+							},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 4,
+							"name": "convMap",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {
+								"text": "キーがパターン・値が置換文字列のハッシュマップ\n"
+							},
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 5,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"indexSignature": [
+										{
+											"id": 6,
+											"name": "__index",
+											"kind": 8192,
+											"kindString": "Index signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 7,
+													"name": "pattern",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "instrinct",
+														"name": "string"
+													}
+												}
+											],
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										}
+									],
+									"sources": [
+										{
+											"fileName": "fn/replaceFromMap.ts",
+											"line": 9,
+											"character": 46
+										}
+									]
+								}
+							}
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fn/replaceFromMap.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/addSemivoicedMarks.ts",
+					"line": 1,
+					"character": 46
+				},
+				{
+					"fileName": "fn/replace.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/remove.ts",
+					"line": 1,
+					"character": 32
+				},
+				{
+					"fileName": "fn/addVoicedMarks.ts",
+					"line": 2,
+					"character": 46
+				},
+				{
+					"fileName": "fn/byteSize.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "util/arrayize.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/charAt.ts",
+					"line": 1,
+					"character": 40
+				},
+				{
+					"fileName": "fn/charCodeAt.ts",
+					"line": 1,
+					"character": 30
+				},
+				{
+					"fileName": "fn/removeVoicedMarks.ts",
+					"line": 2,
+					"character": 46
+				},
+				{
+					"fileName": "fn/toWideKatakana.ts",
+					"line": 1,
+					"character": 46
+				},
+				{
+					"fileName": "util/patternize.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "util/shift.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/toHiragana.ts",
+					"line": 8,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toKatakana.ts",
+					"line": 7,
+					"character": 34
+				},
+				{
+					"fileName": "fn/convertIterationMarks.ts",
+					"line": 9,
+					"character": 156
+				},
+				{
+					"fileName": "fn/convertProlongedSoundMarks.ts",
+					"line": 4,
+					"character": 120
+				},
+				{
+					"fileName": "fn/is.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/substr.ts",
+					"line": 1,
+					"character": 40
+				},
+				{
+					"fileName": "fn/substring.ts",
+					"line": 3,
+					"character": 40
+				},
+				{
+					"fileName": "fn/endWith.ts",
+					"line": 4,
+					"character": 40
+				},
+				{
+					"fileName": "fn/has.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/hasSmallLetter.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/hasSurrogatePair.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/hasUnpairedSurrogate.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/slice.ts",
+					"line": 1,
+					"character": 40
+				},
+				{
+					"fileName": "fn/split.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/indexOf.ts",
+					"line": 5,
+					"character": 40
+				},
+				{
+					"fileName": "fn/includes.ts",
+					"line": 1,
+					"character": 32
+				},
+				{
+					"fileName": "fn/isEmpty.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/isNumeric.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/isOnly.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/isOnlyHiragana.ts",
+					"line": 4,
+					"character": 30
+				},
+				{
+					"fileName": "fn/isOnlyKatakana.ts",
+					"line": 4,
+					"character": 30
+				},
+				{
+					"fileName": "fn/lastIndexOf.ts",
+					"line": 1,
+					"character": 40
+				},
+				{
+					"fileName": "fn/matches.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "util/pad.ts",
+					"line": 1,
+					"character": 34
+				},
+				{
+					"fileName": "fn/padEnd.ts",
+					"line": 4,
+					"character": 30
+				},
+				{
+					"fileName": "fn/padStart.ts",
+					"line": 4,
+					"character": 30
+				},
+				{
+					"fileName": "fn/removeUnpairedSurrogate.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/repeat.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/search.ts",
+					"line": 3,
+					"character": 40
+				},
+				{
+					"fileName": "fn/startsWith.ts",
+					"line": 3,
+					"character": 40
+				},
+				{
+					"fileName": "fn/test.ts",
+					"line": 1,
+					"character": 0
+				},
+				{
+					"fileName": "fn/toBasicLetter.ts",
+					"line": 2,
+					"character": 46
+				},
+				{
+					"fileName": "fn/toNarrowAlphanumeric.ts",
+					"line": 5,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toNarrowKatakana.ts",
+					"line": 3,
+					"character": 38
+				},
+				{
+					"fileName": "fn/toNarrowSymbolForJapanese.ts",
+					"line": 1,
+					"character": 46
+				},
+				{
+					"fileName": "fn/toNarrowJapanese.ts",
+					"line": 2,
+					"character": 68
+				},
+				{
+					"fileName": "fn/toNarrowSign.ts",
+					"line": 7,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toNarrow.ts",
+					"line": 3,
+					"character": 42
+				},
+				{
+					"fileName": "fn/toNumeric.ts",
+					"line": 3,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toPhoeticKana.ts",
+					"line": 4,
+					"character": 38
+				},
+				{
+					"fileName": "fn/toWideAlphanumeric.ts",
+					"line": 5,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toWideSymbolForJapanese.ts",
+					"line": 1,
+					"character": 46
+				},
+				{
+					"fileName": "fn/toWideJapanese.ts",
+					"line": 2,
+					"character": 64
+				},
+				{
+					"fileName": "fn/toWideSign.ts",
+					"line": 7,
+					"character": 34
+				},
+				{
+					"fileName": "fn/toWide.ts",
+					"line": 3,
+					"character": 38
+				}
+			]
+		},
+		{
+			"id": 29,
+			"name": "replacer",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExternal": true
+			},
+			"signatures": [
+				{
+					"id": 30,
+					"name": "replacer",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"comment": {
+						"returns": "置き換えた文字列\n",
+						"tags": [
+							{
+								"tag": "version",
+								"text": "2.0.0"
+							},
+							{
+								"tag": "since",
+								"text": "2.0.0"
+							}
+						]
+					},
+					"parameters": [
+						{
+							"id": 31,
+							"name": "matchAll",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 32,
+							"name": "beforeString",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 33,
+							"name": "iterationMark",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"comment": {},
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "string"
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "fn/convertIterationMarks.ts",
+					"line": 43,
+					"character": 17
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"kind": 128,
+			"children": [
+				71
+			]
+		},
+		{
+			"title": "Variables",
+			"kind": 32,
+			"children": [
+				68,
+				39,
+				69,
+				46,
+				48,
+				45,
+				47,
+				52,
+				41,
+				50,
+				36,
+				37,
+				38,
+				56,
+				24,
+				21,
+				65,
+				35,
+				25,
+				34,
+				23,
+				22,
+				61,
+				40,
+				64,
+				55,
+				63,
+				43,
+				44,
+				62,
+				53,
+				70,
+				51,
+				42,
+				67,
+				54,
+				49,
+				60,
+				59,
+				58,
+				66,
+				57
+			]
+		},
+		{
+			"title": "Functions",
+			"kind": 64,
+			"children": [
+				8,
+				12,
+				26,
+				1,
+				29
+			]
+		}
+	]
+}

@@ -2,6 +2,7 @@ gulp = require 'gulp'
 wpGilp = require 'webpack-stream'
 webpack = require 'webpack'
 ts = require 'gulp-typescript'
+docs = require 'gulp-typedoc'
 babel = require 'gulp-babel'
 uglify = require 'gulp-uglify'
 rename = require 'gulp-rename'
@@ -56,6 +57,18 @@ gulp.task 'compress', ->
     .pipe header banner, pkg: pkg, moment: moment, git: git
     .pipe gulp.dest './dist/'
     .pipe gulp.dest "./dist/v#{pkg.version}/"
+
+gulp.task 'docs', ->
+  gulp.src 'src/jaco.ts'
+    .pipe docs
+      module: 'commonjs'
+      target: 'es2017'
+      mode: 'file'
+      # out: 'docs'
+      # includeDeclarations: true
+      json: './api.json'
+      exclude: 'node_modules'
+    .pipe gulp.dest './docs/'
 
 gulp.task 'dev-ts', (cb) -> runSequence(
   'ts',

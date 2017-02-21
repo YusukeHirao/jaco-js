@@ -30,7 +30,8 @@
   },
   "homepage": "http://jaco-project.github.io/docs/",
   "dependencies": {
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "gulp-typedoc": "^2.0.2"
   },
   "devDependencies": {
     "@types/commander": "^2.3.31",
@@ -66,6 +67,7 @@
     "run-sequence": "^1.2.2",
     "should": "11.2.0",
     "tslint": "^4.4.2",
+    "typedoc": "^0.5.7",
     "typescript": "^2.1.6",
     "watchify": "^3.9.0",
     "webpack": "^2.2.1",
