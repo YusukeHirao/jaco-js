@@ -30,8 +30,7 @@
   },
   "homepage": "http://jaco-project.github.io/docs/",
   "dependencies": {
-    "commander": "^2.9.0",
-    "gulp-typedoc": "^2.0.2"
+    "commander": "^2.9.0"
   },
   "devDependencies": {
     "@types/commander": "^2.3.31",
@@ -52,6 +51,7 @@
     "gulp-header": "^1.8.8",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-typedoc": "^2.0.2",
     "gulp-typescript": "^3.1.5",
     "gulp-uglify": "^2.0.1",
     "karma": "^1.5.0",
