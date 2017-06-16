@@ -6,9 +6,6 @@
 		"es6": true,
 		"mocha": true
 	},
-	"ecmaFeatures" : {
-		"objectLiteralShorthandMethods": false
-	},
 	"parserOptions": {
 		"sourceType": "module"
 	},

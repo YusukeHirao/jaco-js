@@ -23,10 +23,10 @@ export default function (str: string, isCombinate: boolean = false): string {
 	str = toWideKatakana(str);
 	// ヷヸヹヺの変換
 	str = replaceFromMap(str, {
-		'ヷ': 'わ゛',
-		'ヸ': 'ゐ゛',
-		'ヹ': 'ゑ゛',
-		'ヺ': 'を゛',
+		ヷ: 'わ゛',
+		ヸ: 'ゐ゛',
+		ヹ: 'ゑ゛',
+		ヺ: 'を゛',
 	});
 	// カタカナをひらがなへ(Unicodeの番号をずらす)
 	str = shift(str, patternize(KATAKANA_CHARS), -96);

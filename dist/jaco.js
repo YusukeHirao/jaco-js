@@ -1,7 +1,7 @@
 /**!
-* jaco - v2.0.0-beta.3
-* revision: 82ba231af8a1b7a65d421360e3e8c68a5c65c0ce
-* update: 2017-02-21
+* jaco - v2.0.0
+* revision: aa42e18a3728f13522627c7cdcabfceb7ea78433
+* update: 2017-06-17
 * Author: YusukeHirao []
 * Github: git@github.com:jaco-project/jaco-js.git
 * License: Licensed under the MIT License
@@ -10,41 +10,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -55,7 +55,7 @@
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -64,13 +64,13 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 75);
 /******/ })
@@ -81,6 +81,8 @@
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * キーがパターン・値が置換文字列のハッシュマップによって置換する
  *
@@ -89,7 +91,6 @@
  * @param str 対象の文字列
  * @param convMap キーがパターン・値が置換文字列のハッシュマップ
  */
-
 function default_1(str, convMap) {
     for (var needle in convMap) {
         if (convMap.hasOwnProperty(needle)) {
@@ -99,7 +100,6 @@ function default_1(str, convMap) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -108,6 +108,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列を配列化する
  *
@@ -118,11 +120,9 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @return 配列化された文字列
  */
-
 function default_1(str) {
   return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -131,6 +131,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列をパターンで置換する
  *
@@ -140,12 +142,10 @@ exports.default = default_1;
  * @param pattern  対象のパターン
  * @param replacement 置換する文字列
  */
-
 function default_1(str, pattern, replacement) {
   var reg = pattern instanceof RegExp ? pattern : new RegExp(pattern.toString());
   return str.replace(reg, replacement.toString());
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -155,6 +155,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var arrayize_1 = __webpack_require__(1);
 /**
  * 指定した位置から指定した数だけ文字列を抽出
@@ -181,7 +182,6 @@ function default_1(str, start, length) {
     var res = array.slice(start, end);
     return res.join('');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -190,6 +190,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * キャラクターリストを正規表現に変換する
  *
@@ -198,11 +200,9 @@ exports.default = default_1;
  * @param chars 文字の集合
  * @return 正規表現化された文字セット
  */
-
 function default_1(chars) {
   return new RegExp("[" + chars + "]", 'g');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -211,6 +211,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列中のそれぞれのひと文字に対してUnicode番号を指定の数値ずらす
  *
@@ -221,13 +223,11 @@ exports.default = default_1;
  * @param shiftNum ずらす数値
  * @return インスタンス自身
  */
-
 function default_1(str, needle, shiftNum) {
     return str.replace(needle, function (char) {
         return String.fromCharCode(char.charCodeAt(0) + shiftNum);
     });
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -237,6 +237,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replace_1 = __webpack_require__(2);
 /**
  * 文字列を取り除く
@@ -249,7 +250,6 @@ var replace_1 = __webpack_require__(2);
 function default_1(str, pattern) {
   return replace_1.default(str, pattern, '');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -259,6 +259,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replaceFromMap_1 = __webpack_require__(0);
 /**
  * 全角カタカナに変換する
@@ -270,29 +271,28 @@ var replaceFromMap_1 = __webpack_require__(0);
 function default_1(str) {
     // カタカナ・濁点・半濁点の変換
     return replaceFromMap_1.default(str, {
-        'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
-        'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
-        'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
-        'ﾊﾞ': 'バ', 'ﾋﾞ': 'ビ', 'ﾌﾞ': 'ブ', 'ﾍﾞ': 'ベ', 'ﾎﾞ': 'ボ',
-        'ﾊﾟ': 'パ', 'ﾋﾟ': 'ピ', 'ﾌﾟ': 'プ', 'ﾍﾟ': 'ペ', 'ﾎﾟ': 'ポ',
-        'ﾜﾞ': 'ヷ', 'ｲﾞ': 'ヸ', 'ｳﾞ': 'ヴ', 'ｴﾞ': 'ヹ', 'ｦﾞ': 'ヺ',
-        'ﾞ': '゛', 'ﾟ': '゜',
-        'ｧ': 'ァ', 'ｨ': 'ィ', 'ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
-        'ｬ': 'ャ', 'ｭ': 'ュ', 'ｮ': 'ョ',
-        'ｯ': 'ッ', 'ｰ': 'ー',
-        'ｱ': 'ア', 'ｲ': 'イ', 'ｳ': 'ウ', 'ｴ': 'エ', 'ｵ': 'オ',
-        'ｶ': 'カ', 'ｷ': 'キ', 'ｸ': 'ク', 'ｹ': 'ケ', 'ｺ': 'コ',
-        'ｻ': 'サ', 'ｼ': 'シ', 'ｽ': 'ス', 'ｾ': 'セ', 'ｿ': 'ソ',
-        'ﾀ': 'タ', 'ﾁ': 'チ', 'ﾂ': 'ツ', 'ﾃ': 'テ', 'ﾄ': 'ト',
-        'ﾅ': 'ナ', 'ﾆ': 'ニ', 'ﾇ': 'ヌ', 'ﾈ': 'ネ', 'ﾉ': 'ノ',
-        'ﾊ': 'ハ', 'ﾋ': 'ヒ', 'ﾌ': 'フ', 'ﾍ': 'ヘ', 'ﾎ': 'ホ',
-        'ﾏ': 'マ', 'ﾐ': 'ミ', 'ﾑ': 'ム', 'ﾒ': 'メ', 'ﾓ': 'モ',
-        'ﾔ': 'ヤ', 'ﾕ': 'ユ', 'ﾖ': 'ヨ',
-        'ﾗ': 'ラ', 'ﾘ': 'リ', 'ﾙ': 'ル', 'ﾚ': 'レ', 'ﾛ': 'ロ',
-        'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン'
+        ｶﾞ: 'ガ', ｷﾞ: 'ギ', ｸﾞ: 'グ', ｹﾞ: 'ゲ', ｺﾞ: 'ゴ',
+        ｻﾞ: 'ザ', ｼﾞ: 'ジ', ｽﾞ: 'ズ', ｾﾞ: 'ゼ', ｿﾞ: 'ゾ',
+        ﾀﾞ: 'ダ', ﾁﾞ: 'ヂ', ﾂﾞ: 'ヅ', ﾃﾞ: 'デ', ﾄﾞ: 'ド',
+        ﾊﾞ: 'バ', ﾋﾞ: 'ビ', ﾌﾞ: 'ブ', ﾍﾞ: 'ベ', ﾎﾞ: 'ボ',
+        ﾊﾟ: 'パ', ﾋﾟ: 'ピ', ﾌﾟ: 'プ', ﾍﾟ: 'ペ', ﾎﾟ: 'ポ',
+        ﾜﾞ: 'ヷ', ｲﾞ: 'ヸ', ｳﾞ: 'ヴ', ｴﾞ: 'ヹ', ｦﾞ: 'ヺ',
+        ﾞ: '゛', ﾟ: '゜',
+        ｧ: 'ァ', ｨ: 'ィ', ｩ: 'ゥ', ｪ: 'ェ', ｫ: 'ォ',
+        ｬ: 'ャ', ｭ: 'ュ', ｮ: 'ョ',
+        ｯ: 'ッ', ｰ: 'ー',
+        ｱ: 'ア', ｲ: 'イ', ｳ: 'ウ', ｴ: 'エ', ｵ: 'オ',
+        ｶ: 'カ', ｷ: 'キ', ｸ: 'ク', ｹ: 'ケ', ｺ: 'コ',
+        ｻ: 'サ', ｼ: 'シ', ｽ: 'ス', ｾ: 'セ', ｿ: 'ソ',
+        ﾀ: 'タ', ﾁ: 'チ', ﾂ: 'ツ', ﾃ: 'テ', ﾄ: 'ト',
+        ﾅ: 'ナ', ﾆ: 'ニ', ﾇ: 'ヌ', ﾈ: 'ネ', ﾉ: 'ノ',
+        ﾊ: 'ハ', ﾋ: 'ヒ', ﾌ: 'フ', ﾍ: 'ヘ', ﾎ: 'ホ',
+        ﾏ: 'マ', ﾐ: 'ミ', ﾑ: 'ム', ﾒ: 'メ', ﾓ: 'モ',
+        ﾔ: 'ヤ', ﾕ: 'ユ', ﾖ: 'ヨ',
+        ﾗ: 'ラ', ﾘ: 'リ', ﾙ: 'ル', ﾚ: 'レ', ﾛ: 'ロ',
+        ﾜ: 'ワ', ｦ: 'ヲ', ﾝ: 'ン'
     });
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -302,6 +302,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replaceFromMap_1 = __webpack_require__(0);
 /**
  * 濁点・半濁点とひらがな・かたかなを結合させる
@@ -320,34 +321,33 @@ function combinateSoundMarks(str) {
         // 濁点・半濁点を結合する
         str = replaceFromMap_1.default(str, {
             // 濁点
-            "\u304B\u3099": 'が', "\u304D\u3099": 'ぎ', "\u304F\u3099": 'ぐ', "\u3051\u3099": 'げ', "\u3053\u3099": 'ご',
-            "\u3055\u3099": 'ざ', "\u3057\u3099": 'じ', "\u3059\u3099": 'ず', "\u305B\u3099": 'ぜ', "\u305D\u3099": 'ぞ',
-            "\u305F\u3099": 'だ', "\u3061\u3099": 'ぢ', "\u3064\u3099": 'づ', "\u3066\u3099": 'で', "\u3068\u3099": 'ど',
-            "\u306F\u3099": 'ば', "\u3072\u3099": 'び', "\u3075\u3099": 'ぶ', "\u3078\u3099": 'べ', "\u307B\u3099": 'ぼ',
-            "\u30AB\u3099": 'ガ', "\u30AD\u3099": 'ギ', "\u30AF\u3099": 'グ', "\u30B1\u3099": 'ゲ', "\u30B3\u3099": 'ゴ',
-            "\u30B5\u3099": 'ザ', "\u30B7\u3099": 'ジ', "\u30B9\u3099": 'ズ', "\u30BB\u3099": 'ゼ', "\u30BD\u3099": 'ゾ',
-            "\u30BF\u3099": 'ダ', "\u30C1\u3099": 'ヂ', "\u30C4\u3099": 'ヅ', "\u30C6\u3099": 'デ', "\u30C8\u3099": 'ド',
-            "\u30CF\u3099": 'バ', "\u30D2\u3099": 'ビ', "\u30D5\u3099": 'ブ', "\u30D8\u3099": 'ベ', "\u30DB\u3099": 'ボ',
-            "\u30EF\u3099": 'ヷ', "\u30A4\u3099": 'ヸ', "\u30A6\u3099": 'ヴ', "\u30A8\u3099": 'ヹ', "\u30FA\u3099": 'ヲ',
-            "\u309D\u3099": 'ゞ', "\u30FD\u3099": 'ヾ',
+            が: 'が', ぎ: 'ぎ', ぐ: 'ぐ', げ: 'げ', ご: 'ご',
+            ざ: 'ざ', じ: 'じ', ず: 'ず', ぜ: 'ぜ', ぞ: 'ぞ',
+            だ: 'だ', ぢ: 'ぢ', づ: 'づ', で: 'で', ど: 'ど',
+            ば: 'ば', び: 'び', ぶ: 'ぶ', べ: 'べ', ぼ: 'ぼ',
+            ガ: 'ガ', ギ: 'ギ', グ: 'グ', ゲ: 'ゲ', ゴ: 'ゴ',
+            ザ: 'ザ', ジ: 'ジ', ズ: 'ズ', ゼ: 'ゼ', ゾ: 'ゾ',
+            ダ: 'ダ', ヂ: 'ヂ', ヅ: 'ヅ', デ: 'デ', ド: 'ド',
+            バ: 'バ', ビ: 'ビ', ブ: 'ブ', ベ: 'ベ', ボ: 'ボ',
+            ヷ: 'ヷ', イ゙: 'ヸ', ヴ: 'ヴ', エ゙: 'ヹ', ヺ゙: 'ヲ',
+            ゞ: 'ゞ', ヾ: 'ヾ',
             // 半濁点
-            "\u306F\u309A": 'ぱ', "\u3072\u309A": 'ぴ', "\u3075\u309A": 'ぷ', "\u3078\u309A": 'ぺ', "\u307B\u309A": 'ぽ',
-            "\u30CF\u309A": 'パ', "\u30D2\u309A": 'ピ', "\u30D5\u309A": 'プ', "\u30D8\u309A": 'ペ', "\u30DB\u309A": 'ポ'
+            ぱ: 'ぱ', ぴ: 'ぴ', ぷ: 'ぷ', ぺ: 'ぺ', ぽ: 'ぽ',
+            パ: 'パ', ピ: 'ピ', プ: 'プ', ペ: 'ペ', ポ: 'ポ'
         });
     } else {
         // ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
         str = replaceFromMap_1.default(str, {
             // 濁点
             "\u309B": "\u3099",
-            "\uFF9E": "\u3099",
+            ﾞ: "\u3099",
             // 半濁点
             "\u309C": "\u309A",
-            "\uFF9F": "\u309A"
+            ﾟ: "\u309A"
         });
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = combinateSoundMarks;
 
 /***/ }),
@@ -356,6 +356,8 @@ exports.default = combinateSoundMarks;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 完全マッチ
  *
@@ -364,11 +366,9 @@ exports.default = combinateSoundMarks;
  * @param str 比較する文字列
  * @param target 比較する文字列
  */
-
 function default_1(str, target) {
   return str === target.toString();
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -377,6 +377,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 該当の文字だけで構成されているかどうか
  *
@@ -385,12 +387,10 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @param characters 文字セット
  */
-
 function default_1(str, characters) {
     var chars = characters.toString().replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)').replace(/\[/g, '\\[').replace(/\]/g, '\\]');
     return new RegExp('^[' + chars + ']+$', 'gm').test(str);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -400,6 +400,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var remove_1 = __webpack_require__(6);
 var replaceFromMap_1 = __webpack_require__(0);
 /**
@@ -419,22 +420,21 @@ function default_1(str) {
         str = remove_1.default(str, /\u309C|\u309A|\uFF9F/g);
     }
     str = replaceFromMap_1.default(str, {
-        'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
-        'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
-        'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
-        'ば': 'は', 'び': 'ひ', 'ぶ': 'ふ', 'べ': 'へ', 'ぼ': 'ほ',
-        'ぱ': 'は', 'ぴ': 'ひ', 'ぷ': 'ふ', 'ぺ': 'へ', 'ぽ': 'ほ',
-        'ガ': 'カ', 'ギ': 'キ', 'グ': 'ク', 'ゲ': 'ケ', 'ゴ': 'コ',
-        'ザ': 'サ', 'ジ': 'シ', 'ズ': 'ス', 'ゼ': 'セ', 'ゾ': 'ソ',
-        'ダ': 'タ', 'ヂ': 'チ', 'ヅ': 'ツ', 'デ': 'テ', 'ド': 'ト',
-        'バ': 'ハ', 'ビ': 'ヒ', 'ブ': 'フ', 'ベ': 'ヘ', 'ボ': 'ホ',
-        'パ': 'ハ', 'ピ': 'ヒ', 'プ': 'フ', 'ペ': 'ヘ', 'ポ': 'ホ',
-        'ヷ': 'ワ', 'ヸ': 'イ', 'ヴ': 'ウ', 'ヹ': 'エ', 'ヺ': 'ヲ',
-        'ゞ': 'ゝ', 'ヾ': 'ヽ'
+        が: 'か', ぎ: 'き', ぐ: 'く', げ: 'け', ご: 'こ',
+        ざ: 'さ', じ: 'し', ず: 'す', ぜ: 'せ', ぞ: 'そ',
+        だ: 'た', ぢ: 'ち', づ: 'つ', で: 'て', ど: 'と',
+        ば: 'は', び: 'ひ', ぶ: 'ふ', べ: 'へ', ぼ: 'ほ',
+        ぱ: 'は', ぴ: 'ひ', ぷ: 'ふ', ぺ: 'へ', ぽ: 'ほ',
+        ガ: 'カ', ギ: 'キ', グ: 'ク', ゲ: 'ケ', ゴ: 'コ',
+        ザ: 'サ', ジ: 'シ', ズ: 'ス', ゼ: 'セ', ゾ: 'ソ',
+        ダ: 'タ', ヂ: 'チ', ヅ: 'ツ', デ: 'テ', ド: 'ト',
+        バ: 'ハ', ビ: 'ヒ', ブ: 'フ', ベ: 'ヘ', ボ: 'ホ',
+        パ: 'ハ', ピ: 'ヒ', プ: 'フ', ペ: 'ヘ', ポ: 'ホ',
+        ヷ: 'ワ', ヸ: 'イ', ヴ: 'ウ', ヹ: 'エ', ヺ: 'ヲ',
+        ゞ: 'ゝ', ヾ: 'ヽ'
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -443,6 +443,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列の配列に分割する
  *
@@ -452,12 +454,10 @@ exports.default = default_1;
  * @param separator 区切り文字
  * @param limit 配列の数を指定
  */
-
 function default_1(str, separator, limit) {
   var reg = separator instanceof RegExp ? separator : new RegExp(separator.toString());
   return str.split(reg, limit);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -467,6 +467,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var KATAKANA_CHARS_1 = __webpack_require__(36);
 var combinateSoundMarks_1 = __webpack_require__(8);
 var replaceFromMap_1 = __webpack_require__(0);
@@ -491,10 +492,10 @@ function default_1(str) {
     str = toWideKatakana_1.default(str);
     // ヷヸヹヺの変換
     str = replaceFromMap_1.default(str, {
-        'ヷ': 'わ゛',
-        'ヸ': 'ゐ゛',
-        'ヹ': 'ゑ゛',
-        'ヺ': 'を゛'
+        ヷ: 'わ゛',
+        ヸ: 'ゐ゛',
+        ヹ: 'ゑ゛',
+        ヺ: 'を゛'
     });
     // カタカナをひらがなへ(Unicodeの番号をずらす)
     str = shift_1.default(str, patternize_1.default(KATAKANA_CHARS_1.KATAKANA_CHARS), -96);
@@ -504,7 +505,6 @@ function default_1(str) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -514,6 +514,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var HIRAGANA_CHARS_1 = __webpack_require__(35);
 var replace_1 = __webpack_require__(2);
 var toWideKatakana_1 = __webpack_require__(7);
@@ -546,7 +547,6 @@ function default_1(str) {
     str = shift_1.default(str, patternize_1.default(HIRAGANA_CHARS_1.HIRAGANA_CHARS), 96);
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -556,6 +556,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var toNarrowAlphanumeric_1 = __webpack_require__(25);
 var toNarrowJapanese_1 = __webpack_require__(26);
 var toNarrowSign_1 = __webpack_require__(28);
@@ -580,7 +581,6 @@ function default_1(str) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -590,6 +590,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var remove_1 = __webpack_require__(6);
 var replaceFromMap_1 = __webpack_require__(0);
 /**
@@ -604,20 +605,19 @@ function default_1(str) {
     str = remove_1.default(str, /\u309B|\u3099|\uFF9E/g);
     str = remove_1.default(str, /\u309C|\u309A|\uFF9F/g);
     str = replaceFromMap_1.default(str, {
-        'か': 'が', 'き': 'ぎ', 'く': 'ぐ', 'け': 'げ', 'こ': 'ご',
-        'さ': 'ざ', 'し': 'じ', 'す': 'ず', 'せ': 'ぜ', 'そ': 'ぞ',
-        'た': 'だ', 'ち': 'ぢ', 'つ': 'づ', 'て': 'で', 'と': 'ど',
-        'は': 'ば', 'ひ': 'び', 'ふ': 'ぶ', 'へ': 'べ', 'ほ': 'ぼ',
-        'カ': 'ガ', 'キ': 'ギ', 'ク': 'グ', 'ケ': 'ゲ', 'コ': 'ゴ',
-        'サ': 'ザ', 'シ': 'ジ', 'ス': 'ズ', 'セ': 'ゼ', 'ソ': 'ゾ',
-        'タ': 'ダ', 'チ': 'ヂ', 'ツ': 'ヅ', 'テ': 'デ', 'ト': 'ド',
-        'ハ': 'バ', 'ヒ': 'ビ', 'フ': 'ブ', 'ヘ': 'ベ', 'ホ': 'ボ',
-        'ワ': 'ヷ', 'イ': 'ヸ', 'ウ': 'ヴ', 'エ': 'ヹ', 'ヺ': 'ヲ',
-        'ゝ': 'ゞ', 'ヽ': 'ヾ'
+        か: 'が', き: 'ぎ', く: 'ぐ', け: 'げ', こ: 'ご',
+        さ: 'ざ', し: 'じ', す: 'ず', せ: 'ぜ', そ: 'ぞ',
+        た: 'だ', ち: 'ぢ', つ: 'づ', て: 'で', と: 'ど',
+        は: 'ば', ひ: 'び', ふ: 'ぶ', へ: 'べ', ほ: 'ぼ',
+        カ: 'ガ', キ: 'ギ', ク: 'グ', ケ: 'ゲ', コ: 'ゴ',
+        サ: 'ザ', シ: 'ジ', ス: 'ズ', セ: 'ゼ', ソ: 'ゾ',
+        タ: 'ダ', チ: 'ヂ', ツ: 'ヅ', テ: 'デ', ト: 'ド',
+        ハ: 'バ', ヒ: 'ビ', フ: 'ブ', ヘ: 'ベ', ホ: 'ボ',
+        ワ: 'ヷ', イ: 'ヸ', ウ: 'ヴ', エ: 'ヹ', ヺ: 'ヲ',
+        ゝ: 'ゞ', ヽ: 'ヾ'
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -627,6 +627,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var arrayize_1 = __webpack_require__(1);
 /**
  * 文字列から指定位置の文字を返す
@@ -643,7 +644,6 @@ function default_1(str) {
 
   return arrayize_1.default(str)[index] || '';
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -653,6 +653,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var HIRAGANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(72);
 var KATAKANA_CHARS_IGNORE_ITERATION_MARKS_1 = __webpack_require__(73);
 var addVoicedMarks_1 = __webpack_require__(16);
@@ -673,7 +674,6 @@ function default_1(str) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 /**
  * @version 2.0.0
@@ -698,27 +698,29 @@ function replacer(matchAll, beforeString, iterationMark) {
         case 'ゝ':
             {
                 str = toHiragana_1.default(str);
+                break;
             }
-            break;
         case 'ヽ':
             {
                 str = toKatakana_1.default(str);
+                break;
             }
-            break;
         case 'ゞ':
             {
                 str = toHiragana_1.default(str);
                 str = addVoicedMarks_1.default(str);
+                break;
             }
-            break;
         case 'ヾ':
             {
                 str = toKatakana_1.default(str);
                 str = addVoicedMarks_1.default(str);
+                break;
             }
-            break;
         default:
-            {}
+            {
+                // void
+            }
     }
     return beforeString + str;
 }
@@ -730,6 +732,7 @@ function replacer(matchAll, beforeString, iterationMark) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var HIRAGANA_CHARS_1 = __webpack_require__(35);
 var KATAKANA_CHARS_1 = __webpack_require__(36);
 var KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP = new RegExp('[' + HIRAGANA_CHARS_1.HIRAGANA_CHARS + KATAKANA_CHARS_1.KATAKANA_CHARS + ']ー');
@@ -746,7 +749,6 @@ function default_1(str) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 function converter(str) {
     return str.replace(/([あぁかゕがさざただなはばぱまやゃらわゎ])ー/g, '$1あ').replace(/([いぃきぎしじちぢにひびぴみりゐ])ー/g, '$1い').replace(/([うぅゔくぐすずつづぬふぶぷむゆゅる])ー/g, '$1う').replace(/([えぇけゖげせぜてでねへべぺめれゑ])ー/g, '$1え').replace(/([おぉこごそぞとどのほぼぽもよょろを])ー/g, '$1お').replace(/んー/g, 'んん').replace(/っー/g, 'っっ').replace(/([アァカヵガサザタダナハバパマヤャラワヮヷ])ー/g, '$1ア').replace(/([イィキギシジチヂニヒビピミリヰヸ])ー/g, '$1イ').replace(/([ウゥヴクグスズツヅヌフブプムユュル])ー/g, '$1ウ').replace(/([エェケヶゲセゼテデネヘベペメレヱヹ])ー/g, '$1エ').replace(/([オォコゴソゾトドノホボポモヨョロヲヺ])ー/g, '$1オ').replace(/ンー/g, 'ンン').replace(/ッー/g, 'ッッ');
@@ -759,6 +761,7 @@ function converter(str) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var is_1 = __webpack_require__(9);
 var slice_1 = __webpack_require__(22);
 var split_1 = __webpack_require__(12);
@@ -785,7 +788,6 @@ function default_1(str, search) {
         return arrayize_1.default(splited).length + fromIndex;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -795,6 +797,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var HIRAGANA_CHARS_1 = __webpack_require__(35);
 var KANA_COMMON_CAHRS_1 = __webpack_require__(62);
 var isOnly_1 = __webpack_require__(10);
@@ -808,7 +811,6 @@ var isOnly_1 = __webpack_require__(10);
 function default_1(str) {
   return isOnly_1.default(str, HIRAGANA_CHARS_1.HIRAGANA_CHARS + KANA_COMMON_CAHRS_1.KANA_COMMON_CAHRS);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -818,6 +820,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var arrayize_1 = __webpack_require__(1);
 /**
  * 文字位置による抽出
@@ -835,7 +838,6 @@ function default_1(str, start, end) {
   var res = array.slice(start, end);
   return res.join('');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -845,6 +847,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var substr_1 = __webpack_require__(3);
 var arrayize_1 = __webpack_require__(1);
 /**
@@ -864,7 +867,6 @@ function default_1(str, indexA, indexB) {
   var length = end - start;
   return substr_1.default(str, start, length);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -874,6 +876,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var combinateSoundMarks_1 = __webpack_require__(8);
 var replaceFromMap_1 = __webpack_require__(0);
 /**
@@ -888,24 +891,23 @@ var replaceFromMap_1 = __webpack_require__(0);
 function default_1(str) {
     str = combinateSoundMarks_1.default(str);
     str = replaceFromMap_1.default(str, {
-        'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
-        'っ': 'つ',
-        'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
-        'ゎ': 'わ',
-        'ァ': 'ア', 'ィ': 'イ', 'ゥ': 'ウ', 'ェ': 'エ', 'ォ': 'オ',
-        'ヵ': 'カ', 'ㇰ': 'ク', 'ヶ': 'ケ',
-        'ㇱ': 'シ', 'ㇲ': 'ス',
-        'ッ': 'ツ', 'ㇳ': 'ト',
-        'ㇴ': 'ヌ', 'ㇵ': 'ハ',
-        'ㇶ': 'ヒ', 'ㇷ': 'フ', 'ㇸ': 'ヘ', 'ㇹ': 'ホ',
-        'ㇺ': 'ム',
-        'ャ': 'ヤ', 'ュ': 'ユ', 'ョ': 'ヨ',
-        'ㇻ': 'ラ', 'ㇼ': 'リ', 'ㇽ': 'ル', 'ㇾ': 'レ', 'ㇿ': 'ロ',
-        'ヮ': 'ワ'
+        ぁ: 'あ', ぃ: 'い', ぅ: 'う', ぇ: 'え', ぉ: 'お',
+        っ: 'つ',
+        ゃ: 'や', ゅ: 'ゆ', ょ: 'よ',
+        ゎ: 'わ',
+        ァ: 'ア', ィ: 'イ', ゥ: 'ウ', ェ: 'エ', ォ: 'オ',
+        ヵ: 'カ', ㇰ: 'ク', ヶ: 'ケ',
+        ㇱ: 'シ', ㇲ: 'ス',
+        ッ: 'ツ', ㇳ: 'ト',
+        ㇴ: 'ヌ', ㇵ: 'ハ',
+        ㇶ: 'ヒ', ㇷ: 'フ', ㇸ: 'ヘ', ㇹ: 'ホ',
+        ㇺ: 'ム',
+        ャ: 'ヤ', ュ: 'ユ', ョ: 'ヨ',
+        ㇻ: 'ラ', ㇼ: 'リ', ㇽ: 'ル', ㇾ: 'レ', ㇿ: 'ロ',
+        ヮ: 'ワ'
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -915,6 +917,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var FULLWIDTH_ALPHA_CHARS_1 = __webpack_require__(69);
 var FULLWIDTH_DIGIT_CHARS_1 = __webpack_require__(70);
 var patternize_1 = __webpack_require__(4);
@@ -929,7 +932,6 @@ var shift_1 = __webpack_require__(5);
 function default_1(str) {
   return shift_1.default(str, patternize_1.default(FULLWIDTH_ALPHA_CHARS_1.FULLWIDTH_ALPHA_CHARS + FULLWIDTH_DIGIT_CHARS_1.FULLWIDTH_DIGIT_CHARS), -65248);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -939,6 +941,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var toNarrowKatakana_1 = __webpack_require__(27);
 var toNarrowSymbolForJapanese_1 = __webpack_require__(29);
 /**
@@ -955,7 +958,6 @@ function default_1(str) {
   str = toNarrowSymbolForJapanese_1.default(str);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -965,6 +967,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replace_1 = __webpack_require__(2);
 var replaceFromMap_1 = __webpack_require__(0);
 var toKatakana_1 = __webpack_require__(14);
@@ -989,31 +992,30 @@ function default_1(str) {
     str = replace_1.default(str, /\u309C|\u309A/g, "\uFF9F");
     // カタカナの変換
     str = replaceFromMap_1.default(str, {
-        'ァ': 'ｧ', 'ィ': 'ｨ', 'ゥ': 'ｩ', 'ェ': 'ｪ', 'ォ': 'ｫ', 'ャ': 'ｬ',
-        'ュ': 'ｭ', 'ョ': 'ｮ', 'ッ': 'ｯ',
-        'ヵ': 'ｶ', 'ヶ': 'ｹ',
-        'ヮ': 'ﾜ',
-        'ー': 'ｰ',
-        'ア': 'ｱ', 'イ': 'ｲ', 'ウ': 'ｳ', 'エ': 'ｴ', 'オ': 'ｵ',
-        'カ': 'ｶ', 'キ': 'ｷ', 'ク': 'ｸ', 'ケ': 'ｹ', 'コ': 'ｺ',
-        'サ': 'ｻ', 'シ': 'ｼ', 'ス': 'ｽ', 'セ': 'ｾ', 'ソ': 'ｿ',
-        'タ': 'ﾀ', 'チ': 'ﾁ', 'ツ': 'ﾂ', 'テ': 'ﾃ', 'ト': 'ﾄ',
-        'ナ': 'ﾅ', 'ニ': 'ﾆ', 'ヌ': 'ﾇ', 'ネ': 'ﾈ', 'ノ': 'ﾉ',
-        'ハ': 'ﾊ', 'ヒ': 'ﾋ', 'フ': 'ﾌ', 'ヘ': 'ﾍ', 'ホ': 'ﾎ',
-        'マ': 'ﾏ', 'ミ': 'ﾐ', 'ム': 'ﾑ', 'メ': 'ﾒ', 'モ': 'ﾓ',
-        'ヤ': 'ﾔ', 'ユ': 'ﾕ', 'ヨ': 'ﾖ',
-        'ラ': 'ﾗ', 'リ': 'ﾘ', 'ル': 'ﾙ', 'レ': 'ﾚ', 'ロ': 'ﾛ',
-        'ワ': 'ﾜ', 'ン': 'ﾝ', 'ヰ': 'ｲ', 'ヱ': 'ｴ', 'ヲ': 'ｦ',
-        'ガ': 'ｶﾞ', 'ギ': 'ｷﾞ', 'グ': 'ｸﾞ', 'ゲ': 'ｹﾞ', 'ゴ': 'ｺﾞ',
-        'ザ': 'ｻﾞ', 'ジ': 'ｼﾞ', 'ズ': 'ｽﾞ', 'ゼ': 'ｾﾞ', 'ゾ': 'ｿﾞ',
-        'ダ': 'ﾀﾞ', 'ヂ': 'ﾁﾞ', 'ヅ': 'ﾂﾞ', 'デ': 'ﾃﾞ', 'ド': 'ﾄﾞ',
-        'バ': 'ﾊﾞ', 'ビ': 'ﾋﾞ', 'ブ': 'ﾌﾞ', 'ベ': 'ﾍﾞ', 'ボ': 'ﾎﾞ',
-        'パ': 'ﾊﾟ', 'ピ': 'ﾋﾟ', 'プ': 'ﾌﾟ', 'ペ': 'ﾍﾟ', 'ポ': 'ﾎﾟ',
-        'ヷ': 'ﾜﾞ', 'ヸ': 'ｲﾞ', 'ヴ': 'ｳﾞ', 'ヹ': 'ｴﾞ', 'ヺ': 'ｦﾞ'
+        ァ: 'ｧ', ィ: 'ｨ', ゥ: 'ｩ', ェ: 'ｪ', ォ: 'ｫ', ャ: 'ｬ',
+        ュ: 'ｭ', ョ: 'ｮ', ッ: 'ｯ',
+        ヵ: 'ｶ', ヶ: 'ｹ',
+        ヮ: 'ﾜ',
+        ー: 'ｰ',
+        ア: 'ｱ', イ: 'ｲ', ウ: 'ｳ', エ: 'ｴ', オ: 'ｵ',
+        カ: 'ｶ', キ: 'ｷ', ク: 'ｸ', ケ: 'ｹ', コ: 'ｺ',
+        サ: 'ｻ', シ: 'ｼ', ス: 'ｽ', セ: 'ｾ', ソ: 'ｿ',
+        タ: 'ﾀ', チ: 'ﾁ', ツ: 'ﾂ', テ: 'ﾃ', ト: 'ﾄ',
+        ナ: 'ﾅ', ニ: 'ﾆ', ヌ: 'ﾇ', ネ: 'ﾈ', ノ: 'ﾉ',
+        ハ: 'ﾊ', ヒ: 'ﾋ', フ: 'ﾌ', ヘ: 'ﾍ', ホ: 'ﾎ',
+        マ: 'ﾏ', ミ: 'ﾐ', ム: 'ﾑ', メ: 'ﾒ', モ: 'ﾓ',
+        ヤ: 'ﾔ', ユ: 'ﾕ', ヨ: 'ﾖ',
+        ラ: 'ﾗ', リ: 'ﾘ', ル: 'ﾙ', レ: 'ﾚ', ロ: 'ﾛ',
+        ワ: 'ﾜ', ン: 'ﾝ', ヰ: 'ｲ', ヱ: 'ｴ', ヲ: 'ｦ',
+        ガ: 'ｶﾞ', ギ: 'ｷﾞ', グ: 'ｸﾞ', ゲ: 'ｹﾞ', ゴ: 'ｺﾞ',
+        ザ: 'ｻﾞ', ジ: 'ｼﾞ', ズ: 'ｽﾞ', ゼ: 'ｾﾞ', ゾ: 'ｿﾞ',
+        ダ: 'ﾀﾞ', ヂ: 'ﾁﾞ', ヅ: 'ﾂﾞ', デ: 'ﾃﾞ', ド: 'ﾄﾞ',
+        バ: 'ﾊﾞ', ビ: 'ﾋﾞ', ブ: 'ﾌﾞ', ベ: 'ﾍﾞ', ボ: 'ﾎﾞ',
+        パ: 'ﾊﾟ', ピ: 'ﾋﾟ', プ: 'ﾌﾟ', ペ: 'ﾍﾟ', ポ: 'ﾎﾟ',
+        ヷ: 'ﾜﾞ', ヸ: 'ｲﾞ', ヴ: 'ｳﾞ', ヹ: 'ｴﾞ', ヺ: 'ｦﾞ'
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1023,6 +1025,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var FULLWIDTH_SIGN_CHARS_1 = __webpack_require__(71);
 var SPACE_CHARS_1 = __webpack_require__(63);
 var replace_1 = __webpack_require__(2);
@@ -1040,7 +1043,6 @@ function default_1(str) {
   str = shift_1.default(str, patternize_1.default(FULLWIDTH_SIGN_CHARS_1.FULLWIDTH_SIGN_CHARS), -65248);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1050,6 +1052,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replaceFromMap_1 = __webpack_require__(0);
 /**
  * 日本語で使われる記号を半角に変換
@@ -1068,7 +1071,6 @@ function default_1(str) {
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1078,6 +1080,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var convertIterationMarks_1 = __webpack_require__(18);
 var convertProlongedSoundMarks_1 = __webpack_require__(19);
 var toBasicLetter_1 = __webpack_require__(24);
@@ -1103,7 +1106,6 @@ function default_1(str) {
   str = convertIterationMarks_1.default(str);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1113,6 +1115,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var ALPHA_CHARS_1 = __webpack_require__(67);
 var DIGIT_CHARS_1 = __webpack_require__(68);
 var patternize_1 = __webpack_require__(4);
@@ -1128,7 +1131,6 @@ function default_1(str) {
   str = shift_1.default(str, patternize_1.default(ALPHA_CHARS_1.ALPHA_CHARS + DIGIT_CHARS_1.DIGIT_CHARS), 65248);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1138,6 +1140,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var toWideKatakana_1 = __webpack_require__(7);
 var toWideSymbolForJapanese_1 = __webpack_require__(34);
 /**
@@ -1154,7 +1157,6 @@ function default_1(str) {
   str = toWideSymbolForJapanese_1.default(str);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1164,6 +1166,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var SIGN_CHARS_1 = __webpack_require__(74);
 var SPACE_CHARS_1 = __webpack_require__(63);
 var replace_1 = __webpack_require__(2);
@@ -1181,7 +1184,6 @@ function default_1(str) {
   str = shift_1.default(str, patternize_1.default(SIGN_CHARS_1.SIGN_CHARS), 65248);
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1191,6 +1193,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replaceFromMap_1 = __webpack_require__(0);
 /**
  * 日本語で使われる記号を全角に変換
@@ -1209,7 +1212,6 @@ function default_1(str) {
     });
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1218,13 +1220,14 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * ひらがな
  *
  * [ぁ-ゖゝ-ゟ]
  *
  */
-
 exports.HIRAGANA_CHARS = "\u3041-\u3096\u309D-\u309F";
 
 /***/ }),
@@ -1233,13 +1236,14 @@ exports.HIRAGANA_CHARS = "\u3041-\u3096\u309D-\u309F";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * カタカナ
  *
  * [ァ-ヺヽ-ヿ]
  *
  */
-
 exports.KATAKANA_CHARS = "\u30A1-\u30FA\u30FD\u30FF";
 
 /***/ }),
@@ -1249,6 +1253,7 @@ exports.KATAKANA_CHARS = "\u30A1-\u30FA\u30FD\u30FF";
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var replaceFromMap_1 = __webpack_require__(0);
 /**
  * 半濁点を追加する
@@ -1259,11 +1264,10 @@ var replaceFromMap_1 = __webpack_require__(0);
  */
 function default_1(str) {
     return replaceFromMap_1.default(str, {
-        'は': 'ぱ', 'ひ': 'ぴ', 'ふ': 'ぷ', 'へ': 'ぺ', 'ほ': 'ぽ',
-        'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ'
+        は: 'ぱ', ひ: 'ぴ', ふ: 'ぷ', へ: 'ぺ', ほ: 'ぽ',
+        ハ: 'パ', ヒ: 'ピ', フ: 'プ', ヘ: 'ペ', ホ: 'ポ'
     });
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1272,6 +1276,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列のバイトサイズを返す
  *
@@ -1279,11 +1285,9 @@ exports.default = default_1;
  * @since 0.2.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   return encodeURIComponent(str).replace(/%../g, 'x').length;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1293,6 +1297,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var charAt_1 = __webpack_require__(17);
 /**
  * 指定位置のUnicodeコードポイントを返す
@@ -1319,7 +1324,6 @@ function default_1(str) {
         return code;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1328,6 +1332,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 再帰的に文字列連結をおこなう
  *
@@ -1335,7 +1341,6 @@ exports.default = default_1;
  * @since 0.2.0
  * @param ...args 文字列もしくはJacoインスタンス
  */
-
 function concat() {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
@@ -1351,7 +1356,6 @@ function concat() {
         }
     }).join('');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = concat;
 
 /***/ }),
@@ -1361,6 +1365,7 @@ exports.default = concat;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var is_1 = __webpack_require__(9);
 var substring_1 = __webpack_require__(23);
 var arrayize_1 = __webpack_require__(1);
@@ -1386,7 +1391,6 @@ function default_1(str, search, position) {
     var endStr = substring_1.default(str, start, end);
     return is_1.default(endStr, search);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1395,6 +1399,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 該当の文字のいずれかを含んでいるかどうか
  *
@@ -1403,13 +1409,11 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @param characters 文字セット
  */
-
 function default_1(str, characters) {
     var chars = characters.toString().replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)').replace(/\[/g, '\\[').replace(/\]/g, '\\]');
     var pattern = new RegExp('[' + chars + ']', 'gm');
     return pattern.test(str);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1418,6 +1422,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 小書き文字を含むかどうか
  *
@@ -1427,12 +1433,10 @@ exports.default = default_1;
  * @since 1.1.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   return (/[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/.test(str)
   );
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1441,6 +1445,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * サロゲートペア文字列を含んでいるかどうか
  *
@@ -1448,12 +1454,10 @@ exports.default = default_1;
  * @since 2.0.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   return (/[\uD800-\uDBFF][\uDC00-\uDFFF]/.test(str)
   );
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1462,6 +1466,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * ペアになっていないサロゲートコードポイントを含んでいるかどうか
  *
@@ -1469,12 +1475,10 @@ exports.default = default_1;
  * @since 2.0.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   return (/[\uD800-\uDBFF](?:[^\uDC00-\uDFFF]|$)|(?:^|[^\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(str)
   );
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1484,6 +1488,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var indexOf_1 = __webpack_require__(20);
 /**
  * 指定された文字列が最初に現れるインデックスを返す
@@ -1501,7 +1506,6 @@ function default_1(str, search) {
 
   return indexOf_1.default(str, search, position) !== -1;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1510,6 +1514,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字が空かどうか
  *
@@ -1517,11 +1523,9 @@ exports.default = default_1;
  * @since 0.2.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   return str === '';
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1530,6 +1534,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 数字だけで構成されているかどうか
  *
@@ -1539,7 +1545,6 @@ exports.default = default_1;
  * @param negative 負の数値も含めてチェックするかどうか
  * @param floatingPoint 小数としてチェックするかどうか
  */
-
 function default_1(str) {
     var negative = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     var floatingPoint = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
@@ -1554,7 +1559,6 @@ function default_1(str) {
     pattern += '[0-9]+$';
     return new RegExp(pattern).test(str);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1564,6 +1568,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var KANA_COMMON_CAHRS_1 = __webpack_require__(62);
 var KATAKANA_CHARS_1 = __webpack_require__(36);
 var isOnly_1 = __webpack_require__(10);
@@ -1577,7 +1582,6 @@ var isOnly_1 = __webpack_require__(10);
 function default_1(str) {
   return isOnly_1.default(str, KATAKANA_CHARS_1.KATAKANA_CHARS + KANA_COMMON_CAHRS_1.KANA_COMMON_CAHRS);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1587,6 +1591,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var arrayize_1 = __webpack_require__(1);
 /**
  * 指定された文字列が最後に現れるインデックスを返す
@@ -1605,7 +1610,6 @@ function default_1(str, search) {
 
   return arrayize_1.default(str).lastIndexOf(search.toString(), fromIndex);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1614,6 +1618,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る
  *
@@ -1622,12 +1628,10 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @param regexp パターン
  */
-
 function default_1(str, regexp) {
   var matches = str.match(regexp);
   return Array.prototype.concat.apply(matches || []);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1637,6 +1641,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var isOnlyHiragana_1 = __webpack_require__(21);
 var removeVoicedMarks_1 = __webpack_require__(11);
 var replaceFromMap_1 = __webpack_require__(0);
@@ -1710,7 +1715,6 @@ function default_1(a, b) {
         return 0;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 /**
  * ソートのために内部コードを擬似的に置き換える フェーズ2
@@ -1752,17 +1756,17 @@ function _convertNaturalKanaOrderNumberPhase2(str) {
  */
 function _convertNaturalKanaOrderNumberPhase1(str) {
     return replaceFromMap_1.default(str, {
-        'あ': "\u3041", 'い': "\u3042", 'う': "\u3043", 'え': "\u3044", 'お': "\u3045",
-        'か': "\u3046", 'き': "\u3047", 'く': "\u3048", 'け': "\u3049", 'こ': "\u304A",
-        'さ': "\u304B", 'し': "\u304C", 'す': "\u304D", 'せ': "\u304E", 'そ': "\u304F",
-        'た': "\u3050", 'ち': "\u3052", 'つ': "\u3053", 'て': "\u3054", 'と': "\u3055",
-        'な': "\u3056", 'に': "\u3057", 'ぬ': "\u3058", 'ね': "\u3059", 'の': "\u305A",
-        'は': "\u305B", 'ひ': "\u305C", 'ふ': "\u305D", 'へ': "\u305E", 'ほ': "\u305F",
-        'ま': "\u3060", 'み': "\u3061", 'む': "\u3062", 'め': "\u3063", 'も': "\u3064",
-        'や': "\u3065", 'ゆ': "\u3066", 'よ': "\u3067",
-        'ら': "\u3068", 'り': "\u3069", 'る': "\u306A", 'れ': "\u306B", 'ろ': "\u306C",
-        'わ': "\u306D", 'ゐ': "\u306E", 'ゑ': "\u306F", 'を': "\u3070", 'ん': "\u3071",
-        'ゝ': "\u3072", 'ー': "\u3073"
+        あ: "\u3041", い: "\u3042", う: "\u3043", え: "\u3044", お: "\u3045",
+        か: "\u3046", き: "\u3047", く: "\u3048", け: "\u3049", こ: "\u304A",
+        さ: "\u304B", し: "\u304C", す: "\u304D", せ: "\u304E", そ: "\u304F",
+        た: "\u3050", ち: "\u3052", つ: "\u3053", て: "\u3054", と: "\u3055",
+        な: "\u3056", に: "\u3057", ぬ: "\u3058", ね: "\u3059", の: "\u305A",
+        は: "\u305B", ひ: "\u305C", ふ: "\u305D", へ: "\u305E", ほ: "\u305F",
+        ま: "\u3060", み: "\u3061", む: "\u3062", め: "\u3063", も: "\u3064",
+        や: "\u3065", ゆ: "\u3066", よ: "\u3067",
+        ら: "\u3068", り: "\u3069", る: "\u306A", れ: "\u306B", ろ: "\u306C",
+        わ: "\u306D", ゐ: "\u306E", ゑ: "\u306F", を: "\u3070", ん: "\u3071",
+        ゝ: "\u3072", ー: "\u3073"
     }).toString();
 }
 
@@ -1773,6 +1777,7 @@ function _convertNaturalKanaOrderNumberPhase1(str) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var substr_1 = __webpack_require__(3);
 var arrayize_1 = __webpack_require__(1);
 var pad_1 = __webpack_require__(64);
@@ -1800,7 +1805,6 @@ function default_1(str, targetLength) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1810,6 +1814,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var substr_1 = __webpack_require__(3);
 var arrayize_1 = __webpack_require__(1);
 var pad_1 = __webpack_require__(64);
@@ -1837,7 +1842,6 @@ function default_1(str, targetLength) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1846,6 +1850,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * ペアになっていないサロゲートコードポイントの削除
  *
@@ -1853,13 +1859,11 @@ exports.default = default_1;
  * @since 2.0.0
  * @param str 対象の文字列
  */
-
 function default_1(str) {
   str = str.replace(/[\uD800-\uDBFF]([^\uDC00-\uDFFF]|$)/g, '$1');
   str = str.replace(/(^|[^\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '$1');
   return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1868,6 +1872,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 文字列を繰り返す
  *
@@ -1876,7 +1882,6 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @param times 繰り返しの回数
  */
-
 function default_1(str) {
     var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
@@ -1891,7 +1896,6 @@ function default_1(str) {
     str = res.join('');
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1901,6 +1905,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var split_1 = __webpack_require__(12);
 var arrayize_1 = __webpack_require__(1);
 /**
@@ -1917,7 +1922,6 @@ function default_1(str, pattern) {
   var before = split_1.default(str, pattern)[0] || '';
   return arrayize_1.default(before).length;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1927,6 +1931,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var substr_1 = __webpack_require__(3);
 var arrayize_1 = __webpack_require__(1);
 /**
@@ -1946,7 +1951,6 @@ function default_1(str, search) {
   var _search = search.toString();
   return substr_1.default(str, position, arrayize_1.default(_search).length) === _search;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1955,6 +1959,8 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * パターンとマッチするかどうか
  *
@@ -1963,11 +1969,9 @@ exports.default = default_1;
  * @param str 対象の文字列
  * @param pattern パターン
  */
-
 function default_1(str, pattern) {
   return pattern instanceof RegExp ? pattern.test(str) : str === pattern.toString();
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -1977,6 +1981,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var remove_1 = __webpack_require__(6);
 var replace_1 = __webpack_require__(2);
 var toNarrow_1 = __webpack_require__(15);
@@ -2019,7 +2024,6 @@ function default_1(str) {
     }
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -2029,6 +2033,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var toWideAlphanumeric_1 = __webpack_require__(31);
 var toWideJapanese_1 = __webpack_require__(32);
 var toWideSign_1 = __webpack_require__(33);
@@ -2048,7 +2053,6 @@ function default_1(str) {
     str = toWideJapanese_1.default(str);
     return str;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -2057,13 +2061,14 @@ exports.default = default_1;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 濁点／半濁点(結合文字含む)・長音符
  *
  * [゛゜ー]
  *
  */
-
 exports.KANA_COMMON_CAHRS = "\u3099-\u309C\u30FC";
 
 /***/ }),
@@ -2072,92 +2077,93 @@ exports.KANA_COMMON_CAHRS = "\u3099-\u309C\u30FC";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * タブ [HT]
  *
  */
-
-var CHARACTER_TABULATION = '\t';
+var CHARACTER_TABULATION = "\t";
 /**
  * 垂直タブ [VT]
  */
-var LINE_TABULATION = '\x0B';
+var LINE_TABULATION = "\x0B";
 /**
  * フォームフィード [FF]
  */
-var FORM_FEED = '\f';
+var FORM_FEED = "\f";
 /**
  * 空白文字
  */
-var SPACE = ' ';
+var SPACE = " ";
 /**
  * Next line [NEL]
  */
-var NEXT_LINE = '\x85';
+var NEXT_LINE = "\x85";
 /**
  * ノーブレークスペース [NBSP]
  */
-var NO_BREAK_SPACE = '\xA0';
+var NO_BREAK_SPACE = "\xA0";
 /**
  * n幅 クワタ
  */
-var EN_QUAD = '\u2000';
+var EN_QUAD = "\u2000";
 /**
  * m幅 クワタ
  */
-var EM_QUAD = '\u2001';
+var EM_QUAD = "\u2001";
 /**
  * n幅 空白
  */
-var EN_SPACE = '\u2002';
+var EN_SPACE = "\u2002";
 /**
  * m幅 空白
  */
-var EM_SPACE = '\u2003';
+var EM_SPACE = "\u2003";
 /**
  * 1/3 m幅 空白
  */
-var THREE_PER_EM_SPACE = '\u2004';
+var THREE_PER_EM_SPACE = "\u2004";
 /**
  * 1/4 m幅 空白
  */
-var FOUR_PER_EM_SPACE = '\u2005';
+var FOUR_PER_EM_SPACE = "\u2005";
 /**
  * 1/6 m幅 空白
  */
-var SIX_PER_EM_SPACE = '\u2006';
+var SIX_PER_EM_SPACE = "\u2006";
 /**
  * Figure space
  *
  * > In fonts with monospaced digits, equal to the width of one digit. HTML/XML named entity: &numsp;
  */
-var FIGURE_SPACE = '\u2007';
+var FIGURE_SPACE = "\u2007";
 /**
  * Punctuation space
  *
  * > As wide as the narrow punctuation in a font, i.e. the advance width of the period or comma. HTML/XML named entity: &puncsp;
  */
-var PUNCTUATION_SPACE = '\u2008';
+var PUNCTUATION_SPACE = "\u2008";
 /**
  * 細い空白
  */
-var THIN_SPACE = '\u2009';
+var THIN_SPACE = "\u2009";
 /**
  * Mongolian vowel separator
  *
  * > MVS. A narrow space character, used in Mongolian to cause the final two characters of a word to take on different shapes.
  * > It is no longer classified as space character (i.e. in Zs category) in Unicode 6.3.0, even though it was in previous versions of the standard.
  */
-var MONGOLIAN_VOWEL_SEPARATOR = '\u180E';
+var MONGOLIAN_VOWEL_SEPARATOR = "\u180E";
 /**
  * より細い空白
  *
  */
-var HAIR_SPACE = '\u200A';
+var HAIR_SPACE = "\u200A";
 /**
  * ゼロ幅空白
  */
-var ZERO_WIDTH_SPACE = '\u200B';
+var ZERO_WIDTH_SPACE = "\u200B";
 /**
  * ゼロ幅非接合子 [ZWNJ]
  *
@@ -2165,7 +2171,7 @@ var ZERO_WIDTH_SPACE = '\u200B';
  * > 本来ならば合字として連結される2つの文字の間にZWNJが置かれると、その2つの文字はそれぞれ末尾形および頭字形で表示される。
  * > スペースを間に置くことでも同じ効果は得られるが、スペースよりも両者の文字を近づけたい、または単語と形態素を連結したい場合にZWNJが用いられる。
  */
-var ZERO_WIDTH_NON_JOINER = '\u200C';
+var ZERO_WIDTH_NON_JOINER = "\u200C";
 /**
  * ゼロ幅接合子 [ZWJ]
  *
@@ -2174,7 +2180,7 @@ var ZERO_WIDTH_NON_JOINER = '\u200C';
  * > 2つの絵文字の間にZWJが置かれると、新しい形が表示されることもある。
  * > たとえば、2人の大人の絵文字と1人または2人の子供の絵文字をZWJでつなぐと家族の絵文字が表示される。
  */
-var ZERO_WIDTH_JOINER = '\u200D';
+var ZERO_WIDTH_JOINER = "\u200D";
 /**
  * 単語結合子
  *
@@ -2184,19 +2190,19 @@ var ZERO_WIDTH_JOINER = '\u200D';
  * > しかし、そのコードポイント U+FEFF はファイルの先頭のバイトオーダーマークとしても使用されている。
  * > この曖昧さを避けるために、ゼロ幅ノーブレークスペースと完全に同じ意味と使用法を持つ単語結合子がUnicode 3.2で追加され、「単語結合の意味では新しい文字だけを使うことを強く推奨する」としている。
  */
-var WORD_JOINER = '\u2060';
+var WORD_JOINER = "\u2060";
 /**
  * Line separator
  */
-var LINE_SEPARATOR = '\u2028';
+var LINE_SEPARATOR = "\u2028";
 /**
  * Paragraph separator
  */
-var PARAGRAPH_SEPARATOR = '\u2028';
+var PARAGRAPH_SEPARATOR = "\u2028";
 /**
  * 狭いノーブレークスペース
  */
-var NARROW_NO_BREAK_SPACE = '\u202F';
+var NARROW_NO_BREAK_SPACE = "\u202F";
 /**
  * Medium mathematical space
  *
@@ -2206,15 +2212,15 @@ var NARROW_NO_BREAK_SPACE = '\u202F';
  * > for example between the a and the + and between the + and the b in the expression a + b.
  * >  HTML/XML named entity: &MediumSpace;
  */
-var MEDIUM_MATHMETICAL_SPACE = '\u205F';
+var MEDIUM_MATHMETICAL_SPACE = "\u205F";
 /**
  * 全角空白
  */
-var IDEOGRAPHIC_SPACE = '\u3000';
+var IDEOGRAPHIC_SPACE = "\u3000";
 /**
  * ゼロ幅ノーブレークスペース
  */
-var ZERO_WIDTH_NO_BREAK_SPACE = '\uFEFF';
+var ZERO_WIDTH_NO_BREAK_SPACE = "\uFEFF";
 /**
  * ホワイトスペース（空白文字）類
  *
@@ -2230,6 +2236,7 @@ exports.SPACE_CHARS = [CHARACTER_TABULATION, LINE_TABULATION, FORM_FEED, SPACE, 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var arrayize_1 = __webpack_require__(1);
 /**
  * 指定数の文字列長になるように繰り返して埋める
@@ -2252,7 +2259,6 @@ function default_1(str, length) {
     }
     return pad.join('');
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -2262,6 +2268,7 @@ exports.default = default_1;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var naturalKanaOrder_1 = __webpack_require__(52);
 /**
  * 配列の五十音順ソートをする
@@ -2275,7 +2282,6 @@ var naturalKanaOrder_1 = __webpack_require__(52);
 function default_1(array) {
   return array.sort(naturalKanaOrder_1.default);
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 
 /***/ }),
@@ -2289,6 +2295,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var addSemivoicedMarks_1 = __webpack_require__(37);
 var addVoicedMarks_1 = __webpack_require__(16);
 var byteSize_1 = __webpack_require__(38);
@@ -3422,7 +3429,6 @@ var Jaco = function () {
     return Jaco;
 }();
 
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Jaco;
 
 /***/ }),
@@ -3431,13 +3437,14 @@ exports.default = Jaco;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 半角英字
  *
  * [A-Za-z]
  *
  */
-
 exports.ALPHA_CHARS = 'A-Za-z';
 
 /***/ }),
@@ -3446,13 +3453,14 @@ exports.ALPHA_CHARS = 'A-Za-z';
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 半角数字
  *
  * [0-9]
  *
  */
-
 exports.DIGIT_CHARS = '0-9';
 
 /***/ }),
@@ -3461,13 +3469,14 @@ exports.DIGIT_CHARS = '0-9';
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 全角英字
  *
  * [ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ]
  *
  */
-
 exports.FULLWIDTH_ALPHA_CHARS = "\uFF21-\uFF3A\uFF41-\uFF5A";
 
 /***/ }),
@@ -3476,13 +3485,14 @@ exports.FULLWIDTH_ALPHA_CHARS = "\uFF21-\uFF3A\uFF41-\uFF5A";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 全角数字
  *
  * [０１２３４５６７８９]
  *
  */
-
 exports.FULLWIDTH_DIGIT_CHARS = "\uFF10-\uFF19";
 
 /***/ }),
@@ -3491,13 +3501,14 @@ exports.FULLWIDTH_DIGIT_CHARS = "\uFF10-\uFF19";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 全角記号
  *
  * [！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]
  *
  */
-
 exports.FULLWIDTH_SIGN_CHARS = "\uFF01-\uFF0F\uFF1A-\uFF20\uFF3B-\uFF40\uFF5B-\uFF5E";
 
 /***/ }),
@@ -3506,13 +3517,14 @@ exports.FULLWIDTH_SIGN_CHARS = "\uFF01-\uFF0F\uFF1A-\uFF20\uFF3B-\uFF40\uFF5B-\u
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * ひらがな（繰り返し記号・合字なし）
  *
  * [ぁ-ゖ]
  *
  */
-
 exports.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = "\u3041-\u3096";
 
 /***/ }),
@@ -3521,13 +3533,14 @@ exports.HIRAGANA_CHARS_IGNORE_ITERATION_MARKS = "\u3041-\u3096";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * カタカナ（繰り返し記号・合字なし）
  *
  * [ァ-ヺ]
  *
  */
-
 exports.KATAKANA_CHARS_IGNORE_ITERATION_MARKS = "\u30A1-\u30FA";
 
 /***/ }),
@@ -3536,13 +3549,14 @@ exports.KATAKANA_CHARS_IGNORE_ITERATION_MARKS = "\u30A1-\u30FA";
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * 記号
  *
  * [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
  *
  */
-
 exports.SIGN_CHARS = " -/:-@[-`{-~";
 
 /***/ }),
@@ -3552,6 +3566,7 @@ exports.SIGN_CHARS = " -/:-@[-`{-~";
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var addSemivoicedMarks_1 = __webpack_require__(37);
 var addVoicedMarks_1 = __webpack_require__(16);
 var byteSize_1 = __webpack_require__(38);

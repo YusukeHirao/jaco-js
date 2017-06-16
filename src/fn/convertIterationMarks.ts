@@ -45,22 +45,22 @@ function replacer (matchAll: string, beforeString: string, iterationMark: string
 	switch (iterationMark) {
 		case 'ゝ': {
 			str = toHiragana(str);
+			break;
 		}
-		break;
 		case 'ヽ': {
 			str = toKatakana(str);
+			break;
 		}
-		break;
 		case 'ゞ': {
 			str = toHiragana(str);
 			str = addVoicedMarks(str);
+			break;
 		}
-		break;
 		case 'ヾ': {
 			str = toKatakana(str);
 			str = addVoicedMarks(str);
+			break;
 		}
-		break;
 		default: {
 			// void
 		}
