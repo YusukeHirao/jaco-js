@@ -1,8 +1,12 @@
+assert
 src
 test
 docs
-npm-debug.log
-tslint.json
+.babelrc
+.editorconfig
+.eslintrc
 .travis.yml
-assert
 gulpfile.coffee
+tsconfig.json
+tslint.json
+yarn.lock
