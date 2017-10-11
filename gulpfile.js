@@ -7,6 +7,7 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const header = require('gulp-header');
+const ava = require('gulp-ava');
 const moment = require('moment');
 const runSequence = require('run-sequence');
 const git = require('git-rev-sync');
@@ -66,22 +67,15 @@ gulp.task('docs', () => {
 		.pipe(gulp.dest('./docs/'));
 });
 
-gulp.task('dev-ts', (cb) => {
-	runSequence('ts', cb);
-});
-
-gulp.task('dev-web', (cb) => {
-	runSequence('ts', 'pack', cb);
+gulp.task('test', () => {
+	gulp
+		.src('**/*.test.js')
+		.pipe(ava());
 });
 
 gulp.task('watch', () => {
-	gulp.watch('src/**/*.ts', ['dev-web']);
+	gulp.watch('src/**/*.ts', ['ts', 'test']);
+	gulp.watch('**/*.test.js', ['test']);
 });
 
-gulp.task('build', (cb) => {
-	runSequence('ts', 'pack', 'compress', cb);
-});
-
-gulp.task('default', (cb) => {
-	runSequence('build', cb);
-});
+gulp.task('default', ['ts', 'pack', 'compress']);

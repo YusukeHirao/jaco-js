@@ -7,6 +7,7 @@
   "bin": "bin/jaco",
   "scripts": {
     "build": "gulp",
+    "dev": "gulp watch",
     "test": "nyc ava **/*.test.js && nyc report --reporter=html",
     "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
     "cli": "bin/jaco"
@@ -47,6 +48,7 @@
     "eslint": "^4.8.0",
     "git-rev-sync": "^1.9.1",
     "gulp": "^3.9.1",
+    "gulp-ava": "^0.18.0",
     "gulp-babel": "^7.0.0",
     "gulp-header": "^1.8.9",
     "gulp-plumber": "^1.1.0",
