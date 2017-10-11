@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - "6"
-  - "8"
+  - stable
 script:
-  - "npm test"
+  - yarn build
+  - yarn test
+after_success:
+  - yarn coveralls
