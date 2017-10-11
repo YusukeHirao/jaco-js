@@ -61,9 +61,6 @@ function replacer (matchAll: string, beforeString: string, iterationMark: string
 			str = addVoicedMarks(str);
 			break;
 		}
-		default: {
-			// void
-		}
 	}
 	return beforeString + str;
 }

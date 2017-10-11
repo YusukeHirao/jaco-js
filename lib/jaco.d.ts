@@ -161,8 +161,6 @@ export default class Jaco {
     /**
      * 小書き文字を含むかどうか
      *
-     * TODO: test
-     *
      * @version 1.1.0
      * @since 1.1.0
      * @return 小書き文字を含むかどうか
@@ -494,8 +492,6 @@ export default class Jaco {
     /**
      * 小書き文字を基底文字に変換する
      *
-     * TODO: test
-     *
      * @version 1.1.0
      * @since 1.1.0
      */
@@ -590,8 +586,6 @@ export default class Jaco {
     /**
      * よみの文字に変換する
      * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
-     *
-     * TODO: test
      *
      * @version 1.1.0
      * @since 1.1.0

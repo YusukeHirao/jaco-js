@@ -114,7 +114,7 @@
     "no-var-keyword": true,
     "radix": true,
     // "restrict-plus-operands": true,
-    "switch-default": true,
+    "switch-default": false,
     "triple-equals": [
       true,
       "allow-null-check"

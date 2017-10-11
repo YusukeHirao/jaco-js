@@ -51,6 +51,18 @@ test('文字列長', (t) => {
 	t.is(a.length, 5);
 });
 
+// addVoicedMarks()
+test('濁点付加', (t) => {
+	const a = new Jaco('あかうはひふへほハヒフヘホ');
+	t.is(a.addVoicedMarks().toString(), 'あがうばびぶべぼバビブベボ');
+});
+
+// addSemivoicedMarks()
+test('半濁点付加', (t) => {
+	const a = new Jaco('あかうはひふへほハヒフヘホ');
+	t.is(a.addSemivoicedMarks().toString(), 'あかうぱぴぷぺぽパピプペポ');
+});
+
 // append()
 test('後方結合', (t) => {
 	const a = new Jaco('あい');
@@ -195,9 +207,18 @@ test('繰り返し記号変換3', (t) => {
 });
 
 // convertIterationMarks()
-// TODO: これあってる？
 test('繰り返し記号変換4', (t) => {
 	t.is(new Jaco('ゝゞあゝゞかゞゝがゝゞゝ').convertIterationMarks().toString(), 'ゝゞあああかがかがかがか');
+});
+
+// convertIterationMarks()
+test('繰り返し記号変換5', (t) => {
+	t.is(new Jaco('ガクモンノスヽヽヽヽヽヽヽヽヽヽヽヽメ').convertIterationMarks().toString(), 'ガクモンノスススススススススススススメ');
+});
+
+// convertIterationMarks()
+test('繰り返し記号変換6', (t) => {
+	t.is(new Jaco('ヽヾアヽヾカヾヽガヽヾヽ').convertIterationMarks().toString(), 'ヽヾアアアカガカガカガカ');
 });
 
 // convertProlongedSoundMarks()
@@ -327,6 +348,21 @@ test('含むかどうか8', (t) => {
 test('含むかどうか9', (t) => {
 	const a = new Jaco('いろは');
 	t.true(a.has('あ-ん'));
+});
+
+// hasSmallLetter
+test('小書き文字の検知', (t) => {
+	t.true(new Jaco('ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ').hasSmallLetter());
+});
+
+// hasSmallLetter
+test('小書き文字の検知2', (t) => {
+	t.true(new Jaco('あァァァんまりだァァアァ').hasSmallLetter());
+});
+
+// hasSmallLetter
+test('小書き文字の検知3', (t) => {
+	t.false(new Jaco('あいうえお').hasSmallLetter());
 });
 
 // hasSurrogatePair
@@ -1460,6 +1496,12 @@ test('テスト3', (t) => {
 test('テスト4', (t) => {
 	const a = new Jaco('あいう');
 	t.false(a.test(/あ$/));
+});
+
+// toBasicLetter()
+test('小書き文字を基底文字に変換', (t) => {
+	const a = new Jaco('あァァァんまりだァァアァ');
+	t.is(a.toBasicLetter().toString(), 'あアアアんまりだアアアア');
 });
 
 // toHiragana()

@@ -318,3 +318,8 @@ test('五十音順ソート11(引数なしでエラー)', (t) => {
 		t.pass();
 	}
 });
+test('五十音順ソート12', (t) => {
+	const origin = [];
+	const sorted = naturalKanaSort(origin);
+	t.deepEqual(sorted, []);
+});
