@@ -8,9 +8,8 @@
   "scripts": {
     "build": "gulp",
     "test": "nyc ava **/*.test.js && nyc report --reporter=html",
-    "coveralls": "nyc ava && nyc report --reporter=text-lcov | coveralls",
-    "mocha": "mocha --reporter spec --compilers js:babel-register test/*.js",
-    "bin-test": "bin/jaco"
+    "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
+    "cli": "bin/jaco"
   },
   "repository": {
     "type": "git",
@@ -44,6 +43,7 @@
     "babel-plugin-espower": "^2.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "coveralls": "^3.0.0",
     "eslint": "^4.8.0",
     "git-rev-sync": "^1.9.1",
     "gulp": "^3.9.1",
