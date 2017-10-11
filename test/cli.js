@@ -8,13 +8,13 @@ describe('jaco command', () => {
 	const HELP_STDOUT = `
   Usage: jaco [options] <path or string>
 
+
   Options:
 
-    -h, --help                         output usage information
     -V, --version                      output the version number
     -K, --katakanize <path or string>  convert to Katakana
     -H, --hiraganize <path or string>  convert to Hiragana
-
+    -h, --help                         output usage information
 `;
 
 	it('引数なしでヘルプが出力', (done) => {
