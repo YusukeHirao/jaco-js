@@ -45,24 +45,32 @@ $ npm i -g jaco
 ```html
 <script src="jaco.min.js"></script>
 <script>
-jaco.katakanize('ニホンゴのモジなど'); // => ニホンゴノモジナド
-jaco.hiraganize('ニホンゴのモジなど'); // => にほんごのもじなど
+// Functional usage
+jaco.toKatakana('ニホンゴのモジなど'); // => ニホンゴノモジナド
+jaco.toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 
-var jStr01 = new jaco.Jaco('ニホンゴのモジなど');
-jStr01.toKatakana(); // => ニホンゴノモジナド
+// Construct instance
+jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
+jaco('ニホンゴのモジなど').toHiragana(); // => にほんごのもじなど
 </script>
 ```
 
-### for NodeJS
+### for Node.js
 
 ```javascript
-var jaco = require('jaco');
+// Partial functions
+import toKatakana from 'jaco/lib/toKatakana';
+import toHiragana from 'jaco/lib/toHiragana';
 
-jaco.katakanize('ニホンゴのモジなど'); // => ニホンゴノモジナド
-jaco.hiraganize('ニホンゴのモジなど'); // => にほんごのもじなど
+toKatakana('ニホンゴのモジなど'); // => ニホンゴノモジナド
+toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
+```
 
-var jStr01 = new jaco.Jaco('ニホンゴのモジなど');
-jStr01.toKatakana(); // => ニホンゴノモジナド
+```javascript
+// Construct instance
+import Jaco from 'jaco';
+
+new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
 ```
 
 ### CLI
@@ -79,71 +87,65 @@ Options:
   -h, --help                         output usage information
 ```
 
-## Methods
+## Functions
 
-### Static Functions
-
-```javascript
-jaco.katakanize('ニホンゴのモジなど');
-```
-
-name|return type
----|---
-katakanize|`string`
-hiraganize|`string`
-hiraganaOnly|`boolean`
-katakanaOnly|`boolean`
-naturalKanaSort|`Array`
-
-### Instance methods of Class Jaco
-
-```javascript
-var instance = new jaco.Jaco('ニホンゴのモジなど');
-instance.toString();
-```
-
-name|return type|bang|chainable
----|---|---|---
-toString|`string`|✗|✗
-valueOf|`string`|✗|✗
-concat|`Jaco`|✓|✓
-slice|`Jaco`|✓|✓
-substr|`Jaco`|✓|✓
-substring|`Jaco`|✓|✓
-append|`Jaco`|✓|✓
-prepend|`Jaco`|✓|✓
-replace|`Jaco`|✓|✓
-trim|`Jaco`|✓|✓
-remove|`Jaco`|✓|✓
-test|`Jaco`|✓|✓
-is|`boolean`|✗|✗
-isEmpty|`boolean`|✗|✗
-isOnly|`boolean`|✗|✗
-isOnlyHiragana|`boolean`|✗|✗
-isOnlyKatakana|`boolean`|✗|✗
-isNumeric|`boolean`|✗|✗
-toNumeric|`Jaco`|✓|✓
-combinate|`Jaco`|✓|✓
-toLowerCase|`Jaco`|✓|✓
-toUpperCase|`Jaco`|✓|✓
-toHiragana|`Jaco`|✓|✓
-toKatakana|`Jaco`|✓|✓
-toNarrowKatakana|`Jaco`|✓|✓
-toWideKatakana|`Jaco`|✓|✓
-toNumber|`number`|✗|✗
-size|`number`|✗|✗
-byteSize|`number`|✗|✗
-clone|`Jaco`|✓|✓
-toNarrowJapneseSymbol|`Jaco`|✓|✓
-toWideJapnese|`Jaco`|✓|✓
-toNarrow|`Jaco`|✓|✓
-toWide|`Jaco`|✓|✓
-addVoicedMarks|`Jaco`|✓|✓
-addSemivoicedMarks|`Jaco`|✓|✓
-removeVoicedMarks|`Jaco`|✓|✓
-convertProlongedSoundMarks|`Jaco`|✓|✓
-convertIterationMarks|`Jaco`|✓|✓
-toBasicLetter|`Jaco`|✓|✓
-hasSmallLetter|`boolean`|✗|✗
-toPhoeticKana|`Jaco`|✓|✓
-replaceMap|`Jaco`|✓|✓
+Function|Args|Description
+---|---|---
+`addSemivoicedMarks`|str|半濁点を追加する
+`addVoicedMarks`|str|濁点を追加する
+`byteSize`|str|文字列のバイトサイズを返す
+`charAt`|str [, index]|文字列から指定位置の文字を返す
+`charCodeAt`|str [, index]|指定位置のUnicodeコードポイントを返す
+`combinateSoundMarks`|str [, convertOnly]|濁点・半濁点とひらがな・かたかなを結合させる
+`concat`|...str|再帰的に文字列連結をおこなう
+`convertIterationMarks`|str|繰り返し記号をかなに置き換える
+`convertProlongedSoundMarks`|str|長音符をかなに置き換える
+`endWith`|str, search [, position]|引数に指定された文字列が末尾と合致するか
+`has`|str, characters|該当の文字のいずれかを含んでいるかどうか
+`hasSmallLetter`|str|小書き文字を含むかどうか
+`hasSurrogatePair`|str|サロゲートペア文字列を含んでいるかどうか
+`hasUnpairedSurrogate`|str|ペアになっていないサロゲートコードポイントを含んでいるかどうか
+`includes`|str, search [, position]|指定された文字列が最初に現れるインデックスを返す
+`indexOf`|str, search [, fromIndex]|指定された文字列が最初に現れるインデックスを返す
+`is`|str, target|完全マッチ
+`isEmpty`|str|文字が空かどうか
+`isNumeric`|str [, negative [, floatingPoint]]|数字だけで構成されているかどうか
+`isOnly`|str, characters|該当の文字だけで構成されているかどうか
+`isOnlyHiragana`|str|ひらがなだけで構成されているかどうか
+`isOnlyKatakana`|str|カタカナだけで構成されているかどうか
+`lastIndexOf`|str, search [, fromIndex]|指定された文字列が最後に現れるインデックスを返す
+`matches`|str, regexp|正規表現に対する文字列のマッチングの際に、そのマッチ結果を純粋な配列で得る
+`naturalKanaOrder`|a, b|配列の五十音順ソートをするためのソート関数
+`naturalKanaSort`|array|配列の五十音順ソートをする
+`padEnd`|str, targetLength [, padString]|最終的な文字列が指定された長さに到達するように文字列で延長する
+`padStart`|str, targetLength [, padString]|最終的な文字列が指定された長さに到達するように文字列を先頭に追加する
+`remove`|str, pattern|文字列を取り除く
+`removeUnpairedSurrogate`|str|ペアになっていないサロゲートコードポイントの削除
+`removeVoicedMarks`|str [, ignoreSingleMark]|濁点・半濁点を取り除く
+`repeat`|str, times|文字列を繰り返す
+`replace`|str, pattern, replacement|文字列をパターンで置換する
+`replaceFromMap`|str, convMap|キーがパターン・値が置換文字列のハッシュマップによって置換する
+`search`|str, pattern|正規表現にマッチしたインデックスを返す
+`slice`|str, start [, end]|文字位置による抽出
+`split`|str, separator|文字列の配列に分割する
+`startsWith`|str, search [, position]|引数に指定された文字列が先頭と合致するか
+`substr`|str, start [, length]|指定した位置から指定した数だけ文字列を抽出
+`substring`|str, indexA, indexB|指定した位置の間の文字列を抽出
+`test`|str, pattern|パターンとマッチするかどうか
+`toBasicLetter`|str|小書き文字を基底文字に変換する
+`toHiragana`|str [, isCombinate]|ひらがなに変換する
+`toKatakana`|str [, toWide]|カタカナに変換する
+`toNarrow`|str [, convertJapaneseChars]|半角に変換
+`toNarrowAlphanumeric`|str|英数字を半角に変換
+`toNarrowJapanese`|str|カタカナと日本語で使われる記号を半角に変換
+`toNarrowKatakana`|str [, fromHiragana]|半角カタカナに変換する
+`toNarrowSign`|str|記号を半角に変換
+`toNarrowSymbolForJapanese`|str|日本語で使われる記号を半角に変換
+`toNumeric`|str [, negative [, floatingPoint]]|数字に変換する
+`toPhoeticKana`|str|よみの文字に変換する
+`toWide`|str|全角に変換
+`toWideAlphanumeric`|str|英数字を全角に変換
+`toWideJapanese`|str|カタカナと日本語で使われる記号を全角に変換
+`toWideKatakana`|str|全角カタカナに変換する
+`toWideSign`|str|記号を全角に変換
+`toWideSymbolForJapanese`|str|日本語で使われる記号を全角に変換

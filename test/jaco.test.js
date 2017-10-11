@@ -31,7 +31,6 @@ const END_LOW = '\uDFFF';
  */
 const AFTER_LOW = '\uE000';
 
-
 // constructor
 test('newされたインスタンスは別のオブジェクト', (t) => {
 	const a = new Jaco('あ');
