@@ -1,10 +1,10 @@
 ![jaco](http://jaco-project.github.io/docs/jaco.png)
 ====
 
-Japanese Character Optimizer.
+Japanese Character Optimizer. [[English](README.md) | [日本語](README.ja.md)]
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
-[![Bower version](https://badge.fury.io/bo/jaco.svg)](http://badge.fury.io/bo/jaco)
+[![Coverage Status](https://coveralls.io/repos/github/jaco-project/jaco-js/badge.svg?branch=master)](https://coveralls.io/github/jaco-project/jaco-js?branch=master)
 [![Build Status](https://travis-ci.org/jaco-project/jaco-js.svg?branch=master)](https://travis-ci.org/jaco-project/jaco-js)
 [![Dependency Status](https://david-dm.org/jaco-project/jaco-js.svg)](https://david-dm.org/jaco-project/jaco-js)
 [![devDependency Status](https://david-dm.org/jaco-project/jaco-js/dev-status.svg)](https://david-dm.org/jaco-project/jaco-js#info=devDependencies)
@@ -24,24 +24,18 @@ Convert to Katakana from Hiragana mutually, or sort list by natural phonetic ord
   - Supported voiced marks, prolonged sound marks, iteration marks.
 - Has compatible native string object API.
 
-## install
-
-### for browser
-
-```sh
-$ bower install jaco
-```
+## installation
 
 ### for NodeJS
 
 ```sh
-$ npm install jaco
+$ yarn add jaco
 ```
 
 ### CLI
 
 ```sh
-$ npm install -g jaco
+$ npm i -g jaco
 ```
 
 ## Usage
@@ -74,16 +68,15 @@ jStr01.toKatakana(); // => ニホンゴノモジナド
 ### CLI
 
 ```
-Usage: jaco [options] <string> [fileOption] <path>
+Usage: jaco [options] <path or string>
+
 
 Options:
 
-    -h, --help                 output usage information
-    -V, --version              output the version number
-    -f, --file <path>          convert in file
-    -o, --output <path>        output to file
-    -K, --katakanize [string]  katakanize method
-    -H, --hiraganize [string]  hiraganize method
+  -V, --version                      output the version number
+  -K, --katakanize <path or string>  convert to Katakana
+  -H, --hiraganize <path or string>  convert to Hiragana
+  -h, --help                         output usage information
 ```
 
 ## Methods
@@ -96,8 +89,8 @@ jaco.katakanize('ニホンゴのモジなど');
 
 name|return type
 ---|---
-[katakanize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#katakanize)|`string`
-[hiraganize](http://yusukehirao.github.io/jaco/docs/modules/jaco.html#hiraganize)|`string`
+katakanize|`string`
+hiraganize|`string`
 hiraganaOnly|`boolean`
 katakanaOnly|`boolean`
 naturalKanaSort|`Array`
@@ -111,36 +104,36 @@ instance.toString();
 
 name|return type|bang|chainable
 ---|---|---|---
-[toString](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tostring)|`string`|✗|✗
-[valueOf](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#valueof)|`string`|✗|✗
-[concat](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#concat)|`Jaco`|✓|✓
-[slice](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#slice)|`Jaco`|✓|✓
-[substr](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#substr)|`Jaco`|✓|✓
-[substring](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#substring)|`Jaco`|✓|✓
-[append](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#append)|`Jaco`|✓|✓
-[prepend](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#prepend)|`Jaco`|✓|✓
-[replace](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#replace)|`Jaco`|✓|✓
-[trim](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#trim)|`Jaco`|✓|✓
-[remove](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#remove)|`Jaco`|✓|✓
-[test](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#test)|`Jaco`|✓|✓
-[is](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#is)|`boolean`|✗|✗
-[isEmpty](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isempty)|`boolean`|✗|✗
-[isOnly](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonly)|`boolean`|✗|✗
-[isOnlyHiragana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonlyhiragana)|`boolean`|✗|✗
-[isOnlyKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isonlykatakana)|`boolean`|✗|✗
-[isNumeric](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#isnumeric)|`boolean`|✗|✗
-[toNumeric](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonumeric)|`Jaco`|✓|✓
-[combinate](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#combinate)|`Jaco`|✓|✓
-[toLowerCase](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tolowercase)|`Jaco`|✓|✓
-[toUpperCase](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#touppercase)|`Jaco`|✓|✓
-[toHiragana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tohiragana)|`Jaco`|✓|✓
-[toKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tokatakana)|`Jaco`|✓|✓
-[toNarrowKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonarrowkatakana)|`Jaco`|✓|✓
-[toWideKatakana](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#towidekatakana)|`Jaco`|✓|✓
-[toNumber](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#tonumber)|`number`|✗|✗
-[size](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#size)|`number`|✗|✗
-[byteSize](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#bytesize)|`number`|✗|✗
-[clone](http://yusukehirao.github.io/jaco/docs/classes/jaco.jaco.html#clone)|`Jaco`|✓|✓
+toString|`string`|✗|✗
+valueOf|`string`|✗|✗
+concat|`Jaco`|✓|✓
+slice|`Jaco`|✓|✓
+substr|`Jaco`|✓|✓
+substring|`Jaco`|✓|✓
+append|`Jaco`|✓|✓
+prepend|`Jaco`|✓|✓
+replace|`Jaco`|✓|✓
+trim|`Jaco`|✓|✓
+remove|`Jaco`|✓|✓
+test|`Jaco`|✓|✓
+is|`boolean`|✗|✗
+isEmpty|`boolean`|✗|✗
+isOnly|`boolean`|✗|✗
+isOnlyHiragana|`boolean`|✗|✗
+isOnlyKatakana|`boolean`|✗|✗
+isNumeric|`boolean`|✗|✗
+toNumeric|`Jaco`|✓|✓
+combinate|`Jaco`|✓|✓
+toLowerCase|`Jaco`|✓|✓
+toUpperCase|`Jaco`|✓|✓
+toHiragana|`Jaco`|✓|✓
+toKatakana|`Jaco`|✓|✓
+toNarrowKatakana|`Jaco`|✓|✓
+toWideKatakana|`Jaco`|✓|✓
+toNumber|`number`|✗|✗
+size|`number`|✗|✗
+byteSize|`number`|✗|✗
+clone|`Jaco`|✓|✓
 toNarrowJapneseSymbol|`Jaco`|✓|✓
 toWideJapnese|`Jaco`|✓|✓
 toNarrow|`Jaco`|✓|✓
@@ -154,7 +147,3 @@ toBasicLetter|`Jaco`|✓|✓
 hasSmallLetter|`boolean`|✗|✗
 toPhoeticKana|`Jaco`|✓|✓
 replaceMap|`Jaco`|✓|✓
-
-## Documents
-
-[http://jaco-project.github.io/docs/](http://jaco-project.github.io/docs/)
