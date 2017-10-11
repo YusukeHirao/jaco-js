@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "2.1.0-alpha",
+  "version": "2.1.0-beta",
   "description": "Japanese Character Optimizer.",
   "main": "lib/jaco.js",
   "types": "lib/jaco.d.ts",
