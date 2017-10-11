@@ -1,8 +1,8 @@
 /**!
 * jaco - v2.0.1
-* revision: 59508ae95c18d5365aa720fda7b38c03804e17c6
+* revision: 7ebab1e287eba392c725c41dffa0ebf01e15668d
 * update: 2017-10-11
-* Author: YusukeHirao []
+* Author: YusukeHirao [http://jaco-project.github.io/docs/]
 * Github: git@github.com:jaco-project/jaco-js.git
 * License: Licensed under the MIT License
 */

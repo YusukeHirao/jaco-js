@@ -16,7 +16,7 @@ const banner = `/**!
 * ${pkg.name} - v${pkg.version}
 * revision: ${git.long()}
 * update: ${moment().format('YYYY-MM-DD')}
-* Author: ${pkg.author} [${pkg.website}]
+* Author: ${pkg.author} [${pkg.homepage}]
 * Github: ${pkg.repository.url}
 * License: Licensed under the ${pkg.license} License
 */
