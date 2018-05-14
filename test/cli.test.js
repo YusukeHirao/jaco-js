@@ -4,7 +4,6 @@ import { exec } from 'child_process';
 const HELP_STDOUT = `
   Usage: jaco [options] <path or string>
 
-
   Options:
 
     -V, --version                      output the version number
