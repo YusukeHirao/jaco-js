@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
-    "module": "commonjs",
-    "target": "es2017",
+    "module": "es2015",
+    "target": "es5",
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
     "declaration": true,
-    "noImplicitAny": false,
-    "outDir": "lib",
-    "rootDir": ".",
-    "sourceMap": false
+    "lib": ["es2015", "es2016", "es2017", "esnext"],
+    "baseUrl": ".",
+    "outDir": "lib"
   },
-  "exclude": [
-    "node_modules",
-    "test"
-  ]
+  "exclude": ["lib", "node_modules"]
 }
