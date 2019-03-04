@@ -8,6 +8,6 @@
  * @param str 対象の文字列
  * @return 配列化された文字列
  */
-export default function (str: string): string[] {
-	return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+export default function(str: string): string[] {
+  return str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
 }

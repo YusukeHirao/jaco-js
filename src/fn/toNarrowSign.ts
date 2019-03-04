@@ -13,8 +13,8 @@ import shift from '../util/shift';
  * @since 2.0.0
  * @param str 対象の文字列
  */
-export default function (str: string): string {
-	str = replace(str, patternize(SPACE_CHARS), ' ');
-	str = shift(str, patternize(FULLWIDTH_SIGN_CHARS), -65248);
-	return str;
+export default function(str: string): string {
+  str = replace(str, patternize(SPACE_CHARS), ' ');
+  str = shift(str, patternize(FULLWIDTH_SIGN_CHARS), -65248);
+  return str;
 }

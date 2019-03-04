@@ -8,8 +8,11 @@
  * @param shiftNum ずらす数値
  * @return インスタンス自身
  */
-export default function (str: string, needle: RegExp, shiftNum: number): string {
-	return str.replace(needle, (char: string): string => {
-		return String.fromCharCode(char.charCodeAt(0) + shiftNum);
-	});
+export default function(str: string, needle: RegExp, shiftNum: number): string {
+  return str.replace(
+    needle,
+    (char: string): string => {
+      return String.fromCharCode(char.charCodeAt(0) + shiftNum);
+    }
+  );
 }

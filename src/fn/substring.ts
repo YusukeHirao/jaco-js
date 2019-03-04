@@ -13,9 +13,9 @@ import arrayize from '../util/arrayize';
  * @param indexA インデックス
  * @param indexB インデックス
  */
-export default function (str: string, indexA: number, indexB: number): string {
-	const start = Math.max(Math.min(indexA, indexB), 0);
-	const end = Math.min(Math.max(indexA, indexB), arrayize(str).length);
-	const length = end - start;
-	return substr(str, start, length);
+export default function(str: string, indexA: number, indexB: number): string {
+  const start = Math.max(Math.min(indexA, indexB), 0);
+  const end = Math.min(Math.max(indexA, indexB), arrayize(str).length);
+  const length = end - start;
+  return substr(str, start, length);
 }

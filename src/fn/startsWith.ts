@@ -13,7 +13,11 @@ import arrayize from '../util/arrayize';
  * @param search 合致対象文字列
  * @param position 先頭の位置
  */
-export default function (str: string, search: { toString(): string }, position: number = 0): boolean {
-	const _search = search.toString();
-	return substr(str, position, arrayize(_search).length) === _search;
+export default function(
+  str: string,
+  search: { toString(): string },
+  position: number = 0
+): boolean {
+  const _search = search.toString();
+  return substr(str, position, arrayize(_search).length) === _search;
 }

@@ -4,4 +4,5 @@
  * [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
  *
  */
-export const SIGN_CHARS = '\u0020-\u002F\u003A-\u0040\u005B-\u0060\u007B-\u007E';
+export const SIGN_CHARS =
+  '\u0020-\u002F\u003A-\u0040\u005B-\u0060\u007B-\u007E';

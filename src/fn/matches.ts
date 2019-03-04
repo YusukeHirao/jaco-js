@@ -6,7 +6,7 @@
  * @param str 対象の文字列
  * @param regexp パターン
  */
-export default function (str: string, regexp: RegExp): string[] {
-	const matches = str.match(regexp);
-	return Array.prototype.concat.apply(matches || []);
+export default function(str: string, regexp: RegExp): string[] {
+  const matches = str.match(regexp);
+  return Array.prototype.concat.apply(matches || []);
 }

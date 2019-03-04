@@ -11,8 +11,8 @@ import arrayize from '../util/arrayize';
  * @param start 開始インデックス
  * @param end 終了インデックス 省略すると最後まで
  */
-export default function (str: string, start: number, end?: number): string {
-	const array = arrayize(str);
-	const res = array.slice(start, end);
-	return res.join('');
+export default function(str: string, start: number, end?: number): string {
+  const array = arrayize(str);
+  const res = array.slice(start, end);
+  return res.join('');
 }

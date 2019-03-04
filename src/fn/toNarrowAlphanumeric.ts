@@ -11,6 +11,10 @@ import shift from '../util/shift';
  * @since 1.3.0
  * @param str 対象の文字列
  */
-export default function (str: string): string {
-	return shift(str, patternize(FULLWIDTH_ALPHA_CHARS + FULLWIDTH_DIGIT_CHARS), -65248);
+export default function(str: string): string {
+  return shift(
+    str,
+    patternize(FULLWIDTH_ALPHA_CHARS + FULLWIDTH_DIGIT_CHARS),
+    -65248
+  );
 }

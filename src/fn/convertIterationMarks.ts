@@ -6,7 +6,9 @@ import removeVoicedMarks from './removeVoicedMarks';
 import toHiragana from './toHiragana';
 import toKatakana from './toKatakana';
 
-const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(`([${HIRAGANA_CHARS_IGNORE_ITERATION_MARKS}${KATAKANA_CHARS_IGNORE_ITERATION_MARKS}])([ゝゞヽヾ])`);
+const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(
+  `([${HIRAGANA_CHARS_IGNORE_ITERATION_MARKS}${KATAKANA_CHARS_IGNORE_ITERATION_MARKS}])([ゝゞヽヾ])`
+);
 
 /**
  * 繰り返し記号をかなに置き換える
@@ -15,11 +17,11 @@ const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(`([${HIRAGANA_CHARS_
  * @since 1.1.0
  * @param str 対象の文字列
  */
-export default function (str: string): string {
-	while (KANA_WITH_ITERATION_MARKS_REGEXP.test(str)) {
-		str = converter(str);
-	}
-	return str;
+export default function(str: string): string {
+  while (KANA_WITH_ITERATION_MARKS_REGEXP.test(str)) {
+    str = converter(str);
+  }
+  return str;
 }
 
 /**
@@ -28,8 +30,8 @@ export default function (str: string): string {
  * @param str 対象の文字列
  * @return 置き換えた文字列
  */
-function converter (str: string): string {
-	return str.replace(KANA_WITH_ITERATION_MARKS_REGEXP, replacer);
+function converter(str: string): string {
+  return str.replace(KANA_WITH_ITERATION_MARKS_REGEXP, replacer);
 }
 
 /**
@@ -40,27 +42,31 @@ function converter (str: string): string {
  * @param iterationMark
  * @return 置き換えた文字列
  */
-function replacer (matchAll: string, beforeString: string, iterationMark: string) {
-	let str = removeVoicedMarks(beforeString);
-	switch (iterationMark) {
-		case 'ゝ': {
-			str = toHiragana(str);
-			break;
-		}
-		case 'ヽ': {
-			str = toKatakana(str);
-			break;
-		}
-		case 'ゞ': {
-			str = toHiragana(str);
-			str = addVoicedMarks(str);
-			break;
-		}
-		case 'ヾ': {
-			str = toKatakana(str);
-			str = addVoicedMarks(str);
-			break;
-		}
-	}
-	return beforeString + str;
+function replacer(
+  matchAll: string,
+  beforeString: string,
+  iterationMark: string
+) {
+  let str = removeVoicedMarks(beforeString);
+  switch (iterationMark) {
+    case 'ゝ': {
+      str = toHiragana(str);
+      break;
+    }
+    case 'ヽ': {
+      str = toKatakana(str);
+      break;
+    }
+    case 'ゞ': {
+      str = toHiragana(str);
+      str = addVoicedMarks(str);
+      break;
+    }
+    case 'ヾ': {
+      str = toKatakana(str);
+      str = addVoicedMarks(str);
+      break;
+    }
+  }
+  return beforeString + str;
 }

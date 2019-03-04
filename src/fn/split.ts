@@ -7,7 +7,12 @@
  * @param separator 区切り文字
  * @param limit 配列の数を指定
  */
-export default function (str: string, separator: RegExp | { toString(): string }, limit?: number): string[] {
-	const reg = separator instanceof RegExp ? separator : new RegExp(separator.toString());
-	return str.split(reg, limit);
+export default function(
+  str: string,
+  separator: RegExp | { toString(): string },
+  limit?: number
+): string[] {
+  const reg =
+    separator instanceof RegExp ? separator : new RegExp(separator.toString());
+  return str.split(reg, limit);
 }

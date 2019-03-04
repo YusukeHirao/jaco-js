@@ -14,14 +14,18 @@ import pad from '../util/pad';
  * @param targetLength 最終的な長さ
  * @param padString 延長する文字列
  */
-export default function (str: string, targetLength: number, padString: { toString(): string } = ' '): string {
-	const thisArray = arrayize(str);
-	const thisLength = thisArray.length;
-	if (targetLength < thisLength) {
-		str = substr(str, 0, targetLength);
-	} else {
-		const padded = pad(padString.toString(), targetLength - thisLength);
-		str = padded + str;
-	}
-	return str;
+export default function(
+  str: string,
+  targetLength: number,
+  padString: { toString(): string } = ' '
+): string {
+  const thisArray = arrayize(str);
+  const thisLength = thisArray.length;
+  if (targetLength < thisLength) {
+    str = substr(str, 0, targetLength);
+  } else {
+    const padded = pad(padString.toString(), targetLength - thisLength);
+    str = padded + str;
+  }
+  return str;
 }

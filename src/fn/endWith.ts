@@ -14,14 +14,23 @@ import arrayize from '../util/arrayize';
  * @param search 合致対象文字列
  * @param position 末尾の位置
  */
-export default function (str: string, search: { toString(): string }, position?: number): boolean {
-	const targetLength = arrayize(str).length;
-	const searchLength = arrayize(search.toString()).length;
-	if (!isFinite(position) || Math.floor(position) !== position || position > targetLength) {
-		position = targetLength;
-	}
-	const end = position;
-	const start = position - searchLength;
-	const endStr = substring(str, start, end);
-	return is(endStr, search);
+export default function(
+  str: string,
+  search: { toString(): string },
+  position?: number
+): boolean {
+  const targetLength = arrayize(str).length;
+  const searchLength = arrayize(search.toString()).length;
+  if (
+    !position ||
+    !isFinite(position) ||
+    Math.floor(position) !== position ||
+    position > targetLength
+  ) {
+    position = targetLength;
+  }
+  const end = position;
+  const start = position - searchLength;
+  const endStr = substring(str, start, end);
+  return is(endStr, search);
 }

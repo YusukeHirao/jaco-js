@@ -7,14 +7,18 @@
  * @param negative 負の数値も含めてチェックするかどうか
  * @param floatingPoint 小数としてチェックするかどうか
  */
-export default function (str: string, negative: boolean = true, floatingPoint: boolean = true): boolean {
-	let pattern = '^';
-	if (negative) {
-		pattern += '-?';
-	}
-	if (floatingPoint) {
-		pattern += '(?:[0-9]*\\.)?';
-	}
-	pattern += '[0-9]+$';
-	return new RegExp(pattern).test(str);
+export default function(
+  str: string,
+  negative: boolean = true,
+  floatingPoint: boolean = true
+): boolean {
+  let pattern = '^';
+  if (negative) {
+    pattern += '-?';
+  }
+  if (floatingPoint) {
+    pattern += '(?:[0-9]*\\.)?';
+  }
+  pattern += '[0-9]+$';
+  return new RegExp(pattern).test(str);
 }

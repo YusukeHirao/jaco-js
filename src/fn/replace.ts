@@ -7,7 +7,12 @@
  * @param pattern  対象のパターン
  * @param replacement 置換する文字列
  */
-export default function (str: string, pattern: RegExp | { toString(): string }, replacement: { toString(): string }): string {
-	const reg = pattern instanceof RegExp ? pattern : new RegExp(pattern.toString());
-	return str.replace(reg, replacement.toString());
+export default function(
+  str: string,
+  pattern: RegExp | { toString(): string },
+  replacement: { toString(): string }
+): string {
+  const reg =
+    pattern instanceof RegExp ? pattern : new RegExp(pattern.toString());
+  return str.replace(reg, replacement.toString());
 }

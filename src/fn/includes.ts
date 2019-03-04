@@ -11,6 +11,10 @@ import indexOf from './indexOf';
  * @param search 検索文字列
  * @param fromIndex 検索位置
  */
-export default function (str: string, search: { toString(): string }, position: number = 0): boolean {
-	return indexOf(str, search, position) !== -1;
+export default function(
+  str: string,
+  search: { toString(): string },
+  position: number = 0
+): boolean {
+  return indexOf(str, search, position) !== -1;
 }

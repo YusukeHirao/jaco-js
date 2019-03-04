@@ -7,13 +7,13 @@ import replaceFromMap from './replaceFromMap';
  * @since 0.4.0
  * @param str 対象の文字列
  */
-export default function (str: string): string {
-	str = replaceFromMap(str, {
-		'｡': '。',
-		'｢': '「',
-		'｣': '」',
-		'､': '、',
-		'･': '・',
-	});
-	return str;
+export default function(str: string): string {
+  str = replaceFromMap(str, {
+    '｡': '。',
+    '｢': '「',
+    '｣': '」',
+    '､': '、',
+    '･': '・'
+  });
+  return str;
 }
