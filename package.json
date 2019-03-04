@@ -6,7 +6,9 @@
   "types": "lib/jaco.d.ts",
   "bin": "bin/jaco",
   "scripts": {
-    "build": "tsc",
+    "build": "yarn build:esm; yarn build:cli",
+    "build:esm": "tsc",
+    "build:cli": "tsc --module commonjs ./bin/jaco-cli.ts",
     "dev": "gulp watch",
     "test": "nyc ava **/*.test.js && nyc report --reporter=html",
     "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",

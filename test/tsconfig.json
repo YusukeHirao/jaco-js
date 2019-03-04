@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "commonjs",
     "target": "es5",
     "strict": true,
     "strictNullChecks": true,
@@ -10,8 +10,9 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "declaration": true,
+    "declaration": false,
+    "allowJs": true,
     "lib": ["es2015", "es2016", "es2017", "esnext"]
   },
-  "exclude": ["bin", "test", "docs", "node_modules"]
+  "exclude": ["node_modules"]
 }
