@@ -13,9 +13,9 @@
     "clean": "yarn clean:esm; yarn clean:cli",
     "clean:esm": "tsc --build --clean",
     "clean:cli": "tsc --build --clean ./bin/jaco-cli.ts",
+    "docs": "typedoc --mode modules --out docs jaco.ts",
     "test": "jest ./test/* --coverage",
-    "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
-    "cli": "bin/jaco"
+    "cli": "./bin/jaco"
   },
   "jest": {
     "moduleFileExtensions": [
