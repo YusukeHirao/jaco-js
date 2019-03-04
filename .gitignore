@@ -62,6 +62,11 @@ docs/
 
 # Distributions
 bin/*.js
+const/*js
 fn/*.js
 util/*.js
 jaco.js
+const/*d.ts
+fn/*.d.ts
+util/*.d.ts
+jaco.d.ts
