@@ -9,6 +9,9 @@
     "build": "yarn build:esm; yarn build:cli",
     "build:esm": "tsc",
     "build:cli": "tsc --module commonjs ./bin/jaco-cli.ts",
+    "clean": "yarn clean:esm; yarn clean:cli",
+    "clean:esm": "tsc --build --clean",
+    "clean:cli": "tsc --build --clean ./bin/jaco-cli.ts",
     "test": "jest ./test/* --coverage",
     "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
     "cli": "bin/jaco"
