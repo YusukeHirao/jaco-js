@@ -60,5 +60,8 @@ typings/
 # Documents
 docs/
 
-# Versioned files
-dist/v*
+# Distributions
+bin/*.js
+fn/*.js
+util/*.js
+jaco.js
