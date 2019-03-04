@@ -273,3 +273,13 @@ test('五十音順ソート12', () => {
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual([]);
 });
+test('五十音順ソート12（サロゲートペア）', () => {
+  const origin = ['𩸽ぁああ', 'あ𩸽ぁァ', '𩸽かカぁ', 'ァアァカ'];
+  const sorted = naturalKanaSort(origin);
+  expect(sorted).toEqual(['ァアァカ', 'あ𩸽ぁァ', '𩸽ぁああ', '𩸽かカぁ']);
+});
+test('五十音順ソート13（下駄記号）', () => {
+  const origin = ['あ〓', 'ああ', 'あ😁'];
+  const sorted = naturalKanaSort(origin);
+  expect(sorted).toEqual(['ああ', 'あ😁', 'あ〓']);
+});

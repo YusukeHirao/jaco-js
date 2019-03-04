@@ -8,7 +8,9 @@ import toPhoeticKana from './toPhoeticKana';
  * 配列の五十音順ソートをするためのソート関数
  * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
  *
- * @version 2.0.0
+ * 漢字や絵文字はソートの比較にほぼ無関係なのでサロゲートペアを考慮したコードは不要
+ *
+ * @version 3.0.0
  * @since 1.1.0
  * @param string Array.prototype.sort から渡される配列要素
  * @param string Array.prototype.sort から渡される配列要素
@@ -20,14 +22,10 @@ export default function(a: string, b: string): number {
     return 0;
   }
 
-  const _a = toPhoeticKana(toNarrow(a));
-  const _b = toPhoeticKana(toNarrow(b));
-  let _tmpA: string; // tempString
-  let _tmpB: string; // tempString
-  const phoneticA = _a.toString();
-  const phoneticB = _b.toString();
-  const unvoicedA = removeVoicedMarks(_a, true);
-  const unvoicedB = removeVoicedMarks(_b, true);
+  const phoneticA = toPhoeticKana(toNarrow(a));
+  const phoneticB = toPhoeticKana(toNarrow(b));
+  const unvoicedA = removeVoicedMarks(phoneticA, true);
+  const unvoicedB = removeVoicedMarks(phoneticB, true);
   const codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);
   const codeB = _convertNaturalKanaOrderNumberPhase1(unvoicedB);
   const l = Math.max(a.length, b.length);
@@ -46,11 +44,11 @@ export default function(a: string, b: string): number {
         rSpecificPhoneticSign.test(b[i])
       ) {
         // 片方が「ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ」に該当する場合
-        _tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
-        _tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
-        if (_tmpA < _tmpB) {
+        const tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
+        const tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
+        if (tmpA < tmpB) {
           return -1;
-        } else if (_tmpA > _tmpB) {
+        } else if (tmpA > tmpB) {
           return 1;
         }
       } else {
@@ -65,45 +63,16 @@ export default function(a: string, b: string): number {
     // もう一度、頭から一文字ずつ比較する
     for (let i = 0; i < l; i++) {
       // ひらがな・カタカナで比較
-      _tmpA = isOnlyHiragana(a[i]) ? '0' : '1';
-      _tmpB = isOnlyHiragana(b[i]) ? '0' : '1';
-      if (_tmpA < _tmpB) {
+      const codePointA = isOnlyHiragana(a[i]) ? 0 : 1;
+      const codePointB = isOnlyHiragana(b[i]) ? 0 : 1;
+      if (codePointA < codePointB) {
         return -1;
-      } else if (_tmpA > _tmpB) {
+      } else if (codePointA > codePointB) {
         return 1;
       }
     }
     return 0;
   }
-}
-
-/**
- * ソートのために内部コードを擬似的に置き換える フェーズ2
- *
- * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
- *
- * @version 1.1.0
- * @since 1.1.0
- * @param string 変換する文字（一文字しか受け取らない予定）
- * @return 変換された文字列
- */
-function _convertNaturalKanaOrderNumberPhase2(str: string): string {
-  // naturalKanaOrder関数で使用される場合は str は一文字想定
-  const result = str
-    .replace('ー', '0')
-    .replace(
-      /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/,
-      ($0: string): string => {
-        return $0.charCodeAt(0).toString(16);
-      }
-    )
-    .replace('ゝ', '4000')
-    .replace('ヽ', '4001')
-    .replace('ゞ', '4002')
-    .replace('ヾ', '4003')
-    // この時点で4桁の数字になっている
-    .replace(/[^0-9]/, '9000');
-  return result;
 }
 
 /**
@@ -122,13 +91,24 @@ function _convertNaturalKanaOrderNumberPhase2(str: string): string {
  * 「ゝ」「ー」
  * 上記の順にならぶように擬似的に文字のコード数値を変換する
  *
- * @version 1.1.0
+ * @version 3.0.0
  * @since 1.1.0
  * @param string 変換する文字列
  * @return 変換された文字列
  */
 function _convertNaturalKanaOrderNumberPhase1(str: string): string {
   return replaceFromMap(str, {
+    // 文字クラスで下記順序に並び替える。
+    // 1. スペース（スペースと和字間隔）
+    // 2. 記述記号（句点や疑問符、ダッシュ (記号)など）
+    // 3. 括弧記号（括弧や引用符）
+    // 4. 学術記号（演算記号などの数学記号と雄記号雌記号）
+    // 5. 一般記号（丸印や矢印、アンパサンドなど）
+    // 6. 単位記号（円記号やパーセント記号など）
+    // 7. アラビア数字（0～9）
+    // 8. 欧字記号（ギリシャ文字とキリル）
+    // 9. ラテンアルファベット（アルファベット及びマクロンかサーカムフレックス付きアルファベット）
+    // 10. 仮名（#仮名での並び替え参照）
     あ: '\u3041',
     い: '\u3042',
     う: '\u3043',
@@ -178,6 +158,38 @@ function _convertNaturalKanaOrderNumberPhase1(str: string): string {
     を: '\u3070',
     ん: '\u3071',
     ゝ: '\u3072',
-    ー: '\u3073'
+    ー: '\u3073',
+    // 11. 漢字（「〃」「仝」「々」「〆」「〇」及び漢字）
+    // 12. 下駄記号（下駄記号）
+    '〓': '\uFFFF'
   }).toString();
+}
+
+/**
+ * ソートのためにコードポイントに一時的に置き換える フェーズ2
+ *
+ * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
+ *
+ * @version 1.1.0
+ * @since 1.1.0
+ * @param string 変換する文字（一文字しか受け取らない予定）
+ * @return 変換された文字列
+ */
+function _convertNaturalKanaOrderNumberPhase2(str: string): string {
+  // naturalKanaOrder関数で使用される場合は str は一文字想定
+  const result = str
+    .replace('ー', '0')
+    .replace(
+      /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/,
+      ($0: string): string => {
+        return $0.charCodeAt(0).toString(16);
+      }
+    )
+    .replace('ゝ', '4000')
+    .replace('ヽ', '4001')
+    .replace('ゞ', '4002')
+    .replace('ヾ', '4003')
+    // この時点で4桁の数字になっている
+    .replace(/[^0-9]/, '9000');
+  return result;
 }
