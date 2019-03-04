@@ -1,75 +1,75 @@
 {
-	"name": "jaco",
-	"version": "2.1.0",
-	"description": "Japanese Character Optimizer.",
-	"main": "lib/jaco.js",
-	"types": "lib/jaco.d.ts",
-	"bin": "bin/jaco",
-	"scripts": {
-		"build": "gulp",
-		"dev": "gulp watch",
-		"test": "nyc ava **/*.test.js && nyc report --reporter=html",
-		"coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
-		"cli": "bin/jaco"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:jaco-project/jaco-js.git"
-	},
-	"keywords": [
-		"japanese",
-		"javascript",
-		"string",
-		"character",
-		"katakana",
-		"hiragana",
-		"unicode",
-		"surrogate pair"
-	],
-	"author": "YusukeHirao",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/jaco-project/jaco-js/issues"
-	},
-	"homepage": "http://jaco-project.github.io/docs/",
-	"dependencies": {
-		"commander": "^2.15.1"
-	},
-	"devDependencies": {
-		"@types/commander": "^2.12.2",
-		"ava": "^0.25.0",
-		"babel": "^6.23.0",
-		"babel-core": "^6.26.3",
-		"babel-loader": "^7.1.4",
-		"babel-plugin-espower": "^2.4.0",
-		"babel-polyfill": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
-		"coveralls": "^3.0.1",
-		"@typescript-eslint/eslint-plugin": "^1.4.2",
-		"eslint": "^5.15.0",
-		"eslint-config-prettier": "^4.1.0",
-		"eslint-plugin-eslint-comments": "^3.1.1",
-		"eslint-plugin-jsdoc": "^4.1.1",
-		"eslint-plugin-node": "^8.0.1",
-		"eslint-plugin-prettier": "^3.0.1",
-		"prettier": "^1.16.4",
-		"git-rev-sync": "^1.12.0",
-		"gulp": "^3.9.1",
-		"gulp-ava": "^0.19.0",
-		"gulp-babel": "^7.0.1",
-		"gulp-header": "^2.0.5",
-		"gulp-plumber": "^1.2.0",
-		"gulp-rename": "^1.2.2",
-		"gulp-typedoc": "^2.2.0",
-		"gulp-typescript": "^4.0.2",
-		"gulp-uglify": "^3.0.0",
-		"moment": "^2.22.1",
-		"nyc": "^11.7.3",
-		"run-sequence": "^2.2.1",
-		"tslint": "^5.10.0",
-		"typedoc": "^0.11.1",
-		"typescript": "^3.3.3333",
-		"webpack": "^4.8.3",
-		"webpack-stream": "^4.0.3"
-	}
+  "name": "jaco",
+  "version": "2.1.0",
+  "description": "Japanese Character Optimizer.",
+  "main": "lib/jaco.js",
+  "types": "lib/jaco.d.ts",
+  "bin": "bin/jaco",
+  "scripts": {
+    "build": "tsc",
+    "dev": "gulp watch",
+    "test": "nyc ava **/*.test.js && nyc report --reporter=html",
+    "coveralls": "nyc ava **/*.test.js && nyc report --reporter=text-lcov | coveralls",
+    "cli": "bin/jaco"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jaco-project/jaco-js.git"
+  },
+  "keywords": [
+    "japanese",
+    "javascript",
+    "string",
+    "character",
+    "katakana",
+    "hiragana",
+    "unicode",
+    "surrogate pair"
+  ],
+  "author": "YusukeHirao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaco-project/jaco-js/issues"
+  },
+  "homepage": "http://jaco-project.github.io/docs/",
+  "dependencies": {
+    "commander": "^2.15.1"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "ava": "^0.25.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-espower": "^2.4.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "coveralls": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "eslint": "^5.15.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-eslint-comments": "^3.1.1",
+    "eslint-plugin-jsdoc": "^4.1.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4",
+    "git-rev-sync": "^1.12.0",
+    "gulp": "^3.9.1",
+    "gulp-ava": "^0.19.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-header": "^2.0.5",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-typedoc": "^2.2.0",
+    "gulp-typescript": "^4.0.2",
+    "gulp-uglify": "^3.0.0",
+    "moment": "^2.22.1",
+    "nyc": "^11.7.3",
+    "run-sequence": "^2.2.1",
+    "tslint": "^5.10.0",
+    "typedoc": "^0.11.1",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.8.3",
+    "webpack-stream": "^4.0.3"
+  }
 }
