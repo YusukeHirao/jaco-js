@@ -2,9 +2,10 @@
   "name": "jaco",
   "version": "2.1.0",
   "description": "Japanese Character Optimizer.",
-  "main": "lib/jaco.js",
-  "types": "lib/jaco.d.ts",
-  "bin": "bin/jaco",
+  "main": "./jaco.js",
+  "module": "./jaco.js",
+  "types": "./jaco.d.ts",
+  "bin": "./bin/jaco",
   "scripts": {
     "build": "yarn build:esm; yarn build:cli",
     "build:esm": "tsc",
