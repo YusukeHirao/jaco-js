@@ -1,12 +1,10 @@
-assert
-src
-test
+coverage
 docs
-.babelrc
+test
+.coveralls.yml
 .editorconfig
 .eslintrc
 .travis.yml
-gulpfile.coffee
 tsconfig.json
 tslint.json
 yarn.lock
