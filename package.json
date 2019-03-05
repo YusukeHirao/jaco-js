@@ -2,9 +2,9 @@
   "name": "jaco",
   "version": "3.0.0-alpha",
   "description": "Japanese Character Optimizer.",
-  "main": "./jaco.js",
-  "module": "./jaco.js",
-  "types": "./jaco.d.ts",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "bin": "./bin/jaco",
   "scripts": {
     "build": "yarn build:esm; yarn build:cli",
