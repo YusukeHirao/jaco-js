@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "3.0.0-alpha",
+  "version": "3.0.0-beta",
   "description": "Japanese Character Optimizer.",
   "main": "./index.js",
   "module": "./index.js",
