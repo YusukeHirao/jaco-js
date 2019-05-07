@@ -1,6 +1,6 @@
 {
   "name": "jaco",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Japanese Character Optimizer.",
   "main": "./index.js",
   "module": "./index.js",
@@ -16,7 +16,8 @@
     "docs": "typedoc --mode modules --out docs jaco.ts",
     "test": "jest ./test/* --coverage",
     "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls",
-    "cli": "./bin/jaco"
+    "cli": "./bin/jaco",
+    "prepare": "yarn clean; yarn build"
   },
   "jest": {
     "moduleFileExtensions": [

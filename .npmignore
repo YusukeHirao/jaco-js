@@ -1,6 +1,9 @@
-coverage
-docs
-test
+coverage/*
+docs/*
+test/*
+api.json
+.eslintignore
+.prettierrc
 .coveralls.yml
 .editorconfig
 .eslintrc
@@ -8,3 +11,5 @@ test
 tsconfig.json
 tslint.json
 yarn.lock
+**/*.ts
+!**/*.d.ts
