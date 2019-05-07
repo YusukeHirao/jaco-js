@@ -60,21 +60,22 @@
     "commander": "^2.15.1"
   },
   "devDependencies": {
-    "@ava/babel-preset-transform-test-files": "^4.0.1",
+    "@ava/babel-preset-transform-test-files": "^5.0.0",
     "@types/commander": "^2.12.2",
-    "@types/jest": "^24.0.9",
+    "@types/jest": "^24.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
     "coveralls": "^3.0.3",
-    "eslint": "^5.15.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-eslint-comments": "^3.1.1",
-    "eslint-plugin-jest": "^22.3.0",
-    "eslint-plugin-jsdoc": "^4.1.1",
-    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-jsdoc": "^4.8.3",
+    "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "jest": "^24.1.0",
-    "prettier": "^1.16.4",
-    "ts-jest": "^24.0.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.17.0",
+    "ts-jest": "^24.0.2",
     "typedoc": "^0.14.2",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.4.5"
   }
 }
