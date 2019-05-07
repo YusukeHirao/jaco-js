@@ -1,3 +1,5 @@
+/* eslint no-irregular-whitespace:0 */
+
 /**
  * 日本語で使用される記号
  *

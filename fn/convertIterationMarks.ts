@@ -49,24 +49,24 @@ function replacer(
 ) {
   let str = removeVoicedMarks(beforeString);
   switch (iterationMark) {
-    case 'ゝ': {
-      str = toHiragana(str);
-      break;
-    }
-    case 'ヽ': {
-      str = toKatakana(str);
-      break;
-    }
-    case 'ゞ': {
-      str = toHiragana(str);
-      str = addVoicedMarks(str);
-      break;
-    }
-    case 'ヾ': {
-      str = toKatakana(str);
-      str = addVoicedMarks(str);
-      break;
-    }
+  case 'ゝ': {
+    str = toHiragana(str);
+    break;
+  }
+  case 'ヽ': {
+    str = toKatakana(str);
+    break;
+  }
+  case 'ゞ': {
+    str = toHiragana(str);
+    str = addVoicedMarks(str);
+    break;
+  }
+  case 'ヾ': {
+    str = toKatakana(str);
+    str = addVoicedMarks(str);
+    break;
+  }
   }
   return beforeString + str;
 }

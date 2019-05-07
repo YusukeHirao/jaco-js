@@ -13,6 +13,7 @@
     "clean": "yarn clean:esm; yarn clean:cli",
     "clean:esm": "tsc --build --clean",
     "clean:cli": "tsc --build --clean ./bin/jaco-cli.ts",
+    "lint": "eslint --fix --quiet **/*.ts",
     "docs": "typedoc --mode modules --out docs jaco.ts",
     "test": "jest ./test/* --coverage",
     "coveralls": "jest ./test/* --coverage --coverageReporters=text-lcov | coveralls",

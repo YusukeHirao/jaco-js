@@ -18,15 +18,15 @@ commander
   .version(VERSION)
   .usage('[options] <path or string>')
   .option('-K, --katakanize <path or string>', 'convert to Katakana', path =>
-    console.log(toKatakana(extruct(path)))
+    process.stdout.write(toKatakana(extruct(path)) + '\n')
   )
   .option('-H, --hiraganize <path or string>', 'convert to Hiragana', path =>
-    console.log(toHiragana(extruct(path)))
+    process.stdout.write(toHiragana(extruct(path)) + '\n')
   )
   .parse(process.argv);
 
 if (process.argv.length <= 2) {
   // No arg
-  console.log(commander.help());
+  process.stdout.write(commander.help());
   process.exit();
 }

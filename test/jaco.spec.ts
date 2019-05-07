@@ -40,13 +40,13 @@ test('newされたインスタンスは別のオブジェクト', () => {
 // length
 test('文字列長', () => {
   const a = new Jaco('魚花');
-  expect(a.length).toBe(2);
+  expect(a).toHaveLength(2);
 });
 
 // length
-test('文字列長', () => {
+test('文字列長2', () => {
   const a = new Jaco('𩸽のひらき');
-  expect(a.length).toBe(5);
+  expect(a).toHaveLength(5);
 });
 
 // addVoicedMarks()
@@ -141,7 +141,7 @@ test('コピー', () => {
 });
 
 // clone()
-test('コピー', () => {
+test('コピー2', () => {
   const a = new Jaco('あ');
   const b = a.clone();
   expect(a.toString()).toBe(b.toString());
@@ -1024,7 +1024,7 @@ test('マッチ取得', () => {
 });
 
 // matches()
-test('マッチ取得', () => {
+test('マッチ取得2', () => {
   const a = new Jaco('𩸽の刺し身の切り身');
   expect(Array.from(a.matches(/.+(の).+/))).toEqual([
     '𩸽の刺し身の切り身',
@@ -1335,7 +1335,9 @@ test('くりかえし7 無限エラー', () => {
   const a = new Jaco('𩸽');
   try {
     a.repeat(Infinity);
-  } catch (e) {}
+  } catch (e) {
+    // never
+  }
 });
 
 // replace()
@@ -1895,14 +1897,14 @@ test('半角化6', () => {
 });
 
 // toNarrow()
-test('半角化6', () => {
+test('半角化7', () => {
   const a = new Jaco(['Ａ', '\r\n', 'Ｂ'].join(''));
   const b = ['A', '\r', 'B'].join('');
   expect(a.toNarrow(true).toString()).not.toBe(b);
 });
 
 // toNarrow()
-test('半角化7', () => {
+test('半角化8', () => {
   const a = new Jaco(['Ａ', '\r', 'Ｂ'].join(''));
   const b = ['A', '\r\n', 'B'].join('');
   expect(a.toNarrow(true).toString()).not.toBe(b);

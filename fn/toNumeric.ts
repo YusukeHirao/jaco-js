@@ -19,7 +19,7 @@ export default function(
   // 半角化
   str = toNarrow(str);
   // 数字・ハイフン（マイナス）・ドット意外を削除
-  str = remove(str, /[^0-9\.\-]/gm);
+  str = remove(str, /[^0-9.-]/gm);
   if (negative) {
     // 最初のにくるハイフンをnに一時的に変換
     str = replace(str, /^-/, 'n');
