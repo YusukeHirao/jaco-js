@@ -1,4 +1,4 @@
-import * as commander from 'commander';
+import { Command } from 'commander';
 import * as fs from 'fs';
 
 import toHiragana from '../fn/toHiragana';
@@ -13,6 +13,8 @@ function extruct(path: string): string {
   }
   return str;
 }
+
+const commander = new Command();
 
 commander
   .version(VERSION)
