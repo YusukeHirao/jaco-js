@@ -72,3 +72,4 @@ fn/*.d.ts
 util/*.d.ts
 index.d.ts
 jaco.d.ts
+*.d.ts.map
