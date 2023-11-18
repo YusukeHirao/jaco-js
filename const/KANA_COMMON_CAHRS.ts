@@ -1,7 +1,2 @@
-/**
- * 濁点／半濁点(結合文字含む)・長音符
- *
- * [゛゜ー]
- *
- */
-export const KANA_COMMON_CAHRS = '\u3099-\u309C\u30FC';
+// This is for backward compatibility.
+export { KANA_COMMON_CHARS as KANA_COMMON_CAHRS } from './KANA_COMMON_CHARS';
