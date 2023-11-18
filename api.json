@@ -5681,7 +5681,7 @@
 		},
 		{
 			"id": 35,
-			"name": "KANA_COMMON_CAHRS",
+			"name": "KANA_COMMON_CHARS",
 			"kind": 32,
 			"kindString": "Variable",
 			"flags": {
@@ -5694,7 +5694,7 @@
 			},
 			"sources": [
 				{
-					"fileName": "const/KANA_COMMON_CAHRS.ts",
+					"fileName": "const/KANA_COMMON_CHARS.ts",
 					"line": 7,
 					"character": 30
 				}

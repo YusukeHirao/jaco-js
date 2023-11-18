@@ -1,4 +1,4 @@
-import { KANA_COMMON_CAHRS } from '../const/KANA_COMMON_CAHRS';
+import { KANA_COMMON_CHARS } from '../const/KANA_COMMON_CHARS';
 import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS';
 
 import isOnly from './isOnly';
@@ -11,5 +11,5 @@ import isOnly from './isOnly';
  * @param str 対象の文字列
  */
 export default function(str: string): boolean {
-  return isOnly(str, KATAKANA_CHARS + KANA_COMMON_CAHRS);
+  return isOnly(str, KATAKANA_CHARS + KANA_COMMON_CHARS);
 }
