@@ -1,5 +1,7 @@
 import naturalKanaSort from '../fn/naturalKanaSort.js';
 
+import { test, expect } from 'vitest';
+
 test('五十音順ソート', () => {
   const origin = [
     'きたきゅうしゅうし',

@@ -1,5 +1,7 @@
 import Jaco from '../jaco.js';
 
+import { test, expect } from 'vitest';
+
 /**
  * `U+D7FF` 上位サロゲートのコードポイントひとつ前の文字
  */
