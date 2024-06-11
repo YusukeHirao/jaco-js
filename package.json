@@ -5,18 +5,15 @@
   "main": "./index.js",
   "module": "./index.js",
   "types": "./index.d.ts",
-  "bin": "./bin/jaco",
   "scripts": {
     "build": "yarn build:esm; yarn build:cli",
     "build:esm": "tsc",
-    "build:cli": "tsc --module commonjs ./bin/jaco-cli.ts",
     "clean": "yarn clean:esm",
     "clean:esm": "tsc --build --clean",
     "lint": "eslint --fix --quiet **/*.ts",
     "docs": "typedoc --mode modules --out docs jaco.ts",
     "test": "jest ./test/* --coverage",
     "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls",
-    "cli": "./bin/jaco",
     "prepare": "yarn clean; yarn build"
   },
   "jest": {
