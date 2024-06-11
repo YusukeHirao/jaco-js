@@ -1,5 +1,5 @@
-import combinateSoundMarks from './combinateSoundMarks';
-import replaceFromMap from './replaceFromMap';
+import combinateSoundMarks from './combinateSoundMarks.js';
+import replaceFromMap from './replaceFromMap.js';
 
 /**
  * 小書き文字を基底文字に変換する

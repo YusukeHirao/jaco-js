@@ -1,4 +1,4 @@
-import charAt from './charAt';
+import charAt from './charAt.js';
 
 /**
  * 指定位置のUnicodeコードポイントを返す

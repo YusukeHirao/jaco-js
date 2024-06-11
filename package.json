@@ -2,19 +2,19 @@
   "name": "jaco",
   "version": "4.0.0",
   "description": "Japanese Character Optimizer.",
-  "main": "./index.js",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
   "scripts": {
-    "build": "yarn build:esm; yarn build:cli",
-    "build:esm": "tsc",
-    "clean": "yarn clean:esm",
-    "clean:esm": "tsc --build --clean",
+    "build": "tsc",
     "lint": "eslint --fix --quiet **/*.ts",
     "docs": "typedoc --mode modules --out docs jaco.ts",
     "test": "jest ./test/* --coverage",
-    "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls",
-    "prepare": "yarn clean; yarn build"
+    "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
     "moduleFileExtensions": [

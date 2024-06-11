@@ -1,7 +1,7 @@
-import { KANA_COMMON_CAHRS } from '../const/KANA_COMMON_CAHRS';
-import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS';
+import { KANA_COMMON_CAHRS } from '../const/KANA_COMMON_CAHRS.js';
+import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS.js';
 
-import isOnly from './isOnly';
+import isOnly from './isOnly.js';
 
 /**
  * カタカナだけで構成されているかどうか

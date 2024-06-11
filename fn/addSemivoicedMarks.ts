@@ -1,4 +1,4 @@
-import replaceFromMap from './replaceFromMap';
+import replaceFromMap from './replaceFromMap.js';
 
 /**
  * 半濁点を追加する

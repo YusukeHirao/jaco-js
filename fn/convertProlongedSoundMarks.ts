@@ -1,5 +1,5 @@
-import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS';
-import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS';
+import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS.js';
+import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS.js';
 
 const KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP: RegExp = new RegExp(
   '[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー'

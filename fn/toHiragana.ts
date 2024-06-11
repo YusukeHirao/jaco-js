@@ -1,11 +1,11 @@
-import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS';
+import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS.js';
 
-import combinateSoundMarks from './combinateSoundMarks';
-import replaceFromMap from './replaceFromMap';
-import toWideKatakana from './toWideKatakana';
+import combinateSoundMarks from './combinateSoundMarks.js';
+import replaceFromMap from './replaceFromMap.js';
+import toWideKatakana from './toWideKatakana.js';
 
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import patternize from '../util/patternize.js';
+import shift from '../util/shift.js';
 
 /**
  * ひらがなに変換する

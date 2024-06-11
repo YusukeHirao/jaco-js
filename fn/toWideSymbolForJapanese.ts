@@ -1,4 +1,4 @@
-import replaceFromMap from './replaceFromMap';
+import replaceFromMap from './replaceFromMap.js';
 
 /**
  * 日本語で使われる記号を全角に変換

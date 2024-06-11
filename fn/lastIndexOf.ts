@@ -1,4 +1,4 @@
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 指定された文字列が最後に現れるインデックスを返す

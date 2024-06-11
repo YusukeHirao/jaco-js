@@ -1,4 +1,4 @@
-import indexOf from './indexOf';
+import indexOf from './indexOf.js';
 
 /**
  * 指定された文字列が最初に現れるインデックスを返す

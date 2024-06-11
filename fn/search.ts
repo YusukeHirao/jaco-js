@@ -1,6 +1,6 @@
-import split from './split';
+import split from './split.js';
 
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 正規表現にマッチしたインデックスを返す

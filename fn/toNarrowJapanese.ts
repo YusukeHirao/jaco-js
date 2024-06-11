@@ -1,5 +1,5 @@
-import toNarrowKatakana from './toNarrowKatakana';
-import toNarrowSymbolForJapanese from './toNarrowSymbolForJapanese';
+import toNarrowKatakana from './toNarrowKatakana.js';
+import toNarrowSymbolForJapanese from './toNarrowSymbolForJapanese.js';
 
 /**
  * カタカナと日本語で使われる記号を半角に変換

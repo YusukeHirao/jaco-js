@@ -1,7 +1,7 @@
-import is from './is';
-import substring from './substring';
+import is from './is.js';
+import substring from './substring.js';
 
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 引数に指定された文字列が末尾と合致するか

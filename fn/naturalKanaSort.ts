@@ -1,4 +1,4 @@
-import naturalKanaOrder from './naturalKanaOrder';
+import naturalKanaOrder from './naturalKanaOrder.js';
 
 /**
  * 配列の五十音順ソートをする

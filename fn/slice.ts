@@ -1,4 +1,4 @@
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 文字位置による抽出

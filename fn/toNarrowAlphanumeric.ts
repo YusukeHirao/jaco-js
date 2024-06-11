@@ -1,8 +1,8 @@
-import { FULLWIDTH_ALPHA_CHARS } from '../const/FULLWIDTH_ALPHA_CHARS';
-import { FULLWIDTH_DIGIT_CHARS } from '../const/FULLWIDTH_DIGIT_CHARS';
+import { FULLWIDTH_ALPHA_CHARS } from '../const/FULLWIDTH_ALPHA_CHARS.js';
+import { FULLWIDTH_DIGIT_CHARS } from '../const/FULLWIDTH_DIGIT_CHARS.js';
 
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import patternize from '../util/patternize.js';
+import shift from '../util/shift.js';
 
 /**
  * 英数字を半角に変換

@@ -1,4 +1,4 @@
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 文字列から指定位置の文字を返す

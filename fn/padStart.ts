@@ -1,7 +1,7 @@
-import substr from './substr';
+import substr from './substr.js';
 
-import arrayize from '../util/arrayize';
-import pad from '../util/pad';
+import arrayize from '../util/arrayize.js';
+import pad from '../util/pad.js';
 
 /**
  * 最終的な文字列が指定された長さに到達するように文字列を先頭に追加する

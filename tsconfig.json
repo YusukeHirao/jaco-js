@@ -6,19 +6,11 @@
     "@tsconfig/node-lts"
   ],
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "strict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "declaration": true,
-    "declarationMap": true,
-    "lib": ["es2015", "es2016", "es2017", "esnext"]
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "noPropertyAccessFromIndexSignature": false,
+    "exactOptionalPropertyTypes": false
   },
-  "exclude": ["bin", "test", "docs", "node_modules"]
+  "exclude": ["node_modules", "test"]
 }

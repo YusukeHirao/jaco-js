@@ -1,10 +1,10 @@
-import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS';
+import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS.js';
 
-import replace from './replace';
-import toWideKatakana from './toWideKatakana';
+import replace from './replace.js';
+import toWideKatakana from './toWideKatakana.js';
 
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import patternize from '../util/patternize.js';
+import shift from '../util/shift.js';
 
 /**
  * カタカナに変換する

@@ -1,4 +1,4 @@
-import Jaco from '../jaco';
+import Jaco from '../jaco.js';
 
 /**
  * `U+D7FF` 上位サロゲートのコードポイントひとつ前の文字

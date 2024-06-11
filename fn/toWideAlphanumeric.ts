@@ -1,8 +1,8 @@
-import { ALPHA_CHARS } from '../const/ALPHA_CHARS';
-import { DIGIT_CHARS } from '../const/DIGIT_CHARS';
+import { ALPHA_CHARS } from '../const/ALPHA_CHARS.js';
+import { DIGIT_CHARS } from '../const/DIGIT_CHARS.js';
 
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import patternize from '../util/patternize.js';
+import shift from '../util/shift.js';
 
 /**
  * 英数字を全角に変換

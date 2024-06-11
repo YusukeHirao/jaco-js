@@ -1,10 +1,10 @@
-import { HIRAGANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS';
-import { KATAKANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS';
+import { HIRAGANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/HIRAGANA_CHARS_IGNORE_ITERATION_MARKS.js';
+import { KATAKANA_CHARS_IGNORE_ITERATION_MARKS } from '../const/KATAKANA_CHARS_IGNORE_ITERATION_MARKS.js';
 
-import addVoicedMarks from './addVoicedMarks';
-import removeVoicedMarks from './removeVoicedMarks';
-import toHiragana from './toHiragana';
-import toKatakana from './toKatakana';
+import addVoicedMarks from './addVoicedMarks.js';
+import removeVoicedMarks from './removeVoicedMarks.js';
+import toHiragana from './toHiragana.js';
+import toKatakana from './toKatakana.js';
 
 const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(
   `([${HIRAGANA_CHARS_IGNORE_ITERATION_MARKS}${KATAKANA_CHARS_IGNORE_ITERATION_MARKS}])([ゝゞヽヾ])`

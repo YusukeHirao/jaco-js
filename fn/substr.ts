@@ -1,4 +1,4 @@
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 指定した位置から指定した数だけ文字列を抽出

@@ -1,8 +1,8 @@
-import is from './is';
-import slice from './slice';
-import split from './split';
+import is from './is.js';
+import slice from './slice.js';
+import split from './split.js';
 
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 指定された文字列が最初に現れるインデックスを返す

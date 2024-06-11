@@ -1,5 +1,5 @@
-import remove from './remove';
-import replaceFromMap from './replaceFromMap';
+import remove from './remove.js';
+import replaceFromMap from './replaceFromMap.js';
 
 /**
  * 濁点を追加する

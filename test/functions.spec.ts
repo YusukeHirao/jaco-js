@@ -1,4 +1,4 @@
-import naturalKanaSort from '../fn/naturalKanaSort';
+import naturalKanaSort from '../fn/naturalKanaSort.js';
 
 test('五十音順ソート', () => {
   const origin = [

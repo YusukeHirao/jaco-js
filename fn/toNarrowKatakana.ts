@@ -1,6 +1,6 @@
-import replace from './replace';
-import replaceFromMap from './replaceFromMap';
-import toKatakana from './toKatakana';
+import replace from './replace.js';
+import replaceFromMap from './replaceFromMap.js';
+import toKatakana from './toKatakana.js';
 
 /**
  * 半角カタカナに変換する

@@ -1,4 +1,4 @@
-import replace from './replace';
+import replace from './replace.js';
 
 /**
  * 文字列を取り除く

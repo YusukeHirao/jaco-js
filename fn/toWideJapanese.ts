@@ -1,5 +1,5 @@
-import toWideKatakana from './toWideKatakana';
-import toWideSymbolForJapanese from './toWideSymbolForJapanese';
+import toWideKatakana from './toWideKatakana.js';
+import toWideSymbolForJapanese from './toWideSymbolForJapanese.js';
 
 /**
  * カタカナと日本語で使われる記号を全角に変換

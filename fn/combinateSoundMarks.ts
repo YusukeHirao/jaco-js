@@ -1,4 +1,4 @@
-import replaceFromMap from './replaceFromMap';
+import replaceFromMap from './replaceFromMap.js';
 
 /**
  * 濁点・半濁点とひらがな・かたかなを結合させる

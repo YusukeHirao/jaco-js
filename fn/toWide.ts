@@ -1,6 +1,6 @@
-import toWideAlphanumeric from './toWideAlphanumeric';
-import toWideJapanese from './toWideJapanese';
-import toWideSign from './toWideSign';
+import toWideAlphanumeric from './toWideAlphanumeric.js';
+import toWideJapanese from './toWideJapanese.js';
+import toWideSign from './toWideSign.js';
 
 /**
  * 全角に変換

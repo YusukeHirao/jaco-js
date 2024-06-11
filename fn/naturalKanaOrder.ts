@@ -1,8 +1,8 @@
-import isOnlyHiragana from './isOnlyHiragana';
-import removeVoicedMarks from './removeVoicedMarks';
-import replaceFromMap from './replaceFromMap';
-import toNarrow from './toNarrow';
-import toPhoeticKana from './toPhoeticKana';
+import isOnlyHiragana from './isOnlyHiragana.js';
+import removeVoicedMarks from './removeVoicedMarks.js';
+import replaceFromMap from './replaceFromMap.js';
+import toNarrow from './toNarrow.js';
+import toPhoeticKana from './toPhoeticKana.js';
 
 /**
  * 配列の五十音順ソートをするためのソート関数

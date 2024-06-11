@@ -1,6 +1,6 @@
-import substr from './substr';
+import substr from './substr.js';
 
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 指定した位置の間の文字列を抽出

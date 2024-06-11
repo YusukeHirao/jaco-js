@@ -1,6 +1,6 @@
-import remove from './remove';
-import replace from './replace';
-import toNarrow from './toNarrow';
+import remove from './remove.js';
+import replace from './replace.js';
+import toNarrow from './toNarrow.js';
 
 /**
  * 数字に変換する

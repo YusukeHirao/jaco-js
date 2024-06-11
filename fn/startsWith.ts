@@ -1,6 +1,6 @@
-import substr from './substr';
+import substr from './substr.js';
 
-import arrayize from '../util/arrayize';
+import arrayize from '../util/arrayize.js';
 
 /**
  * 引数に指定された文字列が先頭と合致するか

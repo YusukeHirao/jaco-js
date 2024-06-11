@@ -1,7 +1,7 @@
-import convertIterationMarks from './convertIterationMarks';
-import convertProlongedSoundMarks from './convertProlongedSoundMarks';
-import toBasicLetter from './toBasicLetter';
-import toHiragana from './toHiragana';
+import convertIterationMarks from './convertIterationMarks.js';
+import convertProlongedSoundMarks from './convertProlongedSoundMarks.js';
+import toBasicLetter from './toBasicLetter.js';
+import toHiragana from './toHiragana.js';
 
 /**
  * よみの文字に変換する

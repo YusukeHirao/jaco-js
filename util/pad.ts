@@ -1,4 +1,4 @@
-import arrayize from './arrayize';
+import arrayize from './arrayize.js';
 
 /**
  * 指定数の文字列長になるように繰り返して埋める

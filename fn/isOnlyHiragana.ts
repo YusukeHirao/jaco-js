@@ -1,7 +1,7 @@
-import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS';
-import { KANA_COMMON_CAHRS } from '../const/KANA_COMMON_CAHRS';
+import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS.js';
+import { KANA_COMMON_CAHRS } from '../const/KANA_COMMON_CAHRS.js';
 
-import isOnly from './isOnly';
+import isOnly from './isOnly.js';
 
 /**
  * ひらがなだけで構成されているかどうか

@@ -1,10 +1,10 @@
-import { FULLWIDTH_SIGN_CHARS } from '../const/FULLWIDTH_SIGN_CHARS';
-import { SPACE_CHARS } from '../const/SPACE_CHARS';
+import { FULLWIDTH_SIGN_CHARS } from '../const/FULLWIDTH_SIGN_CHARS.js';
+import { SPACE_CHARS } from '../const/SPACE_CHARS.js';
 
-import replace from './replace';
+import replace from './replace.js';
 
-import patternize from '../util/patternize';
-import shift from '../util/shift';
+import patternize from '../util/patternize.js';
+import shift from '../util/shift.js';
 
 /**
  * 記号を半角に変換

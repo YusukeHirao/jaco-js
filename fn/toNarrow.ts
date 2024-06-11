@@ -1,6 +1,6 @@
-import toNarrowAlphanumeric from './toNarrowAlphanumeric';
-import toNarrowJapanese from './toNarrowJapanese';
-import toNarrowSign from './toNarrowSign';
+import toNarrowAlphanumeric from './toNarrowAlphanumeric.js';
+import toNarrowJapanese from './toNarrowJapanese.js';
+import toNarrowSign from './toNarrowSign.js';
 
 /**
  * 半角に変換
