@@ -1,4 +1,10 @@
 {
+  "extends": [
+    // https://github.com/tsconfig/bases
+    "@tsconfig/recommended",
+    "@tsconfig/strictest",
+    "@tsconfig/node-lts"
+  ],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
