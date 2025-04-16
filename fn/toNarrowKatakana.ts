@@ -1,4 +1,3 @@
-import replace from './replace.js';
 import replaceFromMap from './replaceFromMap.js';
 import toKatakana from './toKatakana.js';
 
@@ -15,9 +14,9 @@ export default function (str: string, fromHiragana: boolean = false): string {
     str = toKatakana(str);
   }
   // 濁点の変換 (全角濁点2種類対応)
-  str = replace(str, /\u309B|\u3099/g, '\uFF9E');
+  str = str.replace(/\u309B|\u3099/g, '\uFF9E');
   // 半濁点の変換 (全角半濁点2種類対応)
-  str = replace(str, /\u309C|\u309A/g, '\uFF9F');
+  str = str.replace(/\u309C|\u309A/g, '\uFF9F');
   // カタカナの変換
   str = replaceFromMap(str, {
     ァ: 'ｧ',

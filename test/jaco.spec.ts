@@ -63,18 +63,6 @@ test('半濁点付加', () => {
   expect(a.addSemivoicedMarks().toString()).toBe('あかうぱぴぷぺぽパピプペポ');
 });
 
-// append()
-test('後方結合', () => {
-  const a = new Jaco('あい');
-  expect(a.append('うえお').toString()).toBe('あいうえお');
-});
-
-// append()
-test('後方結合2', () => {
-  const a = new Jaco('いろは');
-  expect(a.append(new Jaco('にほへと')).toString()).toBe('いろはにほへと');
-});
-
 // byteSize()
 test('バイト数', () => {
   const a = new Jaco('あいうえおabc');
@@ -85,54 +73,6 @@ test('バイト数', () => {
 test('バイト数2', () => {
   const a = new Jaco('あ い う え\nお a b c');
   expect(a.byteSize()).toBe(25);
-});
-
-// charAt()
-test('抜き出し', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charAt().toString()).toBe('𩸽');
-});
-
-// charAt()
-test('抜き出し2', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charAt(0).toString()).toBe('𩸽');
-});
-
-// charAt()
-test('抜き出し3', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charAt(1).toString()).toBe('の');
-});
-
-// charAt()
-test('抜き出し4', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charAt(99).toString()).toBe('');
-});
-
-// charCodeAt()
-test('コード抜き出し', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charCodeAt()).toBe(0x29e3d);
-});
-
-// charCodeAt()
-test('コード抜き出し2', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charCodeAt(0)).toBe(0x29e3d);
-});
-
-// charCodeAt()
-test('コード抜き出し3', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.charCodeAt(1)).toBe(0x306e);
-});
-
-// charCodeAt()
-test('コード抜き出し4', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(isNaN(a.charCodeAt(99))).toBe(true);
 });
 
 // clone()
@@ -183,19 +123,6 @@ test('濁点・半濁点の結合5', () => {
 test('濁点・半濁点の結合6', () => {
   const a = new Jaco('ぱぴぷぺぽ');
   expect(a.combinateSoundMarks().toString()).toBe('ぱぴぷぺぽ');
-});
-
-// concat()
-test('連結', () => {
-  const a = new Jaco('あ');
-  expect(
-    a
-      .concat('い', new Jaco('う'), 'え', new Jaco('お'), [
-        'か',
-        new Jaco('き'),
-      ])
-      .toString(),
-  ).toBe('あいうえおかき');
 });
 
 // convertIterationMarks()
@@ -287,42 +214,6 @@ test('長音符変換2', () => {
       .convertProlongedSoundMarks()
       .toString(),
   ).toBe('ウバッシャアアアアアアアアアア');
-});
-
-// endWith()
-test('末尾合致 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith('ひらき')).toBe(true);
-});
-
-// endWith()
-test('末尾合致2 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith('𩸽の')).toBe(false);
-});
-
-// endWith()
-test('末尾合致3 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith('ひら', 4)).toBe(true);
-});
-
-// endWith()
-test('末尾合致4 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith('𩸽の', 2)).toBe(true);
-});
-
-// endWith()
-test('末尾合致5 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith(new Jaco('ひら'), 4)).toBe(true);
-});
-
-// endWith()
-test('末尾合致6 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.endWith(new Jaco('𩸽の'), 2)).toBe(true);
 });
 
 // has()
@@ -588,66 +479,6 @@ test('不完全サロゲートペア検知17', () => {
 // hasUnpairedSurrogate
 test('不完全サロゲートペア検知18', () => {
   expect(new Jaco('ひらきにする\ude3d𩸽').hasUnpairedSurrogate()).toBe(true);
-});
-
-// includes()
-test('部分合致', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.includes('𩸽の')).toBe(true);
-});
-
-// includes()
-test('部分合致2', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.includes('の刺し身の切り')).toBe(true);
-});
-
-// includes()
-test('部分合致3', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.includes('𩸽の刺しの切り身')).toBe(false);
-});
-
-// indexOf()
-test('前方検索', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf('の')).toBe(1);
-});
-
-// indexOf()
-test('前方検索2', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf('の', 3)).toBe(5);
-});
-
-// indexOf()
-test('前方検索3', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf(new Jaco('の'))).toBe(1);
-});
-
-// indexOf()
-test('前方検索4', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf(new Jaco('の'), 3)).toBe(5);
-});
-
-// indexOf()
-test('前方検索5', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf(new Jaco('挿し'))).toBe(-1);
-});
-
-// indexOf()
-test('前方検索6', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf(new Jaco('𩸽の刺し'))).toBe(0);
-});
-
-// indexOf()
-test('前方検索7', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.indexOf(new Jaco('身の切り身'))).toBe(4);
 });
 
 // is()
@@ -968,174 +799,6 @@ test('カタカナのみ5', () => {
   expect(a.isOnlyKatakana()).toBe(false);
 });
 
-// lastIndexOf()
-test('後方検索', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.lastIndexOf('の')).toBe(5);
-});
-
-// lastIndexOf()
-test('後方検索2', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.lastIndexOf('の', 0)).toBe(-1);
-});
-
-// lastIndexOf()
-test('後方検索3', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.lastIndexOf(new Jaco('の'))).toBe(5);
-});
-
-// lastIndexOf()
-test('後方検索4', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.lastIndexOf(new Jaco('の'), 0)).toBe(-1);
-});
-
-// lastIndexOf()
-test('後方検索5', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.lastIndexOf(new Jaco('挿し'))).toBe(-1);
-});
-
-// match()
-test('マッチ', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(Array.from(a.match(/の/g) || [])).toEqual(['の', 'の']);
-});
-
-// match()
-test('マッチ2', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(Array.from(a.match(/.+(の).+/) || [])).toEqual([
-    '𩸽の刺し身の切り身',
-    'の',
-  ]);
-});
-
-// match()
-test('マッチ3', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(a.match(/挿し/)).toBeFalsy();
-});
-
-// matches()
-test('マッチ取得', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(Array.from(a.matches(/の/g))).toEqual(['の', 'の']);
-});
-
-// matches()
-test('マッチ取得2', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(Array.from(a.matches(/.+(の).+/))).toEqual([
-    '𩸽の刺し身の切り身',
-    'の',
-  ]);
-});
-
-// matches()
-test('マッチ取得3', () => {
-  const a = new Jaco('𩸽の刺し身の切り身');
-  expect(Array.from(a.matches(/挿し/))).toEqual([]);
-});
-
-// padEnd()
-test('後ろ埋め', () => {
-  const a = new Jaco('𩸽');
-  expect(a.padEnd(3).toString()).toBe('𩸽  ');
-});
-
-// padEnd()
-test('後ろ埋め2', () => {
-  const a = new Jaco('𩸽');
-  expect(a.padEnd(3, '𩸽').toString()).toBe('𩸽𩸽𩸽');
-});
-
-// padEnd()
-test('後ろ埋め3', () => {
-  const a = new Jaco('a');
-  expect(a.padEnd(3, '𩸽').toString()).toBe('a𩸽𩸽');
-});
-
-// padEnd()
-test('後ろ埋め4', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padEnd(3).toString()).toBe('𩸽のひ');
-});
-
-// padEnd()
-test('後ろ埋め5', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padEnd(3, 'abc').toString()).toBe('𩸽のひ');
-});
-
-// padEnd()
-test('後ろ埋め6', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padEnd(10, 'abc').toString()).toBe('𩸽のひらきabcab');
-});
-
-// padEnd()
-test('後ろ埋め7', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padEnd(-1).toString()).toBe('𩸽のひらき');
-});
-
-// padStart()
-test('前埋め', () => {
-  const a = new Jaco('𩸽');
-  expect(a.padStart(3).toString()).toBe('  𩸽');
-});
-
-// padStart()
-test('前埋め2', () => {
-  const a = new Jaco('𩸽');
-  expect(a.padStart(3, '𩸽').toString()).toBe('𩸽𩸽𩸽');
-});
-
-// padStart()
-test('前埋め3', () => {
-  const a = new Jaco('a');
-  expect(a.padStart(3, '𩸽').toString()).toBe('𩸽𩸽a');
-});
-
-// padStart()
-test('前埋め4', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padStart(3).toString()).toBe('𩸽のひ');
-});
-
-// padStart()
-test('前埋め5', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padStart(3, 'abc').toString()).toBe('𩸽のひ');
-});
-
-// padStart()
-test('前埋め6', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padStart(10, 'abc').toString()).toBe('abcab𩸽のひらき');
-});
-
-// padStart()
-test('前埋め7', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.padStart(-1).toString()).toBe('𩸽のひらき');
-});
-
-// prepend()
-test('前方結合', () => {
-  const a = new Jaco('うえお');
-  expect(a.prepend('あい').toString()).toBe('あいうえお');
-});
-
-// prepend()
-test('前方結合2', () => {
-  const a = new Jaco('にほへと');
-  expect(a.prepend(new Jaco('いろは')).toString()).toBe('いろはにほへと');
-});
-
 // remove()
 test('削除', () => {
   const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
@@ -1300,66 +963,6 @@ test('濁点・半濁点除去', () => {
   expect(a2.removeVoicedMarks().toString()).toBe(b);
 });
 
-// repeat()
-test('くりかえし', () => {
-  const a = new Jaco('あ');
-  expect(a.repeat(3).toString()).toBe('あああ');
-});
-
-// repeat()
-test('くりかえし2', () => {
-  const a = new Jaco('𩸽と');
-  expect(a.repeat(6).toString()).toBe('𩸽と𩸽と𩸽と𩸽と𩸽と𩸽と');
-});
-
-// repeat()
-test('くりかえし3', () => {
-  const a = new Jaco('𩸽');
-  expect(a.repeat(0).toString()).toBe('');
-});
-
-// repeat()
-test('くりかえし4', () => {
-  const a = new Jaco('𩸽');
-  expect(a.repeat().toString()).toBe('');
-});
-
-// repeat()
-test('くりかえし5 小数点切り捨て', () => {
-  const a = new Jaco('𩸽');
-  expect(a.repeat(3.5).toString()).toBe('𩸽𩸽𩸽');
-});
-
-// repeat()
-test('くりかえし6 負の数は0強制', () => {
-  const a = new Jaco('𩸽');
-  expect(a.repeat(-1).toString()).toBe('');
-});
-
-// repeat()
-test('くりかえし7 無限エラー', () => {
-  const a = new Jaco('𩸽');
-  expect(() => a.repeat(Infinity)).toThrow(RangeError);
-});
-
-// replace()
-test('置換', () => {
-  const a = new Jaco('abcdeABCDE');
-  expect(a.replace(/abc/gi, 'z').toString()).toBe('zdezDE');
-});
-
-// replace()
-test('置換2', () => {
-  const a = new Jaco('abcdeABCDE');
-  expect(a.replace('abc', 'z').toString()).toBe('zdeABCDE');
-});
-
-// replace()
-test('置換3', () => {
-  const a = new Jaco('abcdeABCDE');
-  expect(a.replace(new Jaco('abc'), 'z').toString()).toBe('zdeABCDE');
-});
-
 // replaceFromMap()
 test('マップから置換', () => {
   const a = new Jaco('abcdeABCDE');
@@ -1371,187 +974,6 @@ test('マップから置換', () => {
       })
       .toString(),
   ).toBe('zdeZDE');
-});
-
-// search()
-test('検索', () => {
-  const a = new Jaco('食べたい𩸽');
-  expect(a.search(/𩸽/)).toBe(4);
-});
-
-// search()
-test('検索2', () => {
-  const a = new Jaco('𩸽の刺し身');
-  expect(a.search(/の/)).toBe(1);
-});
-
-// search()
-test('検索3', () => {
-  const a = new Jaco('食べたい𩸽の刺し身');
-  expect(a.search('の')).toBe(5);
-});
-
-// search()
-test('検索4', () => {
-  const a = new Jaco('𩸽の刺し身');
-  expect(a.search(new Jaco('の'))).toBe(1);
-});
-
-// slice()
-test('抽出', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.slice(1, 5);
-  expect(b.toString()).toBe('ろはにほ');
-});
-
-// slice()
-test('抽出2', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.slice(1);
-  expect(b.toString()).toBe('ろはにほへと');
-});
-
-// slice()
-test('抽出3', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.slice(1, 3);
-  expect(b.toString()).toBe('の刺');
-});
-
-// slice()
-test('抽出4', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.slice(1);
-  expect(b.toString()).toBe('の刺し身');
-});
-
-// split()
-test('分割', () => {
-  const a = new Jaco('𩸽の刺し身');
-  expect(a.split('の')).toEqual(['𩸽', '刺し身']);
-});
-
-// split()
-test('分割2', () => {
-  const a = new Jaco('asadafa');
-  expect(a.split('a')).toEqual(['', 's', 'd', 'f', '']);
-});
-
-// split()
-test('分割3', () => {
-  const a = new Jaco('asadafa');
-  expect(a.split(/a/)).toEqual(['', 's', 'd', 'f', '']);
-});
-
-// split()
-test('分割4', () => {
-  const a = new Jaco('asadafa');
-  expect(a.split(/a/g)).toEqual(['', 's', 'd', 'f', '']);
-});
-
-// split()
-test('分割5', () => {
-  const a = new Jaco('asadafa');
-  expect(a.split(/(a)/)).toEqual(['', 'a', 's', 'a', 'd', 'a', 'f', 'a', '']);
-});
-
-// startsWith()
-test('先頭合致 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith('𩸽のひらき')).toBe(true);
-});
-
-// startsWith()
-test('先頭合致2 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith('のひらき')).toBe(false);
-});
-
-// startsWith()
-test('先頭合致3 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith('ひら', 2)).toBe(true);
-});
-
-// startsWith()
-test('先頭合致4 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith('ひらき', 2)).toBe(true);
-});
-
-// startsWith()
-test('先頭合致5 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith(new Jaco('ら'), 3)).toBe(true);
-});
-
-// startsWith()
-test('先頭合致6 ', () => {
-  const a = new Jaco('𩸽のひらき');
-  expect(a.startsWith(new Jaco('𩸽の'), 0)).toBe(true);
-});
-
-// substr()
-test('長さで抽出', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.substr(1, 2);
-  expect(b.toString()).toBe('ろは');
-});
-
-// substr()
-test('長さで抽出2', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.substr(1);
-  expect(b.toString()).toBe('ろはにほへと');
-});
-
-// substr()
-test('長さで抽出3', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.substr(2, 3);
-  expect(b.toString()).toBe('刺し身');
-});
-
-// substr()
-test('長さで抽出4', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.substr(-1, 1);
-  expect(b.toString()).toBe('身');
-});
-
-// substring()
-test('インデックスから抽出', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.substring(0, 2);
-  expect(b.toString()).toBe('いろ');
-});
-
-// substring()
-test('インデックスから抽出2', () => {
-  const a = new Jaco('いろはにほへと');
-  const b = a.substring(1, 3);
-  expect(b.toString()).toBe('ろは');
-});
-
-// substring()
-test('インデックスから抽出3', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.substring(1, 4);
-  expect(b.toString()).toBe('の刺し');
-});
-
-// substring()
-test('インデックスから抽出4', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.substring(4, 1);
-  expect(b.toString()).toBe('の刺し');
-});
-
-// substring()
-test('インデックスから抽出5', () => {
-  const a = new Jaco('𩸽の刺し身');
-  const b = a.substring(-5, 16);
-  expect(b.toString()).toBe('𩸽の刺し身');
 });
 
 // test()
@@ -1803,12 +1225,6 @@ test('カタカナ以外は変換しない2', () => {
   );
   const b = '012０１２abcａｂｃABCＡＢＣ!"#$%&\'()！＂＃＄％＆＇（）。「」、・';
   expect(a.toKatakana(true).toString()).toBe(b);
-});
-
-// toLowerCase()
-test('小文字に変換', () => {
-  const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-  expect(a.toLowerCase().toString()).toBe('abcdefghijklmnopqrstuvwxyz');
 });
 
 // toNarrow()
@@ -2146,12 +1562,6 @@ test('暗黙の型変換 文字列に変換', () => {
   expect(`${a}い`).toBe('あい');
 });
 
-// toUpperCase()
-test('大文字に変換', () => {
-  const a = new Jaco('aBcDeFgHiJkLmNoPqRsTuVwXyZ');
-  expect(a.toUpperCase().toString()).toBe('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-});
-
 // toWide()
 test('全角化', () => {
   const a = new Jaco(
@@ -2272,79 +1682,6 @@ test('日本語記号の全角化', () => {
 test('暗黙の型変換 文字列に変換後さらに数値に変換される', () => {
   const a = new Jaco('1');
   expect(+a).toBe(1);
-});
-
-// trim()
-test('前後の空白を削除', () => {
-  const a = new Jaco('a b');
-  a.trim();
-  expect(a.toString()).toBe('a b');
-});
-
-// trim()
-test('前後の空白を削除2', () => {
-  const a = new Jaco(' a b');
-  expect(a.trim().toString()).toBe('a b');
-});
-
-// trim()
-test('前後の空白を削除3', () => {
-  const a = new Jaco('a b  　');
-  expect(a.trim().toString()).toBe('a b');
-});
-
-// trim()
-test('前後の空白を削除4', () => {
-  const a = new Jaco('　a 　b\n');
-  expect(a.trim().toString()).toBe('a 　b');
-});
-
-// trimLeft()
-test('前の空白を削除', () => {
-  const a = new Jaco('a b');
-  expect(a.trimLeft().toString()).toBe('a b');
-});
-
-// trimLeft()
-test('前の空白を削除2', () => {
-  const a = new Jaco(' a b');
-  expect(a.trimLeft().toString()).toBe('a b');
-});
-
-// trimLeft()
-test('前の空白を削除3', () => {
-  const a = new Jaco('a b  　');
-  expect(a.trimLeft().toString()).toBe('a b  　');
-});
-
-// trimLeft()
-test('前の空白を削除4', () => {
-  const a = new Jaco('　a 　b\n');
-  expect(a.trimLeft().toString()).toBe('a 　b\n');
-});
-
-// trimRight()
-test('後ろの空白を削除', () => {
-  const a = new Jaco('a b');
-  expect(a.trimRight().toString()).toBe('a b');
-});
-
-// trimRight()
-test('後ろの空白を削除2', () => {
-  const a = new Jaco(' a b');
-  expect(a.trimRight().toString()).toBe(' a b');
-});
-
-// trimRight()
-test('後ろの空白を削除3', () => {
-  const a = new Jaco('a b  　');
-  expect(a.trimRight().toString()).toBe('a b');
-});
-
-// trimRight()
-test('後ろの空白を削除4', () => {
-  const a = new Jaco('　a 　b\n');
-  expect(a.trimRight().toString()).toBe('　a 　b');
 });
 
 // [@@iterator]()

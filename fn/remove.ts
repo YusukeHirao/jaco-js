@@ -1,5 +1,3 @@
-import replace from './replace.js';
-
 /**
  * 文字列を取り除く
  *
@@ -11,5 +9,6 @@ export default function (
   str: string,
   pattern: RegExp | { toString(): string },
 ): string {
-  return replace(str, pattern, '');
+  const patternValue = pattern instanceof RegExp ? pattern : String(pattern);
+  return str.replace(patternValue, '');
 }

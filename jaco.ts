@@ -1,41 +1,23 @@
 import addSemivoicedMarks from './fn/addSemivoicedMarks.js';
 import addVoicedMarks from './fn/addVoicedMarks.js';
 import byteSize from './fn/byteSize.js';
-import charAt from './fn/charAt.js';
-import charCodeAt from './fn/charCodeAt.js';
 import combinateSoundMarks from './fn/combinateSoundMarks.js';
-import concat from './fn/concat.js';
 import convertIterationMarks from './fn/convertIterationMarks.js';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks.js';
-import endWith from './fn/endWith.js';
 import has from './fn/has.js';
 import hasSmallLetter from './fn/hasSmallLetter.js';
 import hasSurrogatePair from './fn/hasSurrogatePair.js';
 import hasUnpairedSurrogate from './fn/hasUnpairedSurrogate.js';
-import includes from './fn/includes.js';
-import indexOf from './fn/indexOf.js';
 import is from './fn/is.js';
 import isEmpty from './fn/isEmpty.js';
 import isNumeric from './fn/isNumeric.js';
 import isOnly from './fn/isOnly.js';
 import isOnlyHiragana from './fn/isOnlyHiragana.js';
 import isOnlyKatakana from './fn/isOnlyKatakana.js';
-import lastIndexOf from './fn/lastIndexOf.js';
-import matches from './fn/matches.js';
-import padEnd from './fn/padEnd.js';
-import padStart from './fn/padStart.js';
 import remove from './fn/remove.js';
 import removeUnpairedSurrogate from './fn/removeUnpairedSurrogate.js';
 import removeVoicedMarks from './fn/removeVoicedMarks.js';
-import repeat from './fn/repeat.js';
-import replace from './fn/replace.js';
 import replaceFromMap from './fn/replaceFromMap.js';
-import search from './fn/search.js';
-import slice from './fn/slice.js';
-import split from './fn/split.js';
-import startsWith from './fn/startsWith.js';
-import substr from './fn/substr.js';
-import substring from './fn/substring.js';
 import test from './fn/test.js';
 import toBasicLetter from './fn/toBasicLetter.js';
 import toHiragana from './fn/toHiragana.js';
@@ -120,48 +102,12 @@ export default class Jaco {
   }
 
   /**
-   * 後方結合
-   *
-   * @since 0.2.0
-   * @param element 結合する文字列
-   */
-  public append(element: { toString(): string }): Jaco {
-    return new Jaco(concat(this, element));
-  }
-
-  /**
    * 文字列のバイトサイズを返す
    *
    * @since 0.2.0
    */
   public byteSize(): number {
     return byteSize(this.$);
-  }
-
-  /**
-   * 文字列から指定位置の文字を返す
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.charAt とは非互換
-   *
-   * @since 2.0.0
-   * @param index 指定位置
-   */
-  public charAt(index: number = 0): Jaco {
-    return new Jaco(charAt(this.$, index));
-  }
-
-  /**
-   * 指定位置のUnicodeコードポイントを返す
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.charCodeAt とは非互換
-   *
-   * @since 2.0.0
-   * @param charCodeAt 指定位置
-   */
-  public charCodeAt(index: number = 0): number {
-    return charCodeAt(this.$, index);
   }
 
   /**
@@ -184,18 +130,6 @@ export default class Jaco {
   }
 
   /**
-   * 文字列連結をおこなう
-   *
-   * - String.prototype.concat とは非互換
-   *
-   * @since 0.2.0
-   * @param ...args 文字列もしくはJacoインスタンス
-   */
-  public concat(...args: (Jaco | { toString(): string })[]): Jaco {
-    return new Jaco(concat(this.$, args));
-  }
-
-  /**
    * 繰り返し記号をかなに置き換える
    *
    * @since 1.1.0
@@ -211,20 +145,6 @@ export default class Jaco {
    */
   public convertProlongedSoundMarks(): Jaco {
     return new Jaco(convertProlongedSoundMarks(this.$));
-  }
-
-  /**
-   * 引数に指定された文字列が末尾と合致するか
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.endWith とは非互換
-   *
-   * @since 2.0.0
-   * @param search 合致対象文字列
-   * @param position 末尾の位置
-   */
-  public endWith(search: { toString(): string }, position?: number): boolean {
-    return endWith(this.$, search, position);
   }
 
   /**
@@ -266,35 +186,6 @@ export default class Jaco {
    */
   public hasUnpairedSurrogate(): boolean {
     return hasUnpairedSurrogate(this.$);
-  }
-
-  /**
-   * 引数に指定された文字列が部分合致するか
-   *
-   * @since 2.0.0
-   * @param search 合致対象文字列
-   * @param position 開始位置
-   * @return 合致したかどうか
-   */
-  public includes(search: Jaco | string, position: number = 0): boolean {
-    return includes(this.$, search, position);
-  }
-
-  /**
-   * 指定された文字列が最初に現れるインデックスを返す
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.indexOf とは非互換
-   *
-   * @since 2.0.0
-   * @param search 検索文字列
-   * @param fromIndex 検索位置
-   */
-  public indexOf(
-    search: { toString(): string },
-    fromIndex: number = 0,
-  ): number {
-    return indexOf(this.$, search, fromIndex);
   }
 
   /**
@@ -363,107 +254,6 @@ export default class Jaco {
   }
 
   /**
-   * 指定された文字列が最後に現れるインデックスを返す
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.lastIndexOf とは非互換
-   *
-   * @since 2.0.0
-   * @param search 検索文字列
-   * @param [fromIndex] 検索位置
-   *
-   */
-  public lastIndexOf(
-    search: { toString(): string },
-    fromIndex: number = Infinity,
-  ): number {
-    return lastIndexOf(this.$, search, fromIndex);
-  }
-
-  /**
-   * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を得る
-   *
-   * @since 2.0.0
-   * @param regexp パターン
-   */
-  public match(regexp: RegExp): RegExpMatchArray | null {
-    return this.$.match(regexp);
-  }
-
-  /**
-   * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る
-   *
-   * @since 2.0.0
-   * @param pattern パターン
-   */
-  public matches(pattern: RegExp): string[] {
-    return matches(this.$, pattern);
-  }
-
-  /**
-   * 【未実装】Unicode 正規化形式を返す
-   *
-   * TODO: 日本語に関係する文字になるべく対応する
-   *
-   * - String.prototype.normalize とは非互換
-   *
-   * @version x.x.x
-   * @since x.x.x
-   * @param form 正規化形式の種類
-   */
-  public normalize(form: 'NFC' | 'NFD' | 'NFKC' | 'NFKD' = 'NFC'): never {
-    throw Error(`No support method yet`);
-  }
-
-  /**
-   * 最終的な文字列が指定された長さに到達するように文字列で延長する
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.padEnd とは非互換
-   *
-   * @since 2.0.0
-   * @param targetLength 最終的な長さ
-   * @param padString 延長する文字列
-   */
-  public padEnd(
-    targetLength: number,
-    padString: { toString(): string } = ' ',
-  ): Jaco {
-    return new Jaco(padEnd(this.$, targetLength, padString));
-  }
-
-  /**
-   * 最終的な文字列が指定された長さに到達するように文字列を先頭に追加する
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.padStart とは非互換
-   *
-   * @since 2.0.0
-   * @param targetLength 最終的な長さ
-   * @param padString 延長する文字列
-   */
-  public padStart(
-    targetLength: number,
-    padString: { toString(): string } = ' ',
-  ): Jaco {
-    return new Jaco(padStart(this.$, targetLength, padString));
-  }
-
-  /**
-   * 前方結合
-   *
-   * ```javascript
-   * new Jaco("あああ").prepend("いいい").toString() // => "いいいあああ"
-   * ```
-   *
-   * @since 0.2.0
-   * @param element 結合する文字列
-   */
-  public prepend(element: { toString(): string }): Jaco {
-    return new Jaco(concat(element, this));
-  }
-
-  /**
    * 文字列を取り除く
    *
    * @since 0.2.0
@@ -493,32 +283,6 @@ export default class Jaco {
   }
 
   /**
-   * 文字列を繰り返す
-   *
-   * - String.prototype.repeat とは非互換
-   *
-   * @since 2.0.0
-   * @param times 繰り返しの回数
-   */
-  public repeat(times: number = 0): Jaco {
-    return new Jaco(repeat(this.$, times));
-  }
-
-  /**
-   * 文字列をパターンで置換する
-   *
-   * @since 0.2.0
-   * @param pattern  対象のパターン
-   * @param replacement 置換する文字列
-   */
-  public replace(
-    pattern: RegExp | { toString(): string },
-    replacement: { toString(): string },
-  ): Jaco {
-    return new Jaco(replace(this.$, pattern, replacement));
-  }
-
-  /**
    * キーがパターン・値が置換文字列のハッシュマップによって置換する
    *
    * @since 0.1.0
@@ -526,94 +290,6 @@ export default class Jaco {
    */
   public replaceFromMap(convMap: { [pattern: string]: string }): Jaco {
     return new Jaco(replaceFromMap(this.$, convMap));
-  }
-
-  /**
-   * 正規表現にマッチしたインデックスを返す
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.search とは非互換
-   *
-   * @since 2.0.0
-   * @param pattern パターン
-   */
-  public search(pattern: RegExp | { toString(): string }): number {
-    return search(this.$, pattern);
-  }
-
-  /**
-   * 文字位置による抽出
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.slice とは非互換
-   *
-   * @since 0.2.0
-   * @param start 開始インデックス
-   * @param end 終了インデックス 省略すると最後まで
-   */
-  public slice(start: number, end?: number): Jaco {
-    return new Jaco(slice(this.$, start, end));
-  }
-
-  /**
-   * 文字列の配列に分割する
-   *
-   * - String.prototype.split とは非互換
-   *
-   * @since 2.0.0
-   * @param separator 区切り文字
-   * @param limit 配列の数を指定
-   */
-  public split(
-    separator: RegExp | { toString(): string },
-    limit?: number,
-  ): string[] {
-    return split(this.$, separator, limit);
-  }
-
-  /**
-   * 引数に指定された文字列が先頭と合致するか
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.startsWith とは非互換
-   *
-   * @since 2.0.0
-   * @param search 合致対象文字列
-   * @param position 先頭の位置
-   */
-  public startsWith(
-    search: { toString(): string },
-    position: number = 0,
-  ): boolean {
-    return startsWith(this.$, search, position);
-  }
-
-  /**
-   * 指定した位置から指定した数だけ文字列を抽出
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.substr とは非互換
-   *
-   * @since 0.2.0
-   * @param start 開始インデックス
-   * @param length 指定数
-   */
-  public substr(start: number, length?: number): Jaco {
-    return new Jaco(substr(this.$, start, length));
-  }
-
-  /**
-   * 指定した位置の間の文字列を抽出
-   *
-   * - サロゲートペアを考慮する
-   * - String.prototype.substring とは非互換
-   *
-   * @since 0.2.0
-   * @param indexA インデックス
-   * @param indexB インデックス
-   */
-  public substring(indexA: number, indexB: number): Jaco {
-    return new Jaco(substring(this.$, indexA, indexB));
   }
 
   /**
@@ -656,16 +332,6 @@ export default class Jaco {
    */
   public toKatakana(toWide: boolean = true): Jaco {
     return new Jaco(toKatakana(this.$, toWide));
-  }
-
-  /**
-   * 英字の大文字を小文字に変換する
-   *
-   * @since 0.2.0
-   * @return インスタンス自身
-   */
-  public toLowerCase(): Jaco {
-    return new Jaco(this.$.toLowerCase());
   }
 
   /**
@@ -768,16 +434,6 @@ export default class Jaco {
   }
 
   /**
-   * 英字の小文字を大文字に変換する
-   *
-   * @since 0.2.0
-   * @return インスタンス自身
-   */
-  public toUpperCase(): Jaco {
-    return new Jaco(this.$.toUpperCase());
-  }
-
-  /**
    * 全角に変換
    *
    * @since 0.4.0
@@ -829,33 +485,6 @@ export default class Jaco {
    */
   public toWideSymbolForJapanese(): Jaco {
     return new Jaco(toWideSymbolForJapanese(this.$));
-  }
-
-  /**
-   * 先頭と末尾の空白を取り除く
-   *
-   * @since 0.2.0
-   */
-  public trim(): Jaco {
-    return new Jaco(this.$.trim());
-  }
-
-  /**
-   * 先頭の空白を取り除く
-   *
-   * @since 2.0.0
-   */
-  public trimLeft(): Jaco {
-    return new Jaco(remove(this.$, /^\s+/));
-  }
-
-  /**
-   * 末尾の空白を取り除く
-   *
-   * @since 2.0.0
-   */
-  public trimRight(): Jaco {
-    return new Jaco(remove(this.$, /\s+$/));
   }
 
   /**
