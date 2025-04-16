@@ -11,8 +11,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "docs": "typedoc --mode modules --out docs jaco.ts",
     "lint": "eslint --fix && prettier --write \"**/*.{ts,json,md,*rc}\"",
+    "docs": "typedoc --out docs jaco.ts",
     "test": "vitest run",
     "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls"
   },
