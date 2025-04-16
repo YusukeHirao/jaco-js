@@ -9,6 +9,6 @@ import naturalKanaOrder from './naturalKanaOrder.js';
  * @param array 対象の配列
  * @return 五十音順にソートされた配列
  */
-export default function(array: string[]): string[] {
+export default function (array: string[]): string[] {
   return array.sort(naturalKanaOrder);
 }

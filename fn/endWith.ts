@@ -14,10 +14,10 @@ import arrayize from '../util/arrayize.js';
  * @param search 合致対象文字列
  * @param position 末尾の位置
  */
-export default function(
+export default function (
   str: string,
   search: { toString(): string },
-  position?: number
+  position?: number,
 ): boolean {
   const targetLength = arrayize(str).length;
   const searchLength = arrayize(search.toString()).length;

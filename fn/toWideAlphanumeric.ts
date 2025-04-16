@@ -11,7 +11,7 @@ import shift from '../util/shift.js';
  * @since 1.3.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   str = shift(str, patternize(ALPHA_CHARS + DIGIT_CHARS), 65248);
   return str;
 }

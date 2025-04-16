@@ -10,9 +10,9 @@ import toNarrowSign from './toNarrowSign.js';
  * @param str 対象の文字列
  * @param convertJapaneseChars 日本語のカタカナなどを変換するかどうか
  */
-export default function(
+export default function (
   str: string,
-  convertJapaneseChars: boolean = false
+  convertJapaneseChars: boolean = false,
 ): string {
   // 英数字の変換
   str = toNarrowAlphanumeric(str);

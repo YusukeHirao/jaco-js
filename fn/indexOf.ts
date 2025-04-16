@@ -15,13 +15,16 @@ import arrayize from '../util/arrayize.js';
  * @param search 検索文字列
  * @param fromIndex 検索位置
  */
-export default function(
+export default function (
   str: string,
   search: { toString(): string },
-  fromIndex: number = 0
+  fromIndex: number = 0,
 ): number {
   const sliced = slice(str, fromIndex);
   const splited = split(sliced, search)[0];
+  if (splited == null) {
+    return -1;
+  }
   if (is(str, splited)) {
     return -1;
   } else {

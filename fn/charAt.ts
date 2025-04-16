@@ -10,6 +10,6 @@ import arrayize from '../util/arrayize.js';
  * @param str 対象の文字列
  * @param index 指定位置
  */
-export default function(str: string, index: number = 0): string {
+export default function (str: string, index: number = 0): string {
   return arrayize(str)[index] || '';
 }

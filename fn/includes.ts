@@ -11,10 +11,10 @@ import indexOf from './indexOf.js';
  * @param search 検索文字列
  * @param fromIndex 検索位置
  */
-export default function(
+export default function (
   str: string,
   search: { toString(): string },
-  position: number = 0
+  position: number = 0,
 ): boolean {
   return indexOf(str, search, position) !== -1;
 }

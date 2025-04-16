@@ -13,10 +13,10 @@ import arrayize from '../util/arrayize.js';
  * @param search 合致対象文字列
  * @param position 先頭の位置
  */
-export default function(
+export default function (
   str: string,
   search: { toString(): string },
-  position: number = 0
+  position: number = 0,
 ): boolean {
   const _search = search.toString();
   return substr(str, position, arrayize(_search).length) === _search;

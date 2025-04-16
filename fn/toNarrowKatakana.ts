@@ -10,7 +10,7 @@ import toKatakana from './toKatakana.js';
  * @param str 対象の文字列
  * @param fromHiragana ひらがなも変換する
  */
-export default function(str: string, fromHiragana: boolean = false): string {
+export default function (str: string, fromHiragana: boolean = false): string {
   // ひらがなを一旦全角カタカナに変換する
   if (fromHiragana) {
     str = toKatakana(str);
@@ -111,7 +111,7 @@ export default function(str: string, fromHiragana: boolean = false): string {
     ヸ: 'ｲﾞ',
     ヴ: 'ｳﾞ',
     ヹ: 'ｴﾞ',
-    ヺ: 'ｦﾞ'
+    ヺ: 'ｦﾞ',
   });
   return str;
 }

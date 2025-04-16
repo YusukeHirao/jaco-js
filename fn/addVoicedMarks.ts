@@ -8,7 +8,7 @@ import replaceFromMap from './replaceFromMap.js';
  * @since 1.1.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   // 濁点・半濁点単体の除去
   str = remove(str, /\u309B|\u3099|\uFF9E/g);
   str = remove(str, /\u309C|\u309A|\uFF9F/g);
@@ -59,7 +59,7 @@ export default function(str: string): string {
     エ: 'ヹ',
     ヺ: 'ヲ',
     ゝ: 'ゞ',
-    ヽ: 'ヾ'
+    ヽ: 'ヾ',
   });
   return str;
 }

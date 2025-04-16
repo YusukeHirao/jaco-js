@@ -18,7 +18,7 @@ import shift from '../util/shift.js';
  * @param str 対象の文字列
  * @param isCombinate 濁点・半濁点を結合文字にするかどうか
  */
-export default function(str: string, isCombinate: boolean = false): string {
+export default function (str: string, isCombinate: boolean = false): string {
   // 半角カタカナを全角カタカナへ
   str = toWideKatakana(str);
   // ヷヸヹヺの変換
@@ -26,7 +26,7 @@ export default function(str: string, isCombinate: boolean = false): string {
     ヷ: 'わ゛',
     ヸ: 'ゐ゛',
     ヹ: 'ゑ゛',
-    ヺ: 'を゛'
+    ヺ: 'を゛',
   });
   // カタカナをひらがなへ(Unicodeの番号をずらす)
   str = shift(str, patternize(KATAKANA_CHARS), -96);

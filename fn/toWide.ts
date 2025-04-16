@@ -9,7 +9,7 @@ import toWideSign from './toWideSign.js';
  * @since 0.4.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   // 半角英数記号の変換
   str = toWideAlphanumeric(str);
   // スペースの変換

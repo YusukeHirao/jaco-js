@@ -7,7 +7,7 @@ import replaceFromMap from './replaceFromMap.js';
  * @since 0.1.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   // カタカナ・濁点・半濁点の変換
   return replaceFromMap(str, {
     ｶﾞ: 'ガ',
@@ -97,6 +97,6 @@ export default function(str: string): string {
     ﾛ: 'ロ',
     ﾜ: 'ワ',
     ｦ: 'ヲ',
-    ﾝ: 'ン'
+    ﾝ: 'ン',
   });
 }

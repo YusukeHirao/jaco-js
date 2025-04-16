@@ -8,7 +8,7 @@ import toNarrowSymbolForJapanese from './toNarrowSymbolForJapanese.js';
  * @since 0.4.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   // 半角カタカナへ
   str = toNarrowKatakana(str);
   // 半角記号へ

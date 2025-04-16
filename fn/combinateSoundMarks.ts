@@ -10,7 +10,7 @@ import replaceFromMap from './replaceFromMap.js';
  */
 export default function combinateSoundMarks(
   str: string,
-  convertOnly: boolean = false
+  convertOnly: boolean = false,
 ): string {
   if (!convertOnly) {
     // 結合文字に変換
@@ -75,7 +75,7 @@ export default function combinateSoundMarks(
       ピ: 'ピ',
       プ: 'プ',
       ペ: 'ペ',
-      ポ: 'ポ'
+      ポ: 'ポ',
     });
   } else {
     // ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
@@ -85,7 +85,7 @@ export default function combinateSoundMarks(
       ﾞ: '\u3099', // 半角濁点 → 全角結合文字濁点
       // 半濁点
       '\u309C': '\u309A', // 全角半濁点 → 全角結合文字半濁点
-      ﾟ: '\u309A' // 半角半濁点 → 全角結合文字半濁点
+      ﾟ: '\u309A', // 半角半濁点 → 全角結合文字半濁点
     });
   }
   return str;

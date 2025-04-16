@@ -7,10 +7,10 @@
  * @param negative 負の数値も含めてチェックするかどうか
  * @param floatingPoint 小数としてチェックするかどうか
  */
-export default function(
+export default function (
   str: string,
   negative: boolean = true,
-  floatingPoint: boolean = true
+  floatingPoint: boolean = true,
 ): boolean {
   let pattern = '^';
   if (negative) {

@@ -9,9 +9,9 @@ import replaceFromMap from './replaceFromMap.js';
  * @param str 対象の文字列
  * @param ignoreSingleMark 単体の濁点・半濁点を除去するかどうか
  */
-export default function(
+export default function (
   str: string,
-  ignoreSingleMark: boolean = false
+  ignoreSingleMark: boolean = false,
 ): string {
   if (!ignoreSingleMark) {
     // 濁点・半濁点単体の除去
@@ -75,7 +75,7 @@ export default function(
     ヹ: 'エ',
     ヺ: 'ヲ',
     ゞ: 'ゝ',
-    ヾ: 'ヽ'
+    ヾ: 'ヽ',
   });
   return str;
 }

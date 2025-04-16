@@ -8,9 +8,9 @@ import replace from './replace.js';
  * @param str  元の文字列
  * @param pattern  取り除く文字列
  */
-export default function(
+export default function (
   str: string,
-  pattern: RegExp | { toString(): string }
+  pattern: RegExp | { toString(): string },
 ): string {
   return replace(str, pattern, '');
 }

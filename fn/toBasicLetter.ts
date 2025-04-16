@@ -8,7 +8,7 @@ import replaceFromMap from './replaceFromMap.js';
  * @since 1.1.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   str = combinateSoundMarks(str);
   str = replaceFromMap(str, {
     ぁ: 'あ',
@@ -48,7 +48,7 @@ export default function(str: string): string {
     ㇽ: 'ル',
     ㇾ: 'レ',
     ㇿ: 'ロ',
-    ヮ: 'ワ'
+    ヮ: 'ワ',
   });
   return str;
 }

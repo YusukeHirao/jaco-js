@@ -9,10 +9,10 @@ export default function concat(
   ...args: ({ toString(): string } | { toString(): string }[])[]
 ): string {
   return args
-    .map(str => {
+    .map((str) => {
       if (Array.isArray(str)) {
         return str
-          .map(_str => (Array.isArray(_str) ? concat(_str) : _str))
+          .map((_str) => (Array.isArray(_str) ? concat(_str) : _str))
           .join('');
       } else {
         return str.toString();

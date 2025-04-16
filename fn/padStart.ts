@@ -14,10 +14,10 @@ import pad from '../util/pad.js';
  * @param targetLength 最終的な長さ
  * @param padString 延長する文字列
  */
-export default function(
+export default function (
   str: string,
   targetLength: number,
-  padString: { toString(): string } = ' '
+  padString: { toString(): string } = ' ',
 ): string {
   const thisArray = arrayize(str);
   const thisLength = thisArray.length;

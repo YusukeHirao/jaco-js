@@ -2,7 +2,7 @@ import { HIRAGANA_CHARS } from '../const/HIRAGANA_CHARS.js';
 import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS.js';
 
 const KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP: RegExp = new RegExp(
-  '[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー'
+  '[' + HIRAGANA_CHARS + KATAKANA_CHARS + ']ー',
 );
 
 /**
@@ -12,7 +12,7 @@ const KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP: RegExp = new RegExp(
  * @since 1.1.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   while (KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP.test(str)) {
     str = converter(str);
   }

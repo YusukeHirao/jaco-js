@@ -6,13 +6,12 @@
  * @param str 対象の文字列
  * @param convMap キーがパターン・値が置換文字列のハッシュマップ
  */
-export default function(
+export default function (
   str: string,
-  convMap: { [pattern: string]: string }
+  convMap: { [pattern: string]: string },
 ): string {
-  for (const needle in convMap) {
-    if (convMap.hasOwnProperty(needle)) {
-      const replace = convMap[needle];
+  for (const [needle, replace] of Object.entries(convMap)) {
+    if (replace) {
       str = str.replace(new RegExp(needle, 'g'), replace);
     }
   }

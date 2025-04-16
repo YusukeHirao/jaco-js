@@ -13,7 +13,7 @@ import arrayize from '../util/arrayize.js';
  * @param indexA インデックス
  * @param indexB インデックス
  */
-export default function(str: string, indexA: number, indexB: number): string {
+export default function (str: string, indexA: number, indexB: number): string {
   const start = Math.max(Math.min(indexA, indexB), 0);
   const end = Math.min(Math.max(indexA, indexB), arrayize(str).length);
   const length = end - start;

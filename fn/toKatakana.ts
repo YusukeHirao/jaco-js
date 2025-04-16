@@ -14,7 +14,7 @@ import shift from '../util/shift.js';
  * @param str 対象の文字列
  * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
  */
-export default function(str: string, toWide: boolean = true): string {
+export default function (str: string, toWide: boolean = true): string {
   // 半角カタカナを全角カタカナへ
   if (toWide) {
     str = toWideKatakana(str);

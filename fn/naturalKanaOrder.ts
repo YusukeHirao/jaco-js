@@ -16,7 +16,7 @@ import toPhoeticKana from './toPhoeticKana.js';
  * @param string Array.prototype.sort から渡される配列要素
  * @return 比較数値
  */
-export default function(a: string, b: string): number {
+export default function (a: string, b: string): number {
   // 完全に一致ならば比較の必要なし
   if (a === b) {
     return 0;
@@ -29,7 +29,8 @@ export default function(a: string, b: string): number {
   const codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);
   const codeB = _convertNaturalKanaOrderNumberPhase1(unvoicedB);
   const l = Math.max(a.length, b.length);
-  const rSpecificPhoneticSign = /[ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ]/;
+  const rSpecificPhoneticSign =
+    /[ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ]/;
   // 濁音・半濁音をのぞいたよみがなで比較
   if (codeA < codeB) {
     return -1;
@@ -40,22 +41,24 @@ export default function(a: string, b: string): number {
     // 一文字ずつ比較する
     for (let i = 0; i < l; i++) {
       if (
-        rSpecificPhoneticSign.test(a[i]) ||
-        rSpecificPhoneticSign.test(b[i])
+        rSpecificPhoneticSign.test(a[i] ?? '') ||
+        rSpecificPhoneticSign.test(b[i] ?? '')
       ) {
         // 片方が「ーぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮゝゞヽヾ」に該当する場合
-        const tmpA = _convertNaturalKanaOrderNumberPhase2(a[i]);
-        const tmpB = _convertNaturalKanaOrderNumberPhase2(b[i]);
+        const tmpA = _convertNaturalKanaOrderNumberPhase2(a[i] ?? '');
+        const tmpB = _convertNaturalKanaOrderNumberPhase2(b[i] ?? '');
         if (tmpA < tmpB) {
           return -1;
         } else if (tmpA > tmpB) {
           return 1;
         }
       } else {
+        const sA = phoneticA[i] ?? '';
+        const sB = phoneticB[i] ?? '';
         // 平音・濁音・半濁音で比較
-        if (phoneticA[i] < phoneticB[i]) {
+        if (sA < sB) {
           return -1;
-        } else if (phoneticB[i] < phoneticA[i]) {
+        } else if (sB < sA) {
           return 1;
         }
       }
@@ -63,8 +66,8 @@ export default function(a: string, b: string): number {
     // もう一度、頭から一文字ずつ比較する
     for (let i = 0; i < l; i++) {
       // ひらがな・カタカナで比較
-      const codePointA = isOnlyHiragana(a[i]) ? 0 : 1;
-      const codePointB = isOnlyHiragana(b[i]) ? 0 : 1;
+      const codePointA = isOnlyHiragana(a[i] ?? '') ? 0 : 1;
+      const codePointB = isOnlyHiragana(b[i] ?? '') ? 0 : 1;
       if (codePointA < codePointB) {
         return -1;
       } else if (codePointA > codePointB) {
@@ -161,7 +164,7 @@ function _convertNaturalKanaOrderNumberPhase1(str: string): string {
     ー: '\u3073',
     // 11. 漢字（「〃」「仝」「々」「〆」「〇」及び漢字）
     // 12. 下駄記号（下駄記号）
-    '〓': '\uFFFF'
+    '〓': '\uFFFF',
   }).toString();
 }
 
@@ -183,7 +186,7 @@ function _convertNaturalKanaOrderNumberPhase2(str: string): string {
       /[ぁぃぅぇぉっゃゅょゎァィゥェォヵㇰヶㇱㇲッㇳㇴㇵㇶㇷㇸㇹㇺャュョㇻㇼㇽㇾㇿヮ]/,
       ($0: string): string => {
         return $0.charCodeAt(0).toString(16);
-      }
+      },
     )
     .replace('ゝ', '4000')
     .replace('ヽ', '4001')

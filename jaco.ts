@@ -97,12 +97,11 @@ export default class Jaco {
    * var a = new Jaco("あああ");
    * ```
    *
-   * @version 2.0.0
+   * @version 5.0.0
    * @since 0.1.0
    * @param str 対象の文字列
    */
-  constructor(str: any) {
-    // tslint:disable-line:no-any
+  constructor(str: unknown) {
     this.$ = `${str}`;
   }
 
@@ -205,7 +204,7 @@ export default class Jaco {
    * @since 0.2.0
    * @param ...args 文字列もしくはJacoインスタンス
    */
-  public concat(...args: (Jaco | ({ toString(): string }))[]): Jaco {
+  public concat(...args: (Jaco | { toString(): string })[]): Jaco {
     return new Jaco(concat(this.$, args));
   }
 
@@ -315,7 +314,7 @@ export default class Jaco {
    */
   public indexOf(
     search: { toString(): string },
-    fromIndex: number = 0
+    fromIndex: number = 0,
   ): number {
     return indexOf(this.$, search, fromIndex);
   }
@@ -352,7 +351,7 @@ export default class Jaco {
    */
   public isNumeric(
     negative: boolean = true,
-    floatingPoint: boolean = true
+    floatingPoint: boolean = true,
   ): boolean {
     return isNumeric(this.$, negative, floatingPoint);
   }
@@ -405,7 +404,7 @@ export default class Jaco {
    */
   public lastIndexOf(
     search: { toString(): string },
-    fromIndex: number = Infinity
+    fromIndex: number = Infinity,
   ): number {
     return lastIndexOf(this.$, search, fromIndex);
   }
@@ -460,7 +459,7 @@ export default class Jaco {
    */
   public padEnd(
     targetLength: number,
-    padString: { toString(): string } = ' '
+    padString: { toString(): string } = ' ',
   ): Jaco {
     return new Jaco(padEnd(this.$, targetLength, padString));
   }
@@ -478,7 +477,7 @@ export default class Jaco {
    */
   public padStart(
     targetLength: number,
-    padString: { toString(): string } = ' '
+    padString: { toString(): string } = ' ',
   ): Jaco {
     return new Jaco(padStart(this.$, targetLength, padString));
   }
@@ -553,7 +552,7 @@ export default class Jaco {
    */
   public replace(
     pattern: RegExp | { toString(): string },
-    replacement: { toString(): string }
+    replacement: { toString(): string },
   ): Jaco {
     return new Jaco(replace(this.$, pattern, replacement));
   }
@@ -610,7 +609,7 @@ export default class Jaco {
    */
   public split(
     separator: RegExp | { toString(): string },
-    limit?: number
+    limit?: number,
   ): string[] {
     return split(this.$, separator, limit);
   }
@@ -628,7 +627,7 @@ export default class Jaco {
    */
   public startsWith(
     search: { toString(): string },
-    position: number = 0
+    position: number = 0,
   ): boolean {
     return startsWith(this.$, search, position);
   }
@@ -802,7 +801,7 @@ export default class Jaco {
    */
   public toNumeric(
     negative: boolean = false,
-    floatingPoint: boolean = false
+    floatingPoint: boolean = false,
   ): Jaco {
     return new Jaco(toNumeric(this.$, negative, floatingPoint));
   }
@@ -954,14 +953,19 @@ export default class Jaco {
     let counter = 0;
     const iterator: Iterator<Jaco> = {
       next: () => {
-        const count = counter++;
-        const item: string = arrayize(this.$)[count];
-        const result: IteratorResult<Jaco> = {
-          value: new Jaco(item),
-          done: this.length <= count
-        };
-        return result;
-      }
+        if (counter < this.length) {
+          const item = arrayize(this.$)[counter++];
+          return {
+            value: new Jaco(item),
+            done: false,
+          };
+        } else {
+          return {
+            value: null,
+            done: true,
+          };
+        }
+      },
     };
     return iterator;
   }

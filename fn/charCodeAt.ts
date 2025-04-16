@@ -9,7 +9,7 @@ import charAt from './charAt.js';
  * @since 2.0.0
  * @param str 対象の文字列
  */
-export default function(str: string, index: number = 0): number {
+export default function (str: string, index: number = 0): number {
   const char = charAt(str, index);
   if (!char) {
     return NaN;

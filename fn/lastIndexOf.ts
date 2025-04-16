@@ -12,10 +12,10 @@ import arrayize from '../util/arrayize.js';
  * @param fromIndex 検索位置
  *
  */
-export default function(
+export default function (
   str: string,
   search: { toString(): string },
-  fromIndex: number = Infinity
+  fromIndex: number = Infinity,
 ): number {
   return arrayize(str).lastIndexOf(search.toString(), fromIndex);
 }

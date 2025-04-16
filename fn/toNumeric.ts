@@ -11,10 +11,10 @@ import toNarrow from './toNarrow.js';
  * @param negative 負の値を許可してマイナスをつけるかどうか
  * @param floatingPoint 小数を許可してドットをつけるかどうか
  */
-export default function(
+export default function (
   str: string,
   negative: boolean = false,
-  floatingPoint: boolean = false
+  floatingPoint: boolean = false,
 ): string {
   // 半角化
   str = toNarrow(str);

@@ -8,7 +8,7 @@ import toWideSymbolForJapanese from './toWideSymbolForJapanese.js';
  * @since 0.4.0
  * @param str 対象の文字列
  */
-export default function(str: string): string {
+export default function (str: string): string {
   // 全角カタカナへ
   str = toWideKatakana(str);
   // 全角記号へ

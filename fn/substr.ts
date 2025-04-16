@@ -11,7 +11,7 @@ import arrayize from '../util/arrayize.js';
  * @param start 開始インデックス
  * @param length 指定数
  */
-export default function(str: string, start: number, length?: number): string {
+export default function (str: string, start: number, length?: number): string {
   const array = arrayize(str);
   const thisLength = array.length;
   if (length == null || length < 0 || thisLength < length) {
@@ -20,7 +20,7 @@ export default function(str: string, start: number, length?: number): string {
   if (start < 0) {
     start = thisLength + start;
   }
-  let end = Math.max(start + length, start);
+  const end = Math.max(start + length, start);
   start = Math.min(start + length, start);
   const res = array.slice(start, end);
   return res.join('');
