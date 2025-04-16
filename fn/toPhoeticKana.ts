@@ -9,7 +9,6 @@ import toHiragana from './toHiragana.js';
  *
  * ひらがな化 -> 小書き文字を基底文字に変換 -> 長音符をかなに変換 -> 繰り返し記号をかなに変換
  *
- * @version 3.0.0
  * @since 1.1.0
  * @param str 対象の文字列
  */

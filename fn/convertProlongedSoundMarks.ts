@@ -8,7 +8,6 @@ const KANA_WITH_PROLONGED_SOUND_MARKS_PATTERN_REGEXP: RegExp = new RegExp(
 /**
  * 長音符をかなに置き換える
  *
- * @version 2.0.0
  * @since 1.1.0
  * @param str 対象の文字列
  */

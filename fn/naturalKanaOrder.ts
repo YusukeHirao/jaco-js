@@ -10,7 +10,6 @@ import toPhoeticKana from './toPhoeticKana.js';
  *
  * 漢字や絵文字はソートの比較にほぼ無関係なのでサロゲートペアを考慮したコードは不要
  *
- * @version 3.0.0
  * @since 1.1.0
  * @param string Array.prototype.sort から渡される配列要素
  * @param string Array.prototype.sort から渡される配列要素
@@ -94,7 +93,6 @@ export default function (a: string, b: string): number {
  * 「ゝ」「ー」
  * 上記の順にならぶように擬似的に文字のコード数値を変換する
  *
- * @version 3.0.0
  * @since 1.1.0
  * @param string 変換する文字列
  * @return 変換された文字列
@@ -173,7 +171,6 @@ function _convertNaturalKanaOrderNumberPhase1(str: string): string {
  *
  * 長音符→小書き文字→繰り返し記号→通常文字の順に並ぶようにコードを調整
  *
- * @version 1.1.0
  * @since 1.1.0
  * @param string 変換する文字（一文字しか受け取らない予定）
  * @return 変換された文字列

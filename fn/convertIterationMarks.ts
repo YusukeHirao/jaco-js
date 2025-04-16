@@ -13,7 +13,6 @@ const KANA_WITH_ITERATION_MARKS_REGEXP: RegExp = new RegExp(
 /**
  * 繰り返し記号をかなに置き換える
  *
- * @version 2.0.0
  * @since 1.1.0
  * @param str 対象の文字列
  */
@@ -25,7 +24,6 @@ export default function (str: string): string {
 }
 
 /**
- * @version 2.0.0
  * @since 2.0.0
  * @param str 対象の文字列
  * @return 置き換えた文字列
@@ -35,7 +33,6 @@ function converter(str: string): string {
 }
 
 /**
- * @version 2.0.0
  * @since 2.0.0
  * @param matchAll
  * @param beforeString

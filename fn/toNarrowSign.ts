@@ -9,7 +9,6 @@ import shift from '../util/shift.js';
 /**
  * 記号を半角に変換
  *
- * @version 2.0.0
  * @since 2.0.0
  * @param str 対象の文字列
  */

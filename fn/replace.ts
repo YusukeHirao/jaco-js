@@ -1,7 +1,6 @@
 /**
  * 文字列をパターンで置換する
  *
- * @version 2.0.0
  * @since 0.2.0
  * @param str  元の文字列
  * @param pattern  対象のパターン

@@ -5,7 +5,6 @@ import toNarrow from './toNarrow.js';
 /**
  * 数字に変換する
  *
- * @version 0.5.0
  * @since 0.5.0
  * @param str 対象の文字列
  * @param negative 負の値を許可してマイナスをつけるかどうか

@@ -5,7 +5,6 @@ import toWideSign from './toWideSign.js';
 /**
  * 全角に変換
  *
- * @version 0.4.0
  * @since 0.4.0
  * @param str 対象の文字列
  */

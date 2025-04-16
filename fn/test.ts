@@ -1,7 +1,6 @@
 /**
  * パターンとマッチするかどうか
  *
- * @version 2.0.0
  * @since 0.2.0
  * @param str 対象の文字列
  * @param pattern パターン

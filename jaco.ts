@@ -65,7 +65,6 @@ import arrayize from './util/arrayize.js';
  * 文字列クラスを継承してはいないがメソッドは同等のものが実装されている。
  * ただし基本的にほとんどのメソッドが破壊的メソッドかつチェインナブルである。
  *
- * @version 2.0.0
  * @since 0.1.0
  */
 export default class Jaco {
@@ -74,7 +73,6 @@ export default class Jaco {
    *
    * - サロゲートペアを考慮する
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @readonly
    */
@@ -85,7 +83,6 @@ export default class Jaco {
   /**
    * 保持する文字列
    *
-   * @version 2.0.0
    * @since 0.1.0
    */
   private $: string;
@@ -97,7 +94,6 @@ export default class Jaco {
    * var a = new Jaco("あああ");
    * ```
    *
-   * @version 5.0.0
    * @since 0.1.0
    * @param str 対象の文字列
    */
@@ -108,7 +104,6 @@ export default class Jaco {
   /**
    * 半濁点を追加する
    *
-   * @version 2.0.0
    * @since 1.1.0
    */
   public addSemivoicedMarks(): Jaco {
@@ -118,7 +113,6 @@ export default class Jaco {
   /**
    * 濁点を追加する
    *
-   * @version 2.0.0
    * @since 1.1.0
    */
   public addVoicedMarks(): Jaco {
@@ -128,7 +122,6 @@ export default class Jaco {
   /**
    * 後方結合
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param element 結合する文字列
    */
@@ -139,7 +132,6 @@ export default class Jaco {
   /**
    * 文字列のバイトサイズを返す
    *
-   * @version 0.2.0
    * @since 0.2.0
    */
   public byteSize(): number {
@@ -152,7 +144,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.charAt とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param index 指定位置
    */
@@ -166,7 +157,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.charCodeAt とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param charCodeAt 指定位置
    */
@@ -177,7 +167,6 @@ export default class Jaco {
   /**
    * コピーを生成する
    *
-   * @version 0.2.0
    * @since 0.2.0
    */
   public clone(): Jaco {
@@ -187,7 +176,6 @@ export default class Jaco {
   /**
    * 濁点・半濁点とひらがな・かたかなを結合させる
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param convertOnly ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
    */
@@ -200,7 +188,6 @@ export default class Jaco {
    *
    * - String.prototype.concat とは非互換
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param ...args 文字列もしくはJacoインスタンス
    */
@@ -211,7 +198,6 @@ export default class Jaco {
   /**
    * 繰り返し記号をかなに置き換える
    *
-   * @version 2.0.0
    * @since 1.1.0
    */
   public convertIterationMarks(): Jaco {
@@ -221,7 +207,6 @@ export default class Jaco {
   /**
    * 長音符をかなに置き換える
    *
-   * @version 2.0.0
    * @since 1.1.0
    */
   public convertProlongedSoundMarks(): Jaco {
@@ -234,7 +219,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.endWith とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param search 合致対象文字列
    * @param position 末尾の位置
@@ -246,7 +230,6 @@ export default class Jaco {
   /**
    * 該当の文字のいずれかを含んでいるかどうか
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param characters 文字セット
    * @return 結果の真偽
@@ -258,7 +241,6 @@ export default class Jaco {
   /**
    * 小書き文字を含むかどうか
    *
-   * @version 1.1.0
    * @since 1.1.0
    * @return 小書き文字を含むかどうか
    */
@@ -269,7 +251,6 @@ export default class Jaco {
   /**
    * サロゲートペア文字列を含んでいるかどうか
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @return 結果の真偽
    */
@@ -280,7 +261,6 @@ export default class Jaco {
   /**
    * ペアになっていないサロゲートコードポイントを含んでいるかどうか
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @return 結果の真偽
    */
@@ -291,7 +271,6 @@ export default class Jaco {
   /**
    * 引数に指定された文字列が部分合致するか
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param search 合致対象文字列
    * @param position 開始位置
@@ -307,7 +286,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.indexOf とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param search 検索文字列
    * @param fromIndex 検索位置
@@ -322,7 +300,6 @@ export default class Jaco {
   /**
    * 完全マッチ
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @param target 比較する文字列
    */
@@ -333,7 +310,6 @@ export default class Jaco {
   /**
    * 文字が空かどうか
    *
-   * @version 0.2.0
    * @since 0.2.0
    */
   public isEmpty(): boolean {
@@ -343,7 +319,6 @@ export default class Jaco {
   /**
    * 数字だけで構成されているかどうか
    *
-   * @version 2.0.0
    * @since 0.5.0
    * @param negative 負の数値も含めてチェックするかどうか
    * @param floatingPoint 小数としてチェックするかどうか
@@ -359,7 +334,6 @@ export default class Jaco {
   /**
    * 該当の文字だけで構成されているかどうか
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param characters 文字セット
    * @return 結果の真偽
@@ -371,7 +345,6 @@ export default class Jaco {
   /**
    * ひらがなだけで構成されているかどうか
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @return 結果の真偽
    */
@@ -382,7 +355,6 @@ export default class Jaco {
   /**
    * カタカナだけで構成されているかどうか
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @return 結果の真偽
    */
@@ -396,7 +368,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.lastIndexOf とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param search 検索文字列
    * @param [fromIndex] 検索位置
@@ -412,7 +383,6 @@ export default class Jaco {
   /**
    * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を得る
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param regexp パターン
    */
@@ -423,7 +393,6 @@ export default class Jaco {
   /**
    * 正規表現に対する文字列 のマッチングの際に、そのマッチ結果を純粋な配列で得る
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param pattern パターン
    */
@@ -452,7 +421,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.padEnd とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param targetLength 最終的な長さ
    * @param padString 延長する文字列
@@ -470,7 +438,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.padStart とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param targetLength 最終的な長さ
    * @param padString 延長する文字列
@@ -489,7 +456,6 @@ export default class Jaco {
    * new Jaco("あああ").prepend("いいい").toString() // => "いいいあああ"
    * ```
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @param element 結合する文字列
    */
@@ -500,7 +466,6 @@ export default class Jaco {
   /**
    * 文字列を取り除く
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param pattern 取り除く文字列
    */
@@ -511,7 +476,6 @@ export default class Jaco {
   /**
    * ペアになっていないサロゲートコードポイントの削除
    *
-   * @version 2.0.0
    * @since 2.0.0
    */
   public removeUnpairedSurrogate(): Jaco {
@@ -521,7 +485,6 @@ export default class Jaco {
   /**
    * 濁点・半濁点を取り除く
    *
-   * @version 1.1.0
    * @since 1.1.0
    * @param ignoreSingleMark 単体の濁点・半濁点を除去するかどうか
    */
@@ -534,7 +497,6 @@ export default class Jaco {
    *
    * - String.prototype.repeat とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param times 繰り返しの回数
    */
@@ -545,7 +507,6 @@ export default class Jaco {
   /**
    * 文字列をパターンで置換する
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param pattern  対象のパターン
    * @param replacement 置換する文字列
@@ -560,7 +521,6 @@ export default class Jaco {
   /**
    * キーがパターン・値が置換文字列のハッシュマップによって置換する
    *
-   * @version 2.0.0
    * @since 0.1.0
    * @param  convMap キーがパターン・値が置換文字列のハッシュマップ
    */
@@ -574,7 +534,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.search とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param pattern パターン
    */
@@ -588,7 +547,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.slice とは非互換
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param start 開始インデックス
    * @param end 終了インデックス 省略すると最後まで
@@ -602,7 +560,6 @@ export default class Jaco {
    *
    * - String.prototype.split とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param separator 区切り文字
    * @param limit 配列の数を指定
@@ -620,7 +577,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.startsWith とは非互換
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @param search 合致対象文字列
    * @param position 先頭の位置
@@ -638,7 +594,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.substr とは非互換
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param start 開始インデックス
    * @param length 指定数
@@ -653,7 +608,6 @@ export default class Jaco {
    * - サロゲートペアを考慮する
    * - String.prototype.substring とは非互換
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param indexA インデックス
    * @param indexB インデックス
@@ -665,7 +619,6 @@ export default class Jaco {
   /**
    * パターンとマッチするかどうか
    *
-   * @version 2.0.0
    * @since 0.2.0
    * @param pattern パターン
    */
@@ -676,7 +629,6 @@ export default class Jaco {
   /**
    * 小書き文字を基底文字に変換する
    *
-   * @version 1.1.0
    * @since 1.1.0
    */
   public toBasicLetter(): Jaco {
@@ -689,7 +641,6 @@ export default class Jaco {
    * 第一引数に true を渡した場合、濁点・半濁点は基本的に結合される
    * ヷヸヹヺは文字が存在しないため ひらがな + 結合文字でない濁点・半濁点 となる
    *
-   * @version 0.2.0
    * @since 0.1.0
    * @param isCombinate 濁点・半濁点を結合文字にするかどうか
    */
@@ -700,7 +651,6 @@ export default class Jaco {
   /**
    * カタカナに変換する
    *
-   * @version 0.2.0
    * @since 0.1.0
    * @param toWide 半角カタカナを全角カタカナへ変換するかどうか
    */
@@ -711,7 +661,6 @@ export default class Jaco {
   /**
    * 英字の大文字を小文字に変換する
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @return インスタンス自身
    */
@@ -722,7 +671,6 @@ export default class Jaco {
   /**
    * 半角に変換
    *
-   * @version 2.0.0
    * @since 0.4.0
    */
   public toNarrow(convertJapaneseChars: boolean = false): Jaco {
@@ -732,7 +680,6 @@ export default class Jaco {
   /**
    * 英数字を半角に変換
    *
-   * @version 2.0.0
    * @since 1.3.0
    */
   public toNarrowAlphanumeric(): Jaco {
@@ -742,7 +689,6 @@ export default class Jaco {
   /**
    * カタカナと日本語で使われる記号を半角に変換
    *
-   * @version 0.4.0
    * @since 0.4.0
    */
   public toNarrowJapanese(): Jaco {
@@ -752,7 +698,6 @@ export default class Jaco {
   /**
    * 半角カタカナに変換する
    *
-   * @version 0.6.0
    * @since 0.1.0
    * @param fromHiragana ひらがなも変換する
    */
@@ -763,7 +708,6 @@ export default class Jaco {
   /**
    * 記号を半角に変換する
    *
-   * @version 2.0.0
    * @since 2.0.0
    */
   public toNarrowSign(): Jaco {
@@ -773,7 +717,6 @@ export default class Jaco {
   /**
    * 日本語で使われる記号を半角に変換
    *
-   * @version 2.0.0
    * @since 0.4.0
    */
   public toNarrowSymbolForJapanese(): Jaco {
@@ -783,7 +726,6 @@ export default class Jaco {
   /**
    * 数値に変換する
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @return 数値
    */
@@ -794,7 +736,6 @@ export default class Jaco {
   /**
    * 数字に変換する
    *
-   * @version 0.5.0
    * @since 0.5.0
    * @param negative 負の値を許可してマイナスをつけるかどうか
    * @param floatingPoint 小数を許可してドットをつけるかどうか
@@ -810,7 +751,6 @@ export default class Jaco {
    * よみの文字に変換する
    * JIS X 4061 [日本語文字列照合順番](http://goo.gl/Mw8ja) に準ずる
    *
-   * @version 1.1.0
    * @since 1.1.0
    */
   public toPhoeticKana(): Jaco {
@@ -820,7 +760,6 @@ export default class Jaco {
   /**
    * 明示もしくは暗黙の文字列変換メソッド
    *
-   * @version 0.1.0
    * @since 0.1.0
    * @return インスタンス自身が保持する文字列
    */
@@ -831,7 +770,6 @@ export default class Jaco {
   /**
    * 英字の小文字を大文字に変換する
    *
-   * @version 0.2.0
    * @since 0.2.0
    * @return インスタンス自身
    */
@@ -842,7 +780,6 @@ export default class Jaco {
   /**
    * 全角に変換
    *
-   * @version 0.4.0
    * @since 0.4.0
    */
   public toWide(): Jaco {
@@ -852,7 +789,6 @@ export default class Jaco {
   /**
    * 英数字を全角に変換
    *
-   * @version 2.0.0
    * @since 1.3.0
    */
   public toWideAlphanumeric(): Jaco {
@@ -862,7 +798,6 @@ export default class Jaco {
   /**
    * カタカナと日本語で使われる記号を全角に変換
    *
-   * @version 0.4.0
    * @since 0.4.0
    */
   public toWideJapanese(): Jaco {
@@ -872,7 +807,6 @@ export default class Jaco {
   /**
    * 全角カタカナに変換する
    *
-   * @version 0.2.0
    * @since 0.1.0
    */
   public toWideKatakana(): Jaco {
@@ -882,7 +816,6 @@ export default class Jaco {
   /**
    * 記号を全角に変換する
    *
-   * @version 2.0.0
    * @since 2.0.0
    */
   public toWideSign(): Jaco {
@@ -892,7 +825,6 @@ export default class Jaco {
   /**
    * 日本語で使われる記号を全角に変換
    *
-   * @version 2.0.0
    * @since 0.4.0
    */
   public toWideSymbolForJapanese(): Jaco {
@@ -902,7 +834,6 @@ export default class Jaco {
   /**
    * 先頭と末尾の空白を取り除く
    *
-   * @version 2.0.0
    * @since 0.2.0
    */
   public trim(): Jaco {
@@ -912,7 +843,6 @@ export default class Jaco {
   /**
    * 先頭の空白を取り除く
    *
-   * @version 2.0.0
    * @since 2.0.0
    */
   public trimLeft(): Jaco {
@@ -922,7 +852,6 @@ export default class Jaco {
   /**
    * 末尾の空白を取り除く
    *
-   * @version 2.0.0
    * @since 2.0.0
    */
   public trimRight(): Jaco {
@@ -932,7 +861,6 @@ export default class Jaco {
   /**
    * 暗黙の値変換に呼び出されるメソッド
    *
-   * @version 0.1.0
    * @since 0.1.0
    * @return インスタンス自身が保持する文字列
    */
@@ -945,7 +873,6 @@ export default class Jaco {
    *
    * 要素の型は `string` ではなく `Jaco`
    *
-   * @version 2.0.0
    * @since 2.0.0
    * @return イテレータブル `<Jaco>`
    */
