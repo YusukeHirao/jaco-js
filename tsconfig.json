@@ -10,7 +10,8 @@
     "moduleResolution": "NodeNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "noPropertyAccessFromIndexSignature": false,
-    "exactOptionalPropertyTypes": false
+    "exactOptionalPropertyTypes": false,
+    "checkJs": false
   },
   "exclude": ["node_modules", "test"]
 }
