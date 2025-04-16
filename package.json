@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jaco-project/jaco-js.git"
+    "url": "https://github.com/YusukeHirao/jaco-js.git"
   },
   "keywords": [
     "japanese",
@@ -33,9 +33,8 @@
   "author": "YusukeHirao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaco-project/jaco-js/issues"
+    "url": "https://github.com/YusukeHirao/jaco-js/issues"
   },
-  "homepage": "http://jaco-project.github.io/docs/",
   "dependencies": {
     "commander": "^9.0.0"
   },
