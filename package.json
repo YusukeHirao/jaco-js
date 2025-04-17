@@ -43,9 +43,6 @@
   "bugs": {
     "url": "https://github.com/YusukeHirao/jaco-js/issues"
   },
-  "dependencies": {
-    "commander": "^9.0.0"
-  },
   "devDependencies": {
     "@tsconfig/node-lts": "22.0.1",
     "@tsconfig/recommended": "1.0.8",
