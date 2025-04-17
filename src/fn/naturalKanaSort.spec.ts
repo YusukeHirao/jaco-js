@@ -89,31 +89,37 @@ test('五十音順ソート', () => {
     'ゆくはしし',
   ]);
 });
+
 test('五十音順ソート2', () => {
   const origin = ['あい゛', 'あい'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['あい', 'あい゛']);
 });
+
 test('五十音順ソート3', () => {
   const origin = ['あい', 'あー'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['あー', 'あい']);
 });
+
 test('五十音順ソート4', () => {
   const origin = ['かゞくのこ', 'がゝくのと'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['かゞくのこ', 'がゝくのと']);
 });
+
 test('五十音順ソート5', () => {
   const origin = ['ほぼぼぼ', 'ほぼほぼ', 'ぼぼほぼ', 'ほぼほほ'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['ほぼほほ', 'ほぼほぼ', 'ほぼぼぼ', 'ぼぼほぼ']);
 });
+
 test('五十音順ソート6', () => {
   const origin = ['ほぼぼゞ', 'ほぼゝぼ', 'ぼぼゝぼ', 'ほゞほゝ'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['ほゞほゝ', 'ほぼゝぼ', 'ほぼぼゞ', 'ぼぼゝぼ']);
 });
+
 test('五十音順ソート7', () => {
   const origin = [
     'ばああ',
@@ -169,6 +175,7 @@ test('五十音順ソート7', () => {
     'パああ',
   ]);
 });
+
 test('五十音順ソート8', () => {
   const origin = [
     'ベンティアドショットヘーゼルナッツバニラアーモンドキャラメルエキストラホイップキャラメルソースモカソースランバチップチョコレートクリームフラペチーノ',
@@ -204,6 +211,7 @@ test('五十音順ソート8', () => {
     'リュウグウノオトヒメノモトユイノキリハズシ',
   ]);
 });
+
 test('五十音順ソート9', () => {
   const origin = [
     'dパああ',
@@ -259,27 +267,32 @@ test('五十音順ソート9', () => {
     'fハあゝ4',
   ]);
 });
+
 test('五十音順ソート10', () => {
   const origin = ['あぁああ', 'ああぁァ', 'あかカぁ', 'ァアァカ'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['あぁああ', 'ああぁァ', 'ァアァカ', 'あかカぁ']);
 });
+
 test('五十音順ソート11(引数なしでエラー)', () => {
   expect(() => {
     // @ts-ignore
     naturalKanaSort();
   }).toThrow();
 });
+
 test('五十音順ソート12', () => {
   const origin: string[] = [];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual([]);
 });
+
 test('五十音順ソート12（サロゲートペア）', () => {
   const origin = ['𩸽ぁああ', 'あ𩸽ぁァ', '𩸽かカぁ', 'ァアァカ'];
   const sorted = naturalKanaSort(origin);
   expect(sorted).toEqual(['ァアァカ', 'あ𩸽ぁァ', '𩸽ぁああ', '𩸽かカぁ']);
 });
+
 test('五十音順ソート13（下駄記号）', () => {
   const origin = ['あ〓', 'ああ', 'あ😁'];
   const sorted = naturalKanaSort(origin);
