@@ -3,6 +3,9 @@
   "version": "4.0.0",
   "description": "Japanese Character Optimizer.",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
