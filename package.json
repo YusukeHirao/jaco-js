@@ -160,7 +160,7 @@
     "build": "tsc --project tsconfig.build.json",
     "clean": "tsc --build --clean",
     "lint": "eslint --fix && prettier --write \"**/*.{ts,json,md,*rc}\"",
-    "docs": "typedoc --out docs jaco.ts",
+    "docs": "typedoc --out docs src/index.ts",
     "test": "vitest run"
   },
   "repository": {
