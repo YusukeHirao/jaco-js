@@ -4,4 +4,4 @@
  * [゛゜ー]
  *
  */
-export const KANA_COMMON_CAHRS = '\u3099-\u309C\u30FC';
+export const KANA_COMMON_CHARS = '\u3099-\u309C\u30FC';
