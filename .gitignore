@@ -61,15 +61,4 @@ typings/
 docs/
 
 # Distributions
-bin/*.js
-const/*js
-fn/*.js
-util/*.js
-index.js
-jaco.js
-const/*d.ts
-fn/*.d.ts
-util/*.d.ts
-index.d.ts
-jaco.d.ts
-*.d.ts.map
+dist/

@@ -6,6 +6,8 @@
     "@tsconfig/node-lts"
   ],
   "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "lib": ["ESNext"],
@@ -15,5 +17,5 @@
     "exactOptionalPropertyTypes": false,
     "checkJs": false
   },
-  "exclude": ["node_modules", "test"]
+  "exclude": ["node_modules", "test", "dist"]
 }
