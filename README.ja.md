@@ -42,10 +42,11 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 ```
 
 ```js
-// インスタンスを生成して使用する
-import Jaco from 'jaco';
+// すべての関数をインポートして使用する
+import { toKatakana, toHiragana } from 'jaco';
 
-new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
+toKatakana('ニホンゴのモジなど'); // => ニホンゴノモジナド
+toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 ```
 
 ## 関数

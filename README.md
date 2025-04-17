@@ -39,10 +39,11 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 ```
 
 ```js
-// Construct instance
-import Jaco from 'jaco';
+// Import all functions
+import { toKatakana, toHiragana } from 'jaco';
 
-new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
+toKatakana('ニホンゴのモジなど'); // => ニホンゴノモジナド
+toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 ```
 
 ## Functions
