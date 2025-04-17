@@ -55,12 +55,9 @@ new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモ�
 | `combinateSoundMarks`        | str [, convertOnly]                | 濁点・半濁点とひらがな・かたかなを結合させる                   |
 | `convertIterationMarks`      | str                                | 繰り返し記号をかなに置き換える                                 |
 | `convertProlongedSoundMarks` | str                                | 長音符をかなに置き換える                                       |
-| `has`                        | str, characters                    | 該当の文字のいずれかを含んでいるかどうか                       |
 | `hasSmallLetter`             | str                                | 小書き文字を含むかどうか                                       |
 | `hasSurrogatePair`           | str                                | サロゲートペア文字列を含んでいるかどうか                       |
 | `hasUnpairedSurrogate`       | str                                | ペアになっていないサロゲートコードポイントを含んでいるかどうか |
-| `is`                         | str, target                        | 完全マッチ                                                     |
-| `isEmpty`                    | str                                | 文字が空かどうか                                               |
 | `isNumeric`                  | str [, negative [, floatingPoint]] | 数字だけで構成されているかどうか                               |
 | `isOnly`                     | str, characters                    | 該当の文字だけで構成されているかどうか                         |
 | `isOnlyHiragana`             | str                                | ひらがなだけで構成されているかどうか                           |
@@ -71,7 +68,6 @@ new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモ�
 | `removeUnpairedSurrogate`    | str                                | ペアになっていないサロゲートコードポイントの削除               |
 | `removeVoicedMarks`          | str [, ignoreSingleMark]           | 濁点・半濁点を取り除く                                         |
 | `replaceFromMap`             | str, convMap                       | キーがパターン・値が置換文字列のハッシュマップによって置換する |
-| `test`                       | str, pattern                       | パターンとマッチするかどうか                                   |
 | `toBasicLetter`              | str                                | 小書き文字を基底文字に変換する                                 |
 | `toHiragana`                 | str [, isCombinate]                | ひらがなに変換する                                             |
 | `toKatakana`                 | str [, toWide]                     | カタカナに変換する                                             |

@@ -4,12 +4,9 @@ import byteSize from './fn/byteSize.js';
 import combinateSoundMarks from './fn/combinateSoundMarks.js';
 import convertIterationMarks from './fn/convertIterationMarks.js';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks.js';
-import has from './fn/has.js';
 import hasSmallLetter from './fn/hasSmallLetter.js';
 import hasSurrogatePair from './fn/hasSurrogatePair.js';
 import hasUnpairedSurrogate from './fn/hasUnpairedSurrogate.js';
-import is from './fn/is.js';
-import isEmpty from './fn/isEmpty.js';
 import isNumeric from './fn/isNumeric.js';
 import isOnly from './fn/isOnly.js';
 import isOnlyHiragana from './fn/isOnlyHiragana.js';
@@ -18,7 +15,6 @@ import remove from './fn/remove.js';
 import removeUnpairedSurrogate from './fn/removeUnpairedSurrogate.js';
 import removeVoicedMarks from './fn/removeVoicedMarks.js';
 import replaceFromMap from './fn/replaceFromMap.js';
-import test from './fn/test.js';
 import toBasicLetter from './fn/toBasicLetter.js';
 import toHiragana from './fn/toHiragana.js';
 import toKatakana from './fn/toKatakana.js';
@@ -148,17 +144,6 @@ export default class Jaco {
   }
 
   /**
-   * 該当の文字のいずれかを含んでいるかどうか
-   *
-   * @since 2.0.0
-   * @param characters 文字セット
-   * @return 結果の真偽
-   */
-  public has(characters: { toString(): string }): boolean {
-    return has(this.$, characters);
-  }
-
-  /**
    * 小書き文字を含むかどうか
    *
    * @since 1.1.0
@@ -186,25 +171,6 @@ export default class Jaco {
    */
   public hasUnpairedSurrogate(): boolean {
     return hasUnpairedSurrogate(this.$);
-  }
-
-  /**
-   * 完全マッチ
-   *
-   * @since 0.2.0
-   * @param target 比較する文字列
-   */
-  public is(target: { toString(): string }): boolean {
-    return is(this.$, target);
-  }
-
-  /**
-   * 文字が空かどうか
-   *
-   * @since 0.2.0
-   */
-  public isEmpty(): boolean {
-    return isEmpty(this.$);
   }
 
   /**
@@ -290,16 +256,6 @@ export default class Jaco {
    */
   public replaceFromMap(convMap: { [pattern: string]: string }): Jaco {
     return new Jaco(replaceFromMap(this.$, convMap));
-  }
-
-  /**
-   * パターンとマッチするかどうか
-   *
-   * @since 0.2.0
-   * @param pattern パターン
-   */
-  public test(pattern: RegExp | { toString(): string }): boolean {
-    return test(this.$, pattern);
   }
 
   /**

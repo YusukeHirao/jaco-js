@@ -216,60 +216,6 @@ test('長音符変換2', () => {
   ).toBe('ウバッシャアアアアアアアアアア');
 });
 
-// has()
-test('含むかどうか', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('い')).toBe(true);
-});
-
-// has()
-test('含むかどうか2', () => {
-  const a = new Jaco('いろは');
-  expect(a.has(new Jaco('い'))).toBe(true);
-});
-
-// has()
-test('含むかどうか3', () => {
-  const a = new Jaco('いろは');
-  expect(a.has(new Jaco('あ'))).toBe(false);
-});
-
-// has()
-test('含むかどうか4', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('いろ')).toBe(true);
-});
-
-// has()
-test('含むかどうか5', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('いは')).toBe(true);
-});
-
-// has()
-test('含むかどうか6', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('ろは')).toBe(true);
-});
-
-// has()
-test('含むかどうか7', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('にほへと')).toBe(false);
-});
-
-// has()
-test('含むかどうか8', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('a-z')).toBe(false);
-});
-
-// has()
-test('含むかどうか9', () => {
-  const a = new Jaco('いろは');
-  expect(a.has('あ-ん')).toBe(true);
-});
-
 // hasSmallLetter
 test('小書き文字の検知', () => {
   expect(
@@ -479,40 +425,6 @@ test('不完全サロゲートペア検知17', () => {
 // hasUnpairedSurrogate
 test('不完全サロゲートペア検知18', () => {
   expect(new Jaco('ひらきにする\ude3d𩸽').hasUnpairedSurrogate()).toBe(true);
-});
-
-// is()
-test('完全マッチ', () => {
-  const a = new Jaco('いろは');
-  expect(a.is('いろは')).toBe(true);
-});
-
-// is()
-test('完全マッチ2', () => {
-  const a = new Jaco('いろは');
-  expect(a.is(new Jaco('いろは'))).toBe(true);
-});
-
-// is()
-test('完全マッチ3', () => {
-  const a = new Jaco('いろは');
-  expect(a.is('いろはに')).toBe(false);
-});
-
-// is()
-test('完全マッチ4', () => {
-  const a = new Jaco('いろは');
-  expect(a.is(new Jaco('いろはに'))).toBe(false);
-});
-
-// isEmpty()
-test('空', () => {
-  const a = new Jaco('');
-  expect(a.isEmpty()).toBe(true);
-});
-test('空2', () => {
-  const a = new Jaco(' ');
-  expect(a.isEmpty()).toBe(false);
 });
 
 // isNumeric()
@@ -974,30 +886,6 @@ test('マップから置換', () => {
       })
       .toString(),
   ).toBe('zdeZDE');
-});
-
-// test()
-test('テスト', () => {
-  const a = new Jaco('あいう');
-  expect(a.test('あいう')).toBe(true);
-});
-
-// test()
-test('テスト2', () => {
-  const a = new Jaco('あいう');
-  expect(a.test(/^あ/)).toBe(true);
-});
-
-// test()
-test('テスト3', () => {
-  const a = new Jaco('あいう');
-  expect(a.test('あいうえ')).toBe(false);
-});
-
-// test()
-test('テスト4', () => {
-  const a = new Jaco('あいう');
-  expect(a.test(/あ$/)).toBe(false);
 });
 
 // toBasicLetter()
