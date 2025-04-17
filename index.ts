@@ -18,6 +18,8 @@ export { default as isNumeric } from './fn/isNumeric.js';
 export { default as isOnly } from './fn/isOnly.js';
 export { default as isOnlyHiragana } from './fn/isOnlyHiragana.js';
 export { default as isOnlyKatakana } from './fn/isOnlyKatakana.js';
+export { default as naturalKanaOrder } from './fn/naturalKanaOrder.js';
+export { default as naturalKanaSort } from './fn/naturalKanaSort.js';
 export { default as remove } from './fn/remove.js';
 export { default as removeUnpairedSurrogate } from './fn/removeUnpairedSurrogate.js';
 export { default as removeVoicedMarks } from './fn/removeVoicedMarks.js';

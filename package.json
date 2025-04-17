@@ -7,6 +7,14 @@
     ".": {
       "import": "./index.js",
       "types": "./index.d.ts"
+    },
+    "./fn/naturalKanaOrder": {
+      "import": "./fn/naturalKanaOrder.js",
+      "types": "./fn/naturalKanaOrder.d.ts"
+    },
+    "./fn/naturalKanaSort": {
+      "import": "./fn/naturalKanaSort.js",
+      "types": "./fn/naturalKanaSort.d.ts"
     }
   },
   "scripts": {
