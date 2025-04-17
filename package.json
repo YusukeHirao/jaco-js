@@ -161,7 +161,10 @@
     "clean": "tsc --build --clean",
     "lint": "eslint --fix && prettier --write \"**/*.{ts,json,md,*rc}\"",
     "docs": "typedoc --out docs src/index.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "release:major": "npm version major; npm publish",
+    "release:minor": "npm version minor; npm publish",
+    "release:patch": "npm version patch; npm publish"
   },
   "repository": {
     "type": "git",
