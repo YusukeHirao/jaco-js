@@ -28,12 +28,6 @@ Convert to Katakana from Hiragana mutually, or sort list by natural phonetic ord
 $ yarn add jaco
 ```
 
-### CLI
-
-```sh
-$ npm i -g jaco
-```
-
 ## Usage
 
 ```js
@@ -50,19 +44,6 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 import Jaco from 'jaco';
 
 new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
-```
-
-### CLI
-
-```
-Usage: jaco [options] <path or string>
-
-Options:
-
-  -V, --version                      output the version number
-  -K, --katakanize <path or string>  convert to Katakana
-  -H, --hiraganize <path or string>  convert to Hiragana
-  -h, --help                         output usage information
 ```
 
 ## Functions

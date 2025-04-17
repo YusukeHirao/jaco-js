@@ -31,12 +31,6 @@ Japanese Character Optimizer. [[English](README.md) | [日本語](README.ja.md)]
 $ yarn add jaco
 ```
 
-### CI としてインストール
-
-```sh
-$ npm i -g jaco
-```
-
 ## 使い方
 
 ```js
@@ -53,19 +47,6 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 import Jaco from 'jaco';
 
 new Jaco('ニホンゴのモジなど').toKatakana(); // => ニホンゴノモジナド
-```
-
-### コマンドライン
-
-```
-Usage: jaco [options] <path or string>
-
-Options:
-
-  -V, --version                      output the version number
-  -K, --katakanize <path or string>  convert to Katakana
-  -H, --hiraganize <path or string>  convert to Hiragana
-  -h, --help                         output usage information
 ```
 
 ## 関数
