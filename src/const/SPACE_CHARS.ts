@@ -156,7 +156,7 @@ const NARROW_NO_BREAK_SPACE = '\u202F';
  * > for example between the a and the + and between the + and the b in the expression a + b.
  * >  HTML/XML named entity: &MediumSpace;
  */
-const MEDIUM_MATHMETICAL_SPACE = '\u205F';
+const MEDIUM_MATHEMATICAL_SPACE = '\u205F';
 
 /**
  * 全角空白
@@ -200,7 +200,7 @@ export const SPACE_CHARS = [
   LINE_SEPARATOR,
   PARAGRAPH_SEPARATOR,
   NARROW_NO_BREAK_SPACE,
-  MEDIUM_MATHMETICAL_SPACE,
+  MEDIUM_MATHEMATICAL_SPACE,
   IDEOGRAPHIC_SPACE,
   ZERO_WIDTH_NO_BREAK_SPACE,
 ].join('');
