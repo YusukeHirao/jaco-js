@@ -140,7 +140,7 @@ const LINE_SEPARATOR = '\u2028';
 /**
  * Paragraph separator
  */
-const PARAGRAPH_SEPARATOR = '\u2028';
+const PARAGRAPH_SEPARATOR = '\u2029';
 
 /**
  * 狭いノーブレークスペース
