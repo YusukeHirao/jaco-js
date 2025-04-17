@@ -79,7 +79,7 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 | `toNarrowSign`               | str                                | 記号を半角に変換                                               |
 | `toNarrowSymbolForJapanese`  | str                                | 日本語で使われる記号を半角に変換                               |
 | `toNumeric`                  | str [, negative [, floatingPoint]] | 数字に変換する                                                 |
-| `toPhoeticKana`              | str                                | よみの文字に変換する                                           |
+| `toPhoneticKana`             | str                                | よみの文字に変換する                                           |
 | `toWide`                     | str                                | 全角に変換                                                     |
 | `toWideAlphanumeric`         | str                                | 英数字を全角に変換                                             |
 | `toWideJapanese`             | str                                | カタカナと日本語で使われる記号を全角に変換                     |

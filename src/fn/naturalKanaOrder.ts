@@ -2,7 +2,7 @@ import isOnlyHiragana from './isOnlyHiragana.js';
 import removeVoicedMarks from './removeVoicedMarks.js';
 import replaceFromMap from './replaceFromMap.js';
 import toNarrow from './toNarrow.js';
-import toPhoeticKana from './toPhoeticKana.js';
+import toPhoneticKana from './toPhoneticKana.js';
 
 /**
  * 配列の五十音順ソートをするためのソート関数
@@ -21,8 +21,8 @@ export default function (a: string, b: string): number {
     return 0;
   }
 
-  const phoneticA = toPhoeticKana(toNarrow(a));
-  const phoneticB = toPhoeticKana(toNarrow(b));
+  const phoneticA = toPhoneticKana(toNarrow(a));
+  const phoneticB = toPhoneticKana(toNarrow(b));
   const unvoicedA = removeVoicedMarks(phoneticA, true);
   const unvoicedB = removeVoicedMarks(phoneticB, true);
   const codeA = _convertNaturalKanaOrderNumberPhase1(unvoicedA);

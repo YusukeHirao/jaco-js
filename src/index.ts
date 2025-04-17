@@ -31,7 +31,7 @@ export { default as toNarrowKatakana } from './fn/toNarrowKatakana.js';
 export { default as toNarrowSign } from './fn/toNarrowSign.js';
 export { default as toNarrowSymbolForJapanese } from './fn/toNarrowSymbolForJapanese.js';
 export { default as toNumeric } from './fn/toNumeric.js';
-export { default as toPhoeticKana } from './fn/toPhoeticKana.js';
+export { default as toPhoneticKana } from './fn/toPhoneticKana.js';
 export { default as toWide } from './fn/toWide.js';
 export { default as toWideAlphanumeric } from './fn/toWideAlphanumeric.js';
 export { default as toWideJapanese } from './fn/toWideJapanese.js';

@@ -25,7 +25,7 @@ import toNarrowKatakana from './fn/toNarrowKatakana.js';
 import toNarrowSign from './fn/toNarrowSign.js';
 import toNarrowSymbolForJapanese from './fn/toNarrowSymbolForJapanese.js';
 import toNumeric from './fn/toNumeric.js';
-import toPhoeticKana from './fn/toPhoeticKana.js';
+import toPhoneticKana from './fn/toPhoneticKana.js';
 import toWide from './fn/toWide.js';
 import toWideAlphanumeric from './fn/toWideAlphanumeric.js';
 import toWideJapanese from './fn/toWideJapanese.js';
@@ -70,7 +70,7 @@ const jaco = {
   toNarrowSign,
   toNarrowSymbolForJapanese,
   toNumeric,
-  toPhoeticKana,
+  toPhoneticKana,
   toWide,
   toWideAlphanumeric,
   toWideJapanese,

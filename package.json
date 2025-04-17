@@ -127,9 +127,9 @@
       "import": "./dist/fn/toNumeric.js",
       "types": "./dist/fn/toNumeric.d.ts"
     },
-    "./toPhoeticKana": {
-      "import": "./dist/fn/toPhoeticKana.js",
-      "types": "./dist/fn/toPhoeticKana.d.ts"
+    "./toPhoneticKana": {
+      "import": "./dist/fn/toPhoneticKana.js",
+      "types": "./dist/fn/toPhoneticKana.d.ts"
     },
     "./toWide": {
       "import": "./dist/fn/toWide.js",
