@@ -5,16 +5,152 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "types": "./index.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
-    "./fn/naturalKanaOrder": {
-      "import": "./fn/naturalKanaOrder.js",
-      "types": "./fn/naturalKanaOrder.d.ts"
+    "./addSemivoicedMarks": {
+      "import": "./dist/fn/addSemivoicedMarks.js",
+      "types": "./dist/fn/addSemivoicedMarks.d.ts"
     },
-    "./fn/naturalKanaSort": {
-      "import": "./fn/naturalKanaSort.js",
-      "types": "./fn/naturalKanaSort.d.ts"
+    "./addVoicedMarks": {
+      "import": "./dist/fn/addVoicedMarks.js",
+      "types": "./dist/fn/addVoicedMarks.d.ts"
+    },
+    "./byteSize": {
+      "import": "./dist/fn/byteSize.js",
+      "types": "./dist/fn/byteSize.d.ts"
+    },
+    "./combinateSoundMarks": {
+      "import": "./dist/fn/combinateSoundMarks.js",
+      "types": "./dist/fn/combinateSoundMarks.d.ts"
+    },
+    "./convertIterationMarks": {
+      "import": "./dist/fn/convertIterationMarks.js",
+      "types": "./dist/fn/convertIterationMarks.d.ts"
+    },
+    "./convertProlongedSoundMarks": {
+      "import": "./dist/fn/convertProlongedSoundMarks.js",
+      "types": "./dist/fn/convertProlongedSoundMarks.d.ts"
+    },
+    "./hasSmallLetter": {
+      "import": "./dist/fn/hasSmallLetter.js",
+      "types": "./dist/fn/hasSmallLetter.d.ts"
+    },
+    "./hasSurrogatePair": {
+      "import": "./dist/fn/hasSurrogatePair.js",
+      "types": "./dist/fn/hasSurrogatePair.d.ts"
+    },
+    "./hasUnpairedSurrogate": {
+      "import": "./dist/fn/hasUnpairedSurrogate.js",
+      "types": "./dist/fn/hasUnpairedSurrogate.d.ts"
+    },
+    "./isNumeric": {
+      "import": "./dist/fn/isNumeric.js",
+      "types": "./dist/fn/isNumeric.d.ts"
+    },
+    "./isOnly": {
+      "import": "./dist/fn/isOnly.js",
+      "types": "./dist/fn/isOnly.d.ts"
+    },
+    "./isOnlyHiragana": {
+      "import": "./dist/fn/isOnlyHiragana.js",
+      "types": "./dist/fn/isOnlyHiragana.d.ts"
+    },
+    "./isOnlyKatakana": {
+      "import": "./dist/fn/isOnlyKatakana.js",
+      "types": "./dist/fn/isOnlyKatakana.d.ts"
+    },
+    "./naturalKanaOrder": {
+      "import": "./dist/fn/naturalKanaOrder.js",
+      "types": "./dist/fn/naturalKanaOrder.d.ts"
+    },
+    "./naturalKanaSort": {
+      "import": "./dist/fn/naturalKanaSort.js",
+      "types": "./dist/fn/naturalKanaSort.d.ts"
+    },
+    "./remove": {
+      "import": "./dist/fn/remove.js",
+      "types": "./dist/fn/remove.d.ts"
+    },
+    "./removeUnpairedSurrogate": {
+      "import": "./dist/fn/removeUnpairedSurrogate.js",
+      "types": "./dist/fn/removeUnpairedSurrogate.d.ts"
+    },
+    "./removeVoicedMarks": {
+      "import": "./dist/fn/removeVoicedMarks.js",
+      "types": "./dist/fn/removeVoicedMarks.d.ts"
+    },
+    "./replaceFromMap": {
+      "import": "./dist/fn/replaceFromMap.js",
+      "types": "./dist/fn/replaceFromMap.d.ts"
+    },
+    "./toBasicLetter": {
+      "import": "./dist/fn/toBasicLetter.js",
+      "types": "./dist/fn/toBasicLetter.d.ts"
+    },
+    "./toHiragana": {
+      "import": "./dist/fn/toHiragana.js",
+      "types": "./dist/fn/toHiragana.d.ts"
+    },
+    "./toKatakana": {
+      "import": "./dist/fn/toKatakana.js",
+      "types": "./dist/fn/toKatakana.d.ts"
+    },
+    "./toNarrow": {
+      "import": "./dist/fn/toNarrow.js",
+      "types": "./dist/fn/toNarrow.d.ts"
+    },
+    "./toNarrowAlphanumeric": {
+      "import": "./dist/fn/toNarrowAlphanumeric.js",
+      "types": "./dist/fn/toNarrowAlphanumeric.d.ts"
+    },
+    "./toNarrowJapanese": {
+      "import": "./dist/fn/toNarrowJapanese.js",
+      "types": "./dist/fn/toNarrowJapanese.d.ts"
+    },
+    "./toNarrowKatakana": {
+      "import": "./dist/fn/toNarrowKatakana.js",
+      "types": "./dist/fn/toNarrowKatakana.d.ts"
+    },
+    "./toNarrowSign": {
+      "import": "./dist/fn/toNarrowSign.js",
+      "types": "./dist/fn/toNarrowSign.d.ts"
+    },
+    "./toNarrowSymbolForJapanese": {
+      "import": "./dist/fn/toNarrowSymbolForJapanese.js",
+      "types": "./dist/fn/toNarrowSymbolForJapanese.d.ts"
+    },
+    "./toNumeric": {
+      "import": "./dist/fn/toNumeric.js",
+      "types": "./dist/fn/toNumeric.d.ts"
+    },
+    "./toPhoeticKana": {
+      "import": "./dist/fn/toPhoeticKana.js",
+      "types": "./dist/fn/toPhoeticKana.d.ts"
+    },
+    "./toWide": {
+      "import": "./dist/fn/toWide.js",
+      "types": "./dist/fn/toWide.d.ts"
+    },
+    "./toWideAlphanumeric": {
+      "import": "./dist/fn/toWideAlphanumeric.js",
+      "types": "./dist/fn/toWideAlphanumeric.d.ts"
+    },
+    "./toWideJapanese": {
+      "import": "./dist/fn/toWideJapanese.js",
+      "types": "./dist/fn/toWideJapanese.d.ts"
+    },
+    "./toWideKatakana": {
+      "import": "./dist/fn/toWideKatakana.js",
+      "types": "./dist/fn/toWideKatakana.d.ts"
+    },
+    "./toWideSign": {
+      "import": "./dist/fn/toWideSign.js",
+      "types": "./dist/fn/toWideSign.d.ts"
+    },
+    "./toWideSymbolForJapanese": {
+      "import": "./dist/fn/toWideSymbolForJapanese.js",
+      "types": "./dist/fn/toWideSymbolForJapanese.d.ts"
     }
   },
   "scripts": {

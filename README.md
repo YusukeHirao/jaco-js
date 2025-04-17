@@ -31,8 +31,8 @@ $ yarn add jaco
 
 ```js
 // Partial functions
-import toKatakana from 'jaco/fn/toKatakana';
-import toHiragana from 'jaco/fn/toHiragana';
+import toKatakana from 'jaco/toKatakana';
+import toHiragana from 'jaco/toHiragana';
 
 toKatakana('ニホンゴのモジなど'); // => ニホンゴノモジナド
 toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
