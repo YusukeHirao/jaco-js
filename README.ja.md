@@ -4,9 +4,6 @@ Japanese Character Optimizer. [[English](README.md) | [日本語](README.ja.md)]
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
 [![Coverage Status](https://coveralls.io/repos/github/jaco-project/jaco-js/badge.svg?branch=master)](https://coveralls.io/github/jaco-project/jaco-js?branch=master)
-[![Build Status](https://travis-ci.org/jaco-project/jaco-js.svg?branch=master)](https://travis-ci.org/jaco-project/jaco-js)
-[![Dependency Status](https://david-dm.org/jaco-project/jaco-js.svg)](https://david-dm.org/jaco-project/jaco-js)
-[![devDependency Status](https://david-dm.org/jaco-project/jaco-js/dev-status.svg)](https://david-dm.org/jaco-project/jaco-js#info=devDependencies)
 
 ## これは何
 
