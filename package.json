@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "tsc --build --clean",
     "lint": "eslint --fix && prettier --write \"**/*.{ts,json,md,*rc}\"",
     "docs": "typedoc --out docs jaco.ts",
     "test": "vitest run",
