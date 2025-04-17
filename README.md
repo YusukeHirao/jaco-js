@@ -3,7 +3,6 @@
 Japanese Character Optimizer. [[English](README.md) | [日本語](README.ja.md)]
 
 [![NPM version](https://badge.fury.io/js/jaco.svg)](http://badge.fury.io/js/jaco)
-[![Coverage Status](https://coveralls.io/repos/github/jaco-project/jaco-js/badge.svg?branch=master)](https://coveralls.io/github/jaco-project/jaco-js?branch=master)
 
 ## What is
 

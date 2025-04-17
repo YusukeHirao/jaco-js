@@ -22,8 +22,7 @@
     "clean": "tsc --build --clean",
     "lint": "eslint --fix && prettier --write \"**/*.{ts,json,md,*rc}\"",
     "docs": "typedoc --out docs jaco.ts",
-    "test": "vitest run",
-    "coveralls": "yarn test && cat ./coverage/lcov.info | coveralls"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -49,7 +48,6 @@
     "@tsconfig/recommended": "1.0.8",
     "@tsconfig/strictest": "2.0.5",
     "typescript-eslint": "8.30.1",
-    "coveralls": "3.1.1",
     "eslint": "9.24.0",
     "prettier": "3.5.3",
     "typedoc": "0.28.2",
