@@ -7,13 +7,13 @@ import replaceFromMap from './replaceFromMap.js';
  * @param str 対象の文字列
  * @param convertOnly ひらがな・かたかなと結合させずに、文字だけ結合文字に変換
  */
-export default function combinateSoundMarks(
+export default function combineSoundMarks(
   str: string,
   convertOnly: boolean = false,
 ): string {
   if (!convertOnly) {
     // 結合文字に変換
-    str = combinateSoundMarks(str, true);
+    str = combineSoundMarks(str, true);
     // 濁点・半濁点を結合する
     str = replaceFromMap(str, {
       // 濁点

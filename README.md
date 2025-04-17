@@ -53,7 +53,7 @@ toHiragana('ニホンゴのモジなど'); // => にほんごのもじなど
 | `addSemivoicedMarks`         | str                                | 半濁点を追加する                                               |
 | `addVoicedMarks`             | str                                | 濁点を追加する                                                 |
 | `byteSize`                   | str                                | 文字列のバイトサイズを返す                                     |
-| `combinateSoundMarks`        | str [, convertOnly]                | 濁点・半濁点とひらがな・かたかなを結合させる                   |
+| `combineSoundMarks`          | str [, convertOnly]                | 濁点・半濁点とひらがな・かたかなを結合させる                   |
 | `convertIterationMarks`      | str                                | 繰り返し記号をかなに置き換える                                 |
 | `convertProlongedSoundMarks` | str                                | 長音符をかなに置き換える                                       |
 | `hasSmallLetter`             | str                                | 小書き文字を含むかどうか                                       |

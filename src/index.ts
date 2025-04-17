@@ -5,7 +5,7 @@ export default jaco;
 export { default as addSemivoicedMarks } from './fn/addSemivoicedMarks.js';
 export { default as addVoicedMarks } from './fn/addVoicedMarks.js';
 export { default as byteSize } from './fn/byteSize.js';
-export { default as combinateSoundMarks } from './fn/combinateSoundMarks.js';
+export { default as combineSoundMarks } from './fn/combineSoundMarks.js';
 export { default as convertIterationMarks } from './fn/convertIterationMarks.js';
 export { default as convertProlongedSoundMarks } from './fn/convertProlongedSoundMarks.js';
 export { default as hasSmallLetter } from './fn/hasSmallLetter.js';

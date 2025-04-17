@@ -1,6 +1,6 @@
 import { KATAKANA_CHARS } from '../const/KATAKANA_CHARS.js';
 
-import combinateSoundMarks from './combinateSoundMarks.js';
+import combinateSoundMarks from './combineSoundMarks.js';
 import replaceFromMap from './replaceFromMap.js';
 import toWideKatakana from './toWideKatakana.js';
 

@@ -1,4 +1,4 @@
-import combinateSoundMarks from './combinateSoundMarks.js';
+import combinateSoundMarks from './combineSoundMarks.js';
 import replaceFromMap from './replaceFromMap.js';
 
 /**

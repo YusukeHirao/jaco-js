@@ -23,9 +23,9 @@
       "import": "./dist/fn/byteSize.js",
       "types": "./dist/fn/byteSize.d.ts"
     },
-    "./combinateSoundMarks": {
-      "import": "./dist/fn/combinateSoundMarks.js",
-      "types": "./dist/fn/combinateSoundMarks.d.ts"
+    "./combineSoundMarks": {
+      "import": "./dist/fn/combineSoundMarks.js",
+      "types": "./dist/fn/combineSoundMarks.d.ts"
     },
     "./convertIterationMarks": {
       "import": "./dist/fn/convertIterationMarks.js",

@@ -1,7 +1,7 @@
 import addSemivoicedMarks from './fn/addSemivoicedMarks.js';
 import addVoicedMarks from './fn/addVoicedMarks.js';
 import byteSize from './fn/byteSize.js';
-import combinateSoundMarks from './fn/combinateSoundMarks.js';
+import combineSoundMarks from './fn/combineSoundMarks.js';
 import convertIterationMarks from './fn/convertIterationMarks.js';
 import convertProlongedSoundMarks from './fn/convertProlongedSoundMarks.js';
 import hasSmallLetter from './fn/hasSmallLetter.js';
@@ -46,7 +46,7 @@ const jaco = {
   addSemivoicedMarks,
   addVoicedMarks,
   byteSize,
-  combinateSoundMarks,
+  combineSoundMarks,
   convertIterationMarks,
   convertProlongedSoundMarks,
   hasSmallLetter,
