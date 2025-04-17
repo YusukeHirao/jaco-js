@@ -1,7 +1,3 @@
-import jaco from './jaco.js';
-
-export default jaco;
-
 export { default as addSemivoicedMarks } from './fn/addSemivoicedMarks.js';
 export { default as addVoicedMarks } from './fn/addVoicedMarks.js';
 export { default as byteSize } from './fn/byteSize.js';
