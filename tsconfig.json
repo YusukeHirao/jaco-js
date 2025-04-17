@@ -8,7 +8,7 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext"],
     "noPropertyAccessFromIndexSignature": false,
     "exactOptionalPropertyTypes": false,
     "checkJs": false
