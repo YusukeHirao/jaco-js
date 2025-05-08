@@ -11,6 +11,10 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./const": {
+      "import": "./dist/const/index.js",
+      "types": "./dist/const/index.d.ts"
+    },
     "./addSemivoicedMarks": {
       "import": "./dist/fn/addSemivoicedMarks.js",
       "types": "./dist/fn/addSemivoicedMarks.d.ts"
