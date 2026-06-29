@@ -28,3 +28,7 @@ test('濁点・半濁点の結合5', () => {
 test('濁点・半濁点の結合6', () => {
   expect(combineSoundMarks('ぱぴぷぺぽ')).toBe('ぱぴぷぺぽ');
 });
+
+test('濁点・半濁点の結合（わ行）', () => {
+  expect(combineSoundMarks('ヷイ゙ヴエ゙ヺ')).toBe('ヷヸヴヹヺ');
+});

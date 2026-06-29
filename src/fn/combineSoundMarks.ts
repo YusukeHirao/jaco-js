@@ -61,7 +61,7 @@ export default function combineSoundMarks(
       イ゙: 'ヸ',
       ヴ: 'ヴ',
       エ゙: 'ヹ',
-      ヺ゙: 'ヲ',
+      ヺ: 'ヺ',
       ゞ: 'ゞ',
       ヾ: 'ヾ',
       // 半濁点

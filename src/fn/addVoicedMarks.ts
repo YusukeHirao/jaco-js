@@ -56,7 +56,7 @@ export default function (str: string): string {
     イ: 'ヸ',
     ウ: 'ヴ',
     エ: 'ヹ',
-    ヺ: 'ヲ',
+    ヲ: 'ヺ',
     ゝ: 'ゞ',
     ヽ: 'ヾ',
   });
